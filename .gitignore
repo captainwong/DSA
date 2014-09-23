@@ -1,0 +1,82 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# vs 2012
+*.sdf
+#*.sln
+*.suo
+*.ipch
+*.ilk
+*.pdb
+*.map
+#*.vcxproj
+*.filters
+*.log
+*.pd_
+*.opensdf
+Debug/
+Release/
+ReleaseD/
+
+# vc6
+#*.dsp
+#*.dsw
+*.ncb
+*.opt
+*.plg
+*.clw
+*.aps
+*.log
+*.pch
+*.idb
+*.pdb
+*.ilk
+*.sbr
+*.bsc
+*.map
+
+# graph
+#*.bmp
+*.jpg
+*.jpeg
+*.jpe
+*.jifi
+*.gif
+#*.ico
+*.png
+*.dib
+*.tif
+*.tiff
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+#*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+#*.lib
+
+# Executables
+#*.exe
+!AlarmCenter_Setup.exe
+*.out
+*.app
+
+# Database files
+#*.mdb
+*.ldb
+*.db
+
+# Resource files
+#*.manifest
+#*.rc
+#*.rc2
+#*.cur
+#*.avi
+#*.wav
