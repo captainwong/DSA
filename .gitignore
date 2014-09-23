@@ -6,13 +6,13 @@
 
 # vs 2012
 *.sdf
-#*.sln
+*.sln
 *.suo
 *.ipch
 *.ilk
 *.pdb
 *.map
-#*.vcxproj
+*.vcxproj
 *.filters
 *.log
 *.pd_
@@ -22,8 +22,8 @@ Release/
 ReleaseD/
 
 # vc6
-#*.dsp
-#*.dsw
+*.dsp
+*.dsw
 *.ncb
 *.opt
 *.plg
@@ -39,13 +39,13 @@ ReleaseD/
 *.map
 
 # graph
-#*.bmp
+*.bmp
 *.jpg
 *.jpeg
 *.jpe
 *.jifi
 *.gif
-#*.ico
+*.ico
 *.png
 *.dib
 *.tif
@@ -54,29 +54,29 @@ ReleaseD/
 # Compiled Dynamic libraries
 *.so
 *.dylib
-#*.dll
+*.dll
 
 # Compiled Static libraries
 *.lai
 *.la
 *.a
-#*.lib
+*.lib
 
 # Executables
-#*.exe
+*.exe
 !AlarmCenter_Setup.exe
 *.out
 *.app
 
 # Database files
-#*.mdb
+*.mdb
 *.ldb
 *.db
 
 # Resource files
-#*.manifest
-#*.rc
-#*.rc2
-#*.cur
-#*.avi
-#*.wav
+*.manifest
+*.rc
+*.rc2
+*.cur
+*.avi
+*.wav
