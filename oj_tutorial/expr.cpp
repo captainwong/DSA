@@ -74,7 +74,7 @@ public:
 				operation = new OperationMul();
 				break;
 			case '/':
-				operation = new OperationDiv();
+				//operation = new OperationDiv();
 				break;
 			default:
 				break;
