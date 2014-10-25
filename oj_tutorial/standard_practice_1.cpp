@@ -5,7 +5,7 @@ static inline bool is_valid_value(int val)
 	return val >= 1 && val <= 10000000;
 }
 
-int main(int argc, char* argv[])
+int main2(int argc, char* argv[])
 {
 	int a = 0;
 	int b = 0;
