@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
+//#include <string.h>
 #include "bintree.h"
 
 template <typename T>
@@ -17,10 +18,15 @@ int g_position_post[MAX_VAL+1] = { 0 };
 
 int g_print_index = 0;
 
-void print(int data)
+//char g_buff[1024 * 1024 * 100] = { 0 };
+//char g_tmp[32] = { 0 };
+
+void visit(int data)
 {
-	//printf("%d ", data);
-	g_position_pre[g_print_index++] = data;
+	printf("%d ", data);
+	//g_position_pre[g_print_index++] = data;
+	//sprintf(g_tmp, "%d ", data);
+	//strcat(g_buff, g_tmp);
 }
 
 
@@ -44,6 +50,17 @@ void parseSubTree(BinTree<int>& bintree, BinNodePosi(int) pos,
 				 preorder + 1 + rpos_in_pre - lpos_in_pre, 
 				 postorder + rpos_in_pre - lpos_in_pre, 
 				 rpos_in_post - lpos_in_post);
+
+	/*while (n > 2) {
+		int l = preorder[1];
+		int r = postorder[n - 2];
+		int lpos_in_pre = g_position_pre[l];
+		int rpos_in_pre = g_position_pre[r];
+		int lpos_in_post = g_position_post[l];
+		int rpos_in_post = g_position_post[r];
+		BinNodePosi(int) lpos = bintree.insertAsLC(pos, l);
+		BinNodePosi(int) rpos = bintree.insertAsRC(pos, r);
+	}*/
 }
 
 //#define _DEBUG_
@@ -114,10 +131,11 @@ int main(int /*argc*/, char** /*argv*/)
 	parseSubTree(bintree, rpos, preorder + rpos_in_pre, postorder + 1 + lpos_in_post, rpos_in_post - lpos_in_post);
 
 
-	bintree.travIn(print);
+	bintree.travIn(visit);
+	//printf(g_buff);
 	//printf("\n");
-	for (int i = 0; i < g_print_index; i++) {
-		printf("%d ", g_position_pre[i]);
-	}
+	//for (int i = 0; i < g_print_index; i++) {
+	//	printf("%d ", g_position_pre[i]);
+	//}
 	return 0;
 }
