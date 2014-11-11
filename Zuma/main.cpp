@@ -124,8 +124,9 @@ int main(int argc, char* argv[])
 	int K;
 	char C;
 	for (int i = 0; i < n; i++) {
-		if (scanf("%d %c", &K, &C) == EOF)
-			return 0;
+		//if (scanf("%d %c", &K, &C) == EOF)
+		//	return 0;
+		scanf("%d %c", &K, &C);
 		if (!is_upper(C))
 			return 0;
 		if (K < 0 /*|| K > list.size()*/)

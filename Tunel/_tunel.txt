@@ -1,0 +1,15033 @@
+10000
+E 0
+E 2
+D
+D
+E 38
+M
+D
+E 25
+M
+D
+E 100
+M
+E 10
+E 60
+M
+D
+D
+M
+M
+D
+E 39
+E 8
+M
+D
+E 46
+M
+D
+M
+M
+E 23
+D
+E 35
+M
+E 83
+D
+D
+D
+E 85
+M
+M
+E 5
+M
+M
+D
+D
+E 20
+D
+E 56
+M
+M
+E 44
+M
+M
+M
+M
+E 84
+M
+M
+M
+E 23
+M
+D
+M
+E 35
+M
+E 88
+M
+D
+M
+D
+E 31
+M
+D
+E 8
+D
+D
+D
+M
+M
+E 23
+D
+E 43
+M
+D
+M
+E 43
+D
+E 100
+D
+E 2
+E 100
+D
+D
+M
+D
+E 66
+E 32
+E 20
+D
+D
+E 16
+D
+M
+D
+E 10
+M
+D
+E 9
+M
+E 11
+M
+E 49
+D
+M
+D
+D
+E 87
+M
+E 80
+E 14
+D
+M
+M
+D
+E 41
+M
+E 90
+M
+E 54
+M
+E 88
+D
+M
+M
+E 49
+D
+M
+D
+E 61
+M
+E 52
+D
+E 38
+D
+D
+M
+D
+D
+M
+E 23
+E 16
+M
+E 36
+D
+M
+D
+D
+E 63
+E 8
+M
+E 44
+E 98
+M
+E 7
+E 39
+M
+E 79
+E 9
+M
+D
+D
+E 19
+D
+M
+E 20
+D
+M
+E 75
+E 15
+D
+E 62
+M
+D
+E 87
+E 92
+D
+M
+D
+D
+D
+D
+M
+M
+D
+E 4
+D
+M
+E 40
+D
+E 97
+E 83
+M
+M
+D
+E 41
+D
+M
+E 49
+E 15
+D
+M
+D
+E 87
+M
+E 11
+M
+D
+M
+M
+M
+E 17
+E 95
+E 45
+D
+M
+D
+M
+E 83
+E 59
+M
+E 71
+E 33
+D
+M
+D
+E 65
+D
+E 30
+D
+M
+M
+E 74
+M
+E 89
+M
+E 59
+M
+D
+E 32
+M
+D
+M
+E 100
+D
+M
+D
+D
+M
+M
+E 16
+M
+M
+E 4
+E 85
+M
+E 63
+M
+E 31
+E 3
+M
+E 19
+M
+E 17
+E 52
+E 1
+E 39
+D
+M
+M
+D
+E 10
+D
+D
+M
+E 45
+E 98
+M
+E 20
+D
+E 64
+D
+M
+D
+D
+D
+D
+E 37
+D
+D
+D
+D
+M
+D
+D
+M
+M
+D
+D
+E 94
+M
+D
+E 35
+M
+M
+E 21
+E 29
+M
+D
+M
+M
+M
+M
+M
+M
+D
+M
+D
+M
+E 63
+D
+M
+E 0
+M
+E 26
+M
+M
+M
+D
+M
+M
+E 59
+E 53
+M
+M
+E 5
+M
+D
+E 41
+E 55
+D
+M
+D
+M
+M
+E 91
+E 54
+M
+E 62
+D
+M
+E 13
+D
+E 14
+E 87
+E 56
+M
+M
+M
+D
+E 39
+E 31
+M
+M
+M
+M
+D
+M
+E 40
+E 98
+M
+M
+M
+E 16
+E 58
+E 1
+D
+E 42
+M
+D
+E 31
+E 85
+D
+E 63
+E 33
+D
+E 93
+D
+M
+M
+D
+E 11
+D
+M
+D
+M
+D
+D
+M
+M
+D
+D
+E 87
+E 80
+E 28
+E 90
+M
+M
+D
+D
+E 7
+D
+D
+D
+E 75
+E 41
+E 0
+D
+D
+M
+D
+M
+D
+E 60
+E 34
+M
+D
+M
+M
+M
+E 52
+M
+M
+M
+M
+E 18
+E 84
+D
+E 52
+E 77
+D
+M
+D
+M
+M
+E 79
+D
+M
+M
+M
+M
+E 1
+M
+D
+D
+M
+D
+E 27
+M
+D
+E 49
+D
+D
+E 25
+M
+D
+D
+D
+E 3
+D
+E 11
+D
+M
+D
+E 3
+D
+D
+E 4
+D
+E 62
+D
+D
+E 90
+M
+E 84
+D
+D
+M
+D
+D
+D
+D
+E 25
+M
+D
+E 99
+D
+D
+E 20
+M
+E 51
+M
+E 90
+E 86
+D
+E 99
+D
+M
+M
+M
+E 92
+M
+D
+D
+E 98
+M
+M
+D
+E 32
+E 26
+E 33
+D
+E 55
+E 14
+D
+E 66
+E 5
+E 45
+E 28
+D
+M
+M
+M
+M
+D
+D
+E 35
+D
+D
+D
+D
+M
+D
+E 77
+M
+M
+D
+D
+E 45
+D
+E 78
+D
+M
+M
+D
+D
+E 23
+E 78
+E 88
+M
+D
+M
+D
+E 53
+D
+E 92
+D
+M
+D
+M
+M
+D
+D
+M
+M
+E 39
+M
+M
+E 20
+E 32
+M
+E 73
+M
+E 40
+E 18
+M
+E 2
+E 84
+M
+M
+M
+M
+M
+E 51
+M
+D
+D
+D
+E 2
+M
+E 38
+M
+M
+E 68
+E 74
+M
+D
+E 73
+E 15
+M
+E 19
+E 44
+M
+M
+D
+M
+E 36
+E 16
+D
+D
+M
+D
+M
+M
+D
+E 77
+M
+M
+D
+E 54
+D
+M
+D
+D
+E 29
+M
+D
+E 53
+E 69
+M
+M
+M
+D
+M
+M
+D
+M
+M
+M
+E 60
+M
+D
+D
+D
+E 73
+D
+E 0
+E 23
+D
+E 23
+D
+M
+D
+E 62
+E 85
+M
+D
+D
+E 73
+M
+D
+E 95
+M
+M
+M
+D
+M
+D
+D
+D
+D
+E 46
+D
+M
+E 89
+E 97
+M
+D
+M
+E 62
+D
+E 85
+M
+M
+D
+D
+D
+M
+M
+D
+M
+E 22
+M
+E 16
+D
+M
+E 27
+M
+M
+E 78
+D
+E 51
+D
+E 47
+D
+M
+E 8
+E 100
+D
+D
+E 25
+D
+M
+E 51
+D
+E 77
+E 52
+D
+E 53
+M
+E 38
+M
+D
+E 81
+M
+M
+M
+E 96
+M
+E 49
+M
+M
+E 32
+M
+D
+M
+E 96
+E 94
+M
+E 22
+D
+M
+M
+M
+E 21
+E 20
+D
+M
+D
+M
+E 91
+E 57
+E 21
+E 69
+E 31
+E 71
+M
+D
+E 65
+M
+E 6
+E 1
+E 73
+M
+D
+M
+M
+E 34
+M
+E 55
+E 5
+M
+E 72
+D
+M
+M
+D
+D
+E 32
+E 2
+M
+E 58
+M
+M
+D
+D
+E 83
+M
+E 34
+M
+E 31
+E 29
+D
+E 57
+E 11
+M
+D
+M
+D
+D
+E 66
+M
+E 3
+E 98
+D
+D
+D
+E 47
+M
+D
+E 49
+D
+M
+E 64
+D
+D
+E 1
+M
+D
+D
+M
+D
+M
+M
+D
+E 100
+D
+M
+D
+E 80
+M
+M
+D
+M
+M
+E 52
+E 29
+M
+M
+E 28
+D
+D
+E 22
+D
+M
+D
+E 6
+M
+M
+D
+M
+E 12
+E 48
+D
+D
+M
+E 61
+D
+M
+M
+E 17
+D
+E 15
+E 21
+M
+M
+E 26
+D
+E 28
+M
+D
+E 50
+D
+D
+M
+E 72
+E 60
+E 48
+M
+D
+D
+D
+M
+M
+E 85
+M
+M
+M
+E 93
+D
+D
+M
+M
+M
+D
+M
+E 39
+E 29
+M
+D
+E 75
+D
+E 98
+E 26
+E 44
+E 99
+E 86
+M
+E 1
+E 50
+M
+D
+E 82
+M
+D
+E 67
+E 31
+E 29
+D
+E 68
+D
+M
+M
+E 89
+D
+D
+M
+D
+M
+M
+E 44
+M
+D
+D
+D
+M
+E 41
+M
+E 16
+D
+D
+E 17
+E 91
+E 27
+E 78
+M
+M
+D
+D
+M
+M
+M
+D
+D
+E 66
+D
+D
+M
+M
+E 83
+E 29
+D
+E 74
+E 63
+E 25
+M
+M
+M
+E 72
+E 3
+E 82
+M
+D
+D
+E 42
+D
+E 86
+D
+M
+E 99
+E 84
+E 1
+D
+D
+E 45
+D
+E 8
+E 2
+D
+D
+M
+E 75
+E 58
+D
+E 46
+M
+M
+D
+E 19
+M
+M
+D
+E 45
+M
+M
+E 8
+E 24
+D
+E 35
+M
+D
+D
+D
+E 35
+M
+E 98
+E 8
+M
+E 71
+D
+D
+M
+E 38
+M
+M
+M
+E 69
+M
+M
+E 10
+M
+E 69
+D
+M
+D
+E 23
+D
+D
+M
+E 41
+M
+M
+E 81
+E 70
+E 92
+E 10
+M
+M
+M
+D
+E 28
+M
+D
+E 15
+E 18
+E 86
+D
+E 63
+D
+E 19
+E 73
+D
+E 96
+D
+E 45
+M
+M
+D
+E 24
+E 39
+D
+E 66
+E 72
+D
+E 94
+M
+D
+D
+M
+D
+E 32
+E 43
+E 30
+M
+D
+E 7
+D
+D
+E 48
+M
+E 36
+D
+M
+D
+M
+D
+M
+M
+E 51
+D
+E 76
+M
+M
+M
+M
+E 53
+E 90
+D
+M
+E 6
+M
+E 29
+E 39
+E 73
+D
+E 68
+E 79
+M
+D
+E 38
+E 64
+E 61
+E 13
+D
+E 55
+E 62
+M
+D
+M
+M
+M
+D
+M
+D
+M
+E 50
+E 31
+E 62
+M
+M
+E 83
+E 1
+E 98
+D
+D
+E 34
+E 70
+E 42
+E 14
+M
+D
+M
+M
+D
+D
+E 87
+M
+M
+E 62
+E 2
+E 58
+M
+E 45
+E 55
+D
+M
+M
+E 65
+M
+M
+E 60
+D
+D
+M
+D
+D
+E 81
+D
+M
+E 61
+D
+E 53
+D
+D
+D
+E 43
+D
+D
+D
+E 95
+E 46
+D
+D
+E 38
+M
+M
+E 40
+E 61
+D
+E 23
+M
+D
+D
+D
+M
+D
+E 81
+M
+E 88
+D
+E 26
+D
+M
+D
+M
+E 8
+E 46
+E 31
+M
+D
+D
+D
+D
+M
+M
+M
+D
+D
+D
+D
+M
+M
+M
+D
+D
+E 21
+D
+E 67
+E 74
+E 64
+M
+E 15
+D
+E 51
+E 85
+D
+M
+E 65
+E 5
+E 50
+D
+D
+E 9
+D
+D
+M
+E 30
+E 51
+D
+E 65
+M
+D
+M
+M
+M
+E 97
+D
+E 10
+D
+D
+M
+E 59
+M
+E 8
+D
+E 5
+E 2
+E 12
+E 43
+M
+D
+D
+E 4
+M
+E 2
+M
+M
+D
+E 21
+M
+D
+E 67
+E 92
+E 96
+M
+D
+D
+M
+E 98
+M
+M
+E 71
+D
+E 84
+E 79
+D
+M
+D
+D
+D
+D
+E 94
+D
+M
+M
+M
+D
+M
+M
+D
+M
+E 79
+M
+E 62
+E 88
+D
+M
+D
+E 38
+D
+D
+E 69
+E 59
+E 56
+D
+E 5
+D
+M
+D
+D
+M
+D
+D
+D
+E 16
+M
+M
+M
+E 54
+M
+D
+M
+E 37
+E 12
+E 87
+M
+E 77
+D
+M
+M
+D
+D
+D
+E 21
+M
+M
+D
+D
+E 72
+M
+E 34
+M
+E 64
+M
+M
+M
+D
+E 47
+E 13
+M
+M
+D
+D
+M
+E 36
+D
+E 17
+E 73
+E 4
+M
+M
+D
+M
+M
+E 85
+E 45
+D
+D
+D
+D
+E 46
+D
+M
+D
+M
+E 68
+D
+E 44
+D
+D
+D
+E 2
+E 25
+E 23
+E 16
+M
+M
+D
+D
+E 46
+D
+E 76
+M
+D
+E 38
+E 3
+M
+D
+D
+M
+E 72
+D
+D
+E 57
+E 36
+D
+D
+E 59
+M
+D
+D
+E 99
+E 14
+M
+M
+M
+E 88
+M
+D
+E 53
+E 79
+D
+M
+E 7
+D
+D
+M
+M
+E 84
+E 71
+D
+D
+E 51
+M
+D
+D
+D
+D
+D
+M
+D
+D
+E 68
+D
+E 26
+D
+E 99
+E 72
+E 77
+E 88
+D
+M
+E 35
+M
+E 29
+D
+D
+M
+M
+M
+E 3
+M
+M
+D
+M
+D
+E 34
+E 12
+D
+M
+D
+D
+E 60
+M
+E 47
+M
+D
+M
+M
+D
+E 82
+E 100
+M
+E 6
+E 56
+E 92
+D
+E 27
+D
+D
+E 42
+M
+E 98
+M
+M
+D
+E 32
+M
+M
+M
+E 47
+M
+M
+E 63
+M
+D
+M
+M
+E 2
+M
+D
+D
+D
+D
+M
+E 32
+D
+E 43
+D
+D
+M
+M
+D
+D
+D
+D
+M
+E 25
+D
+M
+E 62
+M
+M
+E 65
+E 20
+E 25
+E 59
+D
+M
+E 40
+D
+E 65
+E 99
+D
+M
+E 82
+E 80
+M
+M
+E 64
+M
+M
+M
+M
+M
+E 7
+E 96
+D
+M
+D
+M
+M
+E 62
+D
+M
+D
+E 46
+D
+E 77
+E 72
+E 46
+M
+E 93
+M
+D
+E 88
+M
+D
+M
+E 75
+M
+M
+E 3
+D
+M
+E 70
+D
+M
+D
+M
+D
+D
+M
+D
+D
+D
+M
+E 94
+D
+D
+D
+D
+E 95
+D
+D
+E 19
+D
+D
+E 94
+D
+E 72
+E 21
+D
+M
+E 8
+E 91
+D
+D
+E 50
+E 21
+E 47
+D
+E 77
+D
+M
+E 72
+M
+M
+E 97
+M
+D
+D
+E 25
+D
+E 72
+E 64
+M
+M
+D
+M
+M
+M
+M
+D
+M
+M
+E 28
+D
+D
+D
+E 97
+M
+E 6
+E 24
+D
+D
+D
+M
+M
+D
+M
+E 30
+E 65
+M
+M
+E 71
+E 41
+M
+D
+D
+D
+E 98
+E 49
+D
+D
+M
+E 70
+E 58
+D
+M
+M
+E 39
+E 55
+D
+E 44
+M
+E 24
+D
+E 0
+D
+D
+M
+E 50
+D
+E 41
+E 91
+D
+E 29
+M
+M
+E 16
+E 75
+E 33
+M
+D
+D
+E 61
+E 31
+E 64
+M
+D
+D
+D
+M
+E 38
+E 52
+D
+M
+D
+E 23
+M
+E 25
+D
+E 74
+D
+M
+M
+M
+D
+D
+M
+M
+E 50
+D
+M
+M
+E 26
+M
+M
+E 94
+M
+M
+D
+D
+M
+D
+D
+D
+D
+E 18
+D
+E 57
+E 99
+M
+E 42
+M
+M
+M
+M
+M
+D
+D
+M
+M
+E 24
+M
+M
+D
+E 27
+M
+M
+D
+M
+E 42
+E 18
+M
+E 69
+M
+M
+E 7
+D
+D
+M
+M
+D
+M
+E 40
+D
+E 56
+D
+D
+D
+E 99
+E 33
+D
+D
+E 84
+D
+E 95
+M
+E 33
+E 59
+D
+M
+D
+D
+D
+D
+E 19
+D
+E 38
+E 4
+D
+D
+E 86
+M
+D
+M
+E 39
+D
+E 3
+E 42
+E 71
+E 63
+D
+D
+E 82
+M
+D
+D
+M
+M
+M
+D
+D
+D
+E 63
+D
+D
+E 60
+M
+E 91
+D
+M
+E 11
+E 36
+E 68
+M
+M
+M
+M
+E 78
+D
+D
+E 50
+E 16
+E 65
+E 8
+M
+M
+M
+M
+E 58
+M
+D
+M
+D
+D
+D
+D
+D
+M
+D
+E 49
+E 34
+E 96
+D
+D
+M
+D
+E 21
+D
+E 74
+E 68
+D
+D
+E 62
+M
+M
+M
+D
+D
+E 7
+E 64
+E 98
+E 95
+E 46
+E 5
+M
+M
+D
+M
+D
+D
+D
+D
+M
+E 13
+D
+E 97
+D
+E 89
+E 72
+E 94
+E 48
+D
+D
+D
+M
+E 90
+M
+M
+M
+D
+M
+E 20
+E 74
+E 10
+M
+E 18
+D
+M
+M
+E 97
+M
+M
+M
+E 67
+E 69
+E 95
+D
+M
+M
+E 15
+M
+M
+M
+M
+E 55
+E 24
+E 79
+E 59
+E 96
+M
+D
+D
+D
+E 37
+M
+M
+M
+E 83
+D
+M
+M
+D
+E 50
+E 68
+D
+D
+E 5
+M
+E 72
+D
+M
+M
+M
+M
+M
+M
+E 10
+M
+M
+D
+D
+D
+M
+M
+D
+D
+E 24
+E 80
+D
+D
+M
+D
+M
+E 52
+E 86
+D
+M
+E 100
+E 20
+E 69
+E 60
+M
+D
+E 19
+E 29
+E 71
+E 48
+D
+M
+D
+M
+D
+D
+M
+D
+D
+M
+D
+D
+M
+D
+E 20
+M
+E 28
+M
+D
+E 53
+M
+D
+E 46
+E 12
+D
+E 30
+M
+E 24
+D
+E 13
+E 56
+D
+M
+M
+D
+E 85
+D
+D
+D
+D
+M
+M
+E 5
+E 82
+E 12
+M
+M
+D
+E 45
+E 69
+M
+D
+E 35
+M
+D
+E 50
+M
+D
+E 3
+E 67
+M
+E 20
+E 75
+D
+D
+E 81
+M
+D
+M
+M
+E 28
+E 6
+D
+E 16
+M
+D
+D
+M
+M
+D
+M
+D
+M
+D
+M
+M
+M
+D
+D
+D
+D
+D
+M
+M
+D
+D
+E 22
+M
+D
+E 13
+M
+D
+E 99
+D
+M
+E 58
+D
+M
+M
+E 13
+M
+M
+M
+M
+E 9
+E 90
+M
+D
+M
+E 79
+D
+D
+E 15
+E 41
+M
+D
+E 87
+D
+D
+E 6
+D
+M
+M
+M
+E 49
+E 25
+E 63
+E 5
+M
+M
+E 35
+M
+E 98
+D
+M
+D
+D
+M
+M
+D
+E 100
+M
+D
+M
+D
+D
+M
+D
+M
+E 28
+M
+E 94
+M
+M
+M
+D
+E 19
+M
+M
+M
+D
+D
+D
+E 59
+E 64
+D
+D
+D
+M
+M
+D
+E 70
+E 19
+D
+M
+E 35
+M
+D
+M
+M
+M
+D
+M
+E 56
+M
+M
+M
+M
+D
+M
+E 100
+M
+E 62
+D
+M
+D
+E 61
+M
+E 17
+E 66
+D
+D
+D
+E 77
+D
+E 36
+M
+E 20
+M
+M
+M
+E 29
+D
+D
+D
+M
+M
+M
+M
+M
+E 0
+M
+M
+D
+D
+D
+M
+M
+E 57
+D
+M
+M
+E 9
+D
+E 46
+M
+M
+E 58
+D
+D
+E 55
+E 5
+M
+D
+M
+E 86
+M
+D
+D
+E 6
+D
+M
+M
+M
+M
+E 37
+D
+E 21
+D
+E 26
+D
+M
+M
+E 24
+E 15
+M
+M
+D
+M
+M
+E 23
+D
+M
+D
+M
+D
+M
+E 13
+D
+E 46
+D
+M
+M
+E 29
+M
+D
+E 98
+M
+D
+M
+E 50
+M
+D
+D
+E 46
+D
+M
+E 8
+M
+D
+E 11
+M
+D
+E 29
+E 72
+D
+M
+E 78
+E 16
+D
+D
+M
+D
+D
+D
+M
+M
+M
+M
+D
+M
+M
+M
+M
+E 84
+D
+M
+D
+D
+D
+D
+M
+E 18
+D
+E 84
+D
+M
+M
+M
+M
+E 23
+E 22
+M
+E 40
+E 16
+M
+M
+D
+D
+D
+D
+M
+D
+D
+M
+M
+E 12
+M
+M
+D
+M
+D
+E 8
+M
+E 40
+D
+M
+E 79
+E 8
+D
+M
+D
+M
+M
+D
+E 95
+E 21
+M
+E 63
+E 82
+D
+D
+D
+E 18
+E 46
+D
+E 86
+D
+E 41
+E 2
+E 94
+D
+D
+M
+M
+E 38
+D
+M
+E 50
+M
+D
+D
+M
+E 85
+M
+E 5
+D
+M
+M
+D
+E 100
+M
+E 81
+E 40
+D
+M
+E 72
+M
+M
+M
+M
+D
+E 86
+D
+M
+E 70
+E 6
+M
+M
+E 22
+E 98
+E 91
+E 59
+E 32
+D
+D
+E 93
+M
+D
+M
+M
+E 3
+D
+D
+D
+D
+M
+E 36
+E 8
+D
+E 10
+D
+M
+D
+M
+M
+D
+D
+M
+E 36
+E 31
+E 66
+D
+M
+M
+D
+M
+D
+D
+M
+M
+D
+M
+D
+E 9
+E 46
+D
+M
+E 64
+M
+M
+E 15
+D
+E 53
+E 50
+E 86
+E 33
+E 1
+E 13
+E 41
+M
+E 55
+M
+D
+M
+D
+D
+E 88
+E 27
+D
+E 72
+E 46
+D
+E 19
+D
+E 75
+E 7
+M
+E 61
+E 41
+E 87
+D
+D
+E 16
+M
+M
+D
+D
+E 95
+M
+E 12
+M
+D
+E 12
+D
+E 39
+E 67
+D
+M
+D
+E 81
+M
+E 81
+E 62
+D
+E 69
+M
+M
+E 90
+E 70
+E 82
+E 47
+D
+M
+E 51
+E 71
+E 13
+M
+D
+D
+M
+M
+E 6
+M
+E 79
+D
+M
+M
+M
+M
+E 89
+E 23
+D
+D
+E 68
+D
+M
+E 83
+D
+E 73
+D
+D
+E 54
+M
+E 24
+E 23
+D
+M
+E 16
+D
+D
+E 40
+M
+E 8
+E 61
+M
+E 74
+E 60
+D
+M
+D
+E 99
+M
+D
+E 55
+M
+E 26
+E 55
+D
+M
+M
+D
+E 66
+M
+M
+E 93
+D
+M
+M
+M
+E 14
+M
+E 73
+D
+M
+E 70
+M
+E 98
+D
+E 59
+M
+M
+D
+E 62
+D
+D
+M
+E 56
+M
+E 95
+E 91
+E 97
+E 73
+M
+M
+D
+M
+M
+D
+M
+M
+D
+E 82
+D
+E 11
+D
+M
+M
+M
+D
+D
+M
+D
+M
+E 37
+M
+D
+E 23
+M
+D
+M
+E 98
+E 72
+E 46
+M
+D
+D
+M
+E 32
+M
+D
+D
+M
+M
+M
+M
+D
+M
+M
+E 16
+E 50
+E 98
+M
+M
+M
+M
+M
+D
+M
+D
+E 25
+M
+E 32
+D
+M
+E 62
+E 32
+M
+M
+E 56
+D
+E 16
+E 76
+M
+M
+E 5
+D
+D
+M
+D
+M
+E 28
+E 2
+D
+M
+E 11
+M
+M
+D
+E 27
+D
+D
+M
+E 21
+M
+E 35
+D
+E 51
+M
+D
+E 47
+M
+M
+E 24
+M
+M
+D
+M
+M
+M
+D
+M
+E 89
+D
+E 23
+D
+M
+E 16
+E 11
+M
+D
+D
+D
+E 83
+M
+D
+E 49
+M
+D
+D
+E 6
+M
+D
+E 55
+M
+M
+M
+E 16
+M
+M
+E 76
+E 42
+D
+E 100
+E 13
+D
+M
+D
+E 35
+M
+E 82
+M
+E 80
+M
+M
+M
+M
+D
+E 26
+D
+E 26
+M
+M
+D
+D
+E 50
+M
+M
+D
+M
+M
+M
+D
+M
+M
+M
+E 10
+M
+E 4
+D
+M
+E 42
+E 21
+D
+M
+E 77
+D
+D
+M
+M
+M
+D
+D
+M
+E 74
+E 60
+M
+E 89
+E 53
+E 53
+D
+D
+M
+E 35
+E 71
+E 32
+D
+M
+D
+M
+D
+D
+D
+E 60
+E 87
+E 50
+E 83
+E 31
+D
+D
+D
+M
+M
+E 23
+E 100
+D
+E 46
+E 70
+D
+D
+D
+E 41
+D
+D
+M
+M
+E 56
+M
+M
+D
+D
+D
+M
+E 13
+E 91
+D
+M
+E 67
+D
+M
+M
+E 2
+D
+D
+E 24
+E 10
+D
+E 11
+E 63
+E 15
+E 20
+D
+D
+M
+D
+D
+E 1
+D
+M
+M
+D
+M
+M
+D
+D
+E 63
+E 7
+E 55
+E 82
+E 63
+M
+M
+D
+D
+E 39
+M
+M
+M
+D
+D
+E 70
+M
+M
+M
+E 47
+E 8
+D
+E 2
+D
+E 78
+M
+D
+M
+E 13
+M
+E 95
+D
+M
+M
+D
+E 64
+M
+E 93
+E 79
+D
+D
+D
+E 11
+M
+D
+E 53
+D
+D
+M
+M
+M
+E 39
+D
+E 81
+D
+E 74
+D
+E 93
+M
+D
+E 82
+D
+M
+D
+E 21
+E 99
+E 82
+E 97
+M
+E 64
+E 90
+M
+M
+D
+E 96
+D
+E 74
+M
+E 100
+D
+M
+E 56
+E 40
+D
+D
+D
+M
+D
+E 73
+D
+E 40
+M
+M
+M
+E 33
+D
+E 88
+M
+M
+D
+M
+E 90
+D
+D
+E 19
+M
+D
+E 39
+M
+M
+M
+M
+D
+M
+D
+M
+M
+E 39
+D
+D
+E 85
+M
+D
+E 44
+E 53
+M
+E 29
+E 3
+D
+E 20
+E 17
+M
+E 7
+E 1
+E 83
+M
+D
+M
+D
+D
+E 87
+M
+E 95
+E 8
+E 68
+E 67
+E 5
+D
+M
+E 97
+M
+E 2
+E 81
+D
+D
+M
+E 11
+M
+E 23
+D
+M
+D
+E 83
+M
+M
+E 16
+E 99
+D
+D
+D
+D
+M
+D
+M
+D
+D
+M
+E 89
+D
+M
+E 50
+E 27
+E 3
+E 69
+D
+E 35
+D
+M
+E 0
+D
+M
+M
+E 44
+D
+D
+E 50
+D
+M
+D
+D
+E 17
+E 17
+M
+M
+D
+E 29
+M
+D
+D
+M
+D
+E 39
+M
+D
+M
+M
+D
+D
+M
+E 17
+D
+M
+D
+M
+D
+E 90
+D
+E 71
+E 49
+D
+E 23
+D
+D
+M
+D
+M
+M
+M
+D
+M
+D
+M
+D
+M
+E 19
+D
+D
+E 53
+D
+E 68
+M
+E 28
+M
+E 95
+E 93
+E 34
+E 89
+E 71
+D
+D
+E 6
+D
+E 12
+M
+D
+D
+E 39
+D
+E 70
+E 9
+D
+D
+D
+D
+M
+M
+M
+D
+D
+M
+M
+E 85
+M
+E 30
+M
+D
+D
+D
+E 5
+D
+D
+E 39
+E 2
+E 63
+M
+E 53
+M
+M
+D
+M
+D
+M
+E 89
+D
+D
+D
+E 94
+E 32
+M
+M
+M
+D
+E 13
+E 1
+M
+M
+M
+M
+M
+E 19
+D
+M
+M
+M
+D
+M
+D
+E 76
+E 87
+D
+D
+E 47
+D
+E 5
+D
+M
+D
+D
+E 34
+E 55
+D
+E 1
+E 31
+E 38
+D
+M
+E 2
+D
+D
+M
+D
+E 99
+E 31
+M
+M
+E 47
+E 94
+E 97
+M
+M
+D
+M
+M
+E 49
+M
+M
+M
+D
+E 88
+M
+E 22
+E 49
+E 2
+D
+D
+E 80
+E 27
+M
+M
+E 31
+E 99
+M
+E 56
+M
+M
+E 100
+M
+M
+E 17
+D
+D
+D
+M
+M
+D
+D
+E 30
+M
+M
+D
+E 40
+E 56
+D
+D
+D
+E 73
+D
+D
+E 66
+E 39
+D
+D
+E 24
+D
+D
+M
+E 52
+D
+M
+M
+E 53
+E 79
+D
+D
+E 91
+M
+E 29
+E 20
+D
+D
+E 48
+D
+E 67
+D
+E 79
+E 59
+D
+M
+D
+M
+M
+M
+D
+M
+M
+M
+D
+M
+M
+E 10
+D
+M
+M
+D
+E 51
+E 46
+M
+M
+E 0
+E 68
+D
+D
+E 56
+M
+D
+M
+M
+M
+D
+E 54
+M
+E 9
+M
+E 5
+E 55
+M
+M
+E 77
+E 90
+D
+E 62
+D
+E 43
+D
+M
+D
+D
+E 60
+D
+D
+M
+M
+D
+D
+E 99
+E 68
+E 31
+M
+M
+M
+E 96
+D
+M
+D
+D
+E 47
+D
+D
+M
+E 47
+D
+E 39
+E 76
+D
+E 72
+M
+D
+M
+E 47
+E 35
+D
+D
+D
+M
+E 29
+M
+E 81
+M
+M
+M
+M
+D
+D
+M
+M
+E 42
+M
+E 68
+E 31
+D
+M
+M
+D
+E 66
+E 5
+E 92
+D
+D
+M
+E 82
+M
+D
+D
+D
+M
+D
+M
+E 58
+E 94
+D
+E 65
+D
+M
+M
+E 15
+M
+E 100
+E 17
+E 14
+D
+E 65
+M
+M
+E 99
+E 1
+D
+E 98
+E 60
+E 61
+M
+E 14
+D
+D
+E 69
+E 92
+D
+E 2
+M
+M
+M
+M
+D
+M
+D
+E 74
+M
+M
+M
+E 26
+M
+E 74
+D
+D
+M
+E 87
+M
+M
+D
+E 89
+D
+D
+M
+E 14
+E 71
+E 44
+E 43
+M
+D
+D
+E 7
+E 83
+M
+M
+M
+D
+M
+E 79
+E 9
+D
+M
+M
+E 36
+D
+E 49
+D
+D
+D
+M
+E 80
+M
+M
+D
+D
+M
+M
+M
+D
+M
+D
+M
+D
+E 5
+E 8
+D
+M
+M
+E 59
+D
+D
+E 75
+E 21
+D
+E 36
+D
+D
+E 59
+D
+E 35
+D
+D
+D
+E 36
+D
+E 69
+M
+M
+E 25
+E 13
+E 12
+D
+D
+E 33
+D
+E 23
+M
+E 14
+M
+M
+E 64
+E 45
+M
+D
+D
+M
+M
+D
+M
+D
+E 98
+E 20
+D
+E 87
+M
+E 89
+M
+E 15
+D
+D
+E 83
+M
+D
+M
+E 14
+D
+D
+E 55
+D
+E 50
+D
+M
+D
+E 12
+E 73
+E 35
+M
+E 92
+D
+M
+D
+D
+M
+E 27
+M
+M
+M
+E 70
+D
+E 93
+D
+M
+D
+E 97
+D
+M
+M
+E 58
+M
+E 59
+M
+M
+E 57
+M
+D
+E 36
+M
+E 26
+M
+E 58
+E 46
+D
+E 34
+E 8
+M
+D
+D
+D
+E 64
+E 82
+D
+M
+D
+D
+D
+E 70
+M
+E 61
+D
+D
+M
+D
+M
+M
+E 16
+M
+D
+M
+E 44
+M
+M
+M
+E 96
+E 40
+D
+M
+D
+D
+E 37
+E 6
+M
+E 19
+E 22
+M
+M
+M
+M
+E 84
+E 76
+D
+M
+M
+D
+M
+M
+M
+E 2
+D
+E 50
+D
+M
+D
+M
+M
+D
+E 5
+M
+E 66
+M
+M
+D
+D
+D
+E 33
+E 24
+M
+M
+E 30
+M
+E 55
+M
+E 27
+M
+M
+M
+E 2
+E 25
+E 16
+M
+E 22
+M
+E 26
+D
+M
+E 90
+M
+E 54
+D
+M
+D
+M
+M
+E 67
+D
+M
+D
+D
+M
+D
+M
+D
+E 79
+D
+D
+E 42
+E 93
+E 6
+M
+D
+D
+M
+D
+E 8
+E 28
+M
+D
+M
+D
+D
+D
+E 6
+D
+D
+D
+E 17
+D
+D
+D
+D
+E 79
+E 71
+E 61
+M
+M
+D
+E 20
+M
+E 83
+M
+D
+M
+E 83
+M
+E 65
+E 4
+E 61
+M
+M
+M
+M
+D
+M
+D
+E 55
+D
+M
+E 85
+M
+D
+E 25
+M
+D
+M
+M
+E 51
+M
+E 27
+M
+D
+M
+M
+D
+E 11
+M
+E 11
+E 65
+M
+E 67
+E 69
+M
+M
+D
+E 51
+D
+M
+D
+D
+E 3
+E 56
+E 56
+E 71
+M
+E 83
+E 17
+D
+M
+D
+E 11
+D
+E 17
+M
+M
+M
+M
+D
+M
+E 67
+D
+M
+D
+M
+E 47
+E 88
+D
+E 100
+E 68
+E 93
+M
+M
+D
+M
+M
+D
+M
+D
+M
+E 85
+E 26
+M
+D
+D
+E 78
+E 68
+M
+E 11
+D
+M
+D
+D
+M
+E 4
+E 12
+D
+M
+E 94
+D
+E 84
+M
+D
+D
+E 51
+E 89
+M
+M
+E 59
+E 49
+D
+D
+E 85
+E 0
+D
+M
+E 65
+D
+E 43
+D
+D
+E 46
+M
+D
+E 33
+D
+E 4
+E 90
+D
+M
+E 85
+E 14
+M
+E 83
+D
+M
+D
+M
+D
+E 33
+M
+M
+M
+M
+E 33
+E 32
+M
+M
+E 50
+M
+D
+E 93
+M
+E 42
+D
+D
+D
+E 8
+M
+D
+D
+M
+D
+E 23
+M
+M
+E 87
+D
+D
+M
+M
+D
+M
+D
+E 0
+D
+D
+M
+M
+D
+D
+D
+D
+D
+E 42
+M
+E 8
+M
+D
+D
+E 97
+E 8
+D
+D
+D
+M
+D
+D
+E 5
+E 14
+E 54
+D
+D
+E 52
+M
+E 63
+M
+E 87
+E 39
+D
+E 87
+E 73
+D
+M
+D
+M
+M
+E 87
+M
+D
+E 79
+E 24
+D
+D
+E 98
+M
+D
+D
+M
+D
+M
+M
+D
+M
+D
+M
+D
+E 18
+M
+E 98
+M
+E 13
+M
+D
+M
+M
+D
+M
+D
+M
+E 72
+M
+M
+D
+D
+D
+E 21
+M
+D
+M
+D
+E 35
+E 73
+E 7
+E 23
+M
+M
+D
+E 80
+E 89
+E 21
+M
+M
+E 5
+E 48
+D
+M
+E 79
+E 98
+D
+D
+D
+D
+M
+D
+D
+M
+E 81
+E 22
+M
+M
+M
+D
+M
+D
+E 67
+E 34
+E 24
+E 33
+E 65
+M
+M
+D
+D
+D
+D
+D
+D
+M
+E 88
+E 45
+D
+E 43
+D
+M
+E 32
+D
+D
+E 6
+M
+D
+M
+M
+E 92
+M
+M
+M
+M
+D
+D
+E 6
+D
+E 89
+M
+M
+M
+M
+E 99
+D
+E 66
+M
+D
+E 36
+E 61
+M
+D
+E 69
+E 6
+M
+D
+D
+E 64
+E 51
+M
+D
+M
+E 16
+M
+D
+E 70
+E 33
+M
+D
+D
+M
+D
+M
+M
+M
+M
+M
+M
+M
+M
+E 63
+D
+E 16
+D
+D
+D
+M
+D
+D
+E 13
+D
+E 50
+E 57
+M
+D
+E 62
+D
+M
+M
+E 10
+M
+M
+M
+E 80
+D
+E 47
+D
+E 77
+M
+M
+D
+D
+E 30
+D
+D
+M
+E 83
+M
+E 9
+M
+D
+D
+D
+M
+D
+E 51
+D
+D
+D
+D
+D
+M
+D
+E 73
+E 14
+E 30
+D
+D
+D
+E 90
+D
+D
+M
+M
+M
+M
+E 51
+E 96
+D
+D
+E 39
+M
+M
+D
+M
+E 25
+D
+E 73
+D
+E 62
+E 21
+M
+E 36
+M
+M
+D
+M
+M
+E 84
+M
+D
+E 66
+M
+E 27
+E 64
+D
+E 64
+E 64
+E 27
+M
+M
+M
+M
+E 79
+M
+M
+D
+D
+D
+D
+E 3
+M
+E 29
+M
+D
+E 99
+M
+E 18
+M
+M
+D
+M
+D
+D
+M
+M
+E 9
+M
+D
+E 42
+M
+D
+D
+E 31
+M
+E 20
+M
+M
+D
+M
+D
+M
+M
+D
+M
+D
+M
+M
+E 17
+D
+M
+E 75
+M
+E 63
+M
+E 58
+D
+E 31
+M
+E 21
+E 11
+E 56
+D
+M
+M
+D
+E 79
+D
+M
+M
+D
+D
+E 95
+M
+M
+E 53
+M
+M
+M
+D
+D
+E 9
+E 22
+D
+D
+M
+M
+E 28
+M
+E 29
+E 92
+E 24
+E 27
+M
+D
+E 17
+M
+E 81
+D
+D
+M
+E 88
+E 86
+M
+E 86
+M
+E 43
+M
+D
+E 72
+M
+D
+M
+E 70
+D
+D
+D
+M
+M
+E 13
+D
+M
+E 36
+E 6
+D
+M
+D
+M
+E 13
+M
+E 80
+E 30
+E 69
+D
+E 39
+M
+M
+D
+M
+M
+M
+D
+D
+M
+D
+D
+D
+M
+D
+D
+M
+E 19
+D
+M
+M
+E 66
+D
+M
+D
+M
+E 33
+D
+M
+M
+E 16
+D
+E 42
+E 46
+D
+D
+M
+D
+M
+E 81
+M
+M
+D
+D
+M
+D
+M
+D
+D
+M
+E 11
+M
+M
+D
+D
+D
+D
+D
+E 26
+D
+M
+D
+M
+D
+D
+D
+E 73
+E 4
+E 57
+D
+E 39
+E 69
+D
+M
+D
+M
+E 23
+M
+M
+E 93
+E 93
+D
+M
+M
+E 81
+D
+D
+D
+E 2
+E 22
+E 42
+E 55
+E 48
+M
+M
+E 36
+M
+E 9
+E 69
+E 95
+D
+D
+M
+E 0
+M
+M
+M
+D
+D
+D
+D
+D
+E 7
+E 11
+E 44
+D
+D
+D
+E 98
+E 48
+D
+E 58
+E 50
+E 1
+E 19
+E 27
+D
+M
+E 55
+E 1
+M
+E 68
+M
+E 86
+D
+E 16
+D
+D
+E 12
+E 37
+M
+D
+E 10
+E 9
+D
+E 4
+D
+M
+E 56
+E 88
+D
+D
+E 3
+E 2
+E 82
+D
+D
+E 55
+D
+E 97
+M
+M
+M
+D
+E 6
+E 64
+D
+D
+E 57
+E 89
+M
+D
+M
+M
+E 72
+E 38
+D
+M
+E 5
+D
+E 5
+D
+M
+D
+M
+E 39
+M
+M
+M
+E 13
+D
+M
+D
+M
+M
+D
+D
+D
+D
+E 88
+D
+E 86
+M
+D
+D
+E 22
+D
+M
+D
+D
+D
+D
+M
+D
+M
+M
+E 87
+E 55
+M
+D
+D
+E 42
+M
+M
+M
+D
+D
+E 42
+D
+M
+E 55
+M
+D
+E 57
+D
+E 44
+M
+M
+E 92
+D
+E 58
+E 26
+E 3
+E 23
+M
+E 13
+E 85
+D
+E 28
+D
+D
+M
+M
+E 10
+M
+M
+M
+E 7
+M
+M
+M
+E 29
+M
+M
+E 36
+D
+E 48
+E 63
+E 17
+E 25
+D
+M
+M
+E 42
+E 84
+M
+E 69
+D
+E 51
+M
+D
+D
+E 7
+D
+E 71
+M
+M
+E 19
+D
+M
+E 78
+D
+M
+E 60
+M
+E 79
+E 13
+E 98
+E 38
+E 53
+M
+D
+D
+D
+M
+E 76
+D
+M
+M
+M
+D
+E 42
+M
+E 25
+M
+D
+E 62
+D
+E 30
+M
+D
+M
+D
+E 58
+M
+D
+E 50
+E 89
+E 52
+D
+M
+E 14
+E 58
+M
+E 21
+E 1
+D
+M
+E 42
+M
+D
+M
+M
+E 67
+E 33
+E 40
+D
+M
+E 50
+D
+E 14
+E 54
+E 18
+M
+D
+D
+D
+D
+E 80
+E 8
+M
+E 99
+E 35
+M
+D
+M
+E 51
+D
+M
+M
+E 68
+M
+D
+M
+D
+D
+M
+D
+D
+D
+D
+D
+D
+E 26
+D
+D
+D
+D
+M
+D
+E 6
+E 75
+E 73
+E 59
+D
+E 89
+E 92
+M
+M
+M
+E 41
+M
+M
+E 47
+D
+E 71
+D
+M
+D
+D
+D
+D
+E 52
+M
+M
+M
+D
+M
+D
+E 1
+D
+D
+D
+M
+M
+M
+D
+D
+M
+D
+E 1
+M
+D
+E 53
+E 21
+D
+M
+E 39
+M
+E 56
+M
+D
+D
+M
+E 69
+D
+E 12
+D
+D
+E 97
+M
+M
+D
+E 84
+D
+D
+M
+D
+E 73
+M
+M
+E 94
+D
+D
+M
+D
+E 66
+M
+D
+D
+E 78
+M
+E 54
+M
+D
+E 45
+M
+M
+D
+D
+E 81
+D
+M
+E 47
+E 54
+D
+M
+E 37
+E 95
+D
+M
+M
+E 29
+E 1
+D
+D
+D
+E 25
+D
+E 91
+M
+D
+M
+D
+M
+M
+M
+M
+M
+E 42
+D
+D
+D
+E 31
+M
+D
+D
+E 31
+M
+M
+E 100
+D
+D
+M
+E 83
+E 24
+D
+M
+E 18
+E 88
+E 15
+M
+D
+D
+E 4
+E 76
+D
+D
+D
+D
+E 68
+E 54
+D
+D
+M
+M
+M
+D
+E 52
+M
+M
+D
+E 7
+D
+M
+E 9
+M
+E 88
+D
+E 80
+M
+E 72
+D
+M
+D
+E 82
+M
+D
+E 70
+E 81
+D
+D
+M
+E 43
+D
+D
+M
+M
+E 98
+M
+E 15
+M
+M
+D
+E 8
+D
+D
+M
+M
+E 45
+E 69
+D
+M
+M
+E 36
+M
+M
+D
+E 67
+E 4
+M
+D
+E 61
+D
+E 40
+D
+M
+M
+E 63
+M
+M
+D
+E 82
+E 33
+M
+E 14
+E 71
+E 41
+D
+M
+D
+M
+M
+E 71
+E 69
+E 3
+M
+E 0
+E 24
+E 72
+M
+E 3
+D
+E 27
+E 8
+E 17
+D
+E 63
+M
+D
+D
+M
+D
+D
+E 71
+E 50
+M
+M
+D
+E 71
+D
+E 73
+D
+D
+M
+M
+D
+M
+E 86
+D
+D
+M
+D
+E 31
+M
+E 58
+E 96
+M
+M
+M
+M
+E 92
+E 57
+M
+D
+D
+M
+M
+D
+E 87
+D
+M
+D
+M
+M
+E 57
+M
+D
+E 23
+D
+M
+M
+E 45
+D
+D
+M
+M
+M
+E 79
+E 73
+D
+M
+E 96
+M
+E 9
+M
+M
+E 35
+E 93
+D
+M
+D
+M
+D
+E 53
+D
+D
+E 68
+D
+D
+D
+D
+M
+E 49
+E 77
+E 61
+D
+D
+D
+E 20
+E 8
+D
+E 28
+E 30
+E 97
+M
+E 54
+D
+E 87
+M
+D
+M
+M
+M
+E 91
+M
+M
+M
+M
+E 1
+E 43
+E 85
+M
+D
+M
+M
+M
+D
+M
+E 37
+M
+E 24
+M
+M
+M
+E 59
+M
+D
+E 95
+D
+D
+M
+M
+M
+D
+M
+M
+M
+M
+E 16
+M
+D
+M
+E 72
+E 9
+D
+M
+D
+D
+E 8
+M
+E 68
+D
+M
+M
+D
+D
+M
+E 32
+D
+E 25
+D
+D
+M
+M
+E 65
+M
+D
+E 9
+M
+D
+M
+D
+M
+M
+E 76
+E 10
+E 97
+M
+D
+M
+E 100
+M
+D
+D
+D
+D
+M
+E 21
+E 55
+E 70
+E 15
+D
+M
+M
+M
+E 12
+M
+E 97
+M
+M
+D
+E 98
+D
+E 86
+M
+E 28
+M
+D
+M
+M
+E 1
+D
+E 76
+E 2
+D
+E 72
+D
+E 41
+E 78
+M
+E 75
+E 33
+E 5
+E 48
+E 78
+E 59
+E 6
+D
+D
+D
+D
+E 81
+E 79
+D
+D
+D
+D
+E 67
+D
+D
+D
+M
+D
+M
+D
+E 6
+M
+E 72
+D
+E 26
+D
+E 23
+E 82
+M
+D
+E 8
+D
+E 25
+D
+M
+D
+E 74
+D
+D
+D
+E 4
+D
+E 37
+E 69
+E 45
+M
+E 95
+M
+E 80
+D
+M
+E 84
+D
+D
+D
+D
+M
+E 46
+D
+D
+M
+D
+D
+D
+D
+E 6
+D
+M
+M
+M
+E 11
+E 99
+M
+D
+D
+D
+M
+M
+D
+M
+D
+M
+M
+M
+M
+D
+D
+E 58
+D
+M
+M
+M
+D
+M
+D
+D
+D
+M
+D
+D
+E 62
+M
+M
+E 38
+D
+E 71
+D
+M
+D
+E 63
+D
+D
+M
+D
+D
+E 74
+E 93
+M
+D
+D
+D
+M
+M
+E 13
+D
+M
+M
+E 30
+M
+E 48
+D
+D
+E 81
+M
+D
+M
+E 81
+E 94
+M
+D
+D
+D
+D
+E 37
+D
+M
+D
+D
+M
+E 50
+E 50
+E 82
+E 86
+M
+E 84
+M
+D
+M
+M
+M
+M
+D
+D
+M
+E 55
+D
+M
+M
+D
+M
+E 1
+E 0
+M
+E 52
+M
+M
+D
+D
+E 91
+M
+E 2
+D
+M
+E 7
+M
+E 9
+D
+D
+M
+E 57
+D
+D
+M
+M
+E 67
+D
+E 80
+E 27
+M
+E 91
+E 12
+E 81
+M
+E 91
+D
+M
+E 59
+M
+D
+D
+E 4
+E 40
+D
+M
+D
+D
+M
+D
+M
+D
+M
+M
+E 74
+M
+D
+M
+M
+D
+D
+M
+D
+E 37
+M
+M
+E 35
+E 12
+E 85
+D
+E 95
+D
+M
+D
+D
+E 79
+D
+E 55
+M
+D
+E 23
+D
+M
+M
+E 90
+M
+D
+E 35
+M
+E 77
+M
+E 69
+E 79
+E 17
+D
+D
+M
+M
+D
+M
+D
+E 49
+M
+D
+M
+D
+D
+M
+D
+E 12
+E 74
+D
+E 62
+E 47
+E 54
+M
+M
+D
+E 45
+E 89
+M
+E 65
+E 53
+M
+E 76
+E 12
+D
+M
+D
+M
+D
+M
+M
+M
+E 39
+E 85
+M
+M
+E 79
+E 56
+M
+M
+E 83
+E 43
+M
+D
+M
+M
+M
+D
+D
+E 42
+D
+E 30
+E 43
+D
+M
+E 35
+M
+E 13
+D
+D
+D
+M
+M
+M
+M
+E 6
+M
+D
+M
+D
+E 83
+D
+M
+D
+D
+M
+D
+E 4
+D
+D
+M
+M
+M
+E 54
+D
+M
+M
+M
+D
+M
+D
+E 31
+M
+D
+D
+M
+D
+M
+E 65
+M
+M
+E 53
+E 88
+E 25
+M
+M
+E 36
+E 39
+M
+E 30
+D
+E 43
+M
+M
+E 84
+M
+M
+E 67
+D
+M
+D
+M
+D
+E 77
+M
+E 26
+E 74
+D
+E 46
+E 48
+E 28
+D
+D
+D
+E 48
+D
+M
+M
+E 2
+M
+D
+E 52
+M
+M
+E 9
+M
+M
+M
+E 86
+E 61
+M
+E 18
+E 34
+E 48
+D
+D
+M
+D
+E 32
+D
+D
+M
+M
+M
+E 4
+M
+M
+E 46
+M
+M
+D
+E 69
+E 28
+M
+D
+E 47
+E 70
+M
+M
+E 93
+M
+D
+M
+E 22
+D
+E 46
+D
+E 8
+D
+E 43
+E 25
+E 68
+M
+D
+M
+M
+M
+E 80
+D
+E 98
+E 53
+D
+E 16
+E 40
+M
+M
+E 20
+M
+M
+D
+M
+M
+D
+M
+M
+M
+E 72
+M
+D
+E 39
+E 28
+M
+M
+D
+M
+M
+E 71
+M
+D
+E 39
+M
+M
+M
+M
+M
+M
+M
+D
+D
+M
+D
+M
+E 58
+E 58
+E 81
+M
+D
+M
+M
+E 57
+M
+D
+D
+D
+E 13
+D
+E 82
+D
+E 30
+D
+D
+E 38
+M
+M
+E 86
+E 81
+E 63
+D
+E 84
+E 72
+D
+E 6
+E 19
+M
+E 26
+D
+D
+D
+M
+E 98
+M
+E 94
+E 13
+E 35
+E 37
+D
+E 49
+E 63
+E 18
+M
+E 77
+D
+M
+E 33
+E 24
+D
+D
+M
+D
+M
+E 83
+E 95
+D
+D
+E 21
+M
+E 12
+D
+E 76
+M
+M
+D
+E 10
+M
+D
+D
+M
+E 71
+D
+M
+E 92
+E 35
+M
+E 28
+E 57
+D
+D
+E 79
+D
+E 55
+E 31
+D
+E 94
+M
+M
+D
+M
+M
+E 88
+M
+M
+D
+M
+E 4
+M
+D
+E 35
+M
+D
+E 21
+M
+D
+D
+D
+E 66
+D
+D
+E 46
+M
+M
+E 64
+E 86
+D
+M
+D
+D
+M
+M
+D
+M
+M
+E 45
+D
+D
+D
+E 10
+E 48
+E 26
+D
+D
+D
+M
+M
+E 60
+D
+M
+E 60
+M
+D
+E 93
+D
+M
+D
+M
+E 27
+M
+D
+E 15
+M
+D
+E 67
+D
+E 26
+M
+D
+E 98
+M
+M
+M
+M
+E 96
+D
+D
+M
+M
+E 61
+M
+D
+M
+D
+D
+E 100
+D
+E 16
+E 4
+E 21
+E 17
+D
+M
+D
+E 74
+D
+E 70
+M
+M
+M
+M
+E 82
+E 27
+M
+D
+E 0
+D
+E 74
+E 48
+M
+E 43
+M
+D
+E 25
+E 71
+D
+E 4
+E 92
+D
+M
+D
+E 12
+D
+M
+M
+M
+E 80
+E 0
+E 75
+D
+M
+E 53
+M
+D
+M
+M
+M
+D
+M
+E 95
+E 3
+M
+D
+M
+D
+E 67
+D
+E 84
+D
+D
+D
+E 35
+M
+M
+E 58
+D
+E 95
+M
+E 62
+E 79
+M
+E 26
+E 25
+E 77
+E 74
+M
+D
+E 42
+D
+E 94
+M
+D
+E 62
+D
+D
+E 51
+D
+M
+E 84
+E 5
+E 84
+D
+D
+M
+D
+M
+E 5
+E 41
+M
+D
+M
+M
+E 1
+D
+E 53
+D
+D
+E 38
+E 75
+M
+E 36
+D
+M
+E 45
+E 77
+E 48
+M
+D
+D
+D
+M
+M
+D
+D
+M
+M
+M
+E 91
+E 41
+D
+E 96
+D
+E 2
+D
+M
+E 97
+D
+M
+E 73
+E 76
+D
+M
+E 23
+D
+D
+M
+E 64
+E 19
+D
+M
+D
+E 32
+E 42
+E 17
+D
+D
+E 30
+D
+D
+M
+D
+E 96
+E 17
+E 81
+D
+M
+E 5
+E 14
+D
+E 69
+M
+E 80
+M
+D
+M
+E 64
+E 70
+E 84
+D
+E 44
+M
+D
+M
+D
+D
+E 94
+M
+M
+D
+M
+M
+M
+D
+E 39
+M
+M
+M
+D
+M
+M
+M
+E 57
+D
+D
+D
+D
+D
+D
+E 75
+M
+E 32
+D
+E 29
+E 53
+D
+D
+D
+M
+M
+D
+E 30
+D
+M
+M
+E 42
+E 22
+M
+E 72
+D
+D
+E 33
+M
+E 65
+E 64
+D
+M
+D
+D
+E 15
+M
+M
+E 64
+D
+D
+M
+E 77
+E 3
+M
+M
+D
+M
+E 18
+E 64
+M
+D
+D
+E 79
+M
+D
+M
+D
+M
+E 59
+M
+E 24
+M
+D
+E 65
+M
+M
+M
+D
+D
+M
+D
+E 20
+M
+E 85
+D
+M
+M
+D
+M
+D
+E 18
+E 26
+D
+M
+E 66
+D
+E 27
+D
+M
+D
+E 21
+E 12
+D
+D
+E 4
+D
+D
+M
+M
+E 88
+M
+E 96
+E 40
+D
+E 23
+M
+M
+D
+E 72
+E 63
+E 33
+M
+E 21
+M
+D
+D
+D
+M
+D
+E 59
+D
+M
+E 43
+D
+M
+M
+M
+E 78
+M
+D
+E 97
+D
+E 78
+E 42
+D
+D
+D
+M
+E 80
+M
+D
+M
+D
+D
+M
+D
+M
+E 23
+M
+E 99
+E 24
+M
+D
+M
+M
+E 59
+E 18
+E 34
+E 26
+E 18
+M
+E 96
+D
+E 32
+M
+M
+D
+M
+D
+E 1
+M
+M
+E 93
+M
+M
+M
+E 17
+D
+D
+E 32
+D
+D
+E 25
+M
+E 96
+D
+E 68
+M
+D
+D
+M
+M
+E 73
+E 67
+M
+D
+M
+D
+D
+E 43
+E 78
+M
+M
+D
+D
+M
+E 43
+E 84
+M
+M
+M
+E 94
+M
+E 55
+M
+E 23
+E 30
+M
+D
+D
+E 38
+M
+D
+D
+D
+D
+D
+E 28
+E 3
+E 11
+E 59
+E 85
+E 57
+M
+M
+M
+D
+D
+D
+D
+D
+E 5
+E 76
+D
+M
+M
+E 59
+E 41
+D
+D
+M
+E 43
+M
+M
+M
+D
+M
+E 37
+M
+M
+E 68
+E 48
+M
+M
+E 21
+E 28
+D
+D
+M
+M
+D
+D
+E 18
+E 54
+M
+E 65
+M
+M
+D
+D
+E 45
+D
+M
+E 78
+E 34
+D
+M
+M
+M
+E 24
+D
+M
+D
+D
+D
+E 26
+M
+D
+M
+M
+M
+D
+D
+M
+M
+E 91
+D
+D
+M
+M
+M
+M
+D
+D
+D
+M
+M
+D
+D
+M
+E 98
+M
+E 62
+E 5
+E 69
+D
+M
+M
+E 11
+E 92
+D
+E 10
+D
+E 55
+D
+M
+D
+E 86
+D
+D
+D
+D
+E 14
+M
+D
+M
+E 41
+E 86
+D
+M
+D
+M
+E 12
+M
+M
+M
+D
+D
+D
+M
+E 54
+M
+M
+D
+M
+E 100
+E 30
+M
+E 44
+E 90
+E 59
+E 11
+M
+D
+E 35
+M
+E 52
+E 56
+E 24
+M
+E 7
+D
+D
+D
+E 53
+D
+M
+M
+E 58
+D
+E 56
+M
+M
+M
+E 57
+D
+M
+D
+M
+M
+M
+M
+M
+M
+M
+D
+D
+M
+D
+M
+E 47
+D
+E 8
+E 54
+M
+M
+E 10
+E 98
+D
+D
+D
+D
+D
+M
+E 48
+M
+E 58
+M
+D
+D
+E 93
+M
+E 50
+D
+M
+M
+M
+D
+M
+M
+M
+D
+D
+D
+D
+E 48
+M
+E 30
+M
+E 43
+E 32
+M
+D
+D
+E 54
+M
+E 100
+D
+E 48
+M
+E 10
+D
+M
+E 31
+M
+M
+M
+E 58
+D
+D
+M
+E 94
+D
+E 0
+D
+E 83
+M
+E 5
+D
+D
+D
+E 48
+E 17
+D
+D
+M
+E 40
+M
+M
+E 79
+D
+D
+D
+E 7
+E 86
+M
+E 73
+E 43
+E 59
+D
+E 51
+E 3
+M
+D
+D
+M
+E 73
+M
+D
+E 64
+M
+E 17
+M
+D
+M
+E 46
+D
+D
+E 83
+D
+E 27
+D
+E 11
+E 47
+M
+M
+M
+E 90
+D
+D
+M
+E 14
+E 85
+M
+E 38
+E 40
+M
+E 82
+M
+M
+M
+E 31
+M
+E 81
+D
+M
+D
+D
+M
+D
+D
+D
+M
+M
+D
+D
+E 22
+D
+E 55
+M
+D
+D
+D
+D
+D
+E 48
+E 89
+D
+M
+D
+M
+D
+M
+M
+M
+D
+E 65
+M
+M
+M
+D
+M
+M
+E 79
+M
+E 88
+M
+D
+M
+M
+D
+M
+M
+E 95
+D
+D
+D
+D
+D
+E 80
+M
+M
+E 71
+M
+D
+M
+M
+D
+E 45
+E 14
+M
+D
+D
+E 75
+M
+E 63
+M
+D
+D
+D
+E 80
+M
+D
+D
+E 26
+D
+M
+M
+E 80
+D
+D
+D
+D
+M
+D
+E 59
+E 40
+E 67
+M
+E 18
+M
+D
+E 72
+M
+E 90
+D
+D
+D
+M
+D
+D
+E 89
+D
+D
+M
+M
+D
+M
+M
+D
+M
+M
+M
+M
+E 91
+M
+M
+M
+E 75
+D
+D
+E 15
+E 91
+M
+E 77
+D
+E 50
+M
+M
+M
+E 9
+D
+E 1
+M
+E 41
+M
+E 77
+D
+E 18
+E 19
+E 61
+M
+E 94
+E 65
+E 69
+E 49
+E 10
+D
+D
+D
+D
+D
+E 19
+E 54
+D
+E 20
+M
+D
+D
+E 70
+M
+D
+D
+D
+D
+E 34
+D
+M
+E 55
+D
+E 81
+D
+M
+D
+D
+E 20
+M
+E 22
+E 88
+D
+M
+E 90
+E 60
+D
+E 3
+D
+E 63
+E 83
+E 58
+E 17
+E 95
+M
+D
+E 59
+E 79
+E 35
+M
+D
+E 83
+E 6
+M
+M
+E 4
+D
+M
+D
+M
+E 45
+M
+M
+E 67
+D
+E 11
+E 56
+D
+M
+E 24
+M
+D
+D
+D
+D
+D
+M
+E 50
+E 70
+M
+E 91
+M
+D
+M
+E 62
+M
+D
+E 47
+M
+D
+D
+E 36
+E 25
+D
+D
+E 38
+D
+E 64
+E 85
+E 15
+M
+M
+D
+D
+D
+E 6
+D
+E 65
+E 83
+M
+D
+M
+D
+M
+M
+D
+D
+D
+M
+M
+E 21
+E 78
+E 26
+E 25
+D
+E 3
+M
+M
+M
+M
+E 45
+E 85
+M
+D
+M
+M
+E 8
+D
+E 73
+E 67
+E 9
+D
+E 59
+D
+D
+M
+D
+M
+E 88
+E 24
+M
+M
+M
+D
+D
+M
+E 42
+D
+D
+E 40
+M
+M
+M
+E 49
+M
+D
+M
+M
+D
+E 72
+E 23
+D
+E 20
+E 63
+D
+M
+M
+M
+E 70
+E 35
+E 75
+D
+D
+D
+M
+E 14
+D
+E 66
+E 65
+M
+E 14
+E 79
+E 35
+M
+M
+E 76
+D
+M
+D
+E 67
+E 52
+D
+E 22
+E 40
+E 40
+E 2
+E 35
+M
+D
+M
+E 94
+M
+D
+E 47
+D
+D
+D
+D
+M
+M
+D
+M
+E 88
+E 61
+D
+E 71
+M
+E 87
+D
+M
+D
+D
+E 95
+D
+M
+E 4
+E 3
+M
+M
+D
+M
+E 71
+M
+E 17
+E 36
+E 30
+D
+E 0
+E 54
+D
+E 35
+E 74
+D
+D
+E 52
+M
+D
+E 61
+M
+E 51
+E 29
+D
+E 5
+M
+E 3
+E 27
+M
+E 7
+D
+M
+M
+E 70
+E 92
+M
+D
+E 55
+M
+M
+M
+D
+E 96
+E 90
+D
+E 2
+M
+D
+M
+D
+M
+E 84
+D
+E 57
+E 6
+M
+M
+M
+E 98
+E 74
+D
+D
+E 70
+D
+E 61
+E 15
+M
+E 79
+E 61
+E 16
+M
+E 78
+E 95
+D
+E 70
+E 25
+D
+M
+D
+D
+D
+E 71
+E 26
+E 28
+D
+D
+M
+E 42
+M
+D
+D
+E 15
+M
+D
+E 97
+E 59
+E 93
+M
+E 8
+D
+E 87
+M
+M
+E 79
+M
+M
+M
+E 34
+E 76
+M
+M
+D
+D
+E 10
+D
+E 22
+D
+M
+M
+D
+M
+E 71
+D
+E 32
+E 22
+D
+E 0
+D
+E 73
+D
+M
+M
+D
+M
+M
+M
+E 69
+D
+M
+E 18
+E 18
+M
+M
+M
+D
+E 84
+D
+E 75
+E 92
+E 1
+E 71
+E 68
+M
+E 54
+D
+M
+M
+D
+E 43
+D
+D
+E 56
+M
+M
+E 68
+E 54
+D
+E 4
+D
+D
+M
+M
+E 29
+E 19
+E 7
+M
+M
+D
+D
+E 80
+E 62
+M
+M
+E 62
+E 72
+M
+D
+E 37
+D
+M
+M
+D
+M
+D
+D
+D
+E 52
+M
+E 46
+D
+D
+M
+D
+M
+M
+M
+M
+M
+D
+D
+E 12
+M
+D
+D
+M
+M
+D
+M
+E 63
+E 49
+M
+D
+E 59
+M
+E 73
+M
+E 65
+M
+D
+E 11
+D
+D
+M
+E 85
+D
+E 33
+D
+D
+D
+E 51
+D
+M
+D
+M
+D
+E 37
+M
+E 37
+D
+M
+M
+M
+E 93
+D
+M
+D
+M
+E 85
+D
+E 56
+E 75
+M
+E 23
+M
+M
+M
+D
+M
+M
+E 100
+E 58
+E 35
+E 72
+E 32
+E 87
+E 82
+E 36
+E 64
+D
+E 69
+M
+M
+E 58
+D
+M
+E 96
+D
+M
+M
+M
+D
+D
+M
+D
+E 74
+E 80
+M
+M
+D
+M
+D
+M
+E 41
+M
+E 51
+D
+M
+D
+M
+M
+D
+E 46
+M
+E 57
+D
+D
+D
+D
+E 16
+M
+M
+D
+E 39
+D
+D
+M
+D
+E 97
+M
+M
+M
+M
+E 60
+E 27
+M
+M
+M
+E 47
+E 31
+E 83
+D
+E 2
+M
+E 27
+E 31
+E 86
+M
+D
+D
+D
+M
+M
+D
+D
+E 44
+M
+M
+D
+D
+D
+D
+M
+E 26
+D
+M
+D
+M
+M
+D
+E 19
+M
+D
+M
+E 69
+M
+M
+E 54
+M
+E 40
+D
+M
+D
+E 43
+E 57
+M
+M
+D
+D
+M
+D
+E 44
+E 83
+M
+E 14
+E 15
+E 27
+E 3
+E 56
+E 69
+E 59
+D
+M
+D
+D
+D
+E 78
+M
+M
+E 26
+E 42
+M
+D
+M
+D
+E 97
+M
+M
+D
+E 54
+E 50
+D
+D
+M
+M
+E 4
+M
+D
+E 46
+M
+E 10
+M
+D
+E 64
+E 11
+E 54
+D
+M
+M
+E 8
+D
+D
+D
+D
+E 71
+E 28
+M
+M
+M
+M
+M
+M
+D
+E 39
+E 75
+D
+D
+E 97
+M
+D
+D
+M
+D
+M
+E 43
+E 84
+M
+E 20
+E 88
+M
+E 69
+D
+E 13
+D
+M
+D
+D
+E 79
+D
+D
+D
+E 31
+D
+M
+D
+D
+E 24
+E 33
+D
+E 81
+M
+E 13
+E 90
+M
+M
+D
+M
+D
+D
+M
+E 22
+D
+D
+D
+E 27
+M
+D
+M
+E 91
+M
+M
+D
+D
+M
+M
+D
+E 18
+D
+E 53
+E 7
+E 51
+E 87
+E 50
+M
+M
+E 92
+D
+M
+D
+M
+D
+D
+E 23
+D
+D
+M
+M
+D
+D
+E 90
+E 0
+E 34
+D
+E 34
+D
+M
+E 96
+D
+D
+D
+D
+E 90
+D
+M
+D
+D
+E 57
+E 84
+E 64
+E 21
+M
+M
+E 31
+M
+M
+M
+D
+E 12
+D
+M
+E 57
+D
+M
+M
+M
+E 92
+D
+E 40
+D
+E 61
+M
+M
+E 52
+M
+D
+M
+D
+E 42
+D
+E 87
+E 49
+E 79
+D
+M
+M
+E 67
+M
+M
+D
+D
+M
+E 31
+E 59
+M
+E 0
+E 8
+D
+M
+D
+E 84
+E 39
+E 10
+D
+M
+E 19
+E 35
+M
+M
+D
+M
+M
+D
+M
+D
+D
+E 3
+M
+M
+D
+E 0
+D
+M
+M
+E 52
+E 68
+E 10
+M
+M
+E 74
+D
+D
+M
+E 21
+E 56
+E 74
+D
+D
+M
+M
+M
+E 12
+M
+M
+M
+E 19
+D
+D
+E 89
+D
+M
+D
+M
+E 49
+E 69
+E 4
+M
+M
+D
+M
+E 45
+M
+D
+M
+E 82
+M
+D
+E 91
+D
+E 87
+D
+M
+M
+E 91
+M
+D
+E 44
+E 65
+E 97
+D
+E 1
+D
+E 34
+D
+D
+M
+D
+E 29
+M
+M
+D
+D
+D
+E 6
+E 73
+M
+E 94
+D
+M
+D
+M
+M
+E 61
+D
+M
+M
+D
+M
+E 93
+E 70
+D
+M
+D
+M
+E 13
+M
+D
+E 36
+E 22
+D
+E 10
+E 23
+D
+E 11
+E 94
+E 14
+M
+E 47
+D
+D
+D
+M
+D
+M
+E 29
+D
+M
+M
+M
+E 28
+M
+M
+M
+E 17
+M
+M
+E 88
+D
+D
+M
+E 9
+E 15
+D
+E 86
+D
+M
+D
+M
+E 87
+E 20
+D
+M
+M
+D
+E 55
+E 52
+D
+E 60
+M
+D
+D
+D
+E 37
+M
+M
+E 79
+M
+D
+M
+M
+M
+E 42
+D
+E 34
+D
+M
+M
+E 91
+E 52
+D
+E 29
+E 60
+M
+D
+D
+D
+E 29
+M
+E 57
+M
+E 12
+D
+M
+M
+D
+M
+M
+D
+M
+E 44
+M
+E 10
+M
+M
+M
+D
+E 48
+M
+E 43
+D
+M
+M
+D
+D
+D
+E 31
+E 82
+D
+E 86
+M
+D
+D
+D
+E 26
+M
+E 46
+M
+M
+E 30
+E 44
+M
+M
+D
+M
+D
+D
+D
+M
+D
+D
+M
+D
+M
+M
+M
+M
+D
+E 84
+D
+M
+E 90
+E 79
+E 74
+D
+M
+M
+E 52
+M
+D
+M
+E 54
+M
+M
+M
+D
+D
+D
+E 19
+E 82
+E 90
+M
+M
+D
+D
+M
+D
+E 73
+E 31
+D
+E 84
+E 73
+D
+D
+E 98
+M
+M
+E 95
+E 12
+M
+E 45
+D
+D
+E 18
+M
+M
+E 73
+E 43
+D
+M
+E 76
+D
+M
+D
+E 29
+E 87
+M
+D
+E 92
+E 5
+D
+M
+M
+D
+E 18
+D
+D
+M
+M
+M
+D
+D
+M
+M
+E 44
+D
+D
+D
+D
+E 98
+D
+E 36
+D
+E 70
+M
+D
+M
+E 81
+M
+E 20
+M
+D
+D
+M
+E 64
+E 85
+D
+E 75
+D
+M
+D
+D
+M
+E 81
+E 7
+E 86
+D
+E 57
+M
+E 89
+D
+D
+D
+M
+M
+E 92
+M
+E 37
+E 6
+E 66
+D
+E 71
+M
+D
+D
+E 93
+E 15
+D
+E 9
+E 92
+D
+M
+E 56
+M
+E 45
+D
+E 7
+M
+D
+D
+D
+M
+D
+E 42
+M
+D
+D
+D
+M
+E 26
+D
+E 0
+D
+M
+M
+D
+D
+E 74
+E 38
+D
+E 76
+E 35
+M
+D
+M
+M
+M
+E 79
+E 42
+E 56
+E 94
+E 33
+D
+D
+M
+E 1
+D
+M
+M
+D
+M
+M
+M
+E 21
+D
+M
+M
+D
+D
+E 55
+E 69
+M
+E 85
+M
+M
+D
+D
+E 72
+M
+M
+E 67
+M
+D
+E 42
+M
+M
+M
+M
+E 8
+E 25
+D
+M
+M
+M
+M
+D
+M
+M
+D
+E 39
+D
+D
+E 67
+D
+E 90
+M
+E 41
+M
+E 96
+E 48
+E 20
+E 16
+E 47
+E 23
+D
+M
+E 6
+E 43
+D
+M
+M
+D
+M
+E 32
+D
+E 89
+M
+D
+M
+M
+M
+E 79
+M
+D
+M
+M
+E 76
+M
+M
+E 4
+E 93
+D
+D
+E 21
+E 10
+D
+M
+D
+M
+M
+M
+D
+E 6
+M
+E 57
+D
+D
+E 77
+E 59
+D
+D
+E 41
+M
+M
+D
+M
+E 76
+D
+E 14
+D
+D
+E 55
+M
+D
+E 18
+D
+E 32
+E 0
+M
+D
+E 95
+D
+E 51
+M
+M
+E 46
+M
+M
+D
+D
+D
+E 67
+M
+M
+M
+M
+D
+M
+E 58
+M
+M
+E 75
+E 19
+E 66
+M
+M
+M
+D
+E 88
+E 46
+E 42
+M
+D
+M
+D
+E 44
+E 39
+E 73
+M
+M
+D
+E 49
+M
+M
+M
+E 75
+M
+M
+M
+D
+M
+M
+M
+M
+D
+E 5
+E 77
+E 14
+D
+E 51
+E 92
+M
+D
+M
+M
+E 4
+M
+E 46
+D
+D
+E 84
+D
+M
+M
+M
+M
+D
+E 18
+D
+E 61
+E 52
+D
+E 21
+M
+D
+D
+D
+M
+D
+M
+M
+D
+E 58
+M
+M
+D
+D
+M
+M
+D
+D
+D
+E 42
+M
+E 33
+M
+E 18
+D
+M
+E 6
+D
+E 68
+E 69
+D
+M
+E 85
+D
+M
+D
+D
+E 30
+M
+D
+D
+M
+D
+M
+M
+E 45
+D
+E 39
+D
+M
+D
+E 88
+D
+D
+M
+E 51
+M
+D
+E 31
+E 9
+E 89
+D
+D
+D
+D
+D
+E 46
+D
+D
+M
+D
+M
+E 37
+M
+D
+D
+E 26
+M
+D
+M
+D
+E 25
+D
+M
+M
+E 36
+D
+D
+M
+E 13
+M
+M
+D
+M
+M
+M
+E 63
+E 6
+D
+E 53
+D
+D
+D
+E 50
+M
+M
+D
+M
+E 50
+M
+D
+M
+M
+E 55
+M
+D
+E 15
+M
+E 34
+D
+D
+M
+D
+M
+E 70
+D
+E 18
+D
+M
+D
+E 99
+M
+E 72
+M
+M
+M
+D
+D
+D
+E 88
+E 41
+D
+E 54
+E 23
+E 93
+D
+M
+M
+M
+D
+M
+D
+E 66
+M
+M
+E 76
+E 90
+M
+D
+E 26
+E 31
+D
+E 20
+D
+D
+M
+E 78
+E 83
+E 32
+E 14
+M
+M
+D
+D
+M
+E 20
+D
+M
+M
+E 13
+M
+E 22
+E 97
+D
+E 10
+D
+D
+E 54
+E 97
+D
+E 14
+E 20
+M
+E 4
+E 51
+M
+D
+D
+E 59
+E 59
+M
+D
+D
+D
+M
+D
+E 15
+D
+M
+M
+E 87
+E 38
+M
+E 34
+D
+M
+E 76
+E 38
+M
+M
+D
+M
+M
+D
+E 59
+M
+M
+D
+E 26
+E 94
+M
+E 84
+D
+D
+M
+M
+E 45
+M
+E 39
+M
+D
+D
+D
+D
+E 57
+M
+M
+M
+M
+E 25
+E 67
+E 49
+E 46
+M
+D
+M
+D
+D
+D
+E 83
+D
+D
+E 65
+E 13
+M
+E 57
+M
+E 57
+D
+D
+M
+E 54
+M
+D
+D
+M
+M
+M
+E 8
+D
+D
+D
+D
+E 36
+E 30
+M
+D
+D
+D
+E 32
+D
+M
+D
+E 39
+M
+M
+M
+D
+M
+M
+M
+D
+E 61
+M
+D
+M
+D
+D
+D
+E 37
+E 6
+E 42
+E 42
+M
+D
+E 14
+M
+E 96
+E 27
+M
+E 15
+M
+E 26
+E 18
+D
+D
+E 16
+M
+E 18
+M
+M
+E 2
+E 39
+E 96
+M
+M
+M
+E 61
+D
+M
+M
+E 3
+M
+D
+E 80
+D
+M
+M
+M
+E 6
+D
+D
+E 4
+D
+E 17
+M
+M
+E 82
+E 2
+M
+M
+E 18
+D
+E 50
+D
+D
+D
+D
+D
+M
+M
+D
+M
+E 86
+E 89
+M
+E 33
+M
+M
+M
+D
+E 65
+M
+M
+D
+D
+E 84
+M
+E 45
+D
+D
+D
+M
+E 81
+D
+M
+E 52
+E 53
+M
+M
+M
+D
+M
+E 18
+M
+E 72
+E 91
+E 32
+D
+E 78
+D
+D
+D
+M
+M
+D
+E 1
+E 50
+E 95
+E 11
+D
+D
+E 54
+D
+E 11
+M
+E 19
+M
+D
+E 99
+D
+M
+M
+E 94
+D
+D
+E 67
+M
+M
+M
+D
+E 38
+M
+M
+E 64
+D
+M
+E 81
+D
+M
+E 69
+E 55
+D
+D
+M
+E 32
+E 69
+M
+D
+D
+D
+D
+D
+D
+D
+E 57
+E 72
+E 1
+E 50
+D
+M
+E 35
+D
+D
+M
+M
+M
+D
+M
+D
+M
+E 76
+M
+D
+M
+M
+D
+M
+D
+D
+M
+D
+M
+E 7
+D
+E 95
+M
+E 62
+E 13
+M
+D
+M
+M
+E 8
+E 57
+E 16
+E 51
+D
+E 92
+E 61
+D
+E 32
+M
+E 70
+D
+D
+D
+M
+E 93
+M
+E 24
+D
+M
+E 33
+D
+E 63
+M
+D
+M
+M
+M
+E 93
+E 54
+M
+M
+E 73
+D
+D
+D
+M
+E 81
+D
+E 37
+E 33
+D
+M
+E 28
+M
+M
+E 60
+M
+M
+E 23
+D
+E 81
+D
+M
+E 93
+D
+D
+E 97
+D
+M
+E 29
+D
+M
+M
+D
+M
+D
+M
+E 74
+D
+M
+M
+M
+M
+M
+E 56
+D
+M
+D
+D
+D
+D
+E 40
+M
+M
+D
+D
+D
+M
+M
+E 25
+E 25
+E 90
+E 20
+E 64
+M
+D
+M
+M
+E 71
+E 60
+E 52
+D
+D
+M
+M
+M
+D
+E 12
+D
+D
+E 16
+M
+E 95
+E 32
+M
+M
+M
+D
+E 74
+E 37
+D
+D
+E 14
+E 84
+M
+M
+M
+M
+M
+E 22
+E 56
+M
+D
+D
+E 57
+D
+E 80
+D
+E 12
+D
+M
+M
+D
+M
+D
+D
+M
+D
+D
+E 44
+M
+E 84
+E 80
+D
+E 15
+D
+D
+D
+D
+M
+D
+E 19
+D
+M
+M
+E 6
+D
+M
+E 98
+D
+D
+M
+E 45
+D
+M
+E 96
+M
+M
+M
+E 83
+D
+M
+E 63
+M
+E 65
+D
+D
+E 56
+D
+D
+D
+E 9
+D
+D
+D
+M
+D
+E 51
+M
+E 62
+D
+E 12
+D
+D
+D
+E 66
+M
+D
+D
+M
+D
+D
+M
+E 58
+D
+E 88
+M
+D
+E 81
+M
+M
+D
+D
+D
+M
+D
+D
+E 98
+M
+D
+M
+E 22
+M
+M
+E 1
+M
+M
+D
+E 73
+M
+E 0
+M
+M
+M
+M
+D
+E 19
+E 66
+E 80
+E 74
+M
+M
+M
+E 23
+M
+D
+D
+D
+M
+E 26
+M
+D
+E 42
+E 3
+M
+M
+D
+M
+D
+E 38
+D
+E 69
+M
+M
+M
+M
+M
+D
+D
+E 30
+E 66
+E 9
+E 93
+D
+M
+M
+E 61
+D
+M
+M
+D
+M
+M
+D
+M
+M
+E 50
+E 83
+D
+M
+E 93
+D
+E 37
+D
+M
+D
+E 1
+M
+D
+M
+M
+D
+M
+E 66
+D
+M
+E 20
+D
+E 2
+E 75
+E 43
+D
+M
+D
+D
+D
+E 12
+D
+M
+M
+D
+E 47
+E 41
+D
+M
+E 83
+E 37
+E 93
+E 16
+M
+E 76
+D
+M
+E 12
+E 66
+M
+M
+D
+E 94
+E 58
+E 84
+M
+D
+E 86
+E 94
+E 96
+E 98
+M
+E 15
+M
+D
+E 65
+M
+D
+M
+M
+M
+E 21
+D
+D
+E 2
+D
+E 22
+M
+D
+M
+E 45
+M
+D
+D
+M
+D
+E 78
+M
+D
+M
+E 26
+D
+D
+M
+D
+E 10
+D
+D
+M
+D
+M
+E 52
+D
+M
+D
+M
+M
+M
+E 53
+E 30
+M
+M
+E 90
+M
+E 20
+D
+M
+E 25
+D
+D
+M
+D
+E 63
+D
+E 33
+D
+E 64
+M
+D
+D
+M
+E 21
+M
+E 46
+D
+M
+M
+E 26
+D
+M
+M
+D
+M
+E 50
+D
+M
+E 78
+M
+D
+M
+D
+E 89
+D
+E 86
+E 66
+D
+D
+D
+M
+M
+M
+D
+M
+M
+M
+E 3
+E 16
+D
+D
+M
+M
+D
+E 67
+E 69
+E 0
+M
+E 94
+M
+D
+D
+D
+D
+D
+E 83
+D
+E 50
+D
+E 7
+E 80
+D
+M
+D
+D
+E 23
+E 95
+E 60
+E 86
+D
+D
+D
+M
+M
+D
+D
+M
+M
+E 53
+D
+M
+D
+E 80
+D
+D
+D
+D
+E 5
+D
+D
+M
+M
+E 43
+M
+M
+D
+M
+M
+D
+M
+E 29
+E 85
+E 1
+E 50
+E 87
+M
+D
+E 59
+D
+M
+M
+M
+E 79
+M
+M
+M
+E 98
+D
+M
+E 30
+D
+E 22
+M
+D
+E 41
+E 91
+M
+E 96
+E 4
+M
+D
+E 0
+E 98
+D
+D
+E 54
+M
+D
+D
+M
+D
+E 42
+D
+E 31
+M
+E 2
+M
+E 41
+D
+M
+M
+D
+D
+M
+D
+D
+M
+D
+D
+D
+M
+D
+D
+M
+D
+M
+E 42
+M
+D
+D
+E 16
+D
+D
+E 26
+D
+M
+E 68
+D
+D
+M
+E 24
+M
+E 48
+M
+D
+E 63
+M
+M
+M
+D
+D
+E 8
+E 45
+M
+D
+D
+M
+M
+D
+E 2
+D
+M
+M
+D
+M
+M
+D
+E 44
+E 29
+D
+M
+D
+E 37
+D
+E 67
+M
+E 7
+D
+M
+D
+M
+M
+M
+M
+E 80
+D
+D
+D
+M
+D
+D
+D
+E 34
+M
+E 10
+M
+E 20
+M
+E 23
+M
+D
+M
+M
+E 36
+D
+E 7
+D
+D
+D
+D
+E 92
+E 84
+E 43
+E 14
+M
+D
+M
+E 81
+E 66
+M
+M
+E 9
+E 67
+E 30
+E 36
+E 52
+E 63
+E 63
+D
+M
+E 40
+D
+D
+M
+D
+M
+E 61
+D
+D
+E 23
+M
+E 88
+M
+M
+D
+M
+D
+M
+M
+M
+M
+E 78
+M
+E 63
+D
+D
+E 66
+M
+M
+E 31
+E 89
+M
+D
+E 59
+M
+M
+E 21
+D
+D
+E 10
+D
+M
+M
+E 16
+M
+E 69
+D
+M
+D
+D
+D
+D
+M
+E 7
+E 42
+D
+E 26
+D
+E 84
+D
+M
+D
+D
+D
+E 2
+D
+E 41
+E 33
+E 4
+M
+D
+D
+E 82
+E 92
+E 63
+M
+M
+M
+D
+E 45
+D
+D
+M
+M
+E 66
+D
+M
+M
+E 85
+M
+D
+M
+E 40
+M
+E 86
+E 6
+M
+E 31
+M
+E 19
+D
+D
+M
+D
+E 2
+M
+M
+E 50
+E 57
+D
+M
+M
+M
+D
+M
+E 14
+E 77
+M
+D
+E 2
+E 57
+D
+E 11
+E 99
+E 71
+M
+E 7
+D
+M
+M
+M
+M
+M
+E 68
+E 81
+E 51
+D
+D
+M
+M
+M
+E 23
+M
+D
+D
+E 92
+D
+E 24
+E 53
+D
+E 96
+E 92
+D
+E 70
+E 47
+E 37
+E 47
+D
+D
+M
+D
+D
+E 76
+D
+D
+D
+D
+M
+M
+D
+E 48
+D
+E 88
+M
+E 59
+D
+D
+E 25
+D
+D
+D
+M
+E 16
+E 32
+E 58
+M
+M
+M
+D
+E 46
+D
+E 79
+E 49
+E 30
+E 97
+E 90
+E 94
+M
+D
+E 2
+M
+D
+M
+D
+E 87
+E 15
+M
+D
+M
+E 26
+E 40
+E 87
+E 30
+D
+D
+E 36
+E 29
+E 3
+E 43
+M
+D
+M
+M
+M
+M
+E 26
+M
+M
+M
+M
+E 26
+M
+D
+D
+D
+D
+D
+D
+M
+E 83
+M
+E 29
+E 72
+M
+E 45
+M
+M
+D
+M
+D
+E 9
+M
+E 88
+D
+D
+E 59
+D
+E 5
+M
+M
+D
+M
+E 34
+D
+E 49
+M
+M
+E 34
+M
+M
+E 53
+M
+D
+E 66
+D
+E 89
+E 72
+D
+E 64
+E 65
+D
+E 53
+M
+E 77
+D
+E 95
+D
+E 97
+M
+D
+D
+M
+M
+M
+E 52
+M
+M
+E 64
+D
+D
+E 83
+E 62
+E 81
+E 45
+E 81
+M
+D
+E 75
+M
+M
+M
+E 27
+M
+D
+M
+M
+E 73
+D
+E 76
+D
+E 19
+D
+E 96
+E 78
+D
+M
+D
+E 88
+D
+M
+E 18
+E 27
+D
+D
+M
+M
+D
+M
+E 92
+D
+D
+M
+E 76
+D
+D
+M
+D
+E 61
+D
+M
+D
+D
+M
+M
+D
+D
+D
+D
+D
+D
+E 22
+M
+D
+D
+M
+E 1
+E 20
+E 96
+D
+D
+E 79
+D
+E 64
+M
+M
+M
+D
+D
+E 20
+M
+M
+E 69
+E 88
+D
+D
+M
+M
+D
+E 15
+D
+M
+M
+D
+M
+M
+D
+D
+M
+M
+D
+E 25
+M
+M
+D
+E 45
+D
+E 90
+D
+M
+D
+M
+E 48
+M
+D
+E 13
+M
+M
+M
+D
+E 83
+E 89
+E 34
+M
+E 11
+D
+D
+E 5
+M
+M
+E 68
+D
+D
+D
+E 81
+D
+D
+E 90
+M
+M
+D
+D
+M
+E 37
+D
+D
+E 54
+D
+M
+E 56
+D
+M
+D
+E 61
+E 67
+E 94
+M
+M
+E 61
+E 45
+D
+M
+M
+E 40
+E 19
+M
+D
+D
+D
+M
+E 93
+D
+D
+E 46
+D
+D
+M
+E 49
+D
+M
+E 54
+M
+M
+D
+E 24
+D
+D
+E 34
+D
+M
+E 23
+M
+D
+M
+E 66
+M
+M
+M
+M
+E 59
+M
+M
+E 45
+D
+E 0
+D
+M
+M
+D
+M
+E 25
+E 17
+D
+E 58
+E 98
+M
+M
+M
+E 37
+E 52
+M
+M
+E 72
+D
+M
+M
+E 68
+E 39
+E 28
+E 41
+D
+M
+D
+M
+D
+D
+E 75
+E 68
+D
+M
+M
+D
+E 68
+D
+M
+M
+D
+M
+D
+M
+E 77
+D
+M
+M
+E 33
+M
+M
+D
+D
+D
+M
+E 60
+E 57
+D
+E 59
+M
+D
+E 35
+E 16
+D
+M
+M
+E 7
+D
+E 1
+M
+M
+M
+D
+E 99
+E 21
+E 88
+M
+M
+E 87
+D
+M
+M
+M
+E 95
+D
+E 45
+E 0
+D
+M
+M
+M
+M
+E 11
+E 9
+M
+E 69
+M
+E 82
+M
+M
+E 23
+E 99
+M
+M
+M
+M
+E 22
+M
+D
+E 87
+M
+D
+M
+D
+D
+M
+M
+E 85
+M
+M
+E 76
+E 29
+D
+E 75
+D
+E 80
+E 30
+M
+D
+E 6
+E 78
+E 73
+M
+D
+E 20
+E 93
+D
+E 20
+D
+M
+D
+M
+D
+D
+D
+E 67
+D
+M
+D
+M
+M
+M
+E 75
+E 87
+M
+M
+E 84
+D
+E 42
+D
+D
+M
+D
+M
+M
+E 3
+E 24
+D
+D
+M
+M
+D
+D
+E 84
+M
+D
+M
+M
+E 26
+M
+M
+M
+D
+M
+E 26
+M
+E 63
+D
+E 73
+E 39
+D
+M
+E 77
+E 83
+M
+M
+M
+M
+D
+M
+E 17
+E 59
+E 74
+M
+D
+E 40
+E 48
+M
+E 48
+D
+E 54
+M
+E 49
+D
+D
+M
+D
+M
+E 36
+E 64
+E 76
+M
+M
+M
+D
+D
+M
+D
+M
+D
+E 31
+M
+D
+D
+D
+D
+E 25
+M
+E 74
+D
+E 46
+E 45
+M
+D
+M
+D
+D
+M
+D
+D
+D
+M
+D
+E 75
+D
+E 80
+D
+D
+D
+E 85
+D
+E 9
+E 47
+E 92
+D
+E 47
+M
+E 47
+D
+D
+E 74
+D
+D
+M
+M
+M
+E 72
+M
+D
+D
+M
+D
+M
+E 82
+E 86
+D
+D
+M
+M
+E 87
+M
+D
+M
+M
+E 91
+M
+E 7
+E 88
+E 29
+M
+D
+E 16
+M
+M
+D
+D
+D
+D
+E 40
+E 48
+M
+E 52
+D
+E 86
+M
+E 60
+E 42
+E 28
+M
+D
+M
+D
+D
+E 66
+E 0
+E 6
+D
+E 48
+M
+D
+M
+E 35
+M
+E 91
+M
+D
+E 76
+D
+M
+D
+M
+E 42
+D
+E 12
+D
+D
+E 40
+D
+E 69
+E 33
+E 11
+D
+D
+D
+D
+E 23
+D
+E 44
+E 20
+D
+M
+M
+D
+E 1
+E 21
+M
+D
+M
+M
+D
+D
+M
+E 37
+E 45
+E 97
+E 50
+D
+M
+D
+M
+E 3
+E 30
+M
+D
+D
+D
+M
+E 15
+E 84
+D
+M
+M
+D
+M
+D
+M
+E 4
+E 0
+D
+M
+E 18
+M
+E 80
+E 25
+E 100
+D
+D
+M
+D
+E 99
+M
+D
+M
+D
+M
+M
+M
+M
+D
+D
+M
+D
+M
+M
+D
+D
+E 91
+M
+E 56
+D
+E 46
+M
+M
+E 40
+D
+E 40
+E 9
+D
+E 32
+E 63
+E 26
+M
+E 69
+D
+D
+E 52
+M
+D
+D
+D
+M
+D
+E 64
+M
+D
+M
+D
+D
+M
+M
+E 73
+M
+M
+M
+M
+E 47
+D
+D
+M
+E 19
+E 55
+D
+D
+D
+D
+D
+D
+D
+M
+E 41
+E 52
+D
+M
+M
+D
+D
+E 86
+D
+M
+E 56
+M
+D
+D
+M
+D
+M
+M
+M
+D
+M
+M
+M
+M
+M
+E 55
+M
+E 68
+D
+D
+M
+M
+M
+D
+E 51
+M
+E 14
+D
+E 83
+E 72
+E 67
+E 34
+E 98
+M
+D
+D
+M
+D
+D
+D
+E 75
+M
+D
+D
+E 47
+M
+E 57
+M
+M
+E 30
+D
+E 19
+E 84
+D
+E 17
+M
+M
+E 67
+E 57
+D
+E 37
+D
+D
+M
+D
+E 100
+M
+E 44
+M
+E 55
+D
+D
+E 36
+E 56
+E 6
+M
+M
+D
+M
+D
+E 21
+D
+E 61
+D
+M
+M
+M
+E 45
+E 72
+E 33
+D
+D
+M
+M
+M
+E 93
+D
+D
+D
+D
+M
+E 18
+D
+E 69
+M
+E 63
+M
+D
+M
+D
+D
+M
+D
+E 31
+D
+E 84
+D
+E 8
+E 32
+E 30
+D
+D
+D
+E 65
+D
+D
+D
+D
+D
+D
+M
+E 28
+E 15
+D
+M
+D
+D
+M
+D
+M
+D
+M
+E 68
+E 62
+E 57
+D
+M
+M
+E 57
+E 62
+D
+D
+M
+E 55
+M
+D
+E 45
+E 77
+M
+D
+M
+M
+D
+M
+M
+E 15
+M
+D
+M
+M
+M
+M
+D
+M
+D
+E 21
+E 4
+D
+M
+D
+E 48
+E 3
+E 57
+M
+E 10
+E 27
+D
+M
+D
+E 43
+D
+E 15
+M
+M
+D
+E 12
+M
+E 99
+E 53
+D
+M
+D
+D
+M
+E 56
+M
+E 54
+M
+E 67
+D
+E 34
+E 24
+E 70
+E 99
+M
+D
+M
+D
+E 36
+E 45
+D
+E 50
+M
+M
+D
+E 81
+M
+M
+E 41
+D
+D
+E 39
+E 52
+M
+E 54
+M
+M
+E 19
+D
+M
+D
+E 78
+E 90
+E 29
+D
+M
+E 4
+M
+M
+M
+D
+M
+M
+M
+M
+E 78
+D
+D
+M
+D
+D
+M
+D
+E 22
+M
+D
+M
+M
+E 15
+D
+D
+E 23
+M
+E 29
+M
+D
+E 40
+E 83
+M
+M
+M
+E 62
+M
+E 41
+D
+D
+M
+E 10
+D
+M
+E 82
+M
+M
+D
+M
+D
+E 46
+E 80
+D
+D
+D
+M
+M
+M
+E 1
+E 71
+D
+E 51
+M
+E 22
+D
+D
+D
+M
+E 86
+D
+M
+E 60
+D
+M
+M
+D
+D
+M
+D
+M
+D
+D
+M
+D
+M
+D
+M
+M
+M
+D
+D
+D
+D
+M
+D
+E 82
+M
+E 56
+M
+M
+M
+D
+E 24
+D
+D
+E 86
+M
+E 45
+D
+E 80
+D
+E 27
+E 55
+E 68
+D
+M
+D
+M
+D
+M
+D
+D
+E 32
+E 55
+D
+M
+E 30
+M
+D
+E 15
+E 11
+E 81
+M
+M
+E 25
+M
+D
+E 94
+D
+M
+M
+E 86
+E 53
+D
+D
+E 29
+E 55
+D
+M
+E 80
+M
+M
+M
+D
+E 35
+D
+M
+E 65
+D
+D
+D
+M
+D
+D
+E 60
+D
+D
+E 21
+M
+E 50
+D
+M
+M
+D
+M
+E 86
+D
+D
+E 61
+D
+E 91
+D
+E 11
+D
+E 65
+D
+M
+E 63
+D
+M
+M
+M
+M
+D
+D
+D
+E 83
+D
+D
+E 88
+M
+E 96
+E 23
+M
+E 92
+D
+M
+E 78
+E 69
+E 47
+D
+D
+D
+E 21
+D
+E 57
+D
+D
+M
+M
+M
+E 53
+M
+D
+E 62
+D
+M
+D
+E 2
+D
+D
+M
+E 95
+E 46
+E 91
+D
+E 86
+D
+E 93
+D
+M
+D
+D
+M
+E 88
+M
+D
+D
+M
+M
+D
+E 49
+E 17
+M
+M
+D
+D
+E 16
+M
+M
+D
+E 22
+D
+M
+M
+E 82
+D
+D
+M
+M
+E 26
+M
+D
+E 48
+E 25
+M
+E 44
+M
+M
+M
+M
+D
+D
+M
+M
+M
+E 42
+M
+D
+E 36
+M
+M
+E 59
+D
+D
+E 52
+D
+E 21
+D
+D
+D
+D
+D
+M
+D
+D
+M
+M
+M
+E 22
+M
+M
+E 2
+M
+D
+E 73
+M
+E 94
+M
+E 52
+M
+M
+E 35
+D
+E 1
+E 47
+D
+E 39
+E 48
+M
+M
+E 25
+E 76
+E 69
+E 99
+M
+M
+D
+E 37
+E 22
+D
+E 18
+M
+E 84
+E 88
+E 17
+E 55
+E 2
+M
+D
+E 11
+E 27
+M
+M
+M
+M
+E 69
+E 53
+E 4
+D
+E 76
+D
+E 46
+M
+M
+D
+D
+E 52
+M
+D
+D
+E 18
+E 29
+M
+E 1
+M
+E 15
+M
+E 0
+E 77
+D
+E 28
+D
+M
+M
+D
+D
+E 53
+M
+M
+E 10
+D
+E 91
+D
+M
+E 58
+M
+D
+M
+E 65
+D
+D
+E 5
+M
+E 4
+D
+D
+E 61
+D
+D
+D
+D
+E 24
+D
+M
+M
+M
+E 34
+M
+E 78
+D
+M
+D
+D
+M
+D
+E 17
+M
+M
+D
+M
+D
+E 66
+M
+M
+E 60
+E 19
+D
+M
+D
+M
+M
+M
+M
+E 63
+M
+D
+E 20
+E 7
+D
+D
+D
+D
+E 45
+D
+M
+M
+D
+E 51
+D
+E 87
+M
+M
+E 49
+D
+D
+E 14
+M
+D
+M
+M
+E 79
+E 16
+M
+D
+D
+M
+E 58
+E 91
+E 62
+D
+E 27
+M
+E 94
+M
+D
+M
+D
+D
+E 47
+M
+D
+E 30
+D
+E 62
+M
+M
+M
+M
+M
+E 56
+M
+D
+E 12
+D
+M
+D
+M
+E 68
+E 84
+D
+D
+M
+E 36
+M
+D
+D
+D
+D
+D
+M
+M
+D
+D
+M
+M
+M
+D
+D
+M
+M
+E 53
+E 21
+E 7
+E 76
+M
+E 33
+M
+D
+M
+M
+M
+D
+M
+D
+E 27
+D
+E 2
+D
+E 14
+E 16
+D
+M
+M
+M
+D
+D
+D
+E 90
+D
+D
+M
+E 100
+D
+E 46
+M
+E 8
+M
+M
+D
+M
+M
+E 55
+E 61
+E 17
+M
+M
+M
+M
+M
+E 86
+D
+D
+D
+E 89
+D
+M
+E 79
+D
+D
+E 81
+M
+D
+E 61
+E 91
+E 15
+E 24
+M
+M
+E 43
+M
+D
+M
+M
+E 43
+D
+D
+D
+E 38
+D
+M
+D
+E 96
+D
+E 69
+E 90
+D
+E 85
+E 62
+D
+E 14
+D
+M
+M
+M
+D
+M
+M
+D
+E 68
+E 95
+E 54
+M
+M
+E 47
+M
+M
+D
+E 45
+D
+D
+M
+D
+D
+D
+E 1
+E 70
+D
+M
+D
+M
+D
+E 89
+E 57
+D
+D
+D
+D
+E 64
+M
+M
+E 59
+M
+M
+D
+M
+M
+D
+D
+D
+D
+M
+D
+D
+E 39
+D
+E 74
+M
+M
+D
+D
+D
+D
+M
+D
+M
+E 49
+M
+M
+E 1
+E 0
+D
+D
+M
+D
+M
+E 66
+E 79
+E 92
+E 59
+M
+M
+M
+M
+M
+M
+E 13
+E 33
+M
+D
+M
+E 30
+D
+M
+D
+M
+D
+D
+E 97
+M
+M
+D
+D
+D
+M
+M
+E 95
+E 76
+E 14
+E 74
+M
+D
+M
+D
+D
+D
+E 3
+D
+D
+E 62
+E 44
+D
+M
+D
+M
+E 13
+E 52
+D
+E 27
+M
+E 41
+M
+D
+D
+E 7
+M
+E 20
+D
+M
+D
+D
+D
+D
+E 67
+E 44
+M
+E 15
+M
+D
+D
+E 25
+E 21
+D
+E 8
+E 11
+M
+E 43
+D
+E 65
+M
+E 62
+E 23
+M
+M
+D
+D
+E 36
+D
+E 81
+D
+M
+E 91
+M
+M
+M
+M
+M
+M
+E 2
+E 63
+M
+D
+E 14
+D
+D
+M
+D
+E 76
+M
+D
+M
+M
+D
+E 42
+M
+D
+E 2
+D
+D
+E 76
+D
+M
+M
+D
+E 70
+E 44
+M
+D
+E 16
+E 81
+E 66
+E 71
+M
+M
+E 12
+M
+M
+D
+D
+E 73
+D
+E 68
+D
+D
+M
+M
+M
+D
+M
+E 96
+E 16
+M
+M
+M
+M
+M
+E 89
+D
+D
+M
+E 91
+E 28
+D
+M
+M
+D
+M
+M
+E 33
+D
+D
+D
+E 9
+D
+D
+E 87
+E 79
+D
+M
+D
+D
+D
+M
+M
+D
+D
+M
+D
+D
+D
+D
+M
+E 8
+E 69
+E 9
+E 95
+D
+M
+E 68
+M
+D
+M
+M
+E 42
+E 29
+D
+M
+E 59
+E 72
+E 72
+E 72
+D
+E 14
+E 58
+D
+M
+M
+M
+M
+D
+M
+M
+E 46
+M
+M
+D
+M
+M
+M
+D
+E 32
+E 91
+E 91
+D
+D
+M
+D
+M
+E 34
+M
+D
+E 22
+M
+D
+D
+M
+M
+E 23
+M
+M
+D
+D
+D
+E 60
+E 59
+M
+E 97
+D
+E 26
+E 88
+M
+M
+D
+D
+E 85
+D
+D
+D
+M
+E 86
+M
+E 5
+E 2
+E 59
+E 17
+E 73
+D
+E 30
+M
+M
+M
+D
+D
+E 35
+E 21
+E 79
+E 32
+E 6
+M
+M
+E 20
+E 87
+D
+D
+M
+E 63
+D
+E 10
+E 65
+E 70
+D
+D
+D
+D
+E 54
+D
+M
+E 33
+E 63
+M
+D
+D
+M
+M
+D
+M
+M
+M
+M
+M
+M
+D
+M
+M
+D
+D
+M
+M
+E 19
+M
+D
+M
+M
+D
+M
+E 87
+M
+D
+D
+M
+M
+M
+D
+M
+E 93
+E 36
+E 90
+E 11
+M
+E 75
+D
+M
+E 21
+D
+E 10
+D
+D
+D
+M
+M
+D
+M
+E 51
+E 30
+E 34
+E 86
+M
+E 9
+D
+E 81
+E 13
+M
+E 62
+M
+E 0
+M
+M
+M
+D
+D
+E 83
+M
+M
+M
+M
+M
+M
+D
+D
+E 1
+E 27
+E 14
+E 63
+E 16
+M
+M
+D
+M
+E 65
+M
+D
+M
+E 28
+M
+M
+D
+D
+E 50
+D
+D
+M
+E 70
+M
+D
+D
+E 96
+E 56
+E 38
+E 70
+E 21
+D
+D
+D
+M
+M
+E 14
+D
+D
+D
+M
+M
+D
+D
+D
+E 57
+D
+D
+M
+E 91
+M
+M
+D
+M
+D
+D
+M
+M
+E 76
+M
+D
+M
+D
+M
+D
+M
+E 11
+D
+E 52
+D
+E 1
+M
+M
+M
+E 52
+D
+E 47
+E 33
+D
+E 51
+D
+M
+E 3
+D
+E 70
+E 2
+D
+M
+M
+E 12
+M
+M
+D
+E 5
+E 14
+E 55
+M
+E 4
+D
+M
+D
+M
+M
+E 71
+M
+M
+M
+D
+D
+M
+E 25
+M
+M
+M
+E 61
+D
+E 15
+M
+D
+E 65
+M
+D
+E 32
+M
+M
+M
+M
+E 61
+D
+M
+D
+D
+D
+E 81
+M
+D
+D
+M
+M
+M
+D
+D
+E 31
+E 88
+M
+M
+D
+M
+M
+E 50
+D
+M
+M
+M
+E 39
+E 1
+E 54
+E 85
+D
+M
+D
+M
+M
+E 26
+E 50
+D
+D
+E 49
+D
+M
+E 59
+M
+M
+D
+D
+D
+M
+D
+D
+E 26
+E 73
+D
+E 38
+M
+M
+E 31
+M
+D
+D
+M
+D
+E 82
+M
+D
+M
+D
+M
+D
+E 74
+D
+D
+M
+E 96
+M
+D
+M
+E 60
+M
+D
+E 50
+E 64
+D
+E 80
+D
+D
+M
+D
+E 82
+D
+D
+D
+E 98
+M
+D
+E 49
+D
+E 39
+D
+E 50
+D
+E 15
+M
+E 21
+D
+E 37
+M
+E 66
+D
+D
+M
+D
+E 28
+E 39
+E 95
+E 82
+D
+E 53
+E 27
+D
+E 99
+M
+E 68
+M
+D
+E 25
+M
+E 55
+E 15
+M
+D
+E 59
+E 13
+E 60
+M
+M
+M
+D
+E 45
+E 23
+D
+E 70
+E 49
+D
+D
+E 86
+M
+M
+E 44
+M
+M
+M
+E 23
+D
+M
+D
+M
+E 69
+D
+M
+M
+M
+E 50
+E 84
+D
+E 15
+E 15
+E 72
+E 26
+M
+D
+E 9
+D
+D
+M
+D
+E 77
+M
+D
+M
+M
+M
+M
+E 30
+E 27
+D
+D
+D
+M
+D
+E 50
+M
+D
+M
+M
+D
+D
+M
+M
+M
+M
+E 43
+M
+E 36
+M
+D
+M
+M
+D
+D
+E 51
+M
+E 87
+M
+D
+E 12
+E 0
+M
+M
+D
+E 29
+M
+E 22
+M
+M
+E 56
+D
+D
+E 93
+D
+E 12
+M
+M
+E 32
+D
+E 78
+M
+D
+D
+D
+E 75
+E 30
+E 96
+D
+M
+D
+E 52
+D
+D
+D
+D
+D
+M
+E 56
+E 40
+E 92
+D
+D
+M
+M
+E 91
+D
+D
+D
+D
+M
+D
+M
+E 87
+E 95
+E 28
+M
+D
+E 82
+M
+D
+M
+E 14
+D
+D
+D
+D
+D
+E 75
+E 61
+E 66
+D
+D
+D
+D
+E 26
+M
+E 34
+E 72
+E 50
+E 90
+D
+E 15
+M
+E 57
+M
+E 27
+D
+E 11
+M
+D
+E 1
+E 54
+D
+E 81
+E 83
+E 28
+E 39
+M
+D
+D
+D
+D
+D
+E 2
+D
+E 96
+M
+D
+E 1
+E 48
+E 11
+D
+D
+E 7
+D
+E 9
+D
+D
+M
+D
+E 99
+M
+D
+M
+M
+D
+M
+D
+M
+E 40
+M
+E 100
+M
+M
+E 1
+E 57
+D
+E 26
+M
+M
+M
+D
+M
+D
+E 76
+D
+D
+D
+D
+E 5
+M
+M
+E 36
+D
+M
+M
+M
+M
+E 10
+D
+M
+D
+D
+E 35
+E 22
+M
+M
+D
+E 50
+D
+D
+E 38
+M
+M
+D
+M
+E 75
+M
+M
+M
+D
+M
+E 42
+E 68
+D
+E 44
+D
+M
+E 92
+M
+D
+E 46
+D
+M
+E 44
+E 55
+M
+D
+E 6
+D
+M
+M
+D
+D
+M
+D
+M
+D
+E 10
+E 79
+D
+E 7
+E 73
+M
+E 75
+E 23
+D
+M
+E 73
+E 77
+D
+E 23
+D
+M
+D
+D
+D
+E 98
+D
+D
+E 2
+D
+M
+D
+E 82
+E 28
+D
+E 65
+E 57
+M
+D
+M
+D
+E 99
+M
+E 7
+D
+M
+D
+E 41
+E 78
+E 58
+D
+D
+D
+M
+E 62
+M
+D
+D
+E 17
+E 21
+M
+D
+M
+E 52
+D
+E 22
+M
+E 53
+M
+E 93
+D
+M
+E 96
+D
+M
+D
+M
+D
+M
+E 39
+D
+E 71
+M
+D
+M
+E 89
+E 8
+D
+E 75
+D
+M
+D
+D
+E 26
+E 100
+E 99
+M
+M
+M
+M
+M
+D
+E 15
+M
+D
+E 45
+D
+M
+M
+D
+M
+D
+E 15
+D
+E 75
+E 92
+D
+E 44
+M
+M
+D
+M
+D
+E 31
+D
+E 28
+M
+E 59
+M
+E 41
+M
+E 40
+M
+M
+D
+M
+M
+E 48
+E 56
+M
+M
+D
+E 76
+E 50
+M
+M
+E 98
+D
+D
+M
+E 85
+E 92
+M
+D
+D
+M
+D
+M
+E 71
+D
+E 60
+D
+E 3
+D
+M
+M
+D
+E 73
+D
+M
+D
+D
+D
+E 89
+M
+D
+E 33
+E 82
+M
+D
+E 23
+E 78
+M
+E 46
+E 63
+M
+E 0
+D
+M
+E 54
+M
+M
+E 46
+D
+M
+E 7
+M
+E 2
+E 63
+E 16
+D
+D
+E 97
+M
+M
+E 94
+M
+D
+E 63
+E 14
+M
+M
+M
+D
+M
+E 30
+D
+M
+E 84
+E 59
+D
+M
+E 30
+E 30
+D
+E 48
+E 84
+M
+M
+M
+D
+M
+M
+M
+E 20
+D
+D
+M
+D
+E 49
+M
+M
+D
+D
+E 92
+M
+D
+E 8
+D
+M
+E 28
+D
+M
+M
+M
+M
+M
+D
+D
+M
+M
+E 18
+D
+D
+M
+E 4
+D
+M
+D
+E 77
+M
+E 31
+D
+E 95
+D
+M
+D
+M
+D
+M
+E 60
+M
+M
+M
+E 32
+M
+M
+M
+D
+E 25
+D
+E 21
+D
+D
+M
+D
+M
+D
+D
+M
+D
+M
+M
+D
+E 5
+M
+E 16
+E 23
+D
+E 5
+D
+E 73
+M
+M
+D
+M
+D
+D
+E 98
+E 56
+E 67
+D
+D
+E 67
+D
+D
+E 58
+E 72
+D
+E 87
+M
+E 13
+E 51
+E 84
+E 48
+E 35
+D
+D
+D
+E 10
+D
+E 50
+M
+E 22
+E 28
+E 91
+E 32
+D
+M
+E 43
+D
+M
+D
+D
+M
+E 88
+D
+D
+D
+E 87
+M
+E 71
+M
+E 36
+D
+M
+D
+D
+D
+D
+M
+D
+D
+E 11
+E 83
+M
+E 60
+E 99
+D
+D
+E 2
+D
+M
+M
+D
+E 1
+E 96
+E 93
+D
+E 33
+D
+M
+M
+D
+D
+M
+E 73
+D
+D
+E 20
+M
+M
+M
+E 57
+D
+E 79
+D
+D
+E 64
+M
+D
+E 73
+E 46
+M
+D
+E 94
+M
+E 16
+D
+M
+D
+M
+D
+E 47
+E 8
+E 76
+D
+D
+M
+E 44
+M
+M
+E 0
+M
+E 91
+M
+M
+E 50
+E 89
+D
+E 56
+E 20
+M
+M
+D
+M
+M
+E 63
+D
+E 3
+E 45
+E 38
+E 85
+M
+D
+M
+E 31
+M
+M
+M
+D
+M
+M
+D
+M
+D
+M
+E 84
+E 46
+E 3
+E 89
+E 50
+D
+M
+M
+E 25
+E 86
+D
+E 34
+M
+M
+D
+M
+E 86
+D
+D
+D
+D
+E 3
+M
+E 77
+M
+D
+M
+M
+E 76
+E 39
+D
+D
+E 51
+M
+E 89
+D
+E 43
+D
+E 2
+E 89
+D
+E 17
+E 32
+D
+M
+E 1
+M
+E 66
+E 95
+D
+E 95
+M
+E 56
+E 24
+E 14
+M
+M
+D
+D
+E 18
+D
+D
+M
+D
+E 23
+E 54
+E 24
+D
+E 96
+E 26
+D
+E 44
+M
+D
+M
+D
+E 86
+D
+M
+E 1
+M
+E 59
+D
+E 78
+E 1
+D
+D
+D
+M
+E 67
+E 17
+D
+D
+M
+M
+M
+M
+M
+D
+M
+M
+M
+M
+M
+E 31
+D
+E 81
+M
+D
+E 72
+E 69
+D
+E 17
+D
+D
+M
+D
+M
+M
+E 46
+D
+M
+D
+M
+D
+E 53
+M
+D
+M
+D
+M
+E 51
+M
+D
+M
+D
+M
+M
+E 36
+M
+E 92
+M
+E 60
+E 5
+M
+E 97
+D
+D
+E 35
+D
+M
+M
+M
+M
+M
+D
+D
+E 2
+E 49
+E 11
+E 0
+M
+M
+D
+E 71
+M
+E 86
+D
+E 91
+M
+D
+M
+M
+D
+E 81
+M
+D
+E 96
+E 11
+D
+M
+M
+M
+E 35
+E 56
+E 17
+M
+M
+D
+D
+D
+D
+D
+E 97
+E 86
+D
+M
+M
+M
+E 4
+M
+E 58
+M
+M
+E 66
+E 81
+D
+D
+D
+D
+M
+D
+D
+D
+E 88
+M
+E 26
+D
+E 68
+E 94
+E 67
+M
+E 23
+E 92
+D
+E 81
+D
+D
+D
+E 54
+E 87
+E 54
+M
+M
+M
+E 4
+M
+E 16
+M
+M
+E 28
+M
+D
+D
+D
+E 1
+M
+E 25
+E 21
+M
+D
+D
+E 68
+D
+D
+D
+E 9
+E 13
+D
+D
+M
+D
+M
+D
+E 43
+E 5
+D
+M
+D
+D
+D
+M
+D
+E 20
+D
+D
+E 36
+M
+D
+D
+E 80
+M
+E 84
+M
+D
+E 50
+D
+D
+D
+M
+D
+D
+M
+E 88
+D
+E 42
+D
+M
+D
+D
+M
+E 4
+M
+D
+E 95
+M
+D
+M
+E 3
+M
+E 1
+E 76
+M
+E 60
+E 37
+D
+D
+E 92
+E 6
+M
+E 36
+D
+E 81
+D
+D
+M
+E 45
+D
+M
+E 58
+D
+D
+D
+M
+M
+M
+D
+M
+M
+E 73
+M
+E 86
+D
+E 9
+E 71
+D
+E 73
+M
+E 75
+D
+D
+E 29
+D
+M
+E 5
+M
+D
+E 53
+M
+D
+E 98
+D
+D
+M
+D
+M
+D
+M
+D
+M
+E 65
+D
+M
+M
+M
+D
+E 84
+D
+M
+M
+D
+D
+M
+D
+E 73
+D
+E 93
+E 47
+E 89
+D
+M
+D
+D
+E 3
+D
+E 76
+M
+E 65
+M
+D
+E 40
+D
+D
+E 54
+D
+E 33
+E 19
+D
+E 48
+E 2
+D
+E 57
+M
+E 79
+D
+M
+M
+D
+M
+D
+E 59
+D
+D
+E 71
+M
+D
+E 82
+E 9
+D
+D
+E 43
+M
+M
+D
+E 38
+D
+E 91
+E 19
+E 4
+M
+D
+D
+M
+M
+E 65
+M
+D
+E 75
+E 49
+E 68
+D
+E 54
+D
+D
+E 77
+E 67
+D
+M
+D
+D
+D
+E 66
+M
+E 27
+M
+D
+M
+D
+E 39
+D
+E 53
+M
+D
+E 46
+E 49
+E 87
+D
+E 5
+D
+E 55
+D
+M
+E 21
+M
+E 18
+E 54
+M
+M
+E 23
+M
+E 26
+E 96
+E 15
+E 15
+E 71
+E 89
+E 6
+D
+D
+D
+M
+D
+D
+M
+E 34
+E 45
+D
+E 86
+M
+M
+E 46
+D
+D
+M
+E 69
+M
+D
+E 33
+M
+M
+M
+D
+M
+D
+E 48
+D
+D
+E 63
+M
+D
+M
+E 77
+E 59
+D
+M
+E 8
+E 80
+E 49
+E 60
+D
+D
+M
+E 99
+D
+M
+E 35
+E 43
+E 88
+E 19
+E 36
+E 10
+M
+M
+M
+E 67
+E 6
+E 83
+M
+M
+E 64
+E 36
+E 19
+E 74
+D
+M
+E 11
+D
+M
+E 58
+D
+D
+M
+M
+E 30
+D
+D
+M
+M
+M
+D
+E 54
+D
+E 31
+D
+E 9
+M
+E 36
+D
+M
+M
+M
+E 52
+D
+D
+D
+E 86
+M
+E 97
+M
+E 53
+M
+E 36
+D
+M
+E 85
+D
+D
+E 8
+E 25
+E 4
+E 31
+D
+E 41
+M
+M
+E 69
+E 58
+E 3
+E 48
+E 40
+D
+E 48
+E 72
+M
+E 66
+E 65
+M
+M
+D
+D
+M
+M
+M
+E 57
+D
+M
+D
+E 97
+E 94
+D
+M
+E 33
+E 19
+M
+E 37
+E 41
+E 88
+E 19
+D
+D
+D
+E 19
+D
+D
+M
+E 68
+M
+D
+D
+E 91
+M
+D
+E 55
+M
+E 97
+D
+M
+M
+E 36
+E 17
+E 36
+E 43
+D
+M
+M
+E 75
+E 59
+E 61
+E 63
+M
+M
+D
+D
+M
+E 75
+E 6
+D
+E 66
+D
+D
+D
+D
+M
+E 10
+D
+D
+D
+E 15
+M
+M
+M
+E 69
+E 33
+E 100
+D
+D
+D
+E 62
+E 4
+E 90
+M
+D
+D
+E 8
+D
+E 54
+D
+M
+E 96
+D
+D
+E 73
+E 53
+D
+D
+D
+D
+E 43
+M
+M
+M
+M
+E 12
+E 75
+M
+E 2
+E 84
+E 95
+E 34
+M
+E 88
+M
+E 23
+D
+E 59
+D
+E 97
+M
+E 53
+M
+E 73
+D
+E 63
+E 63
+E 2
+E 11
+D
+E 16
+M
+M
+E 57
+D
+D
+M
+M
+D
+E 87
+D
+M
+D
+D
+E 0
+M
+E 52
+E 26
+E 33
+D
+M
+M
+D
+M
+E 48
+M
+E 70
+E 11
+D
+M
+E 83
+M
+M
+M
+M
+M
+E 13
+E 63
+M
+M
+D
+D
+E 98
+E 26
+D
+E 64
+D
+E 33
+D
+M
+E 57
+M
+M
+M
+D
+M
+E 0
+M
+D
+M
+D
+D
+E 92
+M
+M
+D
+D
+M
+E 29
+D
+E 23
+M
+E 56
+M
+E 60
+M
+D
+M
+D
+M
+M
+M
+D
+M
+M
+D
+D
+M
+E 27
+D
+M
+M
+E 88
+D
+E 46
+M
+D
+E 25
+E 32
+E 79
+D
+E 33
+M
+D
+D
+D
+M
+E 98
+D
+M
+M
+M
+D
+E 65
+D
+E 98
+D
+M
+M
+D
+E 93
+M
+E 51
+E 27
+M
+M
+E 87
+D
+M
+D
+E 18
+E 17
+D
+E 25
+D
+D
+E 63
+D
+E 31
+D
+E 96
+D
+M
+M
+D
+D
+E 52
+E 43
+D
+E 70
+E 16
+E 88
+M
+M
+D
+E 49
+D
+D
+D
+E 23
+D
+M
+M
+M
+E 45
+E 19
+D
+D
+E 14
+D
+E 49
+M
+M
+M
+E 11
+E 8
+D
+D
+D
+M
+E 68
+E 4
+M
+M
+D
+D
+E 59
+M
+D
+D
+D
+E 68
+E 87
+D
+D
+D
+D
+D
+E 83
+D
+E 51
+M
+E 66
+D
+M
+D
+D
+M
+E 41
+M
+M
+D
+E 36
+E 51
+E 66
+E 81
+D
+E 48
+E 69
+M
+D
+D
+E 30
+E 43
+D
+E 47
+M
+D
+M
+D
+E 53
+M
+E 47
+D
+E 53
+D
+E 6
+D
+M
+D
+E 97
+D
+M
+M
+M
+M
+M
+E 70
+M
+E 83
+D
+E 68
+D
+M
+E 68
+M
+D
+M
+M
+E 98
+D
+D
+M
+E 15
+M
+D
+E 15
+D
+E 69
+M
+D
+E 44
+M
+D
+M
+M
+M
+E 33
+D
+E 42
+M
+E 46
+D
+E 65
+D
+E 58
+E 64
+M
+D
+D
+M
+E 54
+E 30
+E 47
+D
+E 44
+E 5
+D
+M
+D
+M
+E 32
+D
+M
+M
+M
+E 82
+D
+D
+E 33
+E 58
+M
+D
+M
+E 18
+E 27
+E 66
+D
+M
+E 1
+E 2
+D
+M
+M
+E 88
+M
+E 7
+E 70
+M
+M
+E 61
+M
+E 92
+D
+M
+E 60
+D
+E 76
+D
+D
+E 89
+D
+E 71
+D
+D
+E 39
+D
+M
+D
+M
+D
+M
+D
+M
+M
+E 43
+E 17
+D
+M
+E 11
+E 6
+D
+M
+E 0
+E 8
+D
+M
+E 68
+E 19
+D
+E 49
+D
+D
+M
+M
+E 4
+D
+D
+E 10
+D
+E 56
+D
+D
+E 16
+E 4
+M
+E 54
+M
+D
+E 55
+M
+E 80
+D
+D
+M
+E 47
+M
+D
+E 10
+E 27
+M
+E 59
+M
+D
+E 3
+D
+E 55
+M
+D
+E 6
+M
+M
+D
+D
+D
+M
+M
+M
+E 54
+E 46
+E 27
+E 91
+M
+D
+E 97
+D
+D
+E 58
+E 15
+D
+D
+E 37
+M
+D
+E 36
+M
+M
+D
+E 100
+M
+E 13
+D
+M
+M
+E 54
+E 31
+M
+D
+E 4
+M
+D
+M
+D
+E 15
+M
+M
+E 34
+D
+E 73
+D
+M
+M
+E 55
+D
+E 45
+E 44
+M
+M
+M
+E 29
+M
+D
+E 98
+M
+D
+M
+E 52
+M
+D
+D
+D
+E 19
+D
+D
+E 9
+M
+E 93
+D
+E 41
+M
+M
+E 58
+M
+M
+E 77
+E 61
+D
+E 7
+M
+M
+M
+D
+M
+M
+D
+E 67
+D
+M
+D
+M
+M
+D
+M
+M
+E 6
+D
+E 6
+E 36
+D
+M
+M
+M
+D
+D
+D
+M
+M
+E 83
+E 1
+M
+E 57
+D
+E 65
+M
+M
+M
+D
+D
+E 19
+M
+M
+D
+D
+E 65
+M
+D
+E 20
+E 59
+D
+M
+M
+M
+M
+M
+D
+E 16
+M
+D
+E 72
+M
+E 0
+M
+D
+M
+E 15
+M
+E 27
+D
+M
+M
+M
+E 79
+D
+M
+E 4
+D
+D
+D
+E 49
+M
+D
+M
+E 67
+M
+D
+E 71
+M
+M
+D
+D
+E 72
+M
+M
+E 26
+E 60
+M
+M
+M
+D
+D
+D
+M
+M
+M
+M
+E 61
+E 51
+D
+D
+M
+M
+D
+E 22
+D
+E 86
+D
+E 47
+E 36
+M
+D
+E 36
+M
+D
+D
+D
+E 31
+D
+E 18
+M
+D
+E 91
+E 81
+E 5
+M
+M
+E 40
+E 62
+M
+D
+D
+M
+D
+E 31
+M
+E 46
+D
+E 29
+E 35
+E 98
+D
+M
+M
+M
+M
+E 76
+E 38
+M
+M
+E 15
+E 59
+E 77
+D
+M
+E 66
+E 46
+E 12
+E 90
+M
+D
+D
+D
+D
+M
+M
+D
+M
+D
+E 63
+M
+D
+D
+M
+M
+M
+D
+E 47
+E 33
+D
+M
+D
+D
+E 42
+E 38
+D
+M
+M
+D
+E 65
+D
+D
+M
+M
+M
+D
+D
+M
+E 66
+M
+E 86
+D
+E 3
+E 75
+M
+M
+M
+E 97
+E 24
+D
+D
+D
+D
+D
+M
+E 82
+E 99
+E 88
+M
+E 54
+E 27
+E 63
+E 94
+D
+D
+M
+D
+M
+E 40
+D
+E 74
+M
+D
+M
+E 78
+M
+E 16
+E 78
+M
+E 51
+E 99
+M
+M
+D
+D
+M
+D
+M
+D
+E 77
+M
+D
+D
+D
+M
+M
+D
+M
+E 40
+M
+E 53
+D
+D
+E 70
+E 60
+M
+E 57
+M
+E 40
+M
+E 60
+E 69
+M
+E 14
+M
+M
+D
+E 79
+D
+D
+E 42
+M
+E 72
+E 58
+D
+M
+M
+M
+D
+E 45
+D
+D
+D
+E 76
+M
+E 14
+D
+M
+E 49
+E 69
+M
+E 50
+E 26
+D
+D
+M
+M
+D
+E 44
+M
+D
+D
+E 58
+M
+D
+E 11
+E 89
+E 4
+M
+E 61
+E 21
+E 60
+E 4
+E 100
+M
+M
+D
+D
+E 78
+D
+M
+E 3
+D
+D
+D
+E 75
+D
+E 5
+M
+M
+D
+M
+M
+E 39
+D
+E 43
+E 1
+E 18
+M
+D
+D
+E 42
+M
+E 35
+D
+M
+E 53
+E 56
+E 16
+D
+E 28
+D
+M
+D
+E 43
+E 16
+D
+M
+D
+M
+E 21
+D
+E 43
+D
+E 60
+E 59
+D
+D
+M
+M
+D
+D
+E 34
+D
+E 9
+M
+D
+E 73
+D
+E 44
+D
+M
+E 90
+M
+M
+E 37
+E 36
+D
+D
+D
+D
+E 19
+M
+M
+M
+M
+D
+M
+D
+D
+M
+M
+D
+M
+E 49
+M
+E 96
+M
+D
+M
+D
+E 58
+D
+E 64
+E 24
+E 50
+E 70
+M
+E 30
+M
+E 54
+M
+E 8
+M
+D
+M
+E 13
+D
+D
+D
+D
+E 84
+D
+E 6
+D
+M
+M
+D
+M
+M
+D
+M
+E 45
+M
+D
+M
+D
+E 6
+M
+M
+M
+E 31
+D
+M
+E 99
+E 75
+D
+E 86
+M
+M
+E 11
+E 47
+D
+M
+D
+E 52
+M
+E 46
+M
+D
+D
+D
+M
+M
+M
+E 56
+M
+E 88
+D
+E 12
+E 85
+M
+E 30
+E 77
+M
+M
+E 27
+M
+M
+E 58
+D
+D
+E 6
+D
+D
+E 37
+D
+E 33
+M
+M
+M
+D
+D
+M
+E 89
+D
+M
+M
+E 18
+E 74
+M
+D
+D
+D
+E 66
+E 52
+D
+M
+D
+E 44
+D
+M
+E 16
+D
+M
+M
+E 99
+E 70
+M
+D
+D
+E 98
+E 20
+M
+D
+M
+M
+E 41
+E 8
+E 86
+E 27
+E 65
+M
+E 85
+E 57
+D
+D
+M
+E 38
+D
+E 48
+M
+D
+D
+M
+M
+E 82
+E 87
+D
+E 93
+M
+D
+E 28
+E 40
+E 27
+D
+E 44
+D
+E 58
+M
+M
+E 20
+E 6
+E 16
+D
+D
+D
+E 22
+D
+M
+E 47
+E 91
+M
+M
+D
+M
+E 1
+M
+M
+E 40
+E 37
+D
+E 37
+D
+M
+D
+M
+E 65
+M
+M
+E 21
+M
+D
+D
+E 0
+E 87
+E 14
+E 34
+M
+M
+D
+E 11
+D
+M
+D
+E 49
+D
+D
+D
+D
+D
+M
+D
+D
+D
+E 73
+D
+D
+D
+M
+D
+E 93
+M
+E 99
+E 76
+M
+D
+D
+D
+D
+E 63
+E 77
+E 31
+E 21
+E 59
+M
+M
+D
+E 8
+E 43
+D
+D
+E 55
+E 81
+D
+D
+D
+M
+D
+M
+M
+E 94
+M
+M
+E 30
+E 100
+D
+M
+M
+D
+M
+D
+E 93
+E 40
+M
+E 57
+D
+D
+D
+M
+M
+D
+D
+M
+E 100
+E 0
+E 82
+D
+D
+M
+M
+D
+D
+E 19
+E 6
+E 23
+E 12
+M
+M
+M
+E 79
+M
+D
+D
+D
+M
+E 34
+D
+E 13
+D
+E 43
+M
+M
+D
+E 53
+D
+D
+E 4
+M
+E 84
+E 30
+M
+D
+E 44
+D
+E 75
+M
+M
+M
+D
+E 82
+M
+E 76
+D
+D
+E 12
+E 8
+D
+E 76
+M
+E 28
+M
+M
+M
+D
+E 13
+E 38
+M
+M
+E 91
+M
+M
+M
+M
+E 22
+D
+E 22
+M
+M
+E 43
+E 75
+D
+M
+D
+E 22
+E 29
+M
+M
