@@ -4,19 +4,20 @@
 *.o
 *.obj
 
-# vs 2012
+# vs
 *.sdf
-*.sln
+#*.sln
 *.suo
 *.ipch
 *.ilk
 *.pdb
 *.map
-*.vcxproj
+#*.vcxproj
 *.filters
 *.log
 *.pd_
 *.opensdf
+*.user
 Debug/
 Release/
 ReleaseD/
@@ -61,6 +62,14 @@ ReleaseD/
 *.la
 *.a
 *.lib
+
+# Compressed Files
+*.zip
+*.7z
+*.rar
+*.gz
+*.bz2
+*.tar
 
 # Executables
 *.exe

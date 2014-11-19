@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{351F017B-4824-4145-A025-BF970C88D961}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>ProperRebuild</RootNamespace>
+    <ProjectName>PA2_3_ProperRebuild</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ProperRebuild.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="binnode.h" />
+    <ClInclude Include="binnode_implementation.h" />
+    <ClInclude Include="binnode_insert.h" />
+    <ClInclude Include="binnode_macro.h" />
+    <ClInclude Include="binnode_macro_avl.h" />
+    <ClInclude Include="binnode_macro_basic.h" />
+    <ClInclude Include="binnode_macro_redblack.h" />
+    <ClInclude Include="binnode_size.h" />
+    <ClInclude Include="binnode_stretchbyzag.h" />
+    <ClInclude Include="binnode_stretchbyzig.h" />
+    <ClInclude Include="binnode_succ.h" />
+    <ClInclude Include="binnode_travinorder.h" />
+    <ClInclude Include="binnode_travinorder_i1.h" />
+    <ClInclude Include="binnode_travinorder_i2.h" />
+    <ClInclude Include="binnode_travinorder_i3.h" />
+    <ClInclude Include="binnode_travinorder_i4.h" />
+    <ClInclude Include="binnode_travinorder_r.h" />
+    <ClInclude Include="binnode_travlevel.h" />
+    <ClInclude Include="binnode_travpostorder.h" />
+    <ClInclude Include="binnode_travpostorder_i.h" />
+    <ClInclude Include="binnode_travpostorder_r.h" />
+    <ClInclude Include="binnode_travpreorder.h" />
+    <ClInclude Include="binnode_travpreorder_i1.h" />
+    <ClInclude Include="binnode_travpreorder_i2.h" />
+    <ClInclude Include="binnode_travpreorder_r.h" />
+    <ClInclude Include="binnode_zag.h" />
+    <ClInclude Include="binnode_zig.h" />
+    <ClInclude Include="bintree.h" />
+    <ClInclude Include="bintree_attach.h" />
+    <ClInclude Include="bintree_implementation.h" />
+    <ClInclude Include="bintree_insert.h" />
+    <ClInclude Include="bintree_remove.h" />
+    <ClInclude Include="bintree_secede.h" />
+    <ClInclude Include="bintree_size.h" />
+    <ClInclude Include="bintree_test.h" />
+    <ClInclude Include="bintree_updateheight.h" />
+    <ClInclude Include="list.h" />
+    <ClInclude Include="list_bracket.h" />
+    <ClInclude Include="list_clear.h" />
+    <ClInclude Include="list_copy_constructor.h" />
+    <ClInclude Include="list_copy_nodes.h" />
+    <ClInclude Include="list_deduplicate.h" />
+    <ClInclude Include="list_destructor.h" />
+    <ClInclude Include="list_disordered.h" />
+    <ClInclude Include="list_find.h" />
+    <ClInclude Include="list_implementation.h" />
+    <ClInclude Include="list_init.h" />
+    <ClInclude Include="list_insert.h" />
+    <ClInclude Include="list_insertion_sort.h" />
+    <ClInclude Include="list_merge.h" />
+    <ClInclude Include="list_merge_sort.h" />
+    <ClInclude Include="list_node.h" />
+    <ClInclude Include="list_node_implementaion.h" />
+    <ClInclude Include="list_remove.h" />
+    <ClInclude Include="list_search.h" />
+    <ClInclude Include="list_selection_sort.h" />
+    <ClInclude Include="list_select_max.h" />
+    <ClInclude Include="list_sort.h" />
+    <ClInclude Include="list_uniquify.h" />
+    <ClInclude Include="queue.h" />
+    <ClInclude Include="release.h" />
+    <ClInclude Include="stack.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
