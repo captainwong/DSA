@@ -11,6 +11,10 @@ typedef struct _PA
 	int y;
 }Point, Alarm;
 
+
+// 理论参考： 
+// http://blog.csdn.net/william001zs/article/details/6213485
+// http://v.163.com/movie/2011/6/E/0/M82ICR1D9_M83E47VE0.html
 // P(px, py) on which side of Vecter AB, A(xa, 0), B(0, yb)
 // + right
 // 0 on
@@ -159,7 +163,32 @@ int getRange2(Alarm* A, int n, int x, int y)
 	return mm;
 }
 
-int main(int /*argc*/, char* /*argv[]*/)
+
+// 二分查找算法参考
+// http://blog.csdn.net/v_july_v/article/details/7093204
+int getRange3(Alarm* A, int n, int x, int y)
+{
+	int lo = 1;
+	int hi = n;
+
+	while (lo < hi) {
+		int mi = lo + ((hi - lo) >> 1);
+
+		int side = getSide(A[mi].x, A[mi].y, x, y);
+
+		if (side > 0) {
+			lo = mi + 1;
+		} else if (side < 0) {
+			hi = mi;
+		} else {
+			return mi;
+		}
+	}
+
+	return lo - 1;
+}
+
+int main(int /*argc*/, char** /*argv[]*/)
 {
 #ifndef _OJ_
 	clock_t start, stop;
@@ -169,7 +198,7 @@ int main(int /*argc*/, char* /*argv[]*/)
 	if (scanf("%d %d\n", &n, &m) == EOF)
 		return 1;
 
-	if (n < 100) {
+	if (n < 10) {
 		g_range = 1;
 	} else {
 		g_range = n / 10;
@@ -194,7 +223,7 @@ int main(int /*argc*/, char* /*argv[]*/)
 		if (scanf("%d %d\n", &x, &y) == EOF)
 			return 1;
 
-		printf("%d\n", getRange2(alarm, n + 1, x, y));
+		printf("%d\n", getRange3(alarm, n + 1, x, y));
 	}
 #ifndef _OJ_
 	stop = clock();
