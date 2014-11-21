@@ -44,6 +44,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "THUPA2_1_Alarm", "THUPA2_1_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "THUPA2_2_Train", "THUPA2_2_Train\THUPA2_2_Train.vcxproj", "{957AE24D-339D-4CDD-B057-CEA7897D66B2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05.bintree", "05.bintree\05.bintree.vcxproj", "{46308C26-0635-46A0-B346-15A62B3A2A49}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "THUPA2_4_Queap", "THUPA2_4_Queap\THUPA2_4_Queap.vcxproj", "{3AED0F63-4330-4F66-B432-EC4BF5F54388}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -122,6 +126,14 @@ Global
 		{957AE24D-339D-4CDD-B057-CEA7897D66B2}.Debug|Win32.Build.0 = Debug|Win32
 		{957AE24D-339D-4CDD-B057-CEA7897D66B2}.Release|Win32.ActiveCfg = Release|Win32
 		{957AE24D-339D-4CDD-B057-CEA7897D66B2}.Release|Win32.Build.0 = Release|Win32
+		{46308C26-0635-46A0-B346-15A62B3A2A49}.Debug|Win32.ActiveCfg = Debug|Win32
+		{46308C26-0635-46A0-B346-15A62B3A2A49}.Debug|Win32.Build.0 = Debug|Win32
+		{46308C26-0635-46A0-B346-15A62B3A2A49}.Release|Win32.ActiveCfg = Release|Win32
+		{46308C26-0635-46A0-B346-15A62B3A2A49}.Release|Win32.Build.0 = Release|Win32
+		{3AED0F63-4330-4F66-B432-EC4BF5F54388}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3AED0F63-4330-4F66-B432-EC4BF5F54388}.Debug|Win32.Build.0 = Debug|Win32
+		{3AED0F63-4330-4F66-B432-EC4BF5F54388}.Release|Win32.ActiveCfg = Release|Win32
+		{3AED0F63-4330-4F66-B432-EC4BF5F54388}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
