@@ -9,7 +9,8 @@ void swap(t& a, t& b)
 	b = t;
 }
 
-#include "vector_implementation.h"
+#include "vector.h"
+using namespace JTL;
 
 int main(int argc, char* argv[])
 {

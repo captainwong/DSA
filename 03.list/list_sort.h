@@ -1,7 +1,10 @@
 #pragma once
 
-template <typename T>
-void List<T>::sort(ListNodePosi(T) p, int n)
+namespace JTL // Jack's template library
 {
-	merge_sort(p, n);
-}
+	template <typename T>
+	void List<T>::sort(ListNodePosi(T) p, int n)
+	{
+		merge_sort(p, n);
+	}
+};

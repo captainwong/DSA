@@ -2,11 +2,13 @@
 
 #ifndef _OJ_
 #include "../03.list/list.h"
+using namespace JTL;
 #else
 #include "list.h"
 #endif
 
-template <typename T> class Stack : public List<T>
+template <typename T> 
+class Stack : public List<T>
 {
 public:
 	void push(T const& e) { this->insert_as_last(e); }

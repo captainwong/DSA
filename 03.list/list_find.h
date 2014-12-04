@@ -1,16 +1,18 @@
 #pragma once
 
-template <typename T>
-ListNodePosi(T) List<T>::find(T const& e, int n, ListNodePosi(T) p) const
+namespace JTL // Jack's template library
 {
-	assert(valid(p));
+	template <typename T>
+	ListNodePosi(T) List<T>::find(T const& e, int n, ListNodePosi(T) p) const
+	{
+		assert(valid(p));
 
-	while (n--) {
-		if ((p = p->pred)->data == e) {
-			return p;
+		while (n--) {
+			if ((p = p->pred)->data == e) {
+				return p;
+			}
 		}
+		return NULL;
 	}
-	return NULL;
-}
 
-
+};

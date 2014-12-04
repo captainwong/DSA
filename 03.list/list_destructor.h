@@ -1,9 +1,12 @@
 #pragma once
 
-template <typename T>
-List<T>::~List()
+namespace JTL // Jack's template library
 {
-	clear();
-	delete header;
-	delete trailer;
-}
+	template <typename T>
+	List<T>::~List()
+	{
+		clear();
+		delete header;
+		delete trailer;
+	}
+};

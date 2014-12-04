@@ -4,11 +4,13 @@
 //#include <string.h>
 #include "bintree.h"
 
+#if (_MSC_VER  >= 1800)
 template <typename T>
 T max(T const& a, T const& b)
 {
 	return a > b ? a : b;
 }
+#endif
 
 #define MAX_VAL 4000000
 int preorder[MAX_VAL] = { 0 };

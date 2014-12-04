@@ -1,12 +1,14 @@
 #pragma once
 
-template <typename T>
-int List<T>::clear()
+namespace JTL // Jack's template library
 {
-	int old_size = _size;
-	while (0 < _size) {
-		remove(header->succ);
+	template <typename T>
+	int List<T>::clear()
+	{
+		int old_size = _size;
+		while (0 < _size) {
+			remove(header->succ);
+		}
+		return old_size;
 	}
-	return old_size;
-}
-
+};
