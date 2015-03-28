@@ -98,7 +98,7 @@ int main(int argc, char* argv[])
 	//if (scanf("%s"STR(MAX_VAR)"s", pearls) == EOF)
 	//	return 0;
 	if (NULL == fgets(pearls, MAX_VAR, stdin))
-		return 0;
+		return 1;
 	int length = strlen(pearls);
 	List<char> list;
 	if (length == 1) {
