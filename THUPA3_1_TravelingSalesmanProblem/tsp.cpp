@@ -1,4 +1,7 @@
+#ifndef _OJ_
 #define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <stdio.h>
 
 static const int MAX_VERTEX = 100000;
