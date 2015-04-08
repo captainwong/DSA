@@ -1,7 +1,13 @@
+#if !defined(_OJ_)
 #define  _CRT_SECURE_NO_WARNINGS
+#include <windows.h>
+#endif
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
+
 //#include "list.h"
 
 // Import from ProgramCaicai.
@@ -50,9 +56,13 @@ LIGHT LightsTemp[MAX_VER] = { (0, 0) };
 //typedef List<LIGHT> LIGHT_LIST;
 //typedef ListNode<LIGHT>* POS;
 
+#ifndef max
 #define max(a, b)	(a) > (b) ? (a) : (b) 
-#define min(a, b)	(a) < (b) ? (a) : (b) 
+#endif
 
+#ifndef min
+#define min(a, b)	(a) < (b) ? (a) : (b) 
+#endif
 
 long long invertion_between(int lo, int mi, int hi)
 {
@@ -63,13 +73,13 @@ long long invertion_between(int lo, int mi, int hi)
 	int lc = hi - mi;
 	LIGHT *C = A + mi;
 	for (int i = 0, j = 0, k = 0; (j < lb) || (k < lc);) {
-		if ((j < lb) && (lc <= k || B[j].y < C[k].y)) {
-			if (k < lc && (B[j].y < C[k].y)) {
+		if ((j < lb) && (!(k < lc) || B[j].y <= C[k].y)) {
+			if (k < lc) {
 				sum += lc - k;
 			}
 			A[i++] = B[j++];
 		}
-		if ((k < lc) && (lb <= j || C[k].y < B[j].y))
+		if ((k < lc) && (!(j < lb) || C[k].y < B[j].y))
 			A[i++] = C[k++];
 	}
 
@@ -78,12 +88,17 @@ long long invertion_between(int lo, int mi, int hi)
 
 long long invertion_inside(int lo, int hi)
 {
-	if (hi == lo)
+#if !defined(_OJ_)
+	char buff[128] = { 0 };
+	sprintf(buff, "invertion_inside lo %d hi %d\n", lo, hi);
+	OutputDebugStringA(buff);
+#endif
+	if (hi - lo < 2)
 		return 0;
 
-	int mi = (hi + lo) >> 1;
+	int mi = lo + ((hi - lo) >> 1);
 	long long l = invertion_inside(lo, mi);
-	long long r = invertion_inside(mi + 1, hi);
+	long long r = invertion_inside(mi, hi);
 	return l + r + invertion_between(lo, mi, hi);
 }
 
@@ -103,26 +118,69 @@ inline void swap(int a, int b)
 	Lights[b].y = y;
 }
 
+
+
 void quik_sort(int lo, int hi)
 {
+#if !defined(_OJ_)
+	char buff[128] = { 0 };
+	sprintf(buff, "quik_sort lo %d hi %d\n", lo, hi);
+	OutputDebugStringA(buff);
+#endif
 	if (lo >= hi)
 		return;
 
 	swap(lo, rand_int(lo, hi));
-	int mi = lo;
-	for (int i = lo + 1; i < hi; i++) {
-		if (Lights[i].x < Lights[lo].x)
+	int mi = lo - 1;
+	for (int i = lo; i < hi - 1; i++) {
+		if (Lights[i].x <= Lights[hi - 1].x)
 			swap(++mi, i);
 	}
 
-	swap(lo, mi);
-	quik_sort(lo, mi - 1);
+	swap(hi - 1, ++mi);
+	quik_sort(lo, mi);
 	quik_sort(mi + 1, hi);
 }
+//
+//int Partition(int *A, int p, int r);
+//void QuickSort(int *A, int p, int r) //快速排序  
+//{
+//	int q;
+//	if (p<r)               //如果p大于等于r 那么就程序不执行  
+//	{
+//		q = Partition(A, p, r);  //调用分治法 找到q的值  
+//		QuickSort(A, p, q - 1);
+//		QuickSort(A, q + 1, r);
+//	}
+//}
+//
+//int Partition(int *A, int p, int r) //分治法，作用就是将数组分为A[p..q-1] 和A[q+1..r]  
+//{                                                   //然后调整元素使得A[p..q-1]小于等于q，也小于等于A[q+1..r]  
+//	int x, i, j, temp;
+//
+//	x = A[r];  //将最后一个值保存在x中  
+//	i = p - 1;   //开始的时候将i 移动到数组的外面  
+//	for (j = p; j <= r - 1; j++) {
+//		if (A[j] <= x) {
+//			i += 1;
+//			temp = A[i]; //exchange  
+//			A[i] = A[j];
+//			A[j] = temp;
+//		}
+//	}
+//
+//	temp = A[i + 1];  //exchange  
+//	A[i + 1] = A[r];
+//	A[r] = temp;
+//
+//	return i + 1;  //返回q值  
+//}
 
 
 int main(int argc, char* argv[])
 {
+	//int A[] = { 1, 2 };
+	//QuickSort(A, 0, 1);
 	srand(static_cast<unsigned int>(time(NULL)));
 	int n = 0;
 	if (scanf("%d", &n) == EOF)
@@ -148,7 +206,7 @@ int main(int argc, char* argv[])
 //	}
 //#endif
 	//POS head = list.first();
-	quik_sort(0, n);
+	quik_sort(0, n );
 	long long total = invertion_inside(0, n);
 	printf("%lld\n", total);
 	return 0;
