@@ -36,17 +36,19 @@ typedef struct LIGHT
 	int x;
 	int y;
 	LIGHT(int a = 0, int b = 0) :x(a), y(b) {}
-	/*LIGHT& operator=(const LIGHT& rhs)
+	LIGHT& operator=(const LIGHT& rhs)
 	{
 		x = rhs.x;
 		y = rhs.y;
 		return *this;
-	}*/
+	}
 
 	bool operator <= (const LIGHT& rhs)
 	{
 		return x <= rhs.x;
 	}
+
+
 
 }LIGHT, *PLIGHT;
 
@@ -64,18 +66,33 @@ LIGHT LightsTemp[MAX_VER] = { (0, 0) };
 #define min(a, b)	(a) < (b) ? (a) : (b) 
 #endif
 
-long long invertion_between(int lo, int mi, int hi)
+long long sum = 0;
+
+void invertion_between(int lo, int mi, int hi)
 {
-	long long sum = 0;
+#if !defined(_OJ_)
+	char buff[128] = { 0 };
+	sprintf(buff, "invertion_between lo %d mi %d hi %d\n", lo, mi, hi);
+	OutputDebugStringA(buff);
+#endif
+	
 	LIGHT *A = Lights + lo;
 	int lb = mi - lo;
-	LIGHT *B = LightsTemp; for (int i = 0; i < lb; i++) { B[i] = A[i]; }
+	LIGHT *B = LightsTemp; 
+	for (int i = 0; i < lb; i++) { 
+		B[i] = A[i]; 
+	}
 	int lc = hi - mi;
-	LIGHT *C = A + mi;
+	LIGHT *C = Lights + mi;
 	for (int i = 0, j = 0, k = 0; (j < lb) || (k < lc);) {
 		if ((j < lb) && (!(k < lc) || B[j].y <= C[k].y)) {
 			if (k < lc) {
-				sum += lc - k;
+#if !defined(_OJ_)
+				sprintf(buff, "sum++ B[%d].y %d, C[%d].y %d sum %lld, j+1 %d, lc-k %d, step %d\n",
+						j, B[j].y, k, C[k].y, sum, j + 1, lc - k, (j + 1) * (lc - k));
+				OutputDebugStringA(buff);
+#endif
+				sum +=  (lc - k);
 			}
 			A[i++] = B[j++];
 		}
@@ -83,23 +100,23 @@ long long invertion_between(int lo, int mi, int hi)
 			A[i++] = C[k++];
 	}
 
-	return sum;
+	//return sum;
 }
 
-long long invertion_inside(int lo, int hi)
+void invertion_inside(int lo, int hi)
 {
 #if !defined(_OJ_)
 	char buff[128] = { 0 };
 	sprintf(buff, "invertion_inside lo %d hi %d\n", lo, hi);
-	OutputDebugStringA(buff);
+	//OutputDebugStringA(buff);
 #endif
 	if (hi - lo < 2)
-		return 0;
+		return ;
 
 	int mi = lo + ((hi - lo) >> 1);
-	long long l = invertion_inside(lo, mi);
-	long long r = invertion_inside(mi, hi);
-	return l + r + invertion_between(lo, mi, hi);
+	invertion_inside(lo, mi);
+	invertion_inside(mi, hi);
+	invertion_between(lo, mi, hi);
 }
 
 
@@ -207,7 +224,12 @@ int main(int argc, char* argv[])
 //#endif
 	//POS head = list.first();
 	quik_sort(0, n );
-	long long total = invertion_inside(0, n);
-	printf("%lld\n", total);
+	invertion_inside(0, n);
+	printf("%lld\n", sum);
+#if !defined(_OJ_)
+	char buff[128] = { 0 };
+	sprintf(buff, "total %lld\n", sum);
+	OutputDebugStringA(buff);
+#endif
 	return 0;
 }
