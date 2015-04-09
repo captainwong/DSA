@@ -1,8 +1,21 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 //#include <stdlib.h>
-//#include <string.h>
+#include <string.h>
 #include "bintree.h"
+
+
+struct fastio
+{
+	static const int SZ = 1 << 18;
+	char inbuf[SZ];
+	char outbuf[SZ];
+	fastio()
+	{
+		setvbuf(stdin, inbuf, _IOFBF, SZ);
+		setvbuf(stdout, outbuf, _IOFBF, SZ);
+	}
+}io;
 
 #if (_MSC_VER  >= 1800)
 template <typename T>
@@ -20,15 +33,24 @@ int g_position_post[MAX_VAL+1] = { 0 };
 
 int g_print_index = 0;
 
-//char g_buff[1024 * 1024 * 100] = { 0 };
-//char g_tmp[32] = { 0 };
+#define USE_BUFF
+
+#ifdef USE_BUFF
+char g_buff[1024 * 1024 * 32] = { 0 };
+char g_tmp[32] = { 0 };
+int g_bf_pos = 0;
+#endif
 
 void visit(int data)
 {
-	printf("%d ", data);
-	//g_position_pre[g_print_index++] = data;
-	//sprintf(g_tmp, "%d ", data);
+#ifdef USE_BUFF
+	int len = sprintf(g_tmp, "%d ", data) + 1;
 	//strcat(g_buff, g_tmp);
+	memcpy(g_buff + g_bf_pos, g_tmp,len );
+	g_bf_pos += len;
+#else
+	printf("%d ", data);
+#endif
 }
 
 
@@ -65,10 +87,6 @@ void parseSubTree(BinTree<int>& bintree, BinNodePosi(int) pos,
 	}*/
 }
 
-//#define _DEBUG_
-
-
-
 int main(int /*argc*/, char** /*argv*/)
 {
 #ifdef _DEBUG_
@@ -88,6 +106,7 @@ int main(int /*argc*/, char** /*argv*/)
 	printf("\n");
 	return 0;
 #endif
+
 	int n;
 	if (scanf("%d\n", &n) == EOF)
 		return 0;
@@ -132,10 +151,11 @@ int main(int /*argc*/, char** /*argv*/)
 	parseSubTree(bintree, lpos, preorder + 1, postorder, rpos_in_pre - lpos_in_pre);
 	parseSubTree(bintree, rpos, preorder + rpos_in_pre, postorder + 1 + lpos_in_post, rpos_in_post - lpos_in_post);
 
-
 	bintree.travIn(visit);
-	//printf(g_buff);
+#ifdef USE_BUFF
+	// printf(g_buff);
 	//printf("\n");
+#endif
 	//for (int i = 0; i < g_print_index; i++) {
 	//	printf("%d ", g_position_pre[i]);
 	//}

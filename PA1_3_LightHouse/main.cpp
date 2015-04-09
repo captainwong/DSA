@@ -4,15 +4,15 @@
 #endif
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+//#include <stdlib.h>
+//#include <time.h>
 
 
 //#include "list.h"
 
 // Import from ProgramCaicai.
 // http://www.xuetangx.com/courses/TsinghuaX/30240184X/2014_T2/discussion/forum/undefined/threads/54392f32459f089cdd008aa2
-const int SZ = 1 << 20;
+const int SZ = 1 << 10;
 struct fastio
 {
 	char inbuf[SZ];
@@ -42,18 +42,10 @@ typedef struct LIGHT
 		y = rhs.y;
 		return *this;
 	}
-
-	bool operator <= (const LIGHT& rhs)
-	{
-		return x <= rhs.x;
-	}
-
-
-
 }LIGHT, *PLIGHT;
 
 LIGHT Lights[MAX_VER] = { (0, 0) };
-LIGHT LightsTemp[MAX_VER] = { (0, 0) };
+LIGHT LightsTemp[(MAX_VER >> 1) + 1] = { (0, 0) };
 //list_node<PLIGHT> PosArray[MAX_VER] = { NULL };
 //typedef List<LIGHT> LIGHT_LIST;
 //typedef ListNode<LIGHT>* POS;
@@ -119,11 +111,51 @@ void invertion_inside(int lo, int hi)
 	invertion_between(lo, mi, hi);
 }
 
-
-inline int rand_int(int lo, int hi)
+void merge(int lo, int mi, int hi)
 {
-	return lo + rand() % (hi - lo);
+#if !defined(_OJ_)
+	char buff[128] = { 0 };
+	sprintf(buff, "merge lo %d mi %d hi %d\n", lo, mi, hi);
+	OutputDebugStringA(buff);
+#endif
+
+	LIGHT *A = Lights + lo;
+	int lb = mi - lo;
+	LIGHT *B = LightsTemp;
+	for (int i = 0; i < lb; i++) {
+		B[i] = A[i];
+	}
+	int lc = hi - mi;
+	LIGHT *C = Lights + mi;
+	for (int i = 0, j = 0, k = 0; (j < lb) || (k < lc);) {
+		if ((j < lb) && (!(k < lc) || B[j].x <= C[k].x)) {
+			A[i++] = B[j++];
+		}
+		if ((k < lc) && (!(j < lb) || C[k].x < B[j].x))
+			A[i++] = C[k++];
+	}
 }
+
+void merge_sort(int lo, int hi)
+{
+#if !defined(_OJ_)
+	char buff[128] = { 0 };
+	sprintf(buff, "merge_sort lo %d hi %d\n", lo, hi);
+	//OutputDebugStringA(buff);
+#endif
+	if (hi - lo < 2)
+		return;
+
+	int mi = lo + ((hi - lo) >> 1);
+	merge_sort(lo, mi);
+	merge_sort(mi, hi);
+	merge(lo, mi, hi);
+}
+
+//inline int rand_int(int lo, int hi)
+//{
+//	return lo + rand() % (hi - lo);
+//}
 
 inline void swap(int a, int b)
 {
@@ -147,7 +179,7 @@ void quik_sort(int lo, int hi)
 	if (lo >= hi)
 		return;
 
-	swap(lo, rand_int(lo, hi));
+	//swap(lo, rand_int(lo, hi));
 	int mi = lo - 1;
 	for (int i = lo; i < hi - 1; i++) {
 		if (Lights[i].x <= Lights[hi - 1].x)
@@ -193,25 +225,35 @@ void quik_sort(int lo, int hi)
 //	return i + 1;  //·µ»ØqÖµ  
 //}
 
+//char bf[180 * 1024 * 1024] = { 0 };
 
 int main(int argc, char* argv[])
 {
 	//int A[] = { 1, 2 };
 	//QuickSort(A, 0, 1);
-	srand(static_cast<unsigned int>(time(NULL)));
+	//srand(static_cast<unsigned int>(time(NULL)));
 	int n = 0;
-	if (scanf("%d", &n) == EOF)
+	if (scanf("%d\n", &n) != 1)
 		return 0;
 	//LIGHT_LIST list;
 
 	//int x = 0, y = 0;
+
+	//fread(bf, 1, sizeof(bf), stdin);
+	int pos = 0;
 	for (int i = 0; i < n; i++) {
-		if (scanf("%d %d", &Lights[i].x, &Lights[i].y) == EOF)
-			return 0;
+		//if (sscanf(bf + pos, "%d %d\n", &Lights[i].x, &Lights[i].y) != 2)
+		//	return 0;
+		/*while ((*(bf + pos++) != '\n')) {
+			if (pos >= sizeof(bf))
+				return 1;
+		}*/
 		//list.insert_as_last(LIGHT(x, y));
 		//insert_and_sort_light(x, y);
 		//Lights[i].x = x;
 		//Lights[i].y = y;
+		if (scanf("%d %d\n", &Lights[i].x, &Lights[i].y) != 2)
+			return 0;
 	}
 
 	//list.sort();
@@ -223,7 +265,8 @@ int main(int argc, char* argv[])
 //	}
 //#endif
 	//POS head = list.first();
-	quik_sort(0, n );
+	//quik_sort(0, n); 
+	merge_sort(0, n);
 	invertion_inside(0, n);
 	printf("%lld\n", sum);
 #if !defined(_OJ_)

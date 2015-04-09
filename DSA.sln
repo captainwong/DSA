@@ -56,6 +56,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06.Graph", "06.Graph\06.Gra
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quick_sort", "quick_sort\quick_sort.vcxproj", "{955EE8CA-240E-4A3F-B2FD-180791124F1D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PA2_1_Train", "PA2_1_Train\PA2_1_Train.vcxproj", "{08647B99-3269-4556-8A97-D7DA76D16422}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -158,6 +160,10 @@ Global
 		{955EE8CA-240E-4A3F-B2FD-180791124F1D}.Debug|Win32.Build.0 = Debug|Win32
 		{955EE8CA-240E-4A3F-B2FD-180791124F1D}.Release|Win32.ActiveCfg = Release|Win32
 		{955EE8CA-240E-4A3F-B2FD-180791124F1D}.Release|Win32.Build.0 = Release|Win32
+		{08647B99-3269-4556-8A97-D7DA76D16422}.Debug|Win32.ActiveCfg = Debug|Win32
+		{08647B99-3269-4556-8A97-D7DA76D16422}.Debug|Win32.Build.0 = Debug|Win32
+		{08647B99-3269-4556-8A97-D7DA76D16422}.Release|Win32.ActiveCfg = Release|Win32
+		{08647B99-3269-4556-8A97-D7DA76D16422}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
