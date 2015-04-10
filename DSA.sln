@@ -58,6 +58,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quick_sort", "quick_sort\qu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PA2_1_Train", "PA2_1_Train\PA2_1_Train.vcxproj", "{08647B99-3269-4556-8A97-D7DA76D16422}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CST_1_1_BigInt", "CST_1_1_BigInt\CST_1_1_BigInt.vcxproj", "{8011AA7B-F020-4885-A1BE-43280F8C8620}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -164,6 +166,10 @@ Global
 		{08647B99-3269-4556-8A97-D7DA76D16422}.Debug|Win32.Build.0 = Debug|Win32
 		{08647B99-3269-4556-8A97-D7DA76D16422}.Release|Win32.ActiveCfg = Release|Win32
 		{08647B99-3269-4556-8A97-D7DA76D16422}.Release|Win32.Build.0 = Release|Win32
+		{8011AA7B-F020-4885-A1BE-43280F8C8620}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8011AA7B-F020-4885-A1BE-43280F8C8620}.Debug|Win32.Build.0 = Debug|Win32
+		{8011AA7B-F020-4885-A1BE-43280F8C8620}.Release|Win32.ActiveCfg = Release|Win32
+		{8011AA7B-F020-4885-A1BE-43280F8C8620}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
