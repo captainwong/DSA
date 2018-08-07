@@ -5,6 +5,7 @@
 *.obj
 
 # vs
+.vs/
 *.sdf
 #*.sln
 *.suo
