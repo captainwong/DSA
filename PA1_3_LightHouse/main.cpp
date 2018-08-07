@@ -19,7 +19,7 @@ Input
 Output
 How many pairs of lighthourses can beacon each other
 
-( For every lighthouses, X coordinates won't be the same , Y coordinates won't be the same )
+( For every lighthouses, X coordinates wont be the same , Y coordinates wont be the same )
 
 Example
 Input
@@ -32,13 +32,13 @@ Output
 
 1
 Restrictions
-For 90% test cases: 1 <= n <= 3 * 105
+For 90% test cases: 1 <= n <= 3 * 10^5
 
-For 95% test cases: 1 <= n <= 106
+For 95% test cases: 1 <= n <= 10^6
 
-For all test cases: 1 <= n <= 4 * 106
+For all test cases: 1 <= n <= 4 * 10^6
 
-For every lighthouses, X coordinates wont be the same , Y coordinates won't be the same.
+For every lighthouses, X coordinates wont be the same , Y coordinates wont be the same.
 
 1 <= x, y <= 10^8
 
@@ -80,11 +80,11 @@ https://dsa.cs.tsinghua.edu.cn/oj/attachment/9d7f/9d7f16b4bddbee9795e12ba22fd7f8
 见英文题面
 
 限制
-对于90%的测例：1 ≤ n ≤ 3×105
+对于90%的测例：1 ≤ n ≤ 3×10^5
 
-对于95%的测例：1 ≤ n ≤ 106
+对于95%的测例：1 ≤ n ≤ 10^6
 
-全部测例：1 ≤ n ≤ 4×106
+全部测例：1 ≤ n ≤ 4×10^6
 
 灯塔的坐标x, y是整数，且不同灯塔的x, y坐标均互异
 
@@ -95,7 +95,16 @@ https://dsa.cs.tsinghua.edu.cn/oj/attachment/9d7f/9d7f16b4bddbee9795e12ba22fd7f8
 内存：256 MB
 
 提示
-注意机器中整型变量的范围，C/C++中的int类型通常被编译成32位整数，其范围为[-231, 231 - 1]，不一定足够容纳本题的输出。
+注意机器中整型变量的范围，C/C++中的int类型通常被编译成32位整数，其范围为[-2^31, 2^31 - 1]，不一定足够容纳本题的输出。
+
+
+2018-8-7 22:56:34
+解题思路
+两个灯塔A(x1,y1),B(x2,y2)可以彼此照亮的条件为
+1. (x1 < x2) && (y1 < y2)
+2. (x1 > x2) && (y1 > y2)
+
+那么将所有输入坐标按X排序后，可简化为条件1
 
 */
 
@@ -186,12 +195,14 @@ void invertion_between(int lo, int mi, int hi)
 						j, B[j].y, k, C[k].y, sum, j + 1, lc - k, (j + 1) * (lc - k));
 				OutputDebugStringA(buff);
 #endif
-				sum +=  (lc - k);
+				sum += j + 1;
 			}
 			A[i++] = B[j++];
 		}
-		if ((k < lc) && (!(j < lb) || C[k].y < B[j].y))
+		if ((k < lc) && (!(j < lb) || C[k].y < B[j].y)) {
 			A[i++] = C[k++];
+			sum++;
+		}
 	}
 
 	//return sum;
@@ -329,7 +340,7 @@ void quik_sort(int lo, int hi)
 
 //char bf[180 * 1024 * 1024] = { 0 };
 
-int main(int argc, char* argv[])
+int main_5(int argc, char* argv[])
 {
 	//int A[] = { 1, 2 };
 	//QuickSort(A, 0, 1);
