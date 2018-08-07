@@ -119,7 +119,20 @@ long sequenceYBetween(Light * lights, int lo, int mi, int hi)
 	for (int ia = 0, ib = 0, ic = 0; (ib < lb) || (ic < lc); ) {
 		if ((ib < lb) && (!(ic < lc) || (B[ib].y < C[ic].y))) { 
 			if (ic < lc) {
+				// sum += lb + 1;
 				sum += lc - ic;
+
+				// 2018-8-8 01:44:22 
+				// 上方代码更改后即95AC，不理解
+				// lc - ic 为C[ic]之后的灯塔数量，易知从C[ic]（包含）之后，所有的y都大于B[ib].y，因此lc - ic 即为顺序对数量
+				// BUT!!!
+				// 为什么lb + 1不是？
+				// lb + 1 为B[ib](包含）往左所有的灯塔，不也是跟C[ic].y构成顺序对？为毛只能20AC？？？
+
+				// 2018-8-8 01:49:29
+				// got it
+				// 从B[ib]往左的点，每次都会统计，会导致超出真实数量
+				// 只有从C[ic]往右统计，才是真实数量
 			}
 			A[ia++] = B[ib++];
 		}
