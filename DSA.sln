@@ -88,6 +88,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JTL", "JTL", "{07A46C78-1B1
 		JTL\vector_implementation.h = JTL\vector_implementation.h
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quick_sort", "Exercise\quick_sort\quick_sort.vcxproj", "{955EE8CA-240E-4A3F-B2FD-180791124F1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -190,6 +192,10 @@ Global
 		{B51A739B-8AF1-4BF2-83C0-188899E23FAB}.Debug|Win32.Build.0 = Debug|Win32
 		{B51A739B-8AF1-4BF2-83C0-188899E23FAB}.Release|Win32.ActiveCfg = Release|Win32
 		{B51A739B-8AF1-4BF2-83C0-188899E23FAB}.Release|Win32.Build.0 = Release|Win32
+		{955EE8CA-240E-4A3F-B2FD-180791124F1D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{955EE8CA-240E-4A3F-B2FD-180791124F1D}.Debug|Win32.Build.0 = Debug|Win32
+		{955EE8CA-240E-4A3F-B2FD-180791124F1D}.Release|Win32.ActiveCfg = Release|Win32
+		{955EE8CA-240E-4A3F-B2FD-180791124F1D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,6 +225,7 @@ Global
 		{51BDF209-A770-4564-968D-6001BD927B2D} = {5A0EDD04-4351-4C2A-ACAB-9F44239B7CD4}
 		{3AED0F63-4330-4F66-B432-EC4BF5F54388} = {5A0EDD04-4351-4C2A-ACAB-9F44239B7CD4}
 		{B51A739B-8AF1-4BF2-83C0-188899E23FAB} = {5A0EDD04-4351-4C2A-ACAB-9F44239B7CD4}
+		{955EE8CA-240E-4A3F-B2FD-180791124F1D} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}

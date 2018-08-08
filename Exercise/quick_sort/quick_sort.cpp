@@ -19,7 +19,7 @@ int partition(int* A, int p, int r)
 	printf("for start\n");
 	for (int j = p; j < r; j++) {
 		printf("\tforring: j %d, i %d\n", j, i);
-		printf("\tcomparing between A[%d] %d and x %d\n", j, x, A[j], x);
+		printf("\tcomparing between A[%d] %d and x %d\n", j, A[j], x);
 		if (A[j] <= x) {
 			printf("\t\tif(A[j] <= x) is true. j %d, A[j] %d <= x %d\n", j, A[j], x);
 			i++;
