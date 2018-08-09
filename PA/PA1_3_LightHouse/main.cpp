@@ -47,7 +47,7 @@ Time: 2 sec
 Memory: 256 MB
 
 Hints
-The range of int is usually [-231, 231 - 1], it may be too small.
+The range of int is usually [-2^31, 2^31 - 1], it may be too small.
 
 描述
 海上有许多灯塔，为过路船只照明。
