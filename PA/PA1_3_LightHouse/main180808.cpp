@@ -143,7 +143,7 @@ long sequenceYBetween(Light * lights, int lo, int mi, int hi)
 
 				// 2018-8-8 01:49:29
 				// got it
-				// 从B[ib]往左的点，每次都会统计，会导致超出真实数量
+				// 从B[ib]往左的点，每次循环后都会重复统计，会导致超出真实数量
 				// 只有从C[ic]往右统计，才是真实数量
 			}
 			A[ia++] = B[ib++];
