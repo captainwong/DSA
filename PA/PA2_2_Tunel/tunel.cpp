@@ -158,7 +158,7 @@ int main(int argc, char* argv[])
 {
 	int n;
 	if (scanf("%d\n", &n) == EOF)
-		return 1;
+		return 0;
 
 	//return (n & 0xff) + 1;
 	if (n == 0)

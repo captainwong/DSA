@@ -56,6 +56,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(SolutionDir)JTL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -72,6 +73,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)JTL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -82,70 +84,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ProperRebuild.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="binnode.h" />
-    <ClInclude Include="binnode_implementation.h" />
-    <ClInclude Include="binnode_insert.h" />
-    <ClInclude Include="binnode_macro.h" />
-    <ClInclude Include="binnode_macro_avl.h" />
-    <ClInclude Include="binnode_macro_basic.h" />
-    <ClInclude Include="binnode_macro_redblack.h" />
-    <ClInclude Include="binnode_size.h" />
-    <ClInclude Include="binnode_stretchbyzag.h" />
-    <ClInclude Include="binnode_stretchbyzig.h" />
-    <ClInclude Include="binnode_succ.h" />
-    <ClInclude Include="binnode_travinorder.h" />
-    <ClInclude Include="binnode_travinorder_i1.h" />
-    <ClInclude Include="binnode_travinorder_i2.h" />
-    <ClInclude Include="binnode_travinorder_i3.h" />
-    <ClInclude Include="binnode_travinorder_i4.h" />
-    <ClInclude Include="binnode_travinorder_r.h" />
-    <ClInclude Include="binnode_travlevel.h" />
-    <ClInclude Include="binnode_travpostorder.h" />
-    <ClInclude Include="binnode_travpostorder_i.h" />
-    <ClInclude Include="binnode_travpostorder_r.h" />
-    <ClInclude Include="binnode_travpreorder.h" />
-    <ClInclude Include="binnode_travpreorder_i1.h" />
-    <ClInclude Include="binnode_travpreorder_i2.h" />
-    <ClInclude Include="binnode_travpreorder_r.h" />
-    <ClInclude Include="binnode_zag.h" />
-    <ClInclude Include="binnode_zig.h" />
-    <ClInclude Include="bintree.h" />
-    <ClInclude Include="bintree_attach.h" />
-    <ClInclude Include="bintree_implementation.h" />
-    <ClInclude Include="bintree_insert.h" />
-    <ClInclude Include="bintree_remove.h" />
-    <ClInclude Include="bintree_secede.h" />
-    <ClInclude Include="bintree_size.h" />
-    <ClInclude Include="bintree_test.h" />
-    <ClInclude Include="bintree_updateheight.h" />
-    <ClInclude Include="list.h" />
-    <ClInclude Include="list_bracket.h" />
-    <ClInclude Include="list_clear.h" />
-    <ClInclude Include="list_copy_constructor.h" />
-    <ClInclude Include="list_copy_nodes.h" />
-    <ClInclude Include="list_deduplicate.h" />
-    <ClInclude Include="list_destructor.h" />
-    <ClInclude Include="list_disordered.h" />
-    <ClInclude Include="list_find.h" />
-    <ClInclude Include="list_implementation.h" />
-    <ClInclude Include="list_init.h" />
-    <ClInclude Include="list_insert.h" />
-    <ClInclude Include="list_insertion_sort.h" />
-    <ClInclude Include="list_merge.h" />
-    <ClInclude Include="list_merge_sort.h" />
-    <ClInclude Include="list_node.h" />
-    <ClInclude Include="list_node_implementaion.h" />
-    <ClInclude Include="list_remove.h" />
-    <ClInclude Include="list_search.h" />
-    <ClInclude Include="list_selection_sort.h" />
-    <ClInclude Include="list_select_max.h" />
-    <ClInclude Include="list_sort.h" />
-    <ClInclude Include="list_uniquify.h" />
-    <ClInclude Include="queue.h" />
-    <ClInclude Include="release.h" />
-    <ClInclude Include="stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
