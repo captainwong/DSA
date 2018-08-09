@@ -3,22 +3,20 @@
 
 #include <stdio.h>
 #include <string.h>
-#ifndef _OJ_
 #include <stdlib.h>
-#endif // !_OJ_
 
 
-//struct fastio
-//{
-//	static constexpr int sz = 1 << 10;
-//	char inbuf[sz];
-//	char outbuf[sz];
-//	fastio()
-//	{
-//		setvbuf(stdin, inbuf, _IOFBF, sz);
-//		setvbuf(stdout, outbuf, _IOFBF, sz);
-//	}
-//}__io;
+struct fastio
+{
+	static constexpr int sz = 1 << 10;
+	char inbuf[sz];
+	char outbuf[sz];
+	fastio()
+	{
+		setvbuf(stdin, inbuf, _IOFBF, sz);
+		setvbuf(stdout, outbuf, _IOFBF, sz);
+	}
+}__io;
 
 
 struct Light {
@@ -40,6 +38,8 @@ long sequenceYBetween(Light* lights, int lo, int mi, int hi);
 long invertionYInside(Light* lights, int lo, int hi);
 long invertionYBetween(Light* lights, int lo, int mi, int hi);
 
+int cmp(const void* p1, const void* p2);
+
 int main()
 {
 	int n = 0;
@@ -51,7 +51,11 @@ int main()
 			return 0;
 	}
 
-	mergeSortX(Lights, 0, n);
+	//mergeSortX(Lights, 0, n);
+
+	qsort(Lights, n, sizeof(Light), cmp);
+
+
 	// Ë³Ðò¶Ô½â·¨
 	//auto sum = sequenceYInside(Lights, 0, n);
 
@@ -195,4 +199,11 @@ long invertionYBetween(Light * lights, int lo, int mi, int hi)
 	}
 
 	return sum;
+}
+
+int cmp(const void * p1, const void * p2)
+{
+	auto l1 = static_cast<const Light*>(p1);
+	auto l2 = static_cast<const Light*>(p2);
+	return l1->x - l2->x;
 }
