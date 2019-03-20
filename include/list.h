@@ -3,8 +3,6 @@
 #include <assert.h>
 #include "list_node.h"
 
-namespace JTL // Jack's template library
-{
 template <typename T>
 class List
 {
@@ -58,7 +56,6 @@ public:
 	void sort() { sort(first(), _size); }
 	int deduplicate();	// unsorted
 	int uniquify();		// sorted
-};
 };
 
 #include "list_implementation.h"

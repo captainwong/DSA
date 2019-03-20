@@ -1,12 +1,7 @@
 #pragma once
 
 
-#ifdef _OJ_
 #include "list.h"
-#else
-#include "list.h"
-using namespace JTL;
-#endif
 
 template <typename T> 
 class Queue : public List<T>

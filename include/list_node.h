@@ -1,7 +1,5 @@
 #pragma once
 
-namespace JTL // Jack's template library
-{
 typedef int Rank;
 #define ListNodePosi(T) ListNode<T>*
 
@@ -19,8 +17,6 @@ struct ListNode
 
 	ListNodePosi(T) insert_as_pred(T const& e);
 	ListNodePosi(T) insert_as_succ(T const& e);
-};
-
 };
 
 #include "list_node_implementaion.h"

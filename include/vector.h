@@ -1,7 +1,5 @@
 #pragma once
 
-namespace JTL // Jack's template library
-{
 /*
 size()			报告向量当前的规模
 get(r)			获取秩为r的元素
@@ -110,7 +108,6 @@ protected:
 	static Rank binary_search(T* A, T const& e, Rank lo, Rank hi);
 	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi);
 	static Rank interpolation_search(T* A, T const& e, Rank lo, Rank hi);
-};
 };
 
 #include "vector_implementation.h"

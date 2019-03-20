@@ -1,7 +1,5 @@
 #pragma once 
 
-namespace JTL // Jack's template library
-{
 template <typename T>
 ListNodePosi(T) ListNode<T>::insert_as_pred(T const& e)
 {
@@ -20,5 +18,3 @@ ListNodePosi(T) ListNode<T>::insert_as_succ(T const& e)
 	succ = pos;
 	return pos;
 }
-
-};

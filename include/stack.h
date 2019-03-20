@@ -1,11 +1,6 @@
 #pragma once
 
-#ifndef _OJ_
 #include "list.h"
-using namespace JTL;
-#else
-#include "list.h"
-#endif
 
 template <typename T> 
 class Stack : public List<T>
