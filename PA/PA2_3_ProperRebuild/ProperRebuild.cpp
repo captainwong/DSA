@@ -99,7 +99,7 @@ In Figure 2, observe the positions of the left and right children in preorder an
 #include <stdio.h>
 //#include <stdlib.h>
 #include <string.h>
-#include "bintree.h"
+#include "../../include/bintree.h"
 
 
 struct fastio

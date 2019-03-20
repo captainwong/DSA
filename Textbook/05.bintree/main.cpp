@@ -2,7 +2,7 @@
 #include <stdio.h>
 //#include <stdlib.h>
 //#include <string.h>
-#include "bintree.h"
+#include "../include/bintree.h"
 
 template <typename T>
 T max(T const& a, T const& b)
