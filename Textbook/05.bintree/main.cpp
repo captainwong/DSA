@@ -35,12 +35,40 @@ void test_tree()
 	auto p = tree.insertAsRightChild(n, 'p');
 	auto o = tree.insertAsLeftChild(p, 'o');
 
-	assert(i->height == 4);
-	assert(d->height == 3 && l->height == 3);
-	assert(c->height == 2 && h->height == 2 && k->height == 1 && n->height == 2);
-	assert(a->height == 1 && f->height == 1 && j->height == 0 && m->height == 0 && p->height == 1);
-	assert(b->height == 0 && e->height == 0 && g->height == 0 && o->height == 0);
+	// basic test
+	assert(i->isRoot());
+	assert(i->hasLChild());
+	assert(i->hasRChild());
+	assert(!d->isRoot());
+	assert(d->isLChild());
+	assert(l->isRChild());
 
+	// test succ
+	assert(a->succ() == b);
+	assert(b->succ() == c);
+	assert(c->succ() == d);
+	assert(d->succ() == e);
+	assert(e->succ() == f);
+	assert(f->succ() == g);
+	assert(g->succ() == h);
+	assert(h->succ() == i);
+	assert(i->succ() == j);
+	assert(j->succ() == k);
+	assert(k->succ() == l);
+	assert(l->succ() == m);
+	assert(m->succ() == n);
+	assert(n->succ() == o);
+	assert(o->succ() == p);
+	assert(p->succ() == nullptr);
+
+	// test height
+	assert(i->height_ == 4);
+	assert(d->height_ == 3 && l->height_ == 3);
+	assert(c->height_ == 2 && h->height_ == 2 && k->height_ == 1 && n->height_ == 2);
+	assert(a->height_ == 1 && f->height_ == 1 && j->height_ == 0 && m->height_ == 0 && p->height_ == 1);
+	assert(b->height_ == 0 && e->height_ == 0 && g->height_ == 0 && o->height_ == 0);
+
+	// test travel
 	std::string str;
 	auto visit = [&str](char c) {
 		str += c;
@@ -60,6 +88,8 @@ void test_tree()
 	str.clear();
 	tree.travLevelOrder(i, visit);
 	assert(str == "idlchknafjmpbego");
+
+	
 }
 
 int main(int /*argc*/, char** /*argv*/)

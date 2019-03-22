@@ -18,14 +18,14 @@ protected:
 
 	//! 更新节点 node 的高度
 	virtual int updateHeight(NodePtr node) {
-		return node->height = 1 + std::max(stature(node->lChild), stature(node->rChild));
+		return node->height_ = 1 + std::max(stature(node->lChild_), stature(node->rChild_));
 	}
 
 	//! 更新节点 node 及其祖先的高度
 	void updateHeightAbove(NodePtr node) {
 		while (node) {
 			updateHeight(node);
-			node = node->parent;
+			node = node->parent_;
 		}
 	}
 
@@ -48,22 +48,22 @@ public:
 		size_++;
 		node->insertAsLeftChild(data);
 		updateHeightAbove(node);
-		return node->lChild;
+		return node->lChild_;
 	}
 
 	NodePtr insertAsRightChild(NodePtr node, T const& data) {
 		size_++;
 		node->insertAsRightChild(data);
 		updateHeightAbove(node);
-		return node->rChild;
+		return node->rChild_;
 	}
 
 	template <typename VST>
 	static void visitAlongLeftBranch(NodePtr node, VST& visit, Stack<NodePtr>& stack) {
 		while (node) {
-			visit(node->data);
-			stack.push(node->rChild);
-			node = node->lChild;
+			visit(node->data_);
+			stack.push(node->rChild_);
+			node = node->lChild_;
 		}
 	}
 
@@ -80,7 +80,7 @@ public:
 	static void goAlongLeftBranch(NodePtr node, Stack<NodePtr>& stack) {
 		while (node) {
 			stack.push(node);
-			node = node->lChild;
+			node = node->lChild_;
 		}
 	}
 
@@ -91,21 +91,21 @@ public:
 			goAlongLeftBranch(node, stack);
 			if (stack.empty()) { break; }
 			node = stack.pop();
-			visit(node->data);
-			node = node->rChild;
+			visit(node->data_);
+			node = node->rChild_;
 		}
 	}
 
 	// go to highest leaf visible from left
 	static void goToHLVFL(Stack<NodePtr>& stack) {
 		while (auto node = stack.top()) {
-			if (node->lChild) {
-				if (node->rChild) {
-					stack.push(node->rChild);
+			if (node->lChild_) {
+				if (node->rChild_) {
+					stack.push(node->rChild_);
 				}
-				stack.push(node->lChild);
+				stack.push(node->lChild_);
 			} else {
-				stack.push(node->rChild);
+				stack.push(node->rChild_);
 			}
 		}
 		stack.pop();
@@ -116,11 +116,11 @@ public:
 		Stack<NodePtr> stack;
 		if (node) { stack.push(node); }
 		while (!stack.empty()) {
-			if (stack.top() != node->parent) {
+			if (stack.top() != node->parent_) {
 				goToHLVFL(stack);
 			}
 			node = stack.pop();
-			visit(node->data);
+			visit(node->data_);
 		}
 	}
 
@@ -130,9 +130,9 @@ public:
 		queue.enqueue(node);
 		while (!queue.empty()) {
 			node = queue.dequeue();
-			visit(node->data);
-			if (node->lChild) { queue.enqueue(node->lChild); }
-			if (node->rChild) { queue.enqueue(node->rChild); }
+			visit(node->data_);
+			if (node->lChild_) { queue.enqueue(node->lChild_); }
+			if (node->rChild_) { queue.enqueue(node->rChild_); }
 		}
 	}
 };
