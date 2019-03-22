@@ -2,8 +2,8 @@
 
 #include "BinNode.h"
 #include <algorithm>
-#include "../include/stack.h"
-#include "../include/queue.h"
+#include "../../include/stack.h"
+#include "../../include/queue.h"
 
 template <typename T>
 class BinTree
