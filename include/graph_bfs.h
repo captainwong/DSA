@@ -1,7 +1,5 @@
 #pragma once
 
-JTL_NAMESPACE_BEGIN
-
 template <typename Tv, typename Te>
 void Graph<Tv, Te>::bfs(int s)
 {
@@ -39,5 +37,3 @@ void Graph<Tv, Te>::BFS(int v, int& clock)
 		status(v) = VISITED;
 	}
 }
-
-JTL_NAMESPACE_END

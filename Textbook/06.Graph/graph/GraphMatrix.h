@@ -1,24 +1,28 @@
 #pragma once
 
-#include "vector.h"
-#include "graph.h"
+#include "Graph.h"
+#include "../include/vector.h"
+#include <assert.h>
 
-template <typename Tv>
+template <typename T>
 struct Vertex
 {
-	Tv data;
+	T data;
 	int inDegree;
 	int outDegree;
-	VStatus status;
+	VertexStatus status;
+	//! discovered time
 	int dTime;
+	//! finished visit time
 	int fTime;
 	int parent;
 	int priority;
-	Vertex(Tv const& d = (Tv)0)
-		: data(d)
+
+	Vertex(T const& data)
+		: data(data)
 		, inDegree(0)
 		, outDegree(0)
-		, status(UNDISCOVERED)
+		, status(VertexStatus::undiscovered)
 		, dTime(-1)
 		, fTime(-1)
 		, parent(-1)
@@ -26,16 +30,17 @@ struct Vertex
 	{}
 };
 
-template <typename Te>
+template <typename T>
 struct Edge
 {
-	Te data;
+	T data;
 	int weight;
-	EType type;
-	Edge(Te const& d, int w)
-		: data(d)
-		, weight(w)
-		, type(UNDETERMINED)
+	EdgeStatus status;
+
+	Edge(T const& data, int weight)
+		: data(data)
+		, weight(weight)
+		, status(EdgeStatus::undetermined)
 	{}
 };
 
@@ -43,10 +48,16 @@ template <typename Tv, typename Te>
 class GraphMatrix : public Graph<Tv, Te>
 {
 private:
+	//! vertexes
 	Vector<Vertex<Tv>> V;
+	//! edges
 	Vector<Vector<Edge<Te>*>> E;
+
 public:
-	GraphMatrix() { n = e = 0; }
+	GraphMatrix() {
+		n = e = 0;
+	}
+
 	~GraphMatrix()
 	{
 		for (int j = 0; j < n; j++) {
@@ -60,28 +71,30 @@ public:
 	virtual Tv& vertex(int i) { return V[i].data; }
 	virtual int inDegree(int i) { return V[i].inDegree; }
 	virtual int outDegree(int i) { return V[i].outDegree; }
-	virtual int firstNbr(int i) { return nextNbr(i, n); }
-	virtual int nextNbr(int i, int j)
-	{
-		while ((-1 < j) && (exists(i, --j))) {}
-		return j;
-	}
 	virtual VStatus& status(int i) { return V[i].status; }
 	virtual int& dTime(int i) { return V[i].dTime; }
 	virtual int& fTime(int i) { return V[i].fTime; }
 	virtual int& parent(int i) { return V[i].parent; }
 	virtual int& priority(int i) { return V[i].priority; }
 
+	virtual int firstNbr(int i) { return nextNbr(i, n); }
+	virtual int nextNbr(int i, int j)
+	{
+		while ((-1 < j) && (exists(i, --j))) {}
+		return j;
+	}
+
 	// vertex dynamic operation
 	virtual int insert(Tv const& vertex)
 	{
 		for (int j = 0; j < n; j++) {
-			E[j].insert(NULL);
+			E[j].insert(nullptr);
 		}
 		n++;
-		E.insert(Vector<Edge<Te>*>(n, n, (Edge<Te>*)NULL));
+		E.insert(Vector<Edge<Te>*>(n, n, (Edge<Te>*)nullptr));
 		return V.insert(Vertex<Tv>(vertex));
 	}
+
 	virtual Tv remove(int i)
 	{
 		assert(0 <= i && i < n);
@@ -107,7 +120,7 @@ public:
 	// edge operation
 	virtual bool exists(int i, int j)
 	{
-		return (0 <= i) && (i < n) && (0 <= j) && (j < n) && E[i][j] != NULL;
+		return (0 <= i) && (i < n) && (0 <= j) && (j < n) && E[i][j] != nullptr;
 	}
 	virtual EType& type(int i, int j) { assert(exists(i, j)); return E[i][j]->type; }
 	virtual Te& edge(int i, int j) { assert(exists(i, j)); return E[i][j]->data; }
@@ -126,7 +139,7 @@ public:
 		assert(exists(i, j));
 		Te eBak = edge(i, j);
 		delete E[i][j];
-		E[i][j] = NULL;
+		E[i][j] = nullptr;
 		e--;
 		V[i].outDegree--;
 		V[j].inDegree--;

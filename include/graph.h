@@ -1,8 +1,6 @@
 #pragma once
 #include <assert.h>
-#include "jtl_global.h"
 
-JTL_NAMESPACE_BEGIN
 
 typedef enum { UNDISCOVERED, DISCOVERED, VISITED } VStatus;
 typedef enum { UNDETERMINED, TREE, CROSS, FORWARD, BACKWARD } EType;
@@ -35,7 +33,7 @@ public:
 	virtual int outDegree(int) = 0;
 	virtual int firstNbr(int) = 0;
 	virtual int nextNbr(int) = 0;
-	virtual VStatus status(int) = 0;
+	virtual VStatus& status(int) = 0;
 	virtual int& dTime(int) = 0;
 	virtual int& fTime(int) = 0;
 	virtual int& parent(int) = 0;
@@ -54,8 +52,4 @@ public:
 	
 };
 
-JTL_NAMESPACE_END
-
 #include "graph_implementation.h"
-
-
