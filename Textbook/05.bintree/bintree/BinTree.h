@@ -38,6 +38,9 @@ public:
 	int size() const { return size_; }
 	bool empty() const { return !root_; }
 	NodePtr root() const { return root_; }
+	NodePtr& fromParentTo(NodePtr node) {
+		return node->isRoot() ? root_ : (node->isLChild() ? node->parent_->lChild_ : node->parent_->rChild_);
+	}
 
 	NodePtr insertAsRootNode(T const& data) {
 		size_ = 1;

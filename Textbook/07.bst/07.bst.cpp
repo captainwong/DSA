@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
-#include "bst/bst.h"
+#include "bst/avl.h"
 
 int main()
 {

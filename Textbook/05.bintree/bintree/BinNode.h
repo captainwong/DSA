@@ -38,8 +38,14 @@ struct BinNode
 	bool isRoot() const { return !parent_; }
 	bool isLChild() const { return !isRoot() && parent_->lChild_ == this; }
 	bool isRChild() const { return !isRoot() && parent_->rChild_ == this; }
+	bool hasParent() const { return parent_; }
 	bool hasLChild() const { return lChild_; }
 	bool hasRChild() const { return rChild_; }
+	bool hasChild() const { return lChild_ || rChild_; }
+	bool hasBothChild() const { return lChild_ && rChild_; }
+	bool isLeaf() const { return !hasChild(); }
+	Ptr sibling() const { return isLChild() ? parent_->rChild_ : parent_->lChild_; }
+	Ptr uncle() const { return parent_->isLChild() ? parent_->parent_->rChild_ : parent_->parent_->lChild_; }
 
 	Ptr insertAsLeftChild(const T& data) {
 		return (lChild_ = new BinNode(data, this));
@@ -63,8 +69,31 @@ struct BinNode
 	}
 };
 
+//! 节点高度
 template <typename T>
 int stature(BinNode<T>* node)
 {
 	return node ? node->height_ : -1;
+}
+
+//! 理想平衡
+template <typename T>
+bool balanced(BinNode<T>* node)
+{
+	return stature(node->lChild_) == stature(node->rChild_);
+}
+
+//! 平衡因子
+template <typename T>
+int balanceFactor(BinNode<T>* node)
+{
+	return stature(node->lChild_) - stature(node->rChild_);
+}
+
+//! AVL 平衡
+template <typename T>
+bool avlBalanced(BinNode<T>* node)
+{
+	auto factor = balanceFactor(node);
+	return (-2 < factor) && (factor < 2);
 }

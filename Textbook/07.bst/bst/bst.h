@@ -87,13 +87,42 @@ protected:
 	NodePtr hot_;
 
 	//! 3 + 4 重构
-	NodePtr connect34(
-		NodePtr, NodePtr, NodePtr,
-		NodePtr, NodePtr, NodePtr, NodePtr
-	);
+	NodePtr connect34(NodePtr a, NodePtr b, NodePtr c,
+					  NodePtr t0, NodePtr t1, NodePtr t2, NodePtr t3) {
+		a->lChild_ = t0; if (t0) { t0->parent_ = a; }
+		a->rChild_ = t1; if (t1) { t1->parent_ = a; }
+		updateHeight(a);
+
+		c->lChild_ = t2; if (t2) { t2->parent_ = c; }
+		c->rChild_ = t3; if (t3) { t3->parent_ = c; }
+		updateHeight(c);
+
+		b->lChild_ = a; a->parent_ = b;
+		b->rChild_ = c; c->parent_ = b;
+		updateHeight(b);
+
+		return b; // 该子树新的根节点
+	}
 
 	//! 旋转调整
-	NodePtr rotateAt(NodePtr);
+	NodePtr rotateAt(NodePtr v) {
+		auto p = v->parent_;
+		auto g = p->parent_;
+
+		if (p->isLChild()) { // zig
+			if (v->isLChild()) { // zig-zig
+				p->parent_ = g->parent_; // 向上联接
+				return connect34(v, p, g,
+								 v->lChild_, v->rChild_, p->rChild_, g->rChild_);
+			} else { // zig-zag
+				v->parent_ = g->parent_; // 向上联接
+				return connect34(p, v, g,
+								 p->lChild_, v->lChild_, v->rChild_, g->rChild_);
+			}			
+		} else { // zag
+
+		}
+	}
 
 
 };
