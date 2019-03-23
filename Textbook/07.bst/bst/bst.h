@@ -54,7 +54,7 @@ public:
 	}
 
 	static NodePtr removeAt(NodePtr& x, NodePtr& hot) {
-		auto w = x; // 实际被摘除的节点，初值同x
+		NodePtr w = x; // 实际被摘除的节点，初值同x
 		NodePtr succ = nullptr; // 实际被摘除的节点的接替者
 		if (!x->lChild) { // 左子树为空
 			succ = x = x->rChild_; // 接替者为其右子树（可能为空）
