@@ -136,6 +136,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quick_sort", "Exercise\quic
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "07.bst", "Textbook\07.bst\07.bst.vcxproj", "{A947A48D-17A1-4A4D-BB75-6E80D6058906}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2.34.bitmap", "Exercise\2.34.bitmap\2.34.bitmap.vcxproj", "{FA6B66D1-160F-4623-9560-C579721DE260}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -302,6 +304,14 @@ Global
 		{A947A48D-17A1-4A4D-BB75-6E80D6058906}.Release|Win32.Build.0 = Release|Win32
 		{A947A48D-17A1-4A4D-BB75-6E80D6058906}.Release|x64.ActiveCfg = Release|x64
 		{A947A48D-17A1-4A4D-BB75-6E80D6058906}.Release|x64.Build.0 = Release|x64
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Debug|Win32.Build.0 = Debug|Win32
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Debug|x64.ActiveCfg = Debug|x64
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Debug|x64.Build.0 = Debug|x64
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Release|Win32.ActiveCfg = Release|Win32
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Release|Win32.Build.0 = Release|Win32
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Release|x64.ActiveCfg = Release|x64
+		{FA6B66D1-160F-4623-9560-C579721DE260}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -333,6 +343,7 @@ Global
 		{B51A739B-8AF1-4BF2-83C0-188899E23FAB} = {5A0EDD04-4351-4C2A-ACAB-9F44239B7CD4}
 		{955EE8CA-240E-4A3F-B2FD-180791124F1D} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 		{A947A48D-17A1-4A4D-BB75-6E80D6058906} = {892B67BA-F721-4C46-BD58-02D288B0B349}
+		{FA6B66D1-160F-4623-9560-C579721DE260} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}
