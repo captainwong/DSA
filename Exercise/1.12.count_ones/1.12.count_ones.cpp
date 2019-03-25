@@ -62,9 +62,13 @@ const char* simple_bin(unsigned long n)
 	static char buf[128] = { 0 };
 	buf[0] = 0;
 
-	for (int i = sizeof(long) * 8 - 1, j = 0; i >= 0; i--, j++) {
+	for (int i = sizeof(long) * 8 - 1, j = 0, k = 0; i >= 0; i--, j++) {
 		auto mask = 1 << i;
 		buf[j] = (n & mask) ? '1' : '0';
+		if (++k % 4 == 0) {
+			buf[++j] = ' ';
+			k = 0;
+		}
 		buf[j + 1] = 0;
 	}
 
@@ -78,7 +82,7 @@ unsigned long mask(int c) { return m1 / (pow(pow(c)) + 1); }
 unsigned long round(unsigned int n, int c) 
 {
 	printf("round%d n=%d\n", c, n);
-	printf("--------------\t----------=FEDCBA9876543210FEDCBA9876543210\n");
+	printf("--------------\t----------=FEDC BA98 7654 3210 FEDC BA98 7654 3210\n");
 	printf("round%d ---n=\t0x%08X=%s\n", c, n, simple_bin(n));
 	auto mc = mask(c);
 	auto pc = pow(c);
@@ -107,6 +111,8 @@ int countOnes3(unsigned int n)
 	n = round(n, 4);
 	return n;
 }
+
+
 
 int main()
 {
