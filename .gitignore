@@ -40,19 +40,6 @@ ReleaseD/
 *.bsc
 *.map
 
-# graph
-*.bmp
-*.jpg
-*.jpeg
-*.jpe
-*.jifi
-*.gif
-*.ico
-*.png
-*.dib
-*.tif
-*.tiff
-
 # Compiled Dynamic libraries
 *.so
 *.dylib
