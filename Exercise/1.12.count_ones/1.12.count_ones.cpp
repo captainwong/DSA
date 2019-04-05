@@ -1,4 +1,4 @@
-// 1.12.count_ones.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 1.12.count_ones.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-//! Í³¼ÆÕûÊınµÄ¶ş½øÖÆÕ¹¿ªÖĞÊıÎ»1µÄ×ÜÊı£ºO(logn)
+//! ç»Ÿè®¡æ•´æ•°nçš„äºŒè¿›åˆ¶å±•å¼€ä¸­æ•°ä½1çš„æ€»æ•°ï¼šO(logn)
 int countOnes(unsigned int n)
 {
 	int ones = 0;
@@ -18,7 +18,7 @@ int countOnes(unsigned int n)
 }
 
 
-//! O(countOnes(n)), ÏßĞÔÕı±ÈÓÚÊıÎ»1µÄÊµ¼ÊÊıÄ¿
+//! O(countOnes(n)), çº¿æ€§æ­£æ¯”äºæ•°ä½1çš„å®é™…æ•°ç›®
 int countOnes1(unsigned int n)
 {
 	int ones = 0;
@@ -30,9 +30,9 @@ int countOnes1(unsigned int n)
 }
 
 
-//! 2µÄc´Î·½
+//! 2çš„cæ¬¡æ–¹
 #define POW(c) (1 << (c))
-//! ÒÔ2µÄc´Î·½Îªµ¥Î»·Ö×é£¬Ïà¼äµØÈ«0ºÍÈ«1
+//! ä»¥2çš„cæ¬¡æ–¹ä¸ºå•ä½åˆ†ç»„ï¼Œç›¸é—´åœ°å…¨0å’Œå…¨1
 #define MASK(c) (((unsigned long) -1) / (POW(POW(c)) + 1))
 // MASK(0) = 0x55555555
 // MASK(1) = 0x33333333
@@ -40,12 +40,12 @@ int countOnes1(unsigned int n)
 // MASK(3) = 0x00FF00FF
 // MASK(4) = 0x0000FFFF
 
-// ÊäÈë£ºnµÄ¶ş½øÖÆÕ¹¿ªÖĞ£¬ÒÔ2µÄc´Î·½Îªµ¥Î»·Ö×é£¬¸÷×éÊıÖµÒÑ¾­·Ö±ğµÈÓÚÔ­ÏÈÕâ2µÄc´Î·½Î»ÖĞ1µÄÊıÄ¿
-// ¹ı³Ì£ºÒÔ2µÄ´Î·½Î»µ¥Î»·Ö×é£¬ÏàÁÚµÄ×éÁ½Á½×½¶ÔÀÛ¼Ó£¬ÀÛ¼ÓÖµÓÃÔ­2µÄ(c+1)´Î·½Î»¾ÍµØ¼ÇÂ¼
-// Êä³ö£ºnµÄ¶ş½øÖÆÕ¹¿ªÖĞ£¬ÒÔ2µÄ(c+1)´Î·½Î»µ¥Î»·Ö×é£¬¸÷×éÊıÖµÒÑ¾­·Ö±ğµÈÓÚÔ­ÏÈÕâ2µÄ(c+1)´Î·½Î»ÖĞ1µÄÊıÄ¿
+// è¾“å…¥ï¼šnçš„äºŒè¿›åˆ¶å±•å¼€ä¸­ï¼Œä»¥2çš„cæ¬¡æ–¹ä¸ºå•ä½åˆ†ç»„ï¼Œå„ç»„æ•°å€¼å·²ç»åˆ†åˆ«ç­‰äºåŸå…ˆè¿™2çš„cæ¬¡æ–¹ä½ä¸­1çš„æ•°ç›®
+// è¿‡ç¨‹ï¼šä»¥2çš„æ¬¡æ–¹ä½å•ä½åˆ†ç»„ï¼Œç›¸é‚»çš„ç»„ä¸¤ä¸¤æ‰å¯¹ç´¯åŠ ï¼Œç´¯åŠ å€¼ç”¨åŸ2çš„(c+1)æ¬¡æ–¹ä½å°±åœ°è®°å½•
+// è¾“å‡ºï¼šnçš„äºŒè¿›åˆ¶å±•å¼€ä¸­ï¼Œä»¥2çš„(c+1)æ¬¡æ–¹ä½å•ä½åˆ†ç»„ï¼Œå„ç»„æ•°å€¼å·²ç»åˆ†åˆ«ç­‰äºåŸå…ˆè¿™2çš„(c+1)æ¬¡æ–¹ä½ä¸­1çš„æ•°ç›®
 #define ROUND(n, c) (((n) & MASK(c)) + (((n) >> POW(c)) & MASK(c)))
 
-//! O(logW), W=O(logn)ÎªÕûÊıµÄÎ»¿í£¬¼´O(loglogn)£¬Í¨³£¿ÉÊÓ×÷³£Êı
+//! O(logW), W=O(logn)ä¸ºæ•´æ•°çš„ä½å®½ï¼Œå³O(loglogn)ï¼Œé€šå¸¸å¯è§†ä½œå¸¸æ•°
 int countOnes2(unsigned int n)
 {
 	n = ROUND(n, 0);
@@ -101,7 +101,7 @@ unsigned long round(unsigned int n, int c)
 	return ret;
 }
 
-//! µÈĞ§ÓÚcountOnes2
+//! ç­‰æ•ˆäºcountOnes2
 int countOnes3(unsigned int n)
 {
 	n = round(n, 0);

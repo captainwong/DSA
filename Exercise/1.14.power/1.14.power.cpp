@@ -1,11 +1,11 @@
-// 1.14.power.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 1.14.power.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <stdio.h>
 #include <assert.h>
 
-// Ê±¼ä¸´ÔÓ¶È O(n) = O(2^r), rÎªnµÄ±ÈÌØÎ»Êı£¬¿Õ¼ä¸´ÔÓ¶ÈO(1)
+// æ—¶é—´å¤æ‚åº¦ O(n) = O(2^r), rä¸ºnçš„æ¯”ç‰¹ä½æ•°ï¼Œç©ºé—´å¤æ‚åº¦O(1)
 __int64 power2BF_I(int n)
 {
 	__int64 pow = 1;
@@ -15,7 +15,7 @@ __int64 power2BF_I(int n)
 	return pow;
 }
 
-// Ê±¼ä¸´ÔÓ¶ÈÍ¬ÉÏ£¬µ«¿Õ¼ä¸´ÔÓ¶ÈÌá¸ßÖÁO(n)
+// æ—¶é—´å¤æ‚åº¦åŒä¸Šï¼Œä½†ç©ºé—´å¤æ‚åº¦æé«˜è‡³O(n)
 __int64 power2BF_R(int n)
 {
 	return (n < 1) ? 1 : power2BF_R(n - 1) << 2;
@@ -23,14 +23,15 @@ __int64 power2BF_R(int n)
 
 inline __int64 sqr(__int64 a) { return a * a; }
 
-// Ãİº¯Êı2^nËã·¨£¬ÓÅ»¯µİ¹é£¬n>=0
-// Ê±¼ä¸´ÔÓ¶ÈO(logn) = O(r), rÎªÊäÈëÖ¸ÊınµÄ±ÈÌØÎ»Êı
+// å¹‚å‡½æ•°2^nç®—æ³•ï¼Œä¼˜åŒ–é€’å½’ï¼Œn>=0
+// æ—¶é—´å¤æ‚åº¦O(logn) = O(r), rä¸ºè¾“å…¥æŒ‡æ•°nçš„æ¯”ç‰¹ä½æ•°
 __int64 power2(int n)
 {
 	if (0 == n) { return 1; }
 	return (n & 1) ? (sqr(power2(n >> 1)) << 1) : sqr(power2(n >> 1));
 }
 
+// å¹‚å‡½æ•° power2 è¿­ä»£ç‰ˆï¼Œ O(logn)
 __int64 power2_I(int n)
 {
 	__int64 pow = 1;
@@ -47,7 +48,7 @@ __int64 power2_I(int n)
 
 int main()
 {
-
+	auto r = power2_I(7);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -1,36 +1,36 @@
-// 1.2.island.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 1.2.island.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <stdio.h>
 
 /** 
-* @brief Áõ»Õ½â·¨£¬µº¸ß
-* @param d1 ºó±íÈ´²½
-* @param d2 Ç°±íÈ´²½
-* @param d ±í¼ä
-* @param h ±í¸ß
-* @return µº¸ß
+* @brief åˆ˜å¾½è§£æ³•ï¼Œå²›é«˜
+* @param d1 åè¡¨å´æ­¥
+* @param d2 å‰è¡¨å´æ­¥
+* @param d è¡¨é—´
+* @param h è¡¨é«˜
+* @return å²›é«˜
 */
 float islandHeight(float d1, float d2, float d, float h)
 {
-	auto fa = d1 - d2; // ¶şÈ¥±íÏà¼õÎªÏà¶à£¬ÒÔÎª·¨
-	auto shi = d * h; // Ç°ºó±íÏàÈ¥Îª±í¼ä£¬ÒÔ±í¸ß³ËÖ®ÎªÊµ
-	return shi / fa + h; // ÒÔ·¨³ıÖ®£¬¼Ó±í¸ß£¬¼´ÊÇµº¸ß»ı²½
+	auto fa = d1 - d2; // äºŒå»è¡¨ç›¸å‡ä¸ºç›¸å¤šï¼Œä»¥ä¸ºæ³•
+	auto shi = d * h; // å‰åè¡¨ç›¸å»ä¸ºè¡¨é—´ï¼Œä»¥è¡¨é«˜ä¹˜ä¹‹ä¸ºå®
+	return shi / fa + h; // ä»¥æ³•é™¤ä¹‹ï¼ŒåŠ è¡¨é«˜ï¼Œå³æ˜¯å²›é«˜ç§¯æ­¥
 }
 
 /**
-* @brief Áõ»Õ½â·¨£¬Ç°Á¢ÖùÖÁº£µº¾àÀë
-* @param d1 ºó±íÈ´²½
-* @param d2 Ç°±íÈ´²½
-* @param d ±í¼ä
-* @return Ç°Á¢ÖùÖÁº£µº¾àÀë
+* @brief åˆ˜å¾½è§£æ³•ï¼Œå‰ç«‹æŸ±è‡³æµ·å²›è·ç¦»
+* @param d1 åè¡¨å´æ­¥
+* @param d2 å‰è¡¨å´æ­¥
+* @param d è¡¨é—´
+* @return å‰ç«‹æŸ±è‡³æµ·å²›è·ç¦»
 */
 float islandDistance(float d1, float d2, float d)
 {
-	auto shi = d2 * d; // Ç°È¥±í³Ë±í¼ä
-	auto fa = d1 - d2; // ÒÔÏà¶àÎª·¨
-	return shi / fa; // ³ıÖ®
+	auto shi = d2 * d; // å‰å»è¡¨ä¹˜è¡¨é—´
+	auto fa = d1 - d2; // ä»¥ç›¸å¤šä¸ºæ³•
+	return shi / fa; // é™¤ä¹‹
 }
 
 int main()
@@ -40,10 +40,10 @@ int main()
 	float d = 1000;
 	float h = 3;
 
-	auto height = islandHeight(d1, d2, d, h); // 753ÕÉ
-	auto distance = islandDistance(d1, d2, d); // 30750²½
+	auto height = islandHeight(d1, d2, d, h); // 753ä¸ˆ
+	auto distance = islandDistance(d1, d2, d); // 30750æ­¥
 
-	printf("µº¸ß %d ÕÉ, µºÈ¥±í %d ²½", static_cast<int>(height), static_cast<int>(distance));
+	printf("å²›é«˜ %d ä¸ˆ, å²›å»è¡¨ %d æ­¥", static_cast<int>(height), static_cast<int>(distance));
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

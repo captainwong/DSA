@@ -1,4 +1,4 @@
-// 1.25.gcd.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 1.25.gcd.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
@@ -79,20 +79,20 @@ namespace textbook
 {
 __int64 gcd_cn(__int64 a, __int64 b)
 {
-	__int64 r = 0; // a ºÍ b µÄ 2^r ÐÎÊ½µÄ¹«Òò×Ó
+	__int64 r = 0; // a å’Œ b çš„ 2^r å½¢å¼çš„å…¬å› å­
 
-	while (!((a & 1) || (b & 1))) { // Èô a ºÍ b ¶¼ÊÇÅ¼Êý£¬ÔòÍ¬Ê±³ý2£¬²¢ÀÛ¼ÓÖÁ r
+	while (!((a & 1) || (b & 1))) { // è‹¥ a å’Œ b éƒ½æ˜¯å¶æ•°ï¼Œåˆ™åŒæ—¶é™¤2ï¼Œå¹¶ç´¯åŠ è‡³ r
 		r++; 
 		a >>= 1;
 		b >>= 1;
-	} // ÒÔÏÂ£¬a ºÍ b ÖÁ¶àÆäÒ»ÎªÅ¼Êý
+	} // ä»¥ä¸‹ï¼Œa å’Œ b è‡³å¤šå…¶ä¸€ä¸ºå¶æ•°
 
 	while (true) {
-		while (!(a & 1)) { a >>= 1; } // ÈôaÅ¼bÆæ£¬ÔòÌÞ³ýaµÄËùÓÐÒò×Ó2
-		while (!(b & 1)) { b >>= 1; } // ÈôbÅ¼aÆæ£¬ÔòÌÞ³ýbµÄËùÓÐÒò×Ó2
-		(a > b) ? a = a - b : b = b - a; // ¼ò»¯Îª£ºgcd(max(a, b) - min(a, b), min(a, b))
-		if (0 == a) { return b << r; } // ¼ò»¯ÖÁÆ½·²Çé¿ö£ºgcd(0, b) = b
-		if (0 == b) { return a << r; } // ¼ò»¯ÖÁÆ½·²Çé¿ö£ºgcd(a, 0) = a
+		while (!(a & 1)) { a >>= 1; } // è‹¥aå¶bå¥‡ï¼Œåˆ™å‰”é™¤açš„æ‰€æœ‰å› å­2
+		while (!(b & 1)) { b >>= 1; } // è‹¥bå¶aå¥‡ï¼Œåˆ™å‰”é™¤bçš„æ‰€æœ‰å› å­2
+		(a > b) ? a = a - b : b = b - a; // ç®€åŒ–ä¸ºï¼šgcd(max(a, b) - min(a, b), min(a, b))
+		if (0 == a) { return b << r; } // ç®€åŒ–è‡³å¹³å‡¡æƒ…å†µï¼šgcd(0, b) = b
+		if (0 == b) { return a << r; } // ç®€åŒ–è‡³å¹³å‡¡æƒ…å†µï¼šgcd(a, 0) = a
 	}
 }
 }
