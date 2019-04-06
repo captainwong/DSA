@@ -49,7 +49,7 @@ __int64 power2_I(int n)
 	return pow;
 }
 
-// 扩展到n^n
+// 扩展到 a^n
 __int64 power(__int64 a, int n)
 {
 	__int64 pow = 1;
