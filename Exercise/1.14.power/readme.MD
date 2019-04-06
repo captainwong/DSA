@@ -111,3 +111,26 @@ __int64 modular_exponentiation(__int64 a, __int64 n, __int64 m)
 	return mod;
 }
 ```
+
+## 平方运算测试
+
+10000000个随机数，范围为2^[32, 63]，结果下来还是有点小惊讶：
+
+```
+assertion test begin...
+assertion test elapsed 1.000000 ms, avg 0.000000 ms
+
+performance test for power2BF_I begin...
+performance test for power2BF_I elapsed 2768.000000 ms, avg 0.000277 ms
+
+performance test for power2BF_R begin...
+performance test for power2BF_R elapsed 21490.000000 ms, avg 0.002149 ms
+
+performance test for power2 begin...
+performance test for power2 elapsed 5262.000000 ms, avg 0.000526 ms
+
+performance test for power2_I begin...
+performance test for power2_I elapsed 1093.000000 ms, avg 0.000109 ms
+```
+
+最快的算法是 `power2_I` 毋庸置疑，但 `power2BF_I` 的表现居然比 `power2` 要好，可见以后设计算法时尽量用迭代，少用递归。

@@ -3,10 +3,16 @@
 
 #include "pch.h"
 #include <stdio.h>
+
+/***测试用******/
 #include <assert.h>
+#include <time.h>
+#include <random>
+#include <cmath>
+/*****************/
+
 
 // n>=0
-
 
 // 时间复杂度 O(n) = O(2^r), r为n的比特位数，空间复杂度O(1)
 __int64 power2BF_I(int n)
@@ -21,7 +27,7 @@ __int64 power2BF_I(int n)
 // 时间复杂度同上，但空间复杂度提高至O(n)
 __int64 power2BF_R(int n)
 {
-	return (n < 1) ? 1 : power2BF_R(n - 1) << 2;
+	return (n < 1) ? 1 : power2BF_R(n - 1) << 1;
 }
 
 inline __int64 sqr(__int64 a) { return a * a; }
@@ -82,11 +88,87 @@ __int64 modular_exponentiation(__int64 a, __int64 n, __int64 m)
 	return mod;
 }
 
+
+namespace test
+{
+
+// 求 2^n，分别测试power2BF_I、power2BF_R、power2、power2_I的性能
+void test_power2()
+{
+	// 测试一千万次取均值
+	constexpr int TEST_TIME = 10000000;
+	// TEST_TIME个n
+	auto n = new int[TEST_TIME];
+
+	// 初始化TEST_TIME个n为随机数，范围[32, 63]
+	std::mt19937 engine;
+	std::uniform_int_distribution<int> di(32, 63);
+	for (int i = 0; i < TEST_TIME; i++) {
+		n[i] = di(engine);
+	}
+
+	// 正确性测试
+	printf("assertion test begin...\n");
+	clock_t begin = clock();
+	for (int i = 0; i < 100; i++) {
+		__int64 pow = static_cast<__int64>(std::pow(2, n[i]));
+		assert(power2BF_I(n[i]) == pow);
+		assert(power2BF_R(n[i]) == pow);
+		assert(power2(n[i]) == pow);
+		assert(power2_I(n[i]) == pow);
+	}
+	auto elapse = clock() - begin;
+	printf("assertion test elapsed %lf ms, avg %lf ms\n\n", elapse * 1000.0 / CLOCKS_PER_SEC, elapse * 1000.0 / TEST_TIME/ CLOCKS_PER_SEC);
+
+	// 性能测试1：power2BF_I
+	printf("performance test for power2BF_I begin...\n");
+	begin = clock();
+	for (int i = 0; i < TEST_TIME; i++) {
+		power2BF_I(n[i]);
+	}
+	elapse = clock() - begin;
+	printf("performance test for power2BF_I elapsed %lf ms, avg %lf ms\n\n", elapse * 1000.0 / CLOCKS_PER_SEC, elapse * 1000.0 / TEST_TIME / CLOCKS_PER_SEC);
+
+	// 性能测试2：power2BF_R
+	printf("performance test for power2BF_R begin...\n");
+	begin = clock();
+	for (int i = 0; i < TEST_TIME; i++) {
+		power2BF_R(n[i]);
+	}
+	elapse = clock() - begin;
+	printf("performance test for power2BF_R elapsed %lf ms, avg %lf ms\n\n", elapse * 1000.0 / CLOCKS_PER_SEC, elapse * 1000.0 / TEST_TIME / CLOCKS_PER_SEC);
+
+	// 性能测试3：power2
+	printf("performance test for power2 begin...\n");
+	begin = clock();
+	for (int i = 0; i < TEST_TIME; i++) {
+		power2(n[i]);
+	}
+	elapse = clock() - begin;
+	printf("performance test for power2 elapsed %lf ms, avg %lf ms\n\n", elapse * 1000.0 / CLOCKS_PER_SEC, elapse * 1000.0 / TEST_TIME / CLOCKS_PER_SEC);
+
+	// 性能测试4：power2_I
+	printf("performance test for power2_I begin...\n");
+	begin = clock();
+	for (int i = 0; i < TEST_TIME; i++) {
+		power2_I(n[i]);
+	}
+	elapse = clock() - begin;
+	printf("performance test for power2_I elapsed %lf ms, avg %lf ms\n\n", elapse * 1000.0 / CLOCKS_PER_SEC, elapse * 1000.0 / TEST_TIME / CLOCKS_PER_SEC);
+
+
+	delete[] n;
+}
+
+}
+
 int main()
 {
-	auto r = power2_I(10);
-	auto m = modular_exponentiation(3, 644, 645);
-	assert(m == 36);
+	//auto r = power2_I(10);
+	//auto m = modular_exponentiation(3, 644, 645);
+	//assert(m == 36);
+
+	test::test_power2();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
