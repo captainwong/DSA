@@ -49,7 +49,7 @@ __int64 power2_I(int n)
 	return pow;
 }
 
-
+// 扩展到n^n
 __int64 power(__int64 a, int n)
 {
 	__int64 pow = 1;
@@ -62,9 +62,31 @@ __int64 power(__int64 a, int n)
 	return pow;
 }
 
+// 扩展到模指数运算（快速幂取模）
+// 参考《离散数学及其应用》第七版 Kenneth H.Rosen 
+//	第4章 数论和密码学
+//	  4.2 整数表示和算法 
+//	    4.2.4 模指数运算
+// 求 a^n % m，其中 a,n,m都是大整数
+__int64 modular_exponentiation(__int64 a, __int64 n, __int64 m)
+{
+	__int64 mod = 1;
+	__int64 p = a % m;
+
+	while (n) {
+		if (n & 1) { mod = (mod * p) % m; }
+		p = (p * p) % m;
+		n >>= 1;
+	}
+
+	return mod;
+}
+
 int main()
 {
 	auto r = power2_I(10);
+	auto m = modular_exponentiation(3, 644, 645);
+	assert(m == 36);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
