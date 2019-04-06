@@ -57,3 +57,25 @@ __int64 power2_I(int n)
 ```
 
 嗯，我这个智力也就到这了。。。
+
+扩展到a^n，
+
+同样有：
+
+    a^n = g(k)^f(k) * g(k-1)^f(k-1) * ... * g(0)^f(0)，其中，g(k) = a^(a^k)
+
+因此：
+
+```c
+__int64 power(__int64 a, int n)
+{
+	__int64 pow = 1;
+	__int64 p = a;
+	while (n) {
+		if (n & 1) { pow *= p; }
+		n >>= 1;
+		p *= p;
+	}
+	return pow;
+}
+```

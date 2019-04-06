@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <assert.h>
 
+// n>=0
+
+
 // 时间复杂度 O(n) = O(2^r), r为n的比特位数，空间复杂度O(1)
 __int64 power2BF_I(int n)
 {
@@ -46,9 +49,22 @@ __int64 power2_I(int n)
 	return pow;
 }
 
+
+__int64 power(__int64 a, int n)
+{
+	__int64 pow = 1;
+	__int64 p = a;
+	while (n) {
+		if (n & 1) { pow *= p; }
+		n >>= 1;
+		p *= p;
+	}
+	return pow;
+}
+
 int main()
 {
-	auto r = power2_I(7);
+	auto r = power2_I(10);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
