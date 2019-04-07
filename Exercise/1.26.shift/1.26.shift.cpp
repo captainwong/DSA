@@ -6,7 +6,6 @@
 
 /***≤‚ ‘”√******/
 #include <assert.h>
-#include <time.h>
 /*****************/
 
 template <typename T>
