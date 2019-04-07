@@ -152,6 +152,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.14.power", "Exercise\1.14
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.21.fibonacci", "Exercise\1.21.fibonacci\1.21.fibonacci.vcxproj", "{BFE8F0B3-1DF4-4A0A-ABE6-B43823290222}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1.26.shift", "Exercise\1.26.shift\1.26.shift.vcxproj", "{22A8607C-CAAF-4669-9D64-B5EF58D6F491}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -382,6 +384,14 @@ Global
 		{BFE8F0B3-1DF4-4A0A-ABE6-B43823290222}.Release|Win32.Build.0 = Release|Win32
 		{BFE8F0B3-1DF4-4A0A-ABE6-B43823290222}.Release|x64.ActiveCfg = Release|x64
 		{BFE8F0B3-1DF4-4A0A-ABE6-B43823290222}.Release|x64.Build.0 = Release|x64
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Debug|Win32.ActiveCfg = Debug|Win32
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Debug|Win32.Build.0 = Debug|Win32
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Debug|x64.ActiveCfg = Debug|x64
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Debug|x64.Build.0 = Debug|x64
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Release|Win32.ActiveCfg = Release|Win32
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Release|Win32.Build.0 = Release|Win32
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Release|x64.ActiveCfg = Release|x64
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -421,6 +431,7 @@ Global
 		{8985974E-8B7B-4B49-B138-6D1DFA528D96} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 		{6CAF91CE-790A-4E2A-BEBB-B441838C0036} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 		{BFE8F0B3-1DF4-4A0A-ABE6-B43823290222} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
+		{22A8607C-CAAF-4669-9D64-B5EF58D6F491} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}

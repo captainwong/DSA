@@ -5,9 +5,22 @@
 #include <stdio.h>
 #include <assert.h>
 
+
+// 欧几里得版求两数的最大公约数 O(log(a+b))
 __int64 gcd_euclidean(__int64 a, __int64 b)
 {
 	return b ? gcd_euclidean(b, a % b) : a;
+}
+
+// 欧几里得算法迭代版 O(log(a+b))
+__int64 gcd_euclidean_I(__int64 a, __int64 b)
+{
+	while (b) {
+		auto c = a % b;
+		a = b;
+		b = c;
+	}
+	return a;
 }
 
 namespace my
@@ -77,6 +90,8 @@ __int64 gcd_cn_v2(__int64 a, __int64 b)
 
 namespace textbook
 {
+
+// 中华更相减损术 O(log(a + b))
 __int64 gcd_cn(__int64 a, __int64 b)
 {
 	__int64 r = 0; // a 和 b 的 2^r 形式的公因子
