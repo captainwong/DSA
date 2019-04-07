@@ -1,10 +1,10 @@
-// 2.35.rm_dup_ascii.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 2.35.rm_dup_ascii.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <stdio.h>
 
-/***²âÊÔÓÃ******/
+/***æµ‹è¯•ç”¨******/
 #include <assert.h>
 #include <vector>
 /*****************/

@@ -1,11 +1,11 @@
-// 2.36.eratosthenes.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 2.36.eratosthenes.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <stdio.h>
 #include <stdlib.h> // __min
 
-/***²âÊÔÓÃ******/
+/***æµ‹è¯•ç”¨******/
 #include <assert.h>
 #include <vector>
 #include <time.h>
@@ -15,21 +15,21 @@
 
 
 
-// ¼ÆËã²»´óÓÚ10^8µÄËùÓĞËØÊı£¨°£À­ÍĞË¹ÌØÄáÉ¸·¨£©
+// è®¡ç®—ä¸å¤§äº10^8çš„æ‰€æœ‰ç´ æ•°ï¼ˆåŸƒæ‹‰æ‰˜æ–¯ç‰¹å°¼ç­›æ³•ï¼‰
 // https://zh.wikipedia.org/zh-cn/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95
 std::vector<int> eratosthenes(int n)
 {
 	std::vector<int> primes;
 
 	Bitmap bmp;
-	bmp.set(0); bmp.set(1); // 0, 1 ¶¼²»ÊÇËØÊı
+	bmp.set(0); bmp.set(1); // 0, 1 éƒ½ä¸æ˜¯ç´ æ•°
 
 	for (int i = 2; i < n; i++) {
 		if (!bmp.test(i)) {
-			// 46340^2 = 2147395600 Î´³¬¹ıint¿ÉÒÔ±íÊ¾µÄ·¶Î§ 2147483647
-			// 46341^2 = 2147488281 ³¬¹ıÁËint¿ÉÒÔ±íÊ¾µÄ·¶Î§
-			// Ñ¡ÓÃ 46340 ¿ÉÒÔ±ÜÃâÕûÊıÒç³ö
-			// Î»ÓÚ[2i, i^2)Ö®¼äµÄÕûÊı£¬¾ùÒÑ¾­ÔÚ´ËÇ°µÄµü´úÖĞ±»É¸³ıÁË
+			// 46340^2 = 2147395600 æœªè¶…è¿‡intå¯ä»¥è¡¨ç¤ºçš„èŒƒå›´ 2147483647
+			// 46341^2 = 2147488281 è¶…è¿‡äº†intå¯ä»¥è¡¨ç¤ºçš„èŒƒå›´
+			// é€‰ç”¨ 46340 å¯ä»¥é¿å…æ•´æ•°æº¢å‡º
+			// ä½äº[2i, i^2)ä¹‹é—´çš„æ•´æ•°ï¼Œå‡å·²ç»åœ¨æ­¤å‰çš„è¿­ä»£ä¸­è¢«ç­›é™¤äº†
 			for (int j = __min(i, 46340) * __min(i, 46340); j < n; j += i) {
 				bmp.set(j);
 			}
@@ -70,7 +70,7 @@ int main()
 }
 
 
-/*******²âÊÔ½á¹û******/
+/*******æµ‹è¯•ç»“æœ******/
 
 /*
 

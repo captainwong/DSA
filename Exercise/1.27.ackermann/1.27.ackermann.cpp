@@ -1,17 +1,17 @@
-// 1.27.ackermann.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 1.27.ackermann.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <stdio.h>
 
-/***²âÊÔÓÃ******/
+/***æµ‹è¯•ç”¨******/
 #include <assert.h>
 /*****************/
 
 
-// °¢¿ËÂüº¯Êı https://zh.wikipedia.org/zh-hans/%E9%98%BF%E5%85%8B%E6%9B%BC%E5%87%BD%E6%95%B8
+// é˜¿å…‹æ›¼å‡½æ•° https://zh.wikipedia.org/zh-hans/%E9%98%BF%E5%85%8B%E6%9B%BC%E5%87%BD%E6%95%B8
 
-// m,n¶¼ÊÇ·Ç¸ºÕûÊı
+// m,néƒ½æ˜¯éè´Ÿæ•´æ•°
 __int64 ackermann(__int64 m, __int64 n)
 {
 	if (m == 0) { return n + 1; }
@@ -19,8 +19,8 @@ __int64 ackermann(__int64 m, __int64 n)
 	return ackermann(m - 1, ackermann(m, n - 1));
 }
 
-// ½èÖú 1.14 power_Iº¯Êı
-// Ãİº¯Êı power2 µü´ú°æ£¬ O(logn)
+// å€ŸåŠ© 1.14 power_Iå‡½æ•°
+// å¹‚å‡½æ•° power2 è¿­ä»£ç‰ˆï¼Œ O(logn)
 __int64 power2_I(int n)
 {
 	__int64 pow = 1;

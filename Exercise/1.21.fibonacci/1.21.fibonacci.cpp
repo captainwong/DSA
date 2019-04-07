@@ -1,21 +1,21 @@
-// 1.21.fibonacci.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 1.21.fibonacci.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <stdio.h>
 
-/***²âÊÔÓÃ******/
+/***æµ‹è¯•ç”¨******/
 #include <assert.h>
 #include <time.h>
 /*****************/
 
-// ¶þ·ÖµÝ¹é°æ O(2^n)
+// äºŒåˆ†é€’å½’ç‰ˆ O(2^n)
 __int64 fib(int n)
 {
 	return n < 2 ? n : fib(n - 1) + fib(n - 2);
 }
 
-// ÏßÐÔµÝ¹é°æ O(n)
+// çº¿æ€§é€’å½’ç‰ˆ O(n)
 __int64 fib(int n, __int64& prev)
 {
 	if (n == 0) {
@@ -26,7 +26,7 @@ __int64 fib(int n, __int64& prev)
 	}
 }
 
-// µü´ú°æ O(n)
+// è¿­ä»£ç‰ˆ O(n)
 __int64 fibI(int n)
 {
 	__int64 f = 0, g = 1; // fib(0) = 0, fib(1) = 1
@@ -55,7 +55,7 @@ int main()
 	t = clock();
 	r = fib(64);
 	e = clock() - t;
-	printf("fib binary recursion result=%lld elapsed %lf ms\n\n", r, e * 1000.0 / CLOCKS_PER_SEC); // ÎÒ¾Í²»µÈÁË¡£¡£¡£
+	printf("fib binary recursion result=%lld elapsed %lf ms\n\n", r, e * 1000.0 / CLOCKS_PER_SEC); // æˆ‘å°±ä¸ç­‰äº†ã€‚ã€‚ã€‚
 
 	
 }

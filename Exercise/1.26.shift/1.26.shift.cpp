@@ -1,10 +1,10 @@
-// 1.26.shift.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 1.26.shift.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
 #include <stdio.h>
 
-/***²âÊÔÓÃ******/
+/***æµ‹è¯•ç”¨******/
 #include <assert.h>
 /*****************/
 
@@ -16,7 +16,7 @@ void swap(T&a, T& b)
 	b = c;
 }
 
-// Êý×éµ¹ÖÃ£¨¶àµÝ¹é»ùµÝ¹é°æ£©
+// æ•°ç»„å€’ç½®ï¼ˆå¤šé€’å½’åŸºé€’å½’ç‰ˆï¼‰
 void reverse_R(int* A, int lo, int hi)
 {
 	if (lo < hi) {
@@ -25,7 +25,7 @@ void reverse_R(int* A, int lo, int hi)
 	}
 }
 
-// Êý×éµ¹ÖÃ£¨µü´ú°æ£©
+// æ•°ç»„å€’ç½®ï¼ˆè¿­ä»£ç‰ˆï¼‰
 void reverse_I(int* A, int lo, int hi)
 {
 	while (lo < hi) {
@@ -38,7 +38,7 @@ void reverse(int *A, int n)
 	reverse_I(A, 0, n - 1);
 }
 
-// Êý×éÑ­»·×óÒÆ O(3n)
+// æ•°ç»„å¾ªçŽ¯å·¦ç§» O(3n)
 int shift2(int* A, int n, int k)
 {
 	k %= n;

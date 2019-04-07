@@ -43,10 +43,10 @@ struct board {
 	}
 
 	void place(int x, int y, int dx, int dy) {
-		assert(x < length);
-		assert(y < length);
-		assert(0 <= x + dx && x + dx < length);
-		assert(0 <= y + dy && y + dy < length);
+		assert(static_cast<size_t>(x) < length);
+		assert(static_cast<size_t>(y) < length);
+		assert(0 <= static_cast<size_t>(x + dx) && static_cast<size_t>(x + dx) < length);
+		assert(0 <= static_cast<size_t>(y + dy) && static_cast<size_t>(y + dy) < length);
 
 		static int g_round = 0;
 		printf("\nround#%d x=%d,y=%d,dx=%d,dy=%d\n", g_round++, x, y, dx, dy);
