@@ -32,18 +32,103 @@ public:
 		delete[] oldM;
 	}
 
+	// O(1)
 	void set(int k) {
 		expand(k);
 		M[k >> 3] |= (0x80 >> (k & 0x07));
 	}
 
+	// O(1)
 	void clear(int k) {
 		expand(k);
 		M[k >> 3] &= ~(0x80 >> (k & 0x07));
 	}
 
+	// O(1)
 	bool test(int k) {
 		expand(k);
 		return M[k >> 3] & (0x80 >> (k & 0x07));
 	}
+};
+
+
+/**
+* @brief 位图2
+* @note 仅允许插入、测试，不支持删除
+* @note 节省了初始化所有元素的时间
+*/
+class Bitmap2
+{
+public:
+	typedef size_t Rank;
+
+	Bitmap2(Rank n = 8)
+		: N(n)
+		, F(new Rank[n])
+		, T(new Rank[n])
+		, top(0)
+	{}
+
+	~Bitmap2() { delete[] F; delete[] T; }
+
+	void set(Rank k) {
+		if (test(k)) { return; }
+		F[k] = top++; T[F[k]] = k;
+	}
+
+	bool test(Rank k) {
+		return valid(F[k]) && (k == T[F[k]]);
+	}
+
+protected:
+	bool valid(Rank r) { return (0 <= r) && (r < top); }
+
+private:
+	Rank* F; Rank N; // 规模为N的向量，记录[k]被标记的次序（即其在栈T[]中的秩）
+	Rank* T; Rank top; // 容量为N的栈，记录被标记各位秩的栈，以及栈顶指针
+};
+
+
+/**
+* @brief 位图3
+* @note 允许插入、测试，支持删除
+* @note 节省了初始化所有元素的时间
+*/
+class Bitmap3
+{
+public:
+	typedef size_t Rank;
+
+	Bitmap3(Rank n = 8)
+		: N(n)
+		, F(new Rank[n])
+		, T(new Rank[n])
+		, top(0)
+	{}
+
+	~Bitmap3() { delete[] F; delete[] T; }
+
+	void set(Rank k) {
+		if (test(k)) { return; }
+		if (!erased(k)) { F[k] = top++; } // 若系初次标记，创建新校验环
+		T[F[k]] = k; // 若系曾经标记后被清除，则恢复原校验环
+	}
+
+	void clear(Rank k) {
+		if (test(k)) { T[F[k]] = -1 - k; } // 将T[F[k]]取负再减一
+	}
+
+	bool test(Rank k) {
+		return valid(F[k]) && (k == T[F[k]]);
+	}
+
+protected:
+	bool valid(Rank r) { return (0 <= r) && (r < top); }
+
+	//! 判断[k]是否曾被标记过，且后来又被清除
+	bool erased(Rank k) { return valid(F[k]) && !(T[F[k]] + 1 + k); }
+
+private:
+	Rank* F; Rank N; // 规模为N的向量，记录[k]被标记的次序（即其在栈T[]中的秩）
+	Rank* T; Rank top; // 容量为N的栈，记录被标记各位秩的栈，以及栈顶指针
 };
