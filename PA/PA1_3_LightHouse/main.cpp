@@ -1,114 +1,3 @@
-// https://dsa.cs.tsinghua.edu.cn/oj/problem.shtml?id=1144
-
-/*
-µÆËþ(LightHouse)
-Description
-As shown in the following figure, If another lighthouse is in gray area, they can beacon each other.
-
-
-
-For example, in following figure, (B, R) is a pair of lighthouse which can beacon each other, while (B, G), (R, G) are NOT.
-
-
-
-Input
-1st line: N
-
-2nd ~ (N + 1)th line: each line is X Y, means a lighthouse is on the point (X, Y).
-
-Output
-How many pairs of lighthourses can beacon each other
-
-( For every lighthouses, X coordinates wont be the same , Y coordinates wont be the same )
-
-Example
-Input
-
-3
-2 2
-4 3
-5 1
-Output
-
-1
-Restrictions
-For 90% test cases: 1 <= n <= 3 * 10^5
-
-For 95% test cases: 1 <= n <= 10^6
-
-For all test cases: 1 <= n <= 4 * 10^6
-
-For every lighthouses, X coordinates wont be the same , Y coordinates wont be the same.
-
-1 <= x, y <= 10^8
-
-Time: 2 sec
-
-Memory: 256 MB
-
-Hints
-The range of int is usually [-2^31, 2^31 - 1], it may be too small.
-
-ÃèÊö
-º£ÉÏÓÐÐí¶àµÆËþ£¬Îª¹ýÂ·´¬Ö»ÕÕÃ÷¡£
-
-
-https://dsa.cs.tsinghua.edu.cn/oj/attachment/c6c8/c6c8562b88ed7fd518cacf0264ae624f59598ed7.png
-£¨Í¼Ò»£©
-
-ÈçÍ¼Ò»ËùÊ¾£¬Ã¿¸öµÆËþ¶¼ÅäÓÐÒ»ÕµÌ½ÕÕµÆ£¬ÕÕÁÁÆä¶«±±¡¢Î÷ÄÏÁ½¸ö¶Ô¶¥µÄÖ±½ÇÇøÓò¡£Ì½ÕÕµÆµÄ¹¦ÂÊÖ®´ó£¬×ãÒÔ¸²¸ÇÈÎºÎ¾àÀë¡£µÆËþ±¾ÉíÊÇÈç´ËÖ®Ð¡£¬¿ÉÒÔ¼Ù¶¨ËüÃÇ²»»á±Ë´ËÕÚµ²¡£
-
-
-https://dsa.cs.tsinghua.edu.cn/oj/attachment/9d7f/9d7f16b4bddbee9795e12ba22fd7f88af5438aa6.png
-£¨Í¼¶þ£©
-
-ÈôµÆËþA¡¢B¾ùÔÚ¶Ô·½µÄÕÕÁÁ·¶Î§ÄÚ£¬Ôò³ÆËüÃÇÄÜ¹»ÕÕÁÁ±Ë´Ë¡£±ÈÈçÔÚÍ¼¶þµÄÊµÀýÖÐ£¬À¶¡¢ºìµÆËþ¿ÉÕÕÁÁ±Ë´Ë£¬À¶¡¢ÂÌµÆËþÔò²»ÊÇ£¬ºì¡¢ÂÌµÆËþÒ²²»ÊÇ¡£
-
-ÏÖÔÚ£¬¶ÔÓÚÈÎºÎÒ»×é¸ø¶¨µÄµÆËþ£¬Çë¼ÆËã³öÆäÖÐÓÐ¶àÉÙ¶ÔµÆËþÄÜ¹»ÕÕÁÁ±Ë´Ë¡£
-
-ÊäÈë
-¹²n+1ÐÐ¡£
-
-µÚ1ÐÐÎª1¸öÕûÊýn£¬±íÊ¾µÆËþµÄ×ÜÊý¡£
-
-µÚ2µ½n+1ÐÐÃ¿ÐÐ°üº¬2¸öÕûÊýx, y£¬·Ö±ð±íÊ¾¸÷µÆËþµÄºá¡¢×Ý×ø±ê¡£
-
-Êä³ö
-1¸öÕûÊý£¬±íÊ¾¿ÉÕÕÁÁ±Ë´ËµÄµÆËþ¶ÔµÄÊýÁ¿¡£
-
-ÑùÀý
-¼ûÓ¢ÎÄÌâÃæ
-
-ÏÞÖÆ
-¶ÔÓÚ90%µÄ²âÀý£º1 ¡Ü n ¡Ü 3¡Á10^5
-
-¶ÔÓÚ95%µÄ²âÀý£º1 ¡Ü n ¡Ü 10^6
-
-È«²¿²âÀý£º1 ¡Ü n ¡Ü 4¡Á10^6
-
-µÆËþµÄ×ø±êx, yÊÇÕûÊý£¬ÇÒ²»Í¬µÆËþµÄx, y×ø±ê¾ù»¥Òì
-
-1 ¡Ü x, y ¡Ü 10^8
-
-Ê±¼ä£º2 sec
-
-ÄÚ´æ£º256 MB
-
-ÌáÊ¾
-×¢Òâ»úÆ÷ÖÐÕûÐÍ±äÁ¿µÄ·¶Î§£¬C/C++ÖÐµÄintÀàÐÍÍ¨³£±»±àÒë³É32Î»ÕûÊý£¬Æä·¶Î§Îª[-2^31, 2^31 - 1]£¬²»Ò»¶¨×ã¹»ÈÝÄÉ±¾ÌâµÄÊä³ö¡£
-
-
-2018-8-7 22:56:34
-½âÌâË¼Â·
-Á½¸öµÆËþA(x1,y1),B(x2,y2)¿ÉÒÔ±Ë´ËÕÕÁÁµÄÌõ¼þÎª
-1. (x1 < x2) && (y1 < y2)
-2. (x1 > x2) && (y1 > y2)
-
-ÄÇÃ´½«ËùÓÐÊäÈë×ø±ê°´XÅÅÐòºó£¬¿É¼ò»¯ÎªÌõ¼þ1
-
-*/
-
-
 #if !defined(_OJ_)
 #define  _CRT_SECURE_NO_WARNINGS
 #include <windows.h>
@@ -305,23 +194,23 @@ void quik_sort(int lo, int hi)
 }
 //
 //int Partition(int *A, int p, int r);
-//void QuickSort(int *A, int p, int r) //¿ìËÙÅÅÐò  
+//void QuickSort(int *A, int p, int r) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 //{
 //	int q;
-//	if (p<r)               //Èç¹ûp´óÓÚµÈÓÚr ÄÇÃ´¾Í³ÌÐò²»Ö´ÐÐ  
+//	if (p<r)               //ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½r ï¿½ï¿½Ã´ï¿½Í³ï¿½ï¿½ï¿½Ö´ï¿½ï¿½  
 //	{
-//		q = Partition(A, p, r);  //µ÷ÓÃ·ÖÖÎ·¨ ÕÒµ½qµÄÖµ  
+//		q = Partition(A, p, r);  //ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Î·ï¿½ ï¿½Òµï¿½qï¿½ï¿½Öµ  
 //		QuickSort(A, p, q - 1);
 //		QuickSort(A, q + 1, r);
 //	}
 //}
 //
-//int Partition(int *A, int p, int r) //·ÖÖÎ·¨£¬×÷ÓÃ¾ÍÊÇ½«Êý×é·ÖÎªA[p..q-1] ºÍA[q+1..r]  
-//{                                                   //È»ºóµ÷ÕûÔªËØÊ¹µÃA[p..q-1]Ð¡ÓÚµÈÓÚq£¬Ò²Ð¡ÓÚµÈÓÚA[q+1..r]  
+//int Partition(int *A, int p, int r) //ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½Ç½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªA[p..q-1] ï¿½ï¿½A[q+1..r]  
+//{                                                   //È»ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Ê¹ï¿½ï¿½A[p..q-1]Ð¡ï¿½Úµï¿½ï¿½ï¿½qï¿½ï¿½Ò²Ð¡ï¿½Úµï¿½ï¿½ï¿½A[q+1..r]  
 //	int x, i, j, temp;
 //
-//	x = A[r];  //½«×îºóÒ»¸öÖµ±£´æÔÚxÖÐ  
-//	i = p - 1;   //¿ªÊ¼µÄÊ±ºò½«i ÒÆ¶¯µ½Êý×éµÄÍâÃæ  
+//	x = A[r];  //ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½  
+//	i = p - 1;   //ï¿½ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½i ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  
 //	for (j = p; j <= r - 1; j++) {
 //		if (A[j] <= x) {
 //			i += 1;
@@ -335,7 +224,7 @@ void quik_sort(int lo, int hi)
 //	A[i + 1] = A[r];
 //	A[r] = temp;
 //
-//	return i + 1;  //·µ»ØqÖµ  
+//	return i + 1;  //ï¿½ï¿½ï¿½ï¿½qÖµ  
 //}
 
 //char bf[180 * 1024 * 1024] = { 0 };

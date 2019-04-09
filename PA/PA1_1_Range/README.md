@@ -1,4 +1,4 @@
-# 范围查询(Range)
+# [范围查询(Range)](https://dsa.cs.tsinghua.edu.cn/oj/problem.shtml?id=1142)
 
 ## Descriptioin
 

@@ -1,4 +1,4 @@
-# 祖玛(Zuma)
+# [祖玛(Zuma)](https://dsa.cs.tsinghua.edu.cn/oj/problem.shtml?id=1143)
 
 ## Description
 

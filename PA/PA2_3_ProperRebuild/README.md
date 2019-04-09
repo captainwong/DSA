@@ -1,4 +1,4 @@
-# 真二叉树重构(Proper Rebuild)
+# [真二叉树重构(Proper Rebuild)](https://dsa.cs.tsinghua.edu.cn/oj/problem.shtml?id=1146)
 
 ## Description
 

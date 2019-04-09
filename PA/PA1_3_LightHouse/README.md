@@ -1,4 +1,4 @@
-# 灯塔(LightHouse)
+# [灯塔(LightHouse)](https://dsa.cs.tsinghua.edu.cn/oj/problem.shtml?id=1144)
 
 ## Description
 
