@@ -2,20 +2,24 @@
 #include <stdio.h>
 //#include <stdlib.h>
 #include <string.h>
+
+#ifdef _OJ_
+#include "bintree.h"
+#else
 #include "../../include/bintree.h"
+#endif
 
-
-struct fastio
-{
-	static const int SZ = 1 << 18;
-	char inbuf[SZ];
-	char outbuf[SZ];
-	fastio()
-	{
-		setvbuf(stdin, inbuf, _IOFBF, SZ);
-		setvbuf(stdout, outbuf, _IOFBF, SZ);
-	}
-}io;
+//struct fastio
+//{
+//	static const int SZ = 1 << 18;
+//	char inbuf[SZ];
+//	char outbuf[SZ];
+//	fastio()
+//	{
+//		setvbuf(stdin, inbuf, _IOFBF, SZ);
+//		setvbuf(stdout, outbuf, _IOFBF, SZ);
+//	}
+//}io;
 
 #if (_MSC_VER  >= 1800)
 template <typename T>
@@ -33,7 +37,7 @@ int g_position_post[MAX_VAL+1] = { 0 };
 
 int g_print_index = 0;
 
-#define USE_BUFF
+// #define USE_BUFF
 
 #ifdef USE_BUFF
 char g_buff[1024 * 1024 * 32] = { 0 };
@@ -41,7 +45,7 @@ char g_tmp[32] = { 0 };
 int g_bf_pos = 0;
 #endif
 
-void visit(int data)
+inline void visit(int data)
 {
 #ifdef USE_BUFF
 	int len = sprintf(g_tmp, "%d ", data) + 1;
@@ -87,7 +91,7 @@ void parseSubTree(BinTree<int>& bintree, BinNodePosi(int) pos,
 	}*/
 }
 
-int main_old(int /*argc*/, char** /*argv*/)
+int main(int /*argc*/, char** /*argv*/)
 {
 #ifdef _DEBUG_
 	BinTree<int> tree;
