@@ -6,6 +6,7 @@
 
 # vs
 .vs/
+.vscode/
 *.sdf
 #*.sln
 *.suo
