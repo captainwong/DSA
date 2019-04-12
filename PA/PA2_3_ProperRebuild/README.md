@@ -105,3 +105,12 @@ In Figure 2, observe the positions of the left and right children in preorder an
 观察左、右孩子在先序、后序遍历序列中的位置
 
 重温视频05e5-3
+
+
+---
+
+## 解答
+
+第一次使用笨办法，真的构造出一颗二叉树，完了再执行中序遍历并输出，但只能95AC，最后一个测例 `Memory Limit Exceeded`。
+
+后来想到可以不真的构造二叉树，直接输出啊。改了几遍总算100AC了，但跟榜单上的人还是没法比速度，前十名的速度分布在 [232, 616]ms内，但我的算法到了 860ms，唉。。。有空再优化下吧。

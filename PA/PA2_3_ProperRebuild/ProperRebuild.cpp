@@ -91,7 +91,7 @@ void parseSubTree(BinTree<int>& bintree, BinNodePosi(int) pos,
 	}*/
 }
 
-int main(int /*argc*/, char** /*argv*/)
+int main_ac95(int /*argc*/, char** /*argv*/)
 {
 #ifdef _DEBUG_
 	BinTree<int> tree;
