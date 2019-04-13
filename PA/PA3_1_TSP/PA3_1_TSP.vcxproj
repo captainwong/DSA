@@ -82,6 +82,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="tsp.cpp" />
+    <ClCompile Include="tsp_2019-4-13.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
