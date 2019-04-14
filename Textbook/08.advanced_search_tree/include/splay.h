@@ -99,8 +99,43 @@ public:
 	}
 
 	//! 插入
-	virtual NodePtr insert(const T& e) override;
+	virtual NodePtr insert(const T& e) override {
+		// 处理原树为空树的退化情况
+		if (!this->root_) {
+			this->size_++;
+			return this->root_ = new Node(e);
+		}
+
+		// 处理节点已存在的情况
+		if (e == search(e)->data_) {
+			return this->root_; // 查找操作时已经伸展
+		} // 隐含了else，此时查找失败，但root_已经更新为适合插入的父节点
+
+		this->size_++;
+		auto t = this->root_;
+
+		if (this->root_->data_ < e) {
+			this->root_ = new Node(e, nullptr, t, t->rChild_);
+			t->parent_ = this->root_;
+			if (t->rChild_) {
+				t->rChild_->parent_ = this->root_;
+				t->rChild_ = nullptr;
+			}
+		} else {
+			this->root_ = new Node(e, nullptr, t->lChild_, t);
+			t->parent_ = this->root_;
+			if (t->lChild_) {
+				t->lChild_->parent = this->root_;
+				t->lChild_ = nullptr;
+			}
+		}
+
+		updateHeightAbove(t); // 更新t及其祖先（实际上只有root_一个）的高度
+		return this->root_; //新节点必然置于树根，返回之
+	} // 无论e是否存在于原树中，返回时总有root_->data == e
 
 	//! 删除
-	bool remove(const T& e) override;
+	bool remove(const T& e) override {
+
+	}
 };
