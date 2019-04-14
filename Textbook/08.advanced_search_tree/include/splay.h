@@ -1,17 +1,17 @@
-#pragma once
+ï»¿#pragma once
 
 #include "../../07.bst/bst/bst.h"
 
-//! ÔÚ½Úµã*pÓë*lc£¨¿ÉÄÜÎª¿Õ£©Ö®¼ä½¨Á¢¸¸£¨×ó£©×Ó¹ØÏµ
+//! åœ¨èŠ‚ç‚¹*pä¸*lcï¼ˆå¯èƒ½ä¸ºç©ºï¼‰ä¹‹é—´å»ºç«‹çˆ¶ï¼ˆå·¦ï¼‰å­å…³ç³»
 template <typename NodePtr> inline
 void attachAsLChild(NodePtr p, NodePtr lc) { p->lChild = lc; if (lc) { lc->parent = p; } }
 
-//! ÔÚ½Úµã*pÓë*rc£¨¿ÉÄÜÎª¿Õ£©Ö®¼ä½¨Á¢¸¸£¨ÓÒ£©×Ó¹ØÏµ
+//! åœ¨èŠ‚ç‚¹*pä¸*rcï¼ˆå¯èƒ½ä¸ºç©ºï¼‰ä¹‹é—´å»ºç«‹çˆ¶ï¼ˆå³ï¼‰å­å…³ç³»
 template <typename NodePtr> inline
 void attachAsRChild(NodePtr p, NodePtr rc) { p->rChild = rc; if (rc) { rc->parent = p; } }
 
 
-//! ÉìÕ¹Ê÷
+//! ä¼¸å±•æ ‘
 template <typename T>
 class Splay : public BST<T>
 {
@@ -21,12 +21,12 @@ public:
 
 protected:
 
-	//! ½«vÉìÕ¹ÖÁ¸ù
+	//! å°†vä¼¸å±•è‡³æ ¹
 	NodePtr splay(NodePtr v) {
 		if (!v) { return nullptr; }
 		NodePtr p, g;
 		while ((p = v->parent_) && (g = p->parent_)) {
-			auto gg = g->parent_; // Ã¿ÂÖÖ®ºó£¬v¶¼½«ÒÔÔ­Ôø×æ¸¸Îª¸¸
+			auto gg = g->parent_; // æ¯è½®ä¹‹åï¼Œvéƒ½å°†ä»¥åŸæ›¾ç¥–çˆ¶ä¸ºçˆ¶
 			if (v->isLChild()) {
 				if (p->isLChild()) { // zig-zig
 					attachAsLChild(g, p->rChild_);
@@ -53,7 +53,7 @@ protected:
 				}
 			}
 
-			// ÈôÎŞÔø×æ¸¸gg£¬ÔòvÏÖÔÚ¾ÍÊÇÊ÷¸ù£»·ñÔò£¬gg´ËºóÓ¦ÒÔvÎª×ó»òÓÒº¢×Ó
+			// è‹¥æ— æ›¾ç¥–çˆ¶ggï¼Œåˆ™vç°åœ¨å°±æ˜¯æ ‘æ ¹ï¼›å¦åˆ™ï¼Œggæ­¤ååº”ä»¥vä¸ºå·¦æˆ–å³å­©å­
 			if (!gg) { 
 				v->parent_ = nullptr;
 			} else {
@@ -64,9 +64,9 @@ protected:
 			updateHeight(p);
 			updateHeight(v);
 
-		} // Ë«²ãÉìÕ¹½áÊøÊ±£¬±ØÓĞ g==nullptr, µ«p¿ÉÄÜ·Ç¿Õ
+		} // åŒå±‚ä¼¸å±•ç»“æŸæ—¶ï¼Œå¿…æœ‰ g==nullptr, ä½†på¯èƒ½éç©º
 
-		// Èôp¹ûÕæÊÇ¸ù£¬Ö»ĞèÔÙ¶îÍâµ¥Ğı£¨ÖÁ¶àÒ»´Î£©
+		// è‹¥pæœçœŸæ˜¯æ ¹ï¼Œåªéœ€å†é¢å¤–å•æ—‹ï¼ˆè‡³å¤šä¸€æ¬¡ï¼‰
 		if (p = v->parent_) {
 			if (v == p->lChild_) {
 				attachAsLChild(p, v->rChild_);
@@ -80,36 +80,36 @@ protected:
 			updateHeight(v);
 		}
 
-		// ÉìÕ¹Íê³É£¬·µ»ØÊ÷¸ù
+		// ä¼¸å±•å®Œæˆï¼Œè¿”å›æ ‘æ ¹
 		v->parent_ = nullptr;
 		return v;
 	}
 
 public:
-	//! ²éÕÒ
+	//! æŸ¥æ‰¾
 	virtual NodePtr& search(const T& e) override {
-		// µ÷ÓÃ±ê×¼BSTµÄÄÚ²¿½Ó¿Ú¶¨Î»Ä¿±ê½Úµã
+		// è°ƒç”¨æ ‡å‡†BSTçš„å†…éƒ¨æ¥å£å®šä½ç›®æ ‡èŠ‚ç‚¹
 		auto p = searchIn(this->root_, e, this->hot_ = nullptr);
 
-		// ÎŞÂÛ³É¹¦Óë·ñ£¬×îºó±»·ÃÎÊµÄ½Úµã¶¼½«ÉìÕ¹ÖÁ¸ù
+		// æ— è®ºæˆåŠŸä¸å¦ï¼Œæœ€åè¢«è®¿é—®çš„èŠ‚ç‚¹éƒ½å°†ä¼¸å±•è‡³æ ¹
 		this->root_ = splay(p ? p : this->hot_);
 
-		//×ÜÊÇ·µ»Ø¸ù½Úµã
+		//æ€»æ˜¯è¿”å›æ ¹èŠ‚ç‚¹
 		return this->root_;
 	}
 
-	//! ²åÈë
+	//! æ’å…¥
 	virtual NodePtr insert(const T& e) override {
-		// ´¦ÀíÔ­Ê÷Îª¿ÕÊ÷µÄÍË»¯Çé¿ö
+		// å¤„ç†åŸæ ‘ä¸ºç©ºæ ‘çš„é€€åŒ–æƒ…å†µ
 		if (!this->root_) {
 			this->size_++;
 			return this->root_ = new Node(e);
 		}
 
-		// ´¦Àí½ÚµãÒÑ´æÔÚµÄÇé¿ö
+		// å¤„ç†èŠ‚ç‚¹å·²å­˜åœ¨çš„æƒ…å†µ
 		if (e == search(e)->data_) {
-			return this->root_; // ²éÕÒ²Ù×÷Ê±ÒÑ¾­ÉìÕ¹
-		} // Òşº¬ÁËelse£¬´ËÊ±²éÕÒÊ§°Ü£¬µ«root_ÒÑ¾­¸üĞÂÎªÊÊºÏ²åÈëµÄ¸¸½Úµã
+			return this->root_; // æŸ¥æ‰¾æ“ä½œæ—¶å·²ç»ä¼¸å±•
+		} // éšå«äº†elseï¼Œæ­¤æ—¶æŸ¥æ‰¾å¤±è´¥ï¼Œä½†root_å·²ç»æ›´æ–°ä¸ºé€‚åˆæ’å…¥çš„çˆ¶èŠ‚ç‚¹
 
 		this->size_++;
 		auto t = this->root_;
@@ -130,12 +130,50 @@ public:
 			}
 		}
 
-		updateHeightAbove(t); // ¸üĞÂt¼°Æä×æÏÈ£¨Êµ¼ÊÉÏÖ»ÓĞroot_Ò»¸ö£©µÄ¸ß¶È
-		return this->root_; //ĞÂ½Úµã±ØÈ»ÖÃÓÚÊ÷¸ù£¬·µ»ØÖ®
-	} // ÎŞÂÛeÊÇ·ñ´æÔÚÓÚÔ­Ê÷ÖĞ£¬·µ»ØÊ±×ÜÓĞroot_->data == e
+		updateHeightAbove(t); // æ›´æ–°tåŠå…¶ç¥–å…ˆï¼ˆå®é™…ä¸Šåªæœ‰root_ä¸€ä¸ªï¼‰çš„é«˜åº¦
+		return this->root_; //æ–°èŠ‚ç‚¹å¿…ç„¶ç½®äºæ ‘æ ¹ï¼Œè¿”å›ä¹‹
+	} // æ— è®ºeæ˜¯å¦å­˜åœ¨äºåŸæ ‘ä¸­ï¼Œè¿”å›æ—¶æ€»æœ‰root_->data == e
 
-	//! É¾³ı
+	//! åˆ é™¤
 	bool remove(const T& e) override {
+		// è‹¥æ ‘ç©ºæˆ–ç›®æ ‡ä¸å­˜åœ¨ï¼Œåˆ™æ— æ³•åˆ é™¤
+		if (!this->root_ || e != search(e)->data_) { return false; }
 
+		// ç»search()åèŠ‚ç‚¹eå·²è¢«ä¼¸å±•è‡³æ ‘æ ¹
+		auto t = this->root_;
+
+		if (!this->root_->hasLChild()) { // è‹¥æ— å·¦å­æ ‘ï¼Œç›´æ¥åˆ é™¤
+			this->root_ = this->root_->rChild_; // ä»¥å³å­æ ‘ä¸ºæ ‘æ ¹
+			if (this->root_) { this->root_->parent_ = nullptr; } // æ›´æ–°å³å­æ ‘çˆ¶èŠ‚ç‚¹ä¸ºnull
+		} else if (!this->root_->hasRChild()) { // è‹¥æ— å³å­æ ‘ï¼Œç›´æ¥åˆ é™¤
+			this->root_ = this->root_->lChild_; // ä»¥å·¦å­æ ‘ä¸ºæ ‘æ ¹
+			if (this->root_) { this->root_->parent_ = nullptr; } // æ›´æ–°å·¦å­æ ‘çˆ¶èŠ‚ç‚¹ä¸ºnull
+		} else { // å·¦ã€å³å­æ ‘åŒæ—¶å­˜åœ¨
+			// æš‚æ—¶åˆ‡é™¤å·¦å­æ ‘
+			auto ltree = this->root_->lChild_;
+			ltree->parent_ = nullptr;
+			this->root_->lChild_ = nullptr;
+
+			// åªä¿ç•™å³å­æ ‘
+			this->root_ = this->root_->rChild_;
+			this->root_->parent_ = nullptr;
+			
+			// ä»¥åŸæ ‘æ ¹ä¸ºç›®æ ‡ï¼Œåšä¸€æ¬¡ï¼ˆå¿…å®šå¤±è´¥çš„ï¼‰æŸ¥æ‰¾
+			search(t->data);
+
+			// è‡³æ­¤ï¼Œå³å­æ ‘ä¸­æœ€å°èŠ‚ç‚¹å¿…ä¼¸å±•è‡³æ ¹ï¼Œä¸”ï¼ˆå› æ— é›·åŒèŠ‚ç‚¹ï¼‰å…¶å·¦å­æ ‘å¿…ç©ºï¼Œäºæ˜¯åªéœ€å°†åŸå·¦å­æ ‘æ¥å›åŸä½å³å¯
+			this->root_->lChild_ = ltree;
+			ltree->parent_ = this->root_;
+		}
+
+		// é‡Šæ”¾èŠ‚ç‚¹ï¼Œæ›´æ–°è§„æ¨¡
+		release(t->data); release(t); this->size_--;
+
+		// æ­¤åï¼Œè‹¥æ ‘éç©ºï¼Œåˆ™æ ‘æ ¹çš„é«˜åº¦éœ€è¦æ›´æ–°
+		if (this->root_) {
+			updateHeight(this->root_);
+		}
+
+		return true;
 	}
 };
