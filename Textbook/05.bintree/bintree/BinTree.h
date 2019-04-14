@@ -1,16 +1,16 @@
 #pragma once
 
 #include "BinNode.h"
-#include <algorithm>
-#include "../../include/stack.h"
-#include "../../include/queue.h"
+#include <algorithm> // std::max
+#include "../../../include/stack.h"
+#include "../../../include/queue.h"
 
 template <typename T>
 class BinTree
 {
 public:
-	using Node = typename BinNode<T>;
-	using NodePtr = typename Node::Ptr;
+	typedef typename BinNode<T> Node;
+	typedef typename Node::Ptr NodePtr;
 
 protected:
 	int size_;

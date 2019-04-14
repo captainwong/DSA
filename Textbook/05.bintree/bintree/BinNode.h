@@ -3,7 +3,7 @@
 template <typename T>
 struct BinNode
 {
-	using Ptr = typename BinNode<T>*;
+	typedef typename BinNode<T>* Ptr;
 
 	T data_;
 	Ptr parent_;
@@ -35,17 +35,17 @@ struct BinNode
 		return s;
 	}
 	
-	bool isRoot() const { return !parent_; }
-	bool isLChild() const { return !isRoot() && parent_->lChild_ == this; }
-	bool isRChild() const { return !isRoot() && parent_->rChild_ == this; }
-	bool hasParent() const { return parent_; }
-	bool hasLChild() const { return lChild_; }
-	bool hasRChild() const { return rChild_; }
-	bool hasChild() const { return lChild_ || rChild_; }
-	bool hasBothChild() const { return lChild_ && rChild_; }
-	bool isLeaf() const { return !hasChild(); }
-	Ptr sibling() const { return isLChild() ? parent_->rChild_ : parent_->lChild_; }
-	Ptr uncle() const { return parent_->isLChild() ? parent_->parent_->rChild_ : parent_->parent_->lChild_; }
+	inline bool isRoot() const { return !parent_; }
+	inline bool isLChild() const { return parent_ && parent_->lChild_ == this; }
+	inline bool isRChild() const { return parent_ && parent_->rChild_ == this; }
+	inline bool hasParent() const { return parent_; }
+	inline bool hasLChild() const { return lChild_; }
+	inline bool hasRChild() const { return rChild_; }
+	inline bool hasChild() const { return lChild_ || rChild_; }
+	inline bool hasBothChild() const { return lChild_ && rChild_; }
+	inline bool isLeaf() const { return !lChild_ && !rChild_; }
+	inline Ptr sibling() const { return isLChild() ? parent_->rChild_ : parent_->lChild_; }
+	inline Ptr uncle() const { return parent_->isLChild() ? parent_->parent_->rChild_ : parent_->parent_->lChild_; }
 
 	Ptr insertAsLeftChild(const T& data) {
 		return (lChild_ = new BinNode(data, this));

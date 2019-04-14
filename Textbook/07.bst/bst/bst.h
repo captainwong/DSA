@@ -8,7 +8,7 @@ struct Entry
 	K key;
 	V value;
 
-	using EntryType = typename Entry<K, V>;
+	typedef typename Entry<K, V> EntryType;
 
 	Entry(K k = K(), V v = V())
 		: key(k)
@@ -30,8 +30,8 @@ template <typename T>
 class BST : public BinTree<T>
 {
 public:
-	using Node = typename BinNode<T>;
-	using NodePtr = typename Node::Ptr;
+	typedef typename BinNode<T> Node;
+	typedef typename Node::Ptr NodePtr;
 
 	static NodePtr& searchIn(NodePtr& v, const T& e, NodePtr & hot) {
 		if (!v || (e == v->data_)) { return v; }
@@ -40,13 +40,13 @@ public:
 	}
 
 	//! 查找
-	virtual NodePtr& search(const T& e) { return searchIn(this->root_, e, hot_ = nullptr); }
+	virtual NodePtr& search(const T& e) { return searchIn(this->root_, e, this->hot_ = nullptr); }
 	
 	//! 插入
 	virtual NodePtr insert(const T& e) {
 		auto& x = search(e);
 		if (!x) {
-			x = new Node(e, hot_);
+			x = new Node(e, this->hot_);
 			this->size_++;
 			updateHeightAbove(x);
 		}
@@ -76,7 +76,7 @@ public:
 	virtual bool remove(const T& e) {
 		auto& x = search(e);
 		if (!x) { return false; }
-		removeAt(x, hot_);
+		removeAt(x, this->hot_);
 		this->size_--;
 		updateHeightAbove(x);
 		return true;
@@ -120,7 +120,15 @@ protected:
 								 p->lChild_, v->lChild_, v->rChild_, g->rChild_);
 			}			
 		} else { // zag
-
+			if (v->isRChild()) { // zag-zag
+				p->parent = g->parent; //向上联接
+				return connect34(g, p, v, 
+								 g->lc, p->lc, v->lc, v->rc);
+			} else { // zag-zig
+				v->parent = g->parent; //向上联接
+				return connect34(g, v, p, 
+								 g->lc, v->lc, v->rc, p->rc);
+			}
 		}
 	}
 

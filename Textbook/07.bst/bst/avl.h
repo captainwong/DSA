@@ -6,8 +6,8 @@ template <typename T>
 class AVL : public BST<T>
 {
 public:
-	using Node = typename BinNode<T>;
-	using NodePtr = typename Node::Ptr;
+	typedef typename BinNode<T> Node;
+	typedef typename Node::Ptr NodePtr;
 
 	virtual NodePtr insert(T const& e) override {
 		auto& x = search(e); if (x) { return x; }
