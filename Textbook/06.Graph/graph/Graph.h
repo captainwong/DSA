@@ -89,7 +89,7 @@ public:
 	virtual int inDegree(int) = 0;
 	virtual int outDegree(int) = 0;
 	virtual int firstNbr(int) = 0;
-	virtual int nextNbr(int) = 0;
+	virtual int nextNbr(int, int) = 0;
 	virtual VertexStatus& status(int) = 0;
 	virtual int& dTime(int) = 0;
 	virtual int& fTime(int) = 0;
@@ -100,7 +100,7 @@ public:
 	virtual bool exists(int, int) = 0;
 	virtual void insert(Te const&, int, int, int) = 0;
 	virtual Te remove(int, int) = 0;
-	virtual EdgeStatus& status(int, int) = 0;
+	virtual EdgeStatus& type(int, int) = 0;
 	virtual int& weight(int, int) = 0;
 
 	// algorithms
