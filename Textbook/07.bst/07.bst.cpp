@@ -2,12 +2,15 @@
 //
 
 #include "pch.h"
-#include <iostream>
 #include "bst/avl.h"
+#include "bst/bst.h"
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	BST<int> bst;
+	AVL<int> avl;
+
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

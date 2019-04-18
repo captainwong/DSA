@@ -4,11 +4,11 @@
 
 //! 在节点*p与*lc（可能为空）之间建立父（左）子关系
 template <typename NodePtr> inline
-void attachAsLChild(NodePtr p, NodePtr lc) { p->lChild = lc; if (lc) { lc->parent = p; } }
+void attachAsLChild(NodePtr p, NodePtr lc) { p->lChild_ = lc; if (lc) { lc->parent_ = p; } }
 
 //! 在节点*p与*rc（可能为空）之间建立父（右）子关系
 template <typename NodePtr> inline
-void attachAsRChild(NodePtr p, NodePtr rc) { p->rChild = rc; if (rc) { rc->parent = p; } }
+void attachAsRChild(NodePtr p, NodePtr rc) { p->rChild_ = rc; if (rc) { rc->parent_ = p; } }
 
 
 //! 伸展树
@@ -60,9 +60,9 @@ protected:
 				(g == gg->lChild_) ? attachAsLChild(gg, v) : attachAsRChild(gg, v);
 			}
 
-			updateHeight(g);
-			updateHeight(p);
-			updateHeight(v);
+			this->updateHeight(g);
+			this->updateHeight(p);
+			this->updateHeight(v);
 
 		} // 双层伸展结束时，必有 g==nullptr, 但p可能非空
 
@@ -76,8 +76,8 @@ protected:
 				attachAsLChild(v, p);
 			}
 
-			updateHeight(p);
-			updateHeight(v);
+			this->updateHeight(p);
+			this->updateHeight(v);
 		}
 
 		// 伸展完成，返回树根
@@ -89,7 +89,7 @@ public:
 	//! 查找
 	virtual NodePtr& search(const T& e) override {
 		// 调用标准BST的内部接口定位目标节点
-		auto p = searchIn(this->root_, e, this->hot_ = nullptr);
+		auto p = this->searchIn(this->root_, e, this->hot_ = nullptr);
 
 		// 无论成功与否，最后被访问的节点都将伸展至根
 		this->root_ = splay(p ? p : this->hot_);
@@ -125,12 +125,12 @@ public:
 			this->root_ = new Node(e, nullptr, t->lChild_, t);
 			t->parent_ = this->root_;
 			if (t->lChild_) {
-				t->lChild_->parent = this->root_;
+				t->lChild_->parent_ = this->root_;
 				t->lChild_ = nullptr;
 			}
 		}
 
-		updateHeightAbove(t); // 更新t及其祖先（实际上只有root_一个）的高度
+		this->updateHeightAbove(t); // 更新t及其祖先（实际上只有root_一个）的高度
 		return this->root_; //新节点必然置于树根，返回之
 	} // 无论e是否存在于原树中，返回时总有root_->data == e
 
@@ -159,7 +159,7 @@ public:
 			this->root_->parent_ = nullptr;
 			
 			// 以原树根为目标，做一次（必定失败的）查找
-			search(t->data);
+			search(t->data_);
 
 			// 至此，右子树中最小节点必伸展至根，且（因无雷同节点）其左子树必空，于是只需将原左子树接回原位即可
 			this->root_->lChild_ = ltree;
@@ -167,11 +167,12 @@ public:
 		}
 
 		// 释放节点，更新规模
-		release(t->data); release(t); this->size_--;
+		//release(t->data_); release(t); 
+		this->size_--;
 
 		// 此后，若树非空，则树根的高度需要更新
 		if (this->root_) {
-			updateHeight(this->root_);
+			this->updateHeight(this->root_);
 		}
 
 		return true;

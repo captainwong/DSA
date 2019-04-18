@@ -19,14 +19,13 @@ struct BinNode
 		, height_(-1)
 	{}
 
-	BinNode(const T& data, Ptr parent = nullptr)
+	BinNode(const T& data, Ptr parent = nullptr, Ptr lChild = nullptr, Ptr rChild = nullptr)
 		: data_(data)
 		, parent_(parent)
-		, lChild_(nullptr)
-		, rChild_(nullptr)
+		, lChild_(lChild)
+		, rChild_(rChild)
 		, height_(0)
-	{
-	}
+	{}
 
 	int size() const {
 		int s = 1;
@@ -96,4 +95,15 @@ bool avlBalanced(BinNode<T>* node)
 {
 	auto factor = balanceFactor(node);
 	return (-2 < factor) && (factor < 2);
+}
+
+//! 在左、右孩子中取更高者
+// 在AVL平衡调整前，借此确定重构方案
+template <typename T>
+BinNode<T>* tallerChild(BinNode<T>* node)
+{
+	return 
+	stature(node->lChild_) > stature(node->rChild_) ? node->lChild_ : ( // 左高
+		stature(node->lChild_) < stature(node->rChild_) ? node->rChild_ : ( // 右高
+			node->isLChild() ? node->lChild_ : node->rChild_)); // 等高：与父亲x同侧者（zIg-zIg或zAg-zAg）优先
 }

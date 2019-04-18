@@ -2,11 +2,12 @@
 //
 
 #include "pch.h"
-#include <iostream>
+#include "include/splay.h"
+
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	Splay<int> tree;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

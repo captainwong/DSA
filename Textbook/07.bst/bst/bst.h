@@ -48,7 +48,7 @@ public:
 		if (!x) {
 			x = new Node(e, this->hot_);
 			this->size_++;
-			updateHeightAbove(x);
+			this->updateHeightAbove(x);
 		}
 		return x;
 	}
@@ -56,9 +56,9 @@ public:
 	static NodePtr removeAt(NodePtr& x, NodePtr& hot) {
 		NodePtr w = x; // 实际被摘除的节点，初值同x
 		NodePtr succ = nullptr; // 实际被摘除的节点的接替者
-		if (!x->lChild) { // 左子树为空
+		if (!x->lChild_) { // 左子树为空
 			succ = x = x->rChild_; // 接替者为其右子树（可能为空）
-		} else if (!x->rChild) { // 右子树为空
+		} else if (!x->rChild_) { // 右子树为空
 			succ = x = x->lChild_; // 接替者为其左孩子（可能为空）
 		} else { // 左右子树并存的情况
 			w = w->succ(); std::swap(x->data_, w->data_); // 令x与其后继w互换数据
@@ -78,7 +78,7 @@ public:
 		if (!x) { return false; }
 		removeAt(x, this->hot_);
 		this->size_--;
-		updateHeightAbove(x);
+		this->updateHeightAbove(x);
 		return true;
 	}
 
@@ -91,15 +91,15 @@ protected:
 					  NodePtr t0, NodePtr t1, NodePtr t2, NodePtr t3) {
 		a->lChild_ = t0; if (t0) { t0->parent_ = a; }
 		a->rChild_ = t1; if (t1) { t1->parent_ = a; }
-		updateHeight(a);
+		this->updateHeight(a);
 
 		c->lChild_ = t2; if (t2) { t2->parent_ = c; }
 		c->rChild_ = t3; if (t3) { t3->parent_ = c; }
-		updateHeight(c);
+		this->updateHeight(c);
 
 		b->lChild_ = a; a->parent_ = b;
 		b->rChild_ = c; c->parent_ = b;
-		updateHeight(b);
+		this->updateHeight(b);
 
 		return b; // 该子树新的根节点
 	}
@@ -121,13 +121,13 @@ protected:
 			}			
 		} else { // zag
 			if (v->isRChild()) { // zag-zag
-				p->parent = g->parent; //向上联接
+				p->parent_ = g->parent_; //向上联接
 				return connect34(g, p, v, 
-								 g->lc, p->lc, v->lc, v->rc);
+								 g->lChild_, p->lChild_, v->lChild_, v->rChild_);
 			} else { // zag-zig
-				v->parent = g->parent; //向上联接
+				v->parent_ = g->parent_; //向上联接
 				return connect34(g, v, p, 
-								 g->lc, v->lc, v->rc, p->rc);
+								 g->lChild_, v->lChild_, v->rChild_, p->rChild_);
 			}
 		}
 	}
