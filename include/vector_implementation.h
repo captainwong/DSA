@@ -1,72 +1,5 @@
-﻿#include <assert.h>
-#include <stdlib.h>
+﻿#include <stdlib.h>
 #include "fibnacci.h"
-
-template <typename T>
-void Vector<T>::copy_from(T const* A, Rank lo, Rank hi)
-{
-	_elem = new T[_capacity = 2 * (hi - lo)];
-	_size = 0;
-	while (lo < hi) {
-		_elem[_size++] = A[lo++];
-	}
-}
-
-
-template <typename T>
-void Vector<T>::expand()
-{
-	if (_size < _capacity) {
-		return;
-	}
-
-	if (_capacity < DEFAULT_CAPACITY) {
-		_capacity = DEFAULT_CAPACITY;
-	}
-
-	T* old_elem = _elem;
-	_elem = new T[_capacity <<= 1];
-	for (int i = 0; i < _size; i++) {
-		_elem[i] = old_elem[i];
-	}
-
-	delete[] old_elem;
-}
-
-template <typename T>
-int Vector<T>::disordered() const
-{
-	int n = 0;
-	for (int i = 1; i < _size; i++) {
-		if (_elem[i - 1] > _elem[i]) {
-			n++;
-		}
-	}
-	return n;
-}
-
-template <typename T>
-Rank Vector<T>::find(T const& e, Rank lo, Rank hi) const
-{
-	assert(0 <= lo);
-	assert(lo < hi);
-	assert(hi <= _size);
-
-	while ((lo < hi--) && (e != _elem[hi])) {}
-	return hi;
-}
-
-template <typename T>
-Rank Vector<T>::search(T const& e, Rank lo, Rank hi) const
-{
-	assert(0 <= lo);
-	assert(lo < hi);
-	assert(hi <= _size);
-
-	//return (rand() % 2) ?
-	//	binary_search(_elem, e, lo, hi) : fibnacci_search(_elem, e, lo, hi);
-	return fibnacci_search(_elem, e, lo, hi);
-}
 
 template <typename T>
 Rank Vector<T>::binary_search(T* A, T const& e, Rank lo, Rank hi)
@@ -289,26 +222,6 @@ void Vector<T>::merge_sort(Rank lo, Rank hi)
 	merge_sort(lo, mi);
 	merge_sort(mi, hi);
 	merge(lo, mi, hi);
-}
-
-
-template <typename T>
-T& Vector<T>::operator[] (Rank r) const
-{
-	assert(r >= 0 && r < _size);
-	return _elem[r];
-}
-
-
-template <typename T>
-Vector<T>& Vector<T>::operator= (Vector<T> const& V)
-{
-	if (_elem) {
-		delete[] _elem;
-	}
-
-	copy_from(V._elem, 0, V._size);
-	return *this;
 }
 
 
