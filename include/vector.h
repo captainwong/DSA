@@ -3,7 +3,6 @@
 #include <assert.h>
 
 typedef int Rank;
-static constexpr int DEFAULT_CAPACITY = 3;
 
 template <typename T>
 class Vector
@@ -12,6 +11,8 @@ protected:
 	Rank	_size;
 	int		_capacity;
 	T*		_elem;
+
+	static constexpr int DEFAULT_CAPACITY = 3;
 
 public:
 	// Constructors
