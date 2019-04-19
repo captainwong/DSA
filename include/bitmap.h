@@ -1,16 +1,16 @@
-#pragma once
+﻿#pragma once
 #include <string.h>
 
 /**
-* @brief λͼ
-* @note λͼ��һ����������ݽṹ�������Զ�̬�ر�ʾ��һ�飨�޷��ţ��������ɵļ��ϡ��䳤�����ޣ�������ÿ��Ԫ�ص�ȡֵ��Ϊ�����ͣ���ʼ��Ϊfalse��
+* @brief 位图
+* @note 位图是一种特殊的数据结构，可用以动态地表示由一组（无符号）整数构成的集合。其长度无限，且其中每个元素的取值均为布尔型（初始均为false）
 */
 class Bitmap
 {
 private:
-	//! ����ͼ����ŵĿռ�M[]
+	//! 比特图所存放的空间M[]
 	char* M;
-	//! �ռ�M������Ϊ (N * sizeof(char) * 8) ���أ��� N ���ֽ�
+	//! 空间M的容量为 (N * sizeof(char) * 8) 比特，即 N 个字节
 	int N;
 
 protected:
@@ -53,9 +53,9 @@ public:
 
 
 /**
-* @brief λͼ2
-* @note ���������롢���ԣ���֧��ɾ��
-* @note ��ʡ�˳�ʼ������Ԫ�ص�ʱ��
+* @brief 位图2
+* @note 仅允许插入、测试，不支持删除
+* @note 节省了初始化所有元素的时间
 */
 class Bitmap2
 {
@@ -84,15 +84,15 @@ protected:
 	bool valid(Rank r) { return (0 <= r) && (r < top); }
 
 private:
-	Rank* F; Rank N; // ��ģΪN����������¼[k]����ǵĴ��򣨼�����ջT[]�е��ȣ�
-	Rank* T; Rank top; // ����ΪN��ջ����¼����Ǹ�λ�ȵ�ջ���Լ�ջ��ָ��
+	Rank* F; Rank N; // 规模为N的向量，记录[k]被标记的次序（即其在栈T[]中的秩）
+	Rank* T; Rank top; // 容量为N的栈，记录被标记各位秩的栈，以及栈顶指针
 };
 
 
 /**
-* @brief λͼ3
-* @note �������롢���ԣ�֧��ɾ��
-* @note ��ʡ�˳�ʼ������Ԫ�ص�ʱ��
+* @brief 位图3
+* @note 允许插入、测试，支持删除
+* @note 节省了初始化所有元素的时间
 */
 class Bitmap3
 {
@@ -110,12 +110,12 @@ public:
 
 	void set(Rank k) {
 		if (test(k)) { return; }
-		if (!erased(k)) { F[k] = top++; } // ��ϵ���α�ǣ�������У�黷
-		T[F[k]] = k; // ��ϵ������Ǻ��������ָ�ԭУ�黷
+		if (!erased(k)) { F[k] = top++; } // 若系初次标记，创建新校验环
+		T[F[k]] = k; // 若系曾经标记后被清除，则恢复原校验环
 	}
 
 	void clear(Rank k) {
-		if (test(k)) { T[F[k]] = -1 - k; } // ��T[F[k]]ȡ���ټ�һ
+		if (test(k)) { T[F[k]] = -1 - k; } // 将T[F[k]]取负再减一
 	}
 
 	bool test(Rank k) {
@@ -125,10 +125,10 @@ public:
 protected:
 	bool valid(Rank r) { return (0 <= r) && (r < top); }
 
-	//! �ж�[k]�Ƿ�������ǹ����Һ����ֱ����
+	//! 判断[k]是否曾被标记过，且后来又被清除
 	bool erased(Rank k) { return valid(F[k]) && !(T[F[k]] + 1 + k); }
 
 private:
-	Rank* F; Rank N; // ��ģΪN����������¼[k]����ǵĴ��򣨼�����ջT[]�е��ȣ�
-	Rank* T; Rank top; // ����ΪN��ջ����¼����Ǹ�λ�ȵ�ջ���Լ�ջ��ָ��
+	Rank* F; Rank N; // 规模为N的向量，记录[k]被标记的次序（即其在栈T[]中的秩）
+	Rank* T; Rank top; // 容量为N的栈，记录被标记各位秩的栈，以及栈顶指针
 };

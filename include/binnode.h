@@ -1,45 +1,107 @@
-/******************************************************************************************
- * Data Structures in C++
- * ISBN: 7-302-33064-6 & 7-302-33065-3 & 7-302-29652-2 & 7-302-26883-3
- * Junhui DENG, deng@tsinghua.edu.cn
- * Computer Science & Technology, Tsinghua University
- * Copyright (c) 2006-2013. All rights reserved.
- ******************************************************************************************/
+ï»¿#pragma once
 
-#pragma once
+template <typename T>
+struct BinNode
+{
+	typedef typename BinNode<T>* Ptr;
 
-#define BinNodePosi(T) BinNode<T>* //½ÚµãÎ»ÖÃ
-#define stature(p) ((p) ? (p)->height : -1) //½Úµã¸ß¶È£¨Óë¡°¿ÕÊ÷¸ß¶ÈÎª-1¡±µÄÔ¼¶¨ÏàÍ³Ò»£©
-typedef enum { RB_RED, RB_BLACK} RBColor; //½ÚµãÑÕÉ«
+	T data_;
+	Ptr parent_;
+	Ptr lChild_;
+	Ptr rChild_;
+	int height_;
 
-template <typename T> struct BinNode { //¶ş²æÊ÷½ÚµãÄ£°åÀà
-// ³ÉÔ±£¨Îª¼ò»¯ÃèÊöÆğ¼ûÍ³Ò»¿ª·Å£¬¶ÁÕß¿É¸ù¾İĞèÒª½øÒ»²½·â×°£©
-   T data; //ÊıÖµ
-   BinNodePosi(T) parent; BinNodePosi(T) lc; BinNodePosi(T) rc; //¸¸½Úµã¼°×ó¡¢ÓÒº¢×Ó
-   int height; //¸ß¶È£¨Í¨ÓÃ£©
-   int npl; //Null Path Length£¨×óÊ½¶Ñ£¬Ò²¿ÉÖ±½ÓÓÃheight´úÌæ£©
-   RBColor color; //ÑÕÉ«£¨ºìºÚÊ÷£©
-// ¹¹Ôìº¯Êı
-   BinNode() :
-      parent ( NULL ), lc ( NULL ), rc ( NULL ), height ( 0 ), npl ( 1 ), color ( RB_RED ) { }
-   BinNode ( T e, BinNodePosi(T) p = NULL, BinNodePosi(T) lc = NULL, BinNodePosi(T) rc = NULL,
-             int h = 0, int l = 1, RBColor c = RB_RED ) :
-      data ( e ), parent ( p ), lc ( lc ), rc ( rc ), height ( h ), npl ( l ), color ( c ) { }
-// ²Ù×÷½Ó¿Ú
-   int size(); //Í³¼Æµ±Ç°½Úµãºó´ú×ÜÊı£¬Òà¼´ÒÔÆäÎª¸ùµÄ×ÓÊ÷µÄ¹æÄ£
-   BinNodePosi(T) insertAsLC ( T const& ); //×÷Îªµ±Ç°½ÚµãµÄ×óº¢×Ó²åÈëĞÂ½Úµã
-   BinNodePosi(T) insertAsRC ( T const& ); //×÷Îªµ±Ç°½ÚµãµÄÓÒº¢×Ó²åÈëĞÂ½Úµã
-   BinNodePosi(T) succ(); //È¡µ±Ç°½ÚµãµÄÖ±½Óºó¼Ì
-   template <typename VST> void travLevel ( VST& ); //×ÓÊ÷²ã´Î±éÀú
-   template <typename VST> void travPre ( VST& ); //×ÓÊ÷ÏÈĞò±éÀú
-   template <typename VST> void travIn ( VST& ); //×ÓÊ÷ÖĞĞò±éÀú
-   template <typename VST> void travPost ( VST& ); //×ÓÊ÷ºóĞò±éÀú
-// ±È½ÏÆ÷¡¢ÅĞµÈÆ÷£¨¸÷ÁĞÆäÒ»£¬ÆäÓà×ÔĞĞ²¹³ä£©
-   bool operator< ( BinNode const& bn ) { return data < bn.data; } //Ğ¡ÓÚ
-   bool operator== ( BinNode const& bn ) { return data == bn.data; } //µÈÓÚ
-   /*DSA*/
-   /*DSA*/BinNodePosi(T) zig(); //Ë³Ê±ÕëĞı×ª
-   /*DSA*/BinNodePosi(T) zag(); //ÄæÊ±ÕëĞı×ª
+	BinNode()
+		: data_()
+		, parent_(nullptr)
+		, lChild_(nullptr)
+		, rChild_(nullptr)
+		, height_(-1)
+	{}
+
+	BinNode(const T& data, Ptr parent = nullptr, Ptr lChild = nullptr, Ptr rChild = nullptr)
+		: data_(data)
+		, parent_(parent)
+		, lChild_(lChild)
+		, rChild_(rChild)
+		, height_(0)
+	{}
+
+	int size() const {
+		int s = 1;
+		if (lChild_) { s += lChild_->size(); }
+		if (rChild_) { s += rChild_->size(); }
+		return s;
+	}
+	
+	inline bool isRoot() const { return !parent_; }
+	inline bool isLChild() const { return parent_ && parent_->lChild_ == this; }
+	inline bool isRChild() const { return parent_ && parent_->rChild_ == this; }
+	inline bool hasParent() const { return parent_; }
+	inline bool hasLChild() const { return lChild_; }
+	inline bool hasRChild() const { return rChild_; }
+	inline bool hasChild() const { return lChild_ || rChild_; }
+	inline bool hasBothChild() const { return lChild_ && rChild_; }
+	inline bool isLeaf() const { return !lChild_ && !rChild_; }
+	inline Ptr sibling() const { return isLChild() ? parent_->rChild_ : parent_->lChild_; }
+	inline Ptr uncle() const { return parent_->isLChild() ? parent_->parent_->rChild_ : parent_->parent_->lChild_; }
+
+	Ptr insertAsLeftChild(const T& data) { return (lChild_ = new BinNode(data, this)); }
+	Ptr insertAsRightChild(const T& data) { return (rChild_ = new BinNode(data, this)); }	
+
+	//! å®šä½èŠ‚ç‚¹vçš„ç›´æ¥åç»§
+	Ptr succ() {
+		auto s = this; // è®°å½•åç»§çš„ä¸´æ—¶å˜é‡
+		if (rChild_) { // è‹¥æœ‰å³å­©å­ï¼Œåˆ™ç›´æ¥åç»§å¿…åœ¨å³å­æ ‘ä¸­ï¼Œå…·ä½“åœ°å°±æ˜¯
+			s = rChild_; // å³å­æ ‘ä¸­
+			while (s->lChild_) {  s = s->lChild_; } // æœ€é å·¦ï¼ˆæœ€å°ï¼‰çš„èŠ‚ç‚¹
+		} else { // å¦åˆ™ï¼Œç›´æ¥åç»§åº”æ˜¯â€œå°†å½“å‰èŠ‚ç‚¹åŒ…å«äºå…¶å·¦å­æ ‘ä¸­çš„æœ€ä½ç¥–å…ˆâ€ï¼Œå…·ä½“åœ°å°±æ˜¯
+			while (s->isRChild()) { s = s->parent_; } // é€†å‘åœ°æ²¿å³å‘åˆ†æ”¯ï¼Œä¸æ–­æœå·¦ä¸Šæ–¹ç§»åŠ¨
+			s = s->parent_; //æœ€åå†æœå³ä¸Šæ–¹ç§»åŠ¨ä¸€æ­¥ï¼Œå³æŠµè¾¾ç›´æ¥åç»§ï¼ˆå¦‚æœå­˜åœ¨ï¼‰
+		}
+		return s;
+	}
 };
 
-#include "binnode_implementation.h"
+
+/***********************ä¸€äº›è¾…åŠ©æ¨¡æ¿å‡½æ•°***************************/
+
+//! èŠ‚ç‚¹é«˜åº¦
+template <typename T>
+int stature(BinNode<T>* node)
+{
+	return node ? node->height_ : -1;
+}
+
+//! ç†æƒ³å¹³è¡¡
+template <typename T>
+bool balanced(BinNode<T>* node)
+{
+	return stature(node->lChild_) == stature(node->rChild_);
+}
+
+//! å¹³è¡¡å› å­
+template <typename T>
+int balanceFactor(BinNode<T>* node)
+{
+	return stature(node->lChild_) - stature(node->rChild_);
+}
+
+//! AVL å¹³è¡¡
+template <typename T>
+bool avlBalanced(BinNode<T>* node)
+{
+	auto factor = balanceFactor(node);
+	return (-2 < factor) && (factor < 2);
+}
+
+//! åœ¨å·¦ã€å³å­©å­ä¸­å–æ›´é«˜è€…
+// åœ¨AVLå¹³è¡¡è°ƒæ•´å‰ï¼Œå€Ÿæ­¤ç¡®å®šé‡æ„æ–¹æ¡ˆ
+template <typename T>
+BinNode<T>* tallerChild(BinNode<T>* node)
+{
+	return 
+	stature(node->lChild_) > stature(node->rChild_) ? node->lChild_ : ( // å·¦é«˜
+		stature(node->lChild_) < stature(node->rChild_) ? node->rChild_ : ( // å³é«˜
+			node->isLChild() ? node->lChild_ : node->rChild_)); // ç­‰é«˜ï¼šä¸çˆ¶äº²xåŒä¾§è€…ï¼ˆzIg-zIgæˆ–zAg-zAgï¼‰ä¼˜å…ˆ
+}

@@ -1,47 +1,136 @@
-/******************************************************************************************
- * Data Structures in C++
- * ISBN: 7-302-33064-6 & 7-302-33065-3 & 7-302-29652-2 & 7-302-26883-3
- * Junhui DENG, deng@tsinghua.edu.cn
- * Computer Science & Technology, Tsinghua University
- * Copyright (c) 2006-2013. All rights reserved.
- ******************************************************************************************/
+ï»¿#pragma once
 
-#pragma once
-#include "release.h"
-#include "binnode.h" //ÒıÈë¶ş²æÊ÷½ÚµãÀà
-template <typename T> class BinTree { //¶ş²æÊ÷Ä£°åÀà
-protected:
-   int _size; BinNodePosi(T) _root; //¹æÄ£¡¢¸ù½Úµã
-   virtual int updateHeight ( BinNodePosi(T) x ); //¸üĞÂ½ÚµãxµÄ¸ß¶È
-   void updateHeightAbove ( BinNodePosi(T) x ); //¸üĞÂ½Úµãx¼°Æä×æÏÈµÄ¸ß¶È
+#include "BinNode.h"
+#include <algorithm> // std::max
+#include "stack.h"
+#include "queue.h"
+
+template <typename T>
+class BinTree
+{
 public:
-   BinTree() : _size ( 0 ), _root ( NULL ) { } //¹¹Ôìº¯Êı
-   ~BinTree() { if ( 0 < _size ) remove ( _root ); } //Îö¹¹º¯Êı
-   int size() const { return _size; } //¹æÄ£
-   bool empty() const { return !_root; } //ÅĞ¿Õ
-   BinNodePosi(T) root() const { return _root; } //Ê÷¸ù
-   BinNodePosi(T) insertAsRoot ( T const& e ); //²åÈë¸ù½Úµã
-   BinNodePosi(T) insertAsLC ( BinNodePosi(T) x, T const& e ); //e×÷ÎªxµÄ×óº¢×Ó£¨Ô­ÎŞ£©²åÈë
-   BinNodePosi(T) insertAsRC ( BinNodePosi(T) x, T const& e ); //e×÷ÎªxµÄÓÒº¢×Ó£¨Ô­ÎŞ£©²åÈë
-   BinNodePosi(T) attachAsLC ( BinNodePosi(T) x, BinTree<T>* & ); //T×÷Îªx×ó×ÓÊ÷½ÓÈë
-   BinNodePosi(T) attachAsRC ( BinNodePosi(T) x, BinTree<T>* & ); //T×÷ÎªxÓÒ×ÓÊ÷½ÓÈë
-   int remove ( BinNodePosi(T) x ); //É¾³ıÒÔÎ»ÖÃx´¦½ÚµãÎª¸ùµÄ×ÓÊ÷£¬·µ»Ø¸Ã×ÓÊ÷Ô­ÏÈµÄ¹æÄ£
-   BinTree<T>* secede ( BinNodePosi(T) x ); //½«×ÓÊ÷x´Óµ±Ç°Ê÷ÖĞÕª³ı£¬²¢½«Æä×ª»»ÎªÒ»¿Ã¶ÀÁ¢×ÓÊ÷
-   template <typename VST> //²Ù×÷Æ÷
-   void travLevel ( VST& visit ) { if ( _root ) _root->travLevel ( visit ); } //²ã´Î±éÀú
-   template <typename VST> //²Ù×÷Æ÷
-   void travPre ( VST& visit ) { if ( _root ) _root->travPre ( visit ); } //ÏÈĞò±éÀú
-   template <typename VST> //²Ù×÷Æ÷
-   void travIn ( VST& visit ) { if ( _root ) _root->travIn ( visit ); } //ÖĞĞò±éÀú
-   template <typename VST> //²Ù×÷Æ÷
-   void travPost ( VST& visit ) { if ( _root ) _root->travPost ( visit ); } //ºóĞò±éÀú
-   bool operator< ( BinTree<T> const& t ) //±È½ÏÆ÷£¨ÆäÓà×ÔĞĞ²¹³ä£©
-   { return _root && t._root && lt ( _root, t._root ); }
-   bool operator== ( BinTree<T> const& t ) //ÅĞµÈÆ÷
-   { return _root && t._root && ( _root == t._root ); }
-   /*DSA*/
-   /*DSA*/void stretchToLPath() { stretchByZag ( _root ); } //½èÖúzagĞı×ª£¬×ª»¯Îª×óÏòµ¥Á´
-   /*DSA*/void stretchToRPath() { stretchByZig ( _root, _size ); } //½èÖúzigĞı×ª£¬×ª»¯ÎªÓÒÏòµ¥Á´
-}; //BinTree
+	typedef typename BinNode<T> Node;
+	typedef typename Node::Ptr NodePtr;
 
-#include "bintree_implementation.h"
+protected:
+	int size_;
+	NodePtr root_;
+
+	//! æ›´æ–°èŠ‚ç‚¹ node çš„é«˜åº¦
+	virtual int updateHeight(NodePtr node) {
+		return node->height_ = 1 + std::max(stature(node->lChild_), stature(node->rChild_));
+	}
+
+	//! æ›´æ–°èŠ‚ç‚¹ node åŠå…¶ç¥–å…ˆçš„é«˜åº¦
+	void updateHeightAbove(NodePtr node) {
+		while (node) {
+			updateHeight(node);
+			node = node->parent_;
+		}
+	}
+
+public:
+	BinTree()
+		: size_(0)
+		, root_(nullptr)
+	{}
+
+	int size() const { return size_; }
+	bool empty() const { return !root_; }
+	NodePtr root() const { return root_; }
+
+	NodePtr& fromParentTo(NodePtr node) {
+		return node->isRoot() ? root_ : (node->isLChild() ? node->parent_->lChild_ : node->parent_->rChild_);
+	}
+
+	NodePtr insertAsRootNode(T const& data) { size_ = 1; return (root_ = new Node(data)); }
+
+	NodePtr insertAsLeftChild(NodePtr node, T const& data) {
+		size_++;
+		node->insertAsLeftChild(data);
+		updateHeightAbove(node);
+		return node->lChild_;
+	}
+
+	NodePtr insertAsRightChild(NodePtr node, T const& data) {
+		size_++;
+		node->insertAsRightChild(data);
+		updateHeightAbove(node);
+		return node->rChild_;
+	}
+
+	template <typename VST>
+	static void visitAlongLeftBranch(NodePtr node, VST& visit, Stack<NodePtr>& stack) {
+		while (node) {
+			visit(node->data_);
+			stack.push(node->rChild_);
+			node = node->lChild_;
+		}
+	}
+
+	//! å…ˆåºéå†
+	template <typename VST>
+	void travPreOrder(NodePtr node, VST& visit) {
+		Stack<NodePtr> stack;
+		while (true) {
+			visitAlongLeftBranch(node, visit, stack);
+			if (stack.empty()) { break; }
+			node = stack.pop();
+		}
+	}
+
+	static void goAlongLeftBranch(NodePtr node, Stack<NodePtr>& stack) {
+		while (node) { stack.push(node); node = node->lChild_; }
+	}
+
+	//! ä¸­åºéå†
+	template <typename VST>
+	void travInOrder(NodePtr node, VST& visit) {
+		Stack<NodePtr> stack;
+		while (true) {
+			goAlongLeftBranch(node, stack);
+			if (stack.empty()) { break; }
+			node = stack.pop();
+			visit(node->data_);
+			node = node->rChild_;
+		}
+	}
+
+	// go to highest leaf visible from left
+	static void goToHLVFL(Stack<NodePtr>& stack) {
+		while (auto node = stack.top()) {
+			if (node->lChild_) {
+				if (node->rChild_) { stack.push(node->rChild_); }
+				stack.push(node->lChild_);
+			} else {
+				stack.push(node->rChild_);
+			}
+		}
+		stack.pop();
+	}
+
+	//! ååºéå†
+	template <typename VST>
+	void travPostOrder(NodePtr node, VST& visit) {
+		Stack<NodePtr> stack;
+		if (node) { stack.push(node); }
+		while (!stack.empty()) {
+			if (stack.top() != node->parent_) { goToHLVFL(stack); }
+			node = stack.pop();
+			visit(node->data_);
+		}
+	}
+
+	//! å±‚æ¬¡éå†
+	template <typename VST>
+	void travLevelOrder(NodePtr node, VST& visit) {
+		Queue<NodePtr> queue;
+		queue.enqueue(node);
+		while (!queue.empty()) {
+			node = queue.dequeue();
+			visit(node->data_);
+			if (node->lChild_) { queue.enqueue(node->lChild_); }
+			if (node->rChild_) { queue.enqueue(node->rChild_); }
+		}
+	}
+};
