@@ -1,5 +1,5 @@
-#pragma once
-#include "../../05.bintree/bintree/BinTree.h"
+ï»¿#pragma once
+#include "bintree.h"
 #include <algorithm>
 
 template <typename K, typename V>
@@ -39,10 +39,10 @@ public:
 		return searchIn(((e < v->data_) ? v->lChild_ : v->rChild_), e, hot);
 	}
 
-	//! ²éÕÒ
+	//! æŸ¥æ‰¾
 	virtual NodePtr& search(const T& e) { return searchIn(this->root_, e, this->hot_ = nullptr); }
 	
-	//! ²åÈë
+	//! æ’å…¥
 	virtual NodePtr insert(const T& e) {
 		auto& x = search(e);
 		if (!x) {
@@ -54,25 +54,25 @@ public:
 	}
 
 	static NodePtr removeAt(NodePtr& x, NodePtr& hot) {
-		NodePtr w = x; // Êµ¼Ê±»Õª³ýµÄ½Úµã£¬³õÖµÍ¬x
-		NodePtr succ = nullptr; // Êµ¼Ê±»Õª³ýµÄ½ÚµãµÄ½ÓÌæÕß
-		if (!x->lChild_) { // ×ó×ÓÊ÷Îª¿Õ
-			succ = x = x->rChild_; // ½ÓÌæÕßÎªÆäÓÒ×ÓÊ÷£¨¿ÉÄÜÎª¿Õ£©
-		} else if (!x->rChild_) { // ÓÒ×ÓÊ÷Îª¿Õ
-			succ = x = x->lChild_; // ½ÓÌæÕßÎªÆä×óº¢×Ó£¨¿ÉÄÜÎª¿Õ£©
-		} else { // ×óÓÒ×ÓÊ÷²¢´æµÄÇé¿ö
-			w = w->succ(); std::swap(x->data_, w->data_); // ÁîxÓëÆäºó¼Ìw»¥»»Êý¾Ý
+		NodePtr w = x; // å®žé™…è¢«æ‘˜é™¤çš„èŠ‚ç‚¹ï¼Œåˆå€¼åŒx
+		NodePtr succ = nullptr; // å®žé™…è¢«æ‘˜é™¤çš„èŠ‚ç‚¹çš„æŽ¥æ›¿è€…
+		if (!x->lChild_) { // å·¦å­æ ‘ä¸ºç©º
+			succ = x = x->rChild_; // æŽ¥æ›¿è€…ä¸ºå…¶å³å­æ ‘ï¼ˆå¯èƒ½ä¸ºç©ºï¼‰
+		} else if (!x->rChild_) { // å³å­æ ‘ä¸ºç©º
+			succ = x = x->lChild_; // æŽ¥æ›¿è€…ä¸ºå…¶å·¦å­©å­ï¼ˆå¯èƒ½ä¸ºç©ºï¼‰
+		} else { // å·¦å³å­æ ‘å¹¶å­˜çš„æƒ…å†µ
+			w = w->succ(); std::swap(x->data_, w->data_); // ä»¤xä¸Žå…¶åŽç»§wäº’æ¢æ•°æ®
 			auto u = w->parent_;
 			(u == x ? u->rChild_ : u->lChild_) = succ = w->rChild_;
 		}
 
-		hot = w->parent_; // ¼ÇÂ¼Êµ¼Ê±»É¾³ý½Úµã¸¸Ç×
-		if (succ) { succ->parent_ = hot; } // ½«±»É¾³ý½ÚµãµÄ½ÓÌæÕßÓëhotÏàÁª
-		// todo ÊÍ·Å±»Õª³ýµÄ½Úµã release(w->data); release(w);
-		return succ; // ·µ»Ø½ÓÌæÕß
+		hot = w->parent_; // è®°å½•å®žé™…è¢«åˆ é™¤èŠ‚ç‚¹çˆ¶äº²
+		if (succ) { succ->parent_ = hot; } // å°†è¢«åˆ é™¤èŠ‚ç‚¹çš„æŽ¥æ›¿è€…ä¸Žhotç›¸è”
+		// todo é‡Šæ”¾è¢«æ‘˜é™¤çš„èŠ‚ç‚¹ release(w->data); release(w);
+		return succ; // è¿”å›žæŽ¥æ›¿è€…
 	}
 
-	//! É¾³ý
+	//! åˆ é™¤
 	virtual bool remove(const T& e) {
 		auto& x = search(e);
 		if (!x) { return false; }
@@ -83,10 +83,10 @@ public:
 	}
 
 protected:
-	//! ÃüÖÐ½ÚµãµÄ¸¸Ç×
+	//! å‘½ä¸­èŠ‚ç‚¹çš„çˆ¶äº²
 	NodePtr hot_;
 
-	//! 3 + 4 ÖØ¹¹
+	//! 3 + 4 é‡æž„
 	NodePtr connect34(NodePtr a, NodePtr b, NodePtr c,
 					  NodePtr t0, NodePtr t1, NodePtr t2, NodePtr t3) {
 		a->lChild_ = t0; if (t0) { t0->parent_ = a; }
@@ -101,31 +101,31 @@ protected:
 		b->rChild_ = c; c->parent_ = b;
 		this->updateHeight(b);
 
-		return b; // ¸Ã×ÓÊ÷ÐÂµÄ¸ù½Úµã
+		return b; // è¯¥å­æ ‘æ–°çš„æ ¹èŠ‚ç‚¹
 	}
 
-	//! Ðý×ªµ÷Õû
+	//! æ—‹è½¬è°ƒæ•´
 	NodePtr rotateAt(NodePtr v) {
 		auto p = v->parent_;
 		auto g = p->parent_;
 
 		if (p->isLChild()) { // zig
 			if (v->isLChild()) { // zig-zig
-				p->parent_ = g->parent_; // ÏòÉÏÁª½Ó
+				p->parent_ = g->parent_; // å‘ä¸Šè”æŽ¥
 				return connect34(v, p, g,
 								 v->lChild_, v->rChild_, p->rChild_, g->rChild_);
 			} else { // zig-zag
-				v->parent_ = g->parent_; // ÏòÉÏÁª½Ó
+				v->parent_ = g->parent_; // å‘ä¸Šè”æŽ¥
 				return connect34(p, v, g,
 								 p->lChild_, v->lChild_, v->rChild_, g->rChild_);
 			}			
 		} else { // zag
 			if (v->isRChild()) { // zag-zag
-				p->parent_ = g->parent_; //ÏòÉÏÁª½Ó
+				p->parent_ = g->parent_; //å‘ä¸Šè”æŽ¥
 				return connect34(g, p, v, 
 								 g->lChild_, p->lChild_, v->lChild_, v->rChild_);
 			} else { // zag-zig
-				v->parent_ = g->parent_; //ÏòÉÏÁª½Ó
+				v->parent_ = g->parent_; //å‘ä¸Šè”æŽ¥
 				return connect34(g, v, p, 
 								 g->lChild_, v->lChild_, v->rChild_, p->rChild_);
 			}

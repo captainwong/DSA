@@ -1,18 +1,18 @@
-#pragma once
+﻿#pragma once
 
 /*
-size()			����������ǰ�Ĺ�ģ
-get(r)			��ȡ��Ϊr��Ԫ��
-put(r, e)		��e�滻��Ϊr��Ԫ��
-insert(r, e)	e��Ϊ��ΪrԪ�ز��룬ԭ���Ԫ�����κ���
-remove(r)		ɾ����Ϊr��Ԫ�أ����ظ�Ԫ����ԭ��ŵĶ���
-disordered()	�ж�����Ԫ���Ƿ��Ѱ��ǽ�������
-sort()			������Ԫ�ص�λ�ã�ʹ֮���ǽ�������
-find(e)			����Ŀ��Ԫ��e
-search(e)		����Ŀ��Ԫ��e�����ز�����e��������Ԫ��		������������
-deduplicate		�޳��ظ�Ԫ��
-uniquify()		�޳��ظ�Ԫ��									������������
-traverse()		����������ͳһ��������Ԫ�أ����������ɺ�������ָ��
+size()			报告向量当前的规模
+get(r)			获取秩为r的元素
+put(r, e)		用e替换秩为r的元素
+insert(r, e)	e作为秩为r元素插入，原后继元素依次后移
+remove(r)		删除秩为r的元素，返回该元素中原存放的对象
+disordered()	判断所有元素是否已按非降序排列
+sort()			调整各元素的位置，使之按非降序排列
+find(e)			查找目标元素e
+search(e)		查找目标元素e，返回不大于e且秩最大的元素		（有序向量）
+deduplicate		剔除重复元素
+uniquify()		剔除重复元素									（有序向量）
+traverse()		遍历向量并统一处理所有元素，处理方法由函数对象指定
 */
 
 

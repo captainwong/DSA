@@ -4,7 +4,7 @@
 //#include <string.h>
 //#include "../include/bintree.h"
 
-#include "bintree/BinTree.h"
+#include "../include/bintree.h"
 #include <string>
 #include <assert.h>
 

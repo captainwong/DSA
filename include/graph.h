@@ -1,7 +1,7 @@
 #pragma once
 
 #include <limits.h>
-#include "../include/queue.h"
+#include "queue.h"
 
 enum class VertexStatus {
 	undiscovered,

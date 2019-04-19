@@ -59,7 +59,7 @@ inline void visit(int data)
 
 
 
-void parseSubTree(BinTree<int>& bintree, BinNodePosi(int) pos, 
+void parseSubTree(BinTree<int>& bintree, BinTree<int>::NodePtr pos, 
 				  int* preorder, int *postorder, int n)
 {
 	if (n <= 2)
@@ -71,8 +71,8 @@ void parseSubTree(BinTree<int>& bintree, BinNodePosi(int) pos,
 	int rpos_in_pre = g_position_pre[r];
 	int lpos_in_post = g_position_post[l];
 	int rpos_in_post = g_position_post[r];
-	BinNodePosi(int) lpos = bintree.insertAsLC(pos, l);
-	BinNodePosi(int) rpos = bintree.insertAsRC(pos, r);
+	auto lpos = bintree.insertAsLeftChild(pos, l);
+	auto rpos = bintree.insertAsRightChild(pos, r);
 	parseSubTree(bintree, lpos, preorder + 1, postorder, rpos_in_pre - lpos_in_pre);
 	parseSubTree(bintree, rpos, 
 				 preorder + 1 + rpos_in_pre - lpos_in_pre, 
@@ -149,13 +149,13 @@ int main_ac95(int /*argc*/, char** /*argv*/)
 	int lpos_in_post = g_position_post[l];
 	int rpos_in_post = g_position_post[r];
 	BinTree<int> bintree;
-	BinNodePosi(int) pos = bintree.insertAsRoot(p);
-	BinNodePosi(int) lpos = bintree.insertAsLC(pos, l);
-	BinNodePosi(int) rpos = bintree.insertAsRC(pos, r);
+	auto pos = bintree.insertAsRootNode(p);
+	auto lpos = bintree.insertAsLeftChild(pos, l);
+	auto rpos = bintree.insertAsRightChild(pos, r);
 	parseSubTree(bintree, lpos, preorder + 1, postorder, rpos_in_pre - lpos_in_pre);
 	parseSubTree(bintree, rpos, preorder + rpos_in_pre, postorder + 1 + lpos_in_post, rpos_in_post - lpos_in_post);
 
-	bintree.travIn(visit);
+	bintree.travInOrder(bintree.root(), visit);
 #ifdef USE_BUFF
 	// printf(g_buff);
 	//printf("\n");

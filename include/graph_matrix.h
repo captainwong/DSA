@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Graph.h"
-#include "../include/vector.h"
+#include "graph.h"
+#include "vector.h"
 #include <assert.h>
 
 template <typename T>

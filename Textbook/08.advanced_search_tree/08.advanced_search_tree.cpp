@@ -2,7 +2,7 @@
 //
 
 #include "pch.h"
-#include "include/splay.h"
+#include "../../include/splay.h"
 
 
 int main()

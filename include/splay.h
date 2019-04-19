@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../../07.bst/bst/bst.h"
+#include "bst.h"
 
 //! 在节点*p与*lc（可能为空）之间建立父（左）子关系
 template <typename NodePtr> inline

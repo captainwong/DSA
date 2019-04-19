@@ -2,8 +2,7 @@
 //
 
 #include "pch.h"
-#include "bst/avl.h"
-#include "bst/bst.h"
+#include "../../include/avl.h"
 
 int main()
 {
