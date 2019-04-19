@@ -4,9 +4,9 @@ class Fibnacci
 {
 private:
 	int f, g;
+
 public:
-	Fibnacci(int n)
-	{
+	explicit Fibnacci(int n) {
 		f = 1;
 		g = 0;
 		while (g < n) {
@@ -14,20 +14,15 @@ public:
 		}
 	}
 
-	int get()
-	{
-		return g;
-	}
+	int get() const { return g; }
 
-	int next()
-	{
+	int next() {
 		g += f;
 		f = g - f;
 		return g;
 	}
 
-	int prev()
-	{
+	int prev() {
 		f = g - f;
 		g -= f;
 		return g;
