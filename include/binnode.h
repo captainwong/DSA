@@ -61,6 +61,12 @@ struct BinNode
 		}
 		return s;
 	}
+
+	//! 与lc（可能为空）之间建立父（左）子关系
+	void attachAsLChild(Ptr lc) { lChild_ = lc; if (lc) { lc->parent_ = this; } }
+
+	//! 与rc（可能为空）之间建立父（右）子关系
+	void attachAsRChild(Ptr rc) { rChild_ = rc; if (rc) { rc->parent_ = this; } }
 };
 
 

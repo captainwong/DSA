@@ -2,15 +2,6 @@
 
 #include "bst.h"
 
-//! 在节点*p与*lc（可能为空）之间建立父（左）子关系
-template <typename NodePtr> inline
-void attachAsLChild(NodePtr p, NodePtr lc) { p->lChild_ = lc; if (lc) { lc->parent_ = p; } }
-
-//! 在节点*p与*rc（可能为空）之间建立父（右）子关系
-template <typename NodePtr> inline
-void attachAsRChild(NodePtr p, NodePtr rc) { p->rChild_ = rc; if (rc) { rc->parent_ = p; } }
-
-
 //! 伸展树
 template <typename T>
 class Splay : public BST<T>
@@ -29,36 +20,33 @@ protected:
 			auto gg = g->parent_; // 每轮之后，v都将以原曾祖父为父
 			if (v->isLChild()) {
 				if (p->isLChild()) { // zig-zig
-					attachAsLChild(g, p->rChild_);
-					attachAsLChild(p, v->rChild_);
-					attachAsRChild(p, g);
-					attachAsRChild(v, p);
+					g->attachAsLChild(p->rChild_);
+					p->attachAsLChild(v->rChild_);
+					p->attachAsRChild(g);
+					v->attachAsRChild(p);
 				} else { // zig-zag
-					attachAsRChild(g, v->lChild_);
-					attachAsLChild(p, v->rChild_);
-					attachAsLChild(v, g);
-					attachAsRChild(v, p);
+					g->attachAsRChild(v->lChild_);
+					p->attachAsLChild(v->rChild_);
+					v->attachAsLChild(g);
+					v->attachAsRChild(p);
 				}
 			} else {
 				if (p->isRChild()) { // zag-zag
-					attachAsRChild(g, p->lChild_);
-					attachAsRChild(p, v->lChild_);
-					attachAsLChild(p, g);
-					attachAsLChild(v, p);
+					g->attachAsRChild(p->lChild_);
+					p->attachAsRChild(v->lChild_);
+					p->attachAsLChild(g);
+					v->attachAsLChild(p);
 				} else { // zag-zig
-					attachAsRChild(p, v->lChild_);
-					attachAsRChild(g, v->rChild_);
-					attachAsLChild(v, p);
-					attachAsRChild(v, g);
+					p->attachAsRChild(v->lChild_);
+					g->attachAsRChild(v->rChild_);
+					v->attachAsLChild(p);
+					v->attachAsRChild(g);
 				}
 			}
 
 			// 若无曾祖父gg，则v现在就是树根；否则，gg此后应以v为左或右孩子
-			if (!gg) { 
-				v->parent_ = nullptr;
-			} else {
-				(g == gg->lChild_) ? attachAsLChild(gg, v) : attachAsRChild(gg, v);
-			}
+			if (!gg) {  v->parent_ = nullptr;
+			} else { (g == gg->lChild_) ? gg->attachAsLChild(v) : gg->attachAsRChild(v); }
 
 			this->updateHeight(g);
 			this->updateHeight(p);
@@ -69,11 +57,11 @@ protected:
 		// 若p果真是根，只需再额外单旋（至多一次）
 		if (p = v->parent_) {
 			if (v == p->lChild_) {
-				attachAsLChild(p, v->rChild_);
-				attachAsRChild(v, p);
+				p->attachAsLChild(v->rChild_);
+				v->attachAsRChild(p);
 			} else {
-				attachAsRChild(p, v->lChild_);
-				attachAsLChild(v, p);
+				p->attachAsRChild(v->lChild_);
+				v->attachAsLChild(p);
 			}
 
 			this->updateHeight(p);
