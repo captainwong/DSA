@@ -28,12 +28,12 @@ struct BinNode
 		, color_(RBColor::RB_RED)
 	{}
 
-	BinNode(const T& data, Ptr parent = nullptr, Ptr lChild = nullptr, Ptr rChild = nullptr, int h = 0, RBColor color = RBColor::RB_RED)
+	BinNode(const T& data, Ptr parent = nullptr, Ptr lChild = nullptr, Ptr rChild = nullptr, int height = 0, RBColor color = RBColor::RB_RED)
 		: data_(data)
 		, parent_(parent)
 		, lChild_(lChild)
 		, rChild_(rChild)
-		, height_(h)
+		, height_(height)
 		, color_(color)
 	{}
 
