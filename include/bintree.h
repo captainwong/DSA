@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "BinNode.h"
-#include <algorithm> // std::max
+//#include <algorithm> // std::max
 #include "stack.h"
 #include "queue.h"
 
@@ -18,7 +18,10 @@ protected:
 
 	//! 更新节点 node 的高度
 	virtual int updateHeight(NodePtr node) {
-		return node->height_ = 1 + std::max(stature(node->lChild_), stature(node->rChild_));
+		// return node->height_ = 1 + std::max(stature(node->lChild_), stature(node->rChild_));
+		auto lh = stature(node->lChild_);
+		auto rh = stature(node->rChild_);
+		return node->height_ = 1 + (lh < rh ? rh : lh);
 	}
 
 	//! 更新节点 node 及其祖先的高度
@@ -39,6 +42,7 @@ public:
 	bool empty() const { return !root_; }
 	NodePtr root() const { return root_; }
 
+	//! 来自父亲的引用
 	NodePtr& fromParentTo(NodePtr node) {
 		return node->isRoot() ? root_ : (node->isLChild() ? node->parent_->lChild_ : node->parent_->rChild_);
 	}

@@ -4,13 +4,15 @@
 #include "pch.h"
 #include "../../include/splay.h"
 #include "../../include/btree.h"
-
+#include "../../include/rbtree.h"
 
 int main()
 {
 	Splay<int> tree;
 
 	BTree<int> btree;
+
+	RBTree<int> rbtree;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

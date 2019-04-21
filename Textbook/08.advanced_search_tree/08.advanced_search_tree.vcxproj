@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\btnode.h" />
     <ClInclude Include="..\..\include\btree.h" />
+    <ClInclude Include="..\..\include\rbtree.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

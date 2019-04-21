@@ -126,3 +126,24 @@ BinNode<T>* tallerChild(BinNode<T>* node)
 		stature(node->lChild_) < stature(node->rChild_) ? node->rChild_ : ( // 右高
 			node->isLChild() ? node->lChild_ : node->rChild_)); // 等高：与父亲x同侧者（zIg-zIg或zAg-zAg）优先
 }
+
+//! 红黑树节点判断颜色
+template <typename T>
+bool isBlack(BinNode<T>* node)
+{
+	return !node || (RBColor::RB_BLACK == node->color_); // 外部节点也视作黑节点
+}
+
+template <typename T>
+bool isRed(BinNode<T>* node)
+{
+	return !isBlack(node); // 非黑即红
+}
+
+//! 红黑树高度更新条件
+template <typename T>
+bool blackHeightUpdated(BinNode<T>* node)
+{
+	return (stature(node->lChild_) == stature(node->rChild_))
+		&& (node->height_ == (isRed(node) ? stature(node->lChild_) : stature(node->lChild_) + 1));
+}
