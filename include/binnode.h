@@ -1,5 +1,10 @@
 ﻿#pragma once
 
+enum class RBColor {
+	RB_RED,
+	RB_BLACK,
+};
+
 template <typename T>
 struct BinNode
 {
@@ -11,20 +16,25 @@ struct BinNode
 	Ptr rChild_;
 	int height_;
 
+	//! 红黑树使用
+	RBColor color_;
+
 	BinNode()
 		: data_()
 		, parent_(nullptr)
 		, lChild_(nullptr)
 		, rChild_(nullptr)
 		, height_(-1)
+		, color_(RBColor::RB_RED)
 	{}
 
-	BinNode(const T& data, Ptr parent = nullptr, Ptr lChild = nullptr, Ptr rChild = nullptr)
+	BinNode(const T& data, Ptr parent = nullptr, Ptr lChild = nullptr, Ptr rChild = nullptr, int h = 0, RBColor color = RBColor::RB_RED)
 		: data_(data)
 		, parent_(parent)
 		, lChild_(lChild)
 		, rChild_(rChild)
-		, height_(0)
+		, height_(h)
+		, color_(color)
 	{}
 
 	int size() const {
@@ -33,6 +43,11 @@ struct BinNode
 		if (rChild_) { s += rChild_->size(); }
 		return s;
 	}
+
+	bool operator<(const BinNode& rhs) { return this->data_ < rhs.data_; }
+	bool operator>(const BinNode& rhs) { return this->data_ > rhs.data_; }
+	bool operator==(const BinNode& rhs) { return this->data_ == rhs.data_; }
+	bool operator!=(const BinNode& rhs) { return this->data_ != rhs.data_; }
 	
 	inline bool isRoot() const { return !parent_; }
 	inline bool isLChild() const { return parent_ && parent_->lChild_ == this; }
