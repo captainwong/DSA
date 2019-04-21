@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "bst.h"
 
@@ -9,109 +9,109 @@ public:
 	typedef BinNode<T> Node;
 	typedef Node* NodePtr;
 
-	//! ²åÈëÖØĞ´
+	//! æ’å…¥é‡å†™
 	virtual NodePtr insert(const T& e) override {
 		auto& x = this->search(e); if (x) { return x; }
 		x = new Node(e, this->hot_, nullptr, nullptr, -1, RBColor::RB_RED);
 		solveDoubleRed(x); return x ? x : this->hot_->parent_;
 	}
 
-	//! É¾³ıÖØĞ´
+	//! åˆ é™¤é‡å†™
 	virtual bool remove(const T& e) override {
 		auto& x = this->search(e); if (!x) { return false; }
 		auto r = this->removeAt(x, this->hot_); if (!(--this->size_)) { return true; }
-		// hot_Ä³Ò»º¢×Ó¸Õ±»É¾³ı£¬ÇÒ±»rËùÖ¸½Úµã£¨¿ÉÄÜÊÇnullptr£©½ÓÌæ¡£ÒÔÏÂ¼ì²éÊÇ·ñÊ§ºâ£¬²¢×ö±ØÒªµ÷Õû
-		if (!this->hot_) { // Èô¸Õ±»É¾³ıµÄÊÇ¸ù½Úµã£¬Ôò½«ÆäÖÃºÚ£¬²¢¸üĞÂºÚ¸ß¶È
+		// hot_æŸä¸€å­©å­åˆšè¢«åˆ é™¤ï¼Œä¸”è¢«ræ‰€æŒ‡èŠ‚ç‚¹ï¼ˆå¯èƒ½æ˜¯nullptrï¼‰æ¥æ›¿ã€‚ä»¥ä¸‹æ£€æŸ¥æ˜¯å¦å¤±è¡¡ï¼Œå¹¶åšå¿…è¦è°ƒæ•´
+		if (!this->hot_) { // è‹¥åˆšè¢«åˆ é™¤çš„æ˜¯æ ¹èŠ‚ç‚¹ï¼Œåˆ™å°†å…¶ç½®é»‘ï¼Œå¹¶æ›´æ–°é»‘é«˜åº¦
 			this->root_->color_ = RBColor::RB_BLACK; this->updateHeight(this->root_); return true;
 		}
-		// ÒÔÏÂ£¬Ô­x£¨ÏÖr£©±Ø·Ç¸ù£¬_hot±Ø·Ç¿Õ
-		if (blackHeightUpdated(this->hot_)) { return true; } // ÈôËùÓĞ×æÏÈµÄºÚÉî¶ÈÒÀÈ»Æ½ºâ£¬ÔòÎŞĞèµ÷Õû
-		if (isRed(r)) { r->color_ = RBColor::RB_RED; r->height_++; return true; } // ·ñÔò£¬ÈôrÎªºì£¬ÔòÖ»ĞèÁîÆä×ªºÚ
-		// ÒÔÏÂ£¬Ô­x£¨ÏÖr£©¾ùÎªºÚÉ«
+		// ä»¥ä¸‹ï¼ŒåŸxï¼ˆç°rï¼‰å¿…éæ ¹ï¼Œ_hotå¿…éç©º
+		if (blackHeightUpdated(this->hot_)) { return true; } // è‹¥æ‰€æœ‰ç¥–å…ˆçš„é»‘æ·±åº¦ä¾ç„¶å¹³è¡¡ï¼Œåˆ™æ— éœ€è°ƒæ•´
+		if (isRed(r)) { r->color_ = RBColor::RB_RED; r->height_++; return true; } // å¦åˆ™ï¼Œè‹¥rä¸ºçº¢ï¼Œåˆ™åªéœ€ä»¤å…¶è½¬é»‘
+		// ä»¥ä¸‹ï¼ŒåŸxï¼ˆç°rï¼‰å‡ä¸ºé»‘è‰²
 		solveDoubleBlack(r); return true;
 	}
 
 protected:
 	/*
-	* @brief Ë«ºìĞŞÕı
-	* @note RedBlackË«ºìµ÷ÕûËã·¨£º½â¾ö½ÚµãxÓëÆä¸¸¾ùÎªºìÉ«µÄÎÊÌâ¡£·ÖÎªÁ½´óÀàÇé¿ö£º
-	*	RR-1£º2´ÎÑÕÉ«·­×ª£¬2´ÎºÚ¸ß¶È¸üĞÂ£¬1~2´ÎĞı×ª£¬²»ÔÙµİ¹é
-	*	RR-2£º3´ÎÑÕÉ«·­×ª£¬3´ÎºÚ¸ß¶È¸üĞÂ£¬0´ÎĞı×ª£¬ĞèÒªµİ¹é
+	* @brief åŒçº¢ä¿®æ­£
+	* @note RedBlackåŒçº¢è°ƒæ•´ç®—æ³•ï¼šè§£å†³èŠ‚ç‚¹xä¸å…¶çˆ¶å‡ä¸ºçº¢è‰²çš„é—®é¢˜ã€‚åˆ†ä¸ºä¸¤å¤§ç±»æƒ…å†µï¼š
+	*	RR-1ï¼š2æ¬¡é¢œè‰²ç¿»è½¬ï¼Œ2æ¬¡é»‘é«˜åº¦æ›´æ–°ï¼Œ1~2æ¬¡æ—‹è½¬ï¼Œä¸å†é€’å½’
+	*	RR-2ï¼š3æ¬¡é¢œè‰²ç¿»è½¬ï¼Œ3æ¬¡é»‘é«˜åº¦æ›´æ–°ï¼Œ0æ¬¡æ—‹è½¬ï¼Œéœ€è¦é€’å½’
 	*/
-	void solveDoubleRed(NodePtr x) { // xµ±Ç°±ØÎªºì
-		// ÈôÒÑ£¨µİ¹é£©×ªÖÁÊ÷¸ù£¬Ôò½«Æä×ªºÚ£¬ÕûÊ÷ºÚ¸ß¶ÈÒ²ËæÖ®µİÔö
+	void solveDoubleRed(NodePtr x) { // xå½“å‰å¿…ä¸ºçº¢
+		// è‹¥å·²ï¼ˆé€’å½’ï¼‰è½¬è‡³æ ‘æ ¹ï¼Œåˆ™å°†å…¶è½¬é»‘ï¼Œæ•´æ ‘é»‘é«˜åº¦ä¹Ÿéšä¹‹é€’å¢
 		if (x->isRoot()) { this->root_->color_ = RBColor::RB_BLACK; this->root_->height_++; return; }
-		// ·ñÔò£¬xµÄ¸¸Ç×p±Ø´æÔÚ
-		auto p = x->parent_; if (isBlack(p)) { return; } // ÈôpÎªºÚ£¬Ôò¿ÉÖÕÖ¹µ÷Õû¡£·ñÔò
-		auto g = p->parent_; // ¼ÈÈ»pÎªºì£¬ÔòxµÄ×æ¸¸±Ø´æÔÚ£¬ÇÒ±ØÎªºÚÉ«
-		auto u = x->uncle(); // ÒÔÏÂ£¬ÊÓxÊå¸¸uµÄÑÕÉ«·Ö±ğ´¦Àí		
-		if (isBlack(u)) { // RR-1: uÎªºÚÉ«£¨º¬nullptr£©Ê±
-			if (x->isLChild() == p->isLChild()) { // ÈôxÓëpÍ¬²à£¨¼´zIg-zIg»òzAg-zAg£©£¬Ôò
-				p->color_ = RBColor::RB_BLACK; // pÓÉºì×ªºÚ£¬x±£³Öºì
-			} else { // ÈôxÓëpÒì²à£¨¼´zIg-zAg»òzAg-zIg£©£¬Ôò
-				x->color_ = RBColor::RB_BLACK; // xÓÉºì×ªºÚ£¬p±£³Öºì
+		// å¦åˆ™ï¼Œxçš„çˆ¶äº²på¿…å­˜åœ¨
+		auto p = x->parent_; if (isBlack(p)) { return; } // è‹¥pä¸ºé»‘ï¼Œåˆ™å¯ç»ˆæ­¢è°ƒæ•´ã€‚å¦åˆ™
+		auto g = p->parent_; // æ—¢ç„¶pä¸ºçº¢ï¼Œåˆ™xçš„ç¥–çˆ¶å¿…å­˜åœ¨ï¼Œä¸”å¿…ä¸ºé»‘è‰²
+		auto u = x->uncle(); // ä»¥ä¸‹ï¼Œè§†xå”çˆ¶uçš„é¢œè‰²åˆ†åˆ«å¤„ç†		
+		if (isBlack(u)) { // RR-1: uä¸ºé»‘è‰²ï¼ˆå«nullptrï¼‰æ—¶
+			if (x->isLChild() == p->isLChild()) { // è‹¥xä¸påŒä¾§ï¼ˆå³zIg-zIgæˆ–zAg-zAgï¼‰ï¼Œåˆ™
+				p->color_ = RBColor::RB_BLACK; // pç”±çº¢è½¬é»‘ï¼Œxä¿æŒçº¢
+			} else { // è‹¥xä¸på¼‚ä¾§ï¼ˆå³zIg-zAgæˆ–zAg-zIgï¼‰ï¼Œåˆ™
+				x->color_ = RBColor::RB_BLACK; // xç”±çº¢è½¬é»‘ï¼Œpä¿æŒçº¢
 			}
-			g->color_ = RBColor::RB_RED; // g±Ø¶¨ÓÉºÚ×ªºì
-			// todo ÒÔÉÏËä±£Ö¤×Ü¹²Á½´ÎÈ¾É«£¬µ«ÒòÔö¼ÓÁËÅĞ¶Ï¶øµÃ²»³¥Ê§
-			// ÔÚĞı×ªºó½«¸ùÖÃºÚ¡¢º¢×ÓÖÃºì£¬ËäĞèÈı´ÎÈ¾É«µ«Ğ§ÂÊ¸ü¸ß
+			g->color_ = RBColor::RB_RED; // gå¿…å®šç”±é»‘è½¬çº¢
+			// todo ä»¥ä¸Šè™½ä¿è¯æ€»å…±ä¸¤æ¬¡æŸ“è‰²ï¼Œä½†å› å¢åŠ äº†åˆ¤æ–­è€Œå¾—ä¸å¿å¤±
+			// åœ¨æ—‹è½¬åå°†æ ¹ç½®é»‘ã€å­©å­ç½®çº¢ï¼Œè™½éœ€ä¸‰æ¬¡æŸ“è‰²ä½†æ•ˆç‡æ›´é«˜
 			auto gg = g->parent_;
-			auto r = this->fromParentTo(g) = this->rotateAt(x); // µ÷ÕûºóµÄ×ÓÊ÷¸ù½Úµã
-			r->parent_ = gg; // ÓëÔ­Ôø×æ¸¸Áª½Ó
-		} else { // RR-2: uÎªºìÉ«
-			p->color_ = RBColor::RB_BLACK; p->height_++; // pÓÉºì×ªºÚ
-			u->color_ = RBColor::RB_BLACK; u->height_++; // uÓÉºì×ªºÚ
-			if (!g->isRoot()) { g->color_ = RBColor::RB_RED; } // gÈô·Ç¸ù£¬Ôò×ªºì
-			solveDoubleRed(g); // todo ¼ÌĞøµ÷Õûg£¨ÀàËÆÓÚÎ²µİ¹é£¬¿ÉÓÅ»¯Îªµü´úĞÎÊ½£©
+			auto r = this->fromParentTo(g) = this->rotateAt(x); // è°ƒæ•´åçš„å­æ ‘æ ¹èŠ‚ç‚¹
+			r->parent_ = gg; // ä¸åŸæ›¾ç¥–çˆ¶è”æ¥
+		} else { // RR-2: uä¸ºçº¢è‰²
+			p->color_ = RBColor::RB_BLACK; p->height_++; // pç”±çº¢è½¬é»‘
+			u->color_ = RBColor::RB_BLACK; u->height_++; // uç”±çº¢è½¬é»‘
+			if (!g->isRoot()) { g->color_ = RBColor::RB_RED; } // gè‹¥éæ ¹ï¼Œåˆ™è½¬çº¢
+			solveDoubleRed(g); // todo ç»§ç»­è°ƒæ•´gï¼ˆç±»ä¼¼äºå°¾é€’å½’ï¼Œå¯ä¼˜åŒ–ä¸ºè¿­ä»£å½¢å¼ï¼‰
 		}
 	}
 
 	/*
-	* @brief Ë«ºÚĞŞÕı
-	* @note RedBlackË«ºÚµ÷ÕûËã·¨£º½â¾ö½ÚµãxÓë±»ÆäÌæ´úµÄ½Úµã¾ùÎªºÚÉ«µÄÎÊÌâ
-	*   ·ÖÎªÈı´óÀà¹²ËÄÖÖÇé¿ö£º
-	*	BB-1 £º2´ÎÑÕÉ«·­×ª£¬2´ÎºÚ¸ß¶È¸üĞÂ£¬1~2´ÎĞı×ª£¬²»ÔÙµİ¹é
-	*	BB-2R£º2´ÎÑÕÉ«·­×ª£¬2´ÎºÚ¸ß¶È¸üĞÂ£¬0´ÎĞı×ª£¬²»ÔÙµİ¹é
-	*	BB-2B£º1´ÎÑÕÉ«·­×ª£¬1´ÎºÚ¸ß¶È¸üĞÂ£¬0´ÎĞı×ª£¬ĞèÒªµİ¹é
-	*	BB-3 £º2´ÎÑÕÉ«·­×ª£¬2´ÎºÚ¸ß¶È¸üĞÂ£¬1´ÎĞı×ª£¬×ªÎªBB-1»òBB2R
+	* @brief åŒé»‘ä¿®æ­£
+	* @note RedBlackåŒé»‘è°ƒæ•´ç®—æ³•ï¼šè§£å†³èŠ‚ç‚¹xä¸è¢«å…¶æ›¿ä»£çš„èŠ‚ç‚¹å‡ä¸ºé»‘è‰²çš„é—®é¢˜
+	*   åˆ†ä¸ºä¸‰å¤§ç±»å…±å››ç§æƒ…å†µï¼š
+	*	BB-1 ï¼š2æ¬¡é¢œè‰²ç¿»è½¬ï¼Œ2æ¬¡é»‘é«˜åº¦æ›´æ–°ï¼Œ1~2æ¬¡æ—‹è½¬ï¼Œä¸å†é€’å½’
+	*	BB-2Rï¼š2æ¬¡é¢œè‰²ç¿»è½¬ï¼Œ2æ¬¡é»‘é«˜åº¦æ›´æ–°ï¼Œ0æ¬¡æ—‹è½¬ï¼Œä¸å†é€’å½’
+	*	BB-2Bï¼š1æ¬¡é¢œè‰²ç¿»è½¬ï¼Œ1æ¬¡é»‘é«˜åº¦æ›´æ–°ï¼Œ0æ¬¡æ—‹è½¬ï¼Œéœ€è¦é€’å½’
+	*	BB-3 ï¼š2æ¬¡é¢œè‰²ç¿»è½¬ï¼Œ2æ¬¡é»‘é«˜åº¦æ›´æ–°ï¼Œ1æ¬¡æ—‹è½¬ï¼Œè½¬ä¸ºBB-1æˆ–BB2R
 	*/
 	void solveDoubleBlack(NodePtr r) {
 		auto p = r ? r->parent_ : this->hot_; if (!p) { return; }
 		auto s = r->sibling();
-		if (isBlack(s)) { // ĞÖµÜsÎªºÚÉ«
-			// sµÄºìº¢×Ó£¨Èô×ó¡¢ÓÒº¢×Ó½Ôºì£¬×óÕßÓÅÏÈ£»½ÔºÚÊ±ÎªNULL£©
+		if (isBlack(s)) { // å…„å¼Ÿsä¸ºé»‘è‰²
+			// sçš„çº¢å­©å­ï¼ˆè‹¥å·¦ã€å³å­©å­çš†çº¢ï¼Œå·¦è€…ä¼˜å…ˆï¼›çš†é»‘æ—¶ä¸ºNULLï¼‰
 			auto t = isRed(s->lChild_) ? s->lChild_ : (isRed(s->rChild_) ? s->rChild_ : nullptr);
-			if (t) { // BB-1: ºÚsÓĞºìº¢×Ó
-				auto oldColor = p->color_; // ±¸·İÔ­×ÓÊ÷¸ù½ÚµãpÑÕÉ«£¬²¢¶Ôt¼°Æä¸¸Ç×¡¢×æ¸¸
-				// ÒÔÏÂ£¬Í¨¹ıĞı×ªÖØÆ½ºâ£¬²¢½«ĞÂ×ÓÊ÷µÄ×ó¡¢ÓÒº¢×ÓÈ¾ºÚ
-				auto b = this->fromParentTo(p) = this->rotateAt(t); // Ğı×ª
+			if (t) { // BB-1: é»‘sæœ‰çº¢å­©å­
+				auto oldColor = p->color_; // å¤‡ä»½åŸå­æ ‘æ ¹èŠ‚ç‚¹pé¢œè‰²ï¼Œå¹¶å¯¹tåŠå…¶çˆ¶äº²ã€ç¥–çˆ¶
+				// ä»¥ä¸‹ï¼Œé€šè¿‡æ—‹è½¬é‡å¹³è¡¡ï¼Œå¹¶å°†æ–°å­æ ‘çš„å·¦ã€å³å­©å­æŸ“é»‘
+				auto b = this->fromParentTo(p) = this->rotateAt(t); // æ—‹è½¬
 				if (b->lChild_) { b->lChild_->color_ = RBColor::RB_BLACK; this->updateHeight(b->lChild_); }
 				if (b->rChild_) { b->rChild_->color_ = RBColor::RB_BLACK; this->updateHeight(b->rChild_); }
-				b->color_ = oldColor; this->updateHeight(b); // ĞÂ×ÓÊ÷¸ù½Úµã¼Ì³ĞÔ­¸ù½ÚµãµÄÑÕÉ«
-			} else { // ºÚsÎŞºìº¢×Ó
-				s->color_ = RBColor::RB_RED; s->height_--; // s×ªºì
+				b->color_ = oldColor; this->updateHeight(b); // æ–°å­æ ‘æ ¹èŠ‚ç‚¹ç»§æ‰¿åŸæ ¹èŠ‚ç‚¹çš„é¢œè‰²
+			} else { // é»‘sæ— çº¢å­©å­
+				s->color_ = RBColor::RB_RED; s->height_--; // sè½¬çº¢
 				if (isRed(p)) { // BB-2R
-					p->color_ = RBColor::RB_BLACK; // p×ªºÚ£¬µ«ºÚ¸ß¶È²»±ä
+					p->color_ = RBColor::RB_BLACK; // pè½¬é»‘ï¼Œä½†é»‘é«˜åº¦ä¸å˜
 				} else { // BB-2B
-					p->height_--; // p±£³ÖºÚ£¬µ«ºÚ¸ß¶ÈÏÂ½µ
-					solveDoubleBlack(p); // µİ¹éÉÏËİ
+					p->height_--; // pä¿æŒé»‘ï¼Œä½†é»‘é«˜åº¦ä¸‹é™
+					solveDoubleBlack(p); // é€’å½’ä¸Šæº¯
 				}
 			}
-		} else { // BB-3: ĞÖµÜsÎªºì
-			s->color_ = RBColor::RB_BLACK; p->color_ = RBColor::RB_RED; // s×ªºÚ£¬p×ªºì
-			auto t = s->isLChild() ? s->lChild_ : s->rChild_; // È¡tÓëÆä¸¸sÍ¬²à
-			this->hot_ = p; this->fromParentTo(p) = this->rotateAt(t); // ¶Ôt¼°Æä¸¸Ç×¡¢×æ¸¸×öÆ½ºâµ÷Õû
-			solveDoubleBlack(r); // ¼ÌĞøĞŞÕır´¦Ë«ºÚ ¡ª¡ª ´ËÊ±µÄpÒÑ×ªºì£¬¹ÊºóĞøÖ»ÄÜÊÇBB-1»òBB-2R
+		} else { // BB-3: å…„å¼Ÿsä¸ºçº¢
+			s->color_ = RBColor::RB_BLACK; p->color_ = RBColor::RB_RED; // sè½¬é»‘ï¼Œpè½¬çº¢
+			auto t = s->isLChild() ? s->lChild_ : s->rChild_; // å–tä¸å…¶çˆ¶såŒä¾§
+			this->hot_ = p; this->fromParentTo(p) = this->rotateAt(t); // å¯¹tåŠå…¶çˆ¶äº²ã€ç¥–çˆ¶åšå¹³è¡¡è°ƒæ•´
+			solveDoubleBlack(r); // ç»§ç»­ä¿®æ­£rå¤„åŒé»‘ â€”â€” æ­¤æ—¶çš„på·²è½¬çº¢ï¼Œæ•…åç»­åªèƒ½æ˜¯BB-1æˆ–BB-2R
 		}
 	}
 
-	//! ¸üĞÂ½Úµã¸ß¶ÈÖØĞ´
+	//! æ›´æ–°èŠ‚ç‚¹é«˜åº¦é‡å†™
 	virtual int updateHeight(NodePtr node) override {
-		// º¢×ÓÒ»°ãºÚ¸ß¶ÈÏàµÈ£¬³ı·Ç³öÏÖË«ºÚ
-		// ºìºÚÊ÷ÖĞ¸÷½Úµã×ó¡¢ÓÒº¢×ÓµÄºÚ¸ß¶ÈÍ¨³£ÏàµÈ
-		// ÕâÀïÖ®ËùÒÔÈ¡¸ü´óÖµ£¬ÊÇ±ãÓÚÔÚÉ¾³ı½ÚµãºóµÄÆ½ºâµ÷Õû¹ı³ÌÖĞ£¬ÕıÈ·¸üĞÂ±»É¾³ı½Úµã¸¸Ç×µÄºÚ¸ß¶È
-		// ·ñÔò£¬rotateAt()»á¸ù¾İ±»É¾³ı½ÚµãµÄÌæ´úÕß£¨¸ß¶ÈĞ¡Ò»£©ÉèÖÃ¸¸½ÚµãµÄºÚ¸ß¶È
+		// å­©å­ä¸€èˆ¬é»‘é«˜åº¦ç›¸ç­‰ï¼Œé™¤éå‡ºç°åŒé»‘
+		// çº¢é»‘æ ‘ä¸­å„èŠ‚ç‚¹å·¦ã€å³å­©å­çš„é»‘é«˜åº¦é€šå¸¸ç›¸ç­‰
+		// è¿™é‡Œä¹‹æ‰€ä»¥å–æ›´å¤§å€¼ï¼Œæ˜¯ä¾¿äºåœ¨åˆ é™¤èŠ‚ç‚¹åçš„å¹³è¡¡è°ƒæ•´è¿‡ç¨‹ä¸­ï¼Œæ­£ç¡®æ›´æ–°è¢«åˆ é™¤èŠ‚ç‚¹çˆ¶äº²çš„é»‘é«˜åº¦
+		// å¦åˆ™ï¼ŒrotateAt()ä¼šæ ¹æ®è¢«åˆ é™¤èŠ‚ç‚¹çš„æ›¿ä»£è€…ï¼ˆé«˜åº¦å°ä¸€ï¼‰è®¾ç½®çˆ¶èŠ‚ç‚¹çš„é»‘é«˜åº¦
 		node->height_ = stature(node->lChild_) < stature(node->rChild_) ? stature(node->rChild_) : stature(node->lChild_);
-		return isBlack(node) ? node->height_++ : node->height_; // Èôµ±Ç°½ÚµãÎªºÚ£¬Ôò¼ÆÈëºÚÉî¶È
-		// ÒòÍ³Ò»¶¨Òåstature(nullptr) = -1£¬¹Êheight±ÈºÚ¸ß¶ÈÉÙÒ»£¬ºÃÔÚ²»ÖÂÓ°Ïìµ½¸÷ÖÖËã·¨ÖĞµÄ±È½ÏÅĞ¶Ï
+		return isBlack(node) ? node->height_++ : node->height_; // è‹¥å½“å‰èŠ‚ç‚¹ä¸ºé»‘ï¼Œåˆ™è®¡å…¥é»‘æ·±åº¦
+		// å› ç»Ÿä¸€å®šä¹‰stature(nullptr) = -1ï¼Œæ•…heightæ¯”é»‘é«˜åº¦å°‘ä¸€ï¼Œå¥½åœ¨ä¸è‡´å½±å“åˆ°å„ç§ç®—æ³•ä¸­çš„æ¯”è¾ƒåˆ¤æ–­
 	}
 };
