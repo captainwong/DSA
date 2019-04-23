@@ -2,6 +2,9 @@
 
 #include "bst.h"
 
+namespace dtl
+{
+
 template <typename T>
 class AVL : public BST<T>
 {
@@ -11,7 +14,7 @@ public:
 
 	virtual NodePtr insert(T const& e) override {
 		auto& x = this->search(e); if (x) { return x; }
-		
+
 		x = new Node(e, this->hot_);
 		this->size_++;
 		auto xx = x;
@@ -44,3 +47,5 @@ public:
 		return true;
 	}
 };
+
+}

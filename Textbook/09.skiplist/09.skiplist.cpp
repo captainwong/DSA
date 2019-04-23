@@ -6,6 +6,8 @@
 #include "../../include/util/util.h"
 
 
+using namespace dtl;
+
 template <typename K, typename V>
 void testSkiplist(int n)
 {

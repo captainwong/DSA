@@ -11,6 +11,8 @@ void swap(t& a, t& b)
 
 #include "../include/dtl/vector.h"
 
+using namespace dtl;
+
 int main(int argc, char* argv[])
 {
 	/*Fibnacci f(0);

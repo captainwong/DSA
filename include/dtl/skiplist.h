@@ -1,9 +1,16 @@
 ﻿#pragma once
 
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include "dictionary.h"
 #include "list.h"
 #include "quadlist.h"
 #include <stdlib.h> // rand
+
+namespace dtl 
+{
 
 //! 跳转表
 template <typename K, typename V>
@@ -100,3 +107,5 @@ public:
 		return true;
 	}
 };
+
+}

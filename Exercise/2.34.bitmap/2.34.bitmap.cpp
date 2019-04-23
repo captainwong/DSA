@@ -2,8 +2,8 @@
 //
 
 #include "pch.h"
-#include <iostream>
 #include "../../include/dtl/bitmap.h"
+#include <iostream>
 
 int main()
 {

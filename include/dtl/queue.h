@@ -1,7 +1,9 @@
 #pragma once
 
-
 #include "list.h"
+
+namespace dtl 
+{
 
 template <typename T> 
 class Queue : public List<T>
@@ -12,3 +14,4 @@ public:
 	T& front() { return this->first()->data; }
 };
 
+}

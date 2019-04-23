@@ -5,6 +5,8 @@
 #include <assert.h>
 /*****************/
 
+using namespace dtl;
+
 namespace chapter_4_3_1
 {
 

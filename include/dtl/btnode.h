@@ -2,6 +2,9 @@
 
 #include "vector.h"
 
+namespace dtl
+{
+
 //! B-树节点
 template <typename T>
 struct BTNode
@@ -24,3 +27,5 @@ struct BTNode
 		if (rc) { rc->parent_ = this; }
 	}
 };
+
+}

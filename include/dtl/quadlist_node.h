@@ -2,6 +2,9 @@
 
 #include "entry.h"
 
+namespace dtl 
+{
+
 //! 四联表节点
 template <typename T>
 struct QuadlistNode
@@ -36,3 +39,5 @@ struct QuadlistNode
 		return x;
 	}
 };
+
+}

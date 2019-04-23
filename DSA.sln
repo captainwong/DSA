@@ -116,6 +116,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 		include\dtl\queue.h = include\dtl\queue.h
 		include\dtl\rbtree.h = include\dtl\rbtree.h
 		include\dtl\README.md = include\dtl\README.md
+		include\dtl\release.h = include\dtl\release.h
 		include\dtl\skiplist.h = include\dtl\skiplist.h
 		include\dtl\splay.h = include\dtl\splay.h
 		include\dtl\stack.h = include\dtl\stack.h

@@ -1,5 +1,8 @@
 #pragma once
 
+namespace dtl 
+{
+
 typedef int Rank;
 
 template <typename T>
@@ -32,3 +35,5 @@ struct ListNode
 		return pos;
 	}
 };
+
+}

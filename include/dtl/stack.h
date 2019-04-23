@@ -2,6 +2,9 @@
 
 #include "list.h"
 
+namespace dtl 
+{
+
 template <typename T> 
 class Stack : public List<T>
 {
@@ -11,4 +14,4 @@ public:
 	T& top() { return this->last()->data; }
 };
 
-
+}

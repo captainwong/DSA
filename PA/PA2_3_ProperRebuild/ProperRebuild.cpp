@@ -58,6 +58,8 @@ inline void visit(int data)
 }
 
 
+using namespace dtl;
+
 
 void parseSubTree(BinTree<int>& bintree, BinTree<int>::NodePtr pos, 
 				  int* preorder, int *postorder, int n)

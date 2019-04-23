@@ -2,6 +2,9 @@
 
 #include "btnode.h"
 
+namespace dtl 
+{
+
 /*
 * @brief B-树
 * @note N个节点，m阶
@@ -183,3 +186,5 @@ public:
 		return true;
 	}
 };
+
+}

@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+namespace dtl 
+{
+
 //! 词条
 template <typename K, typename V>
 struct Entry
@@ -24,3 +27,5 @@ struct Entry
 	bool operator==(const Entry& rhs) { return key == rhs.key; }
 	bool operator!=(const Entry& rhs) { return key == rhs.key; }
 };
+
+}

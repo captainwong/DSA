@@ -2,6 +2,9 @@
 
 #include "bst.h"
 
+namespace dtl 
+{
+
 template <typename T>
 class RBTree : public BST<T>
 {
@@ -115,3 +118,5 @@ protected:
 		// 因统一定义stature(nullptr) = -1，故height比黑高度少一，好在不致影响到各种算法中的比较判断
 	}
 };
+
+}

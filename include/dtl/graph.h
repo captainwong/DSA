@@ -3,6 +3,9 @@
 #include <limits.h>
 #include "queue.h"
 
+namespace dtl 
+{
+
 enum class VertexStatus {
 	undiscovered,
 	discovered,
@@ -127,3 +130,5 @@ public:
 	}
 
 };
+
+}

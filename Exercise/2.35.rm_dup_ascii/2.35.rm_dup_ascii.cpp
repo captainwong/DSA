@@ -2,6 +2,7 @@
 //
 
 #include "pch.h"
+#include "../../include/dtl/bitmap.h"
 #include <stdio.h>
 
 /***测试用******/
@@ -9,7 +10,8 @@
 #include <vector>
 /*****************/
 
-#include "../../include/dtl/bitmap.h"
+using namespace dtl;
+
 
 typedef std::vector<char> ascii;
 

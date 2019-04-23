@@ -5,6 +5,9 @@
 #include "stack.h"
 #include "queue.h"
 
+namespace dtl
+{
+
 template <typename T>
 class BinTree
 {
@@ -64,7 +67,8 @@ public:
 	template <typename VST>
 	void travPreOrder(NodePtr node, VST& visit) {
 		Stack<NodePtr> stack;
-		while (true) { visitAlongLeftBranch(node, visit, stack); 
+		while (true) {
+			visitAlongLeftBranch(node, visit, stack);
 			if (stack.empty()) { break; } node = stack.pop();
 		}
 	}
@@ -77,7 +81,8 @@ public:
 	template <typename VST>
 	void travInOrder(NodePtr node, VST& visit) {
 		Stack<NodePtr> stack;
-		while (true) { goAlongLeftBranch(node, stack);
+		while (true) {
+			goAlongLeftBranch(node, stack);
 			if (stack.empty()) { break; } node = stack.pop();
 			visit(node->data_); node = node->rChild_;
 		}
@@ -119,3 +124,5 @@ public:
 		}
 	}
 };
+
+}

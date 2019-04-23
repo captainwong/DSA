@@ -1,10 +1,14 @@
-#pragma once
+ï»¿#pragma once
 
 #include "bitmap.h"
 #include "dictionary.h"
 #include "entry.h"
+#include "release.h"
 
-//! É¢ÁÐ±í
+namespace dtl 
+{
+
+//! æ•£åˆ—è¡¨
 template <typename K, typename V>
 class Hashtable : public Dictionary<K, V>
 {
@@ -14,36 +18,52 @@ public:
 	typedef EntryType* Bucket;
 	typedef Bucket* Buckets;
 
-	Hashtable(int c = 5);
-	~Hashtable();
+	Hashtable(int c = 5) 
+		: M(c)
+		, N(0)
+	{
+		buckets = new Bucket[M];
+		memset(buckets, 0, sizeof(Bucket) * M);
+		lazyRemoval = new Bitmap(M);
+	}
 
-	//! µ±Ç°´ÊÌõÊýÄ¿
+	~Hashtable() {
+		for (int i = 0; i < M; i++) {
+			if (buckets[i]) { release(buckets[i]); }
+		}
+		release(buckets);
+		release(lazyRemoval);
+	}
+
+	//! å½“å‰è¯æ¡æ•°ç›®
 	int size() const { return N; }
-	//! ²åÈë£¨½ûÖ¹À×Í¬´ÊÌõ£¬¹Ê¿ÉÄÜÊ§°Ü£©
+	//! æ’å…¥ï¼ˆç¦æ­¢é›·åŒè¯æ¡ï¼Œæ•…å¯èƒ½å¤±è´¥ï¼‰
 	bool put(K const& k, V const& v);
-	//! ¶ÁÈ¡
+	//! è¯»å–
 	V* get(K const& k);
-	//! É¾³ý
+	//! åˆ é™¤
 	bool remove(K const& k);
 
 protected:
-	//! ÑØ¹Ø¼üÂëk¶ÔÓ¦µÄ²éÕÒÁ´£¬ÕÒµ½´ÊÌõÆ¥ÅäµÄÍ°
+	//! æ²¿å…³é”®ç kå¯¹åº”çš„æŸ¥æ‰¾é“¾ï¼Œæ‰¾åˆ°è¯æ¡åŒ¹é…çš„æ¡¶
 	int probe4Hit(const K& k);
-	//! ÑØ¹Ø¼üÂëk¶ÔÓ¦µÄ²éÕÒÁ´£¬ÕÒµ½Ê×¸ö¿ÉÓÃ¿ÕÍ°
+	//! æ²¿å…³é”®ç kå¯¹åº”çš„æŸ¥æ‰¾é“¾ï¼Œæ‰¾åˆ°é¦–ä¸ªå¯ç”¨ç©ºæ¡¶
 	int probe4Free(const K& k);
-	//! ÖØÉ¢ÁÐËã·¨£ºÀ©³äÍ°Êý×é£¬±£Ö¤×°ÌîÒò×ÓÔÚ¾¯½äÏßÒÔÏÂ
+	//! é‡æ•£åˆ—ç®—æ³•ï¼šæ‰©å……æ¡¶æ•°ç»„ï¼Œä¿è¯è£…å¡«å› å­åœ¨è­¦æˆ’çº¿ä»¥ä¸‹
 	void rehash();
 
 	//bool lazilyRemoved()
 
 private:
-	//! Í°Êý×é£¬´æ·Å´ÊÌõÖ¸Õë
+	//! æ¡¶æ•°ç»„ï¼Œå­˜æ”¾è¯æ¡æŒ‡é’ˆ
 	Buckets buckets;
-	//! Í°Êý×éÈÝÁ¿
+	//! æ¡¶æ•°ç»„å®¹é‡
 	int M;
-	//! ´ÊÌõÊýÁ¿
+	//! è¯æ¡æ•°é‡
 	int N;
-	//! ÀÁ¶èÉ¾³ý±ê¼Ç
+	//! æ‡’æƒ°åˆ é™¤æ ‡è®°
 	Bitmap* lazyRemoval;
 
 };
+
+}

@@ -6,6 +6,8 @@
 #include "../../include/dtl/btree.h"
 #include "../../include/dtl/rbtree.h"
 
+using namespace dtl;
+
 int main()
 {
 	Splay<int> tree;

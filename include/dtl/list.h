@@ -3,6 +3,9 @@
 #include <assert.h>
 #include "list_node.h"
 
+namespace dtl 
+{
+
 template <typename T>
 class List
 {
@@ -126,3 +129,5 @@ public:
 		for (auto p = header->succ; p != trailer; p = p->succ) { visit(p->data); }
 	}
 };
+
+}

@@ -1,6 +1,14 @@
 ﻿#pragma once
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <string.h>
 #include <stdio.h>
+
+namespace dtl
+{
 
 /**
 * @brief 位图
@@ -63,8 +71,8 @@ public:
 
 	//! 将位图整体导出至指定的文件，以便对此后的新位图批量初始化
 	void dump(const char* path) {
-		auto f = fopen(path, "w"); 
-		fwrite(M, sizeof(char), N, f); 
+		auto f = fopen(path, "w");
+		fwrite(M, sizeof(char), N, f);
 		fclose(f);
 	}
 
@@ -167,3 +175,5 @@ private:
 	Rank* F; Rank N; // 规模为N的向量，记录[k]被标记的次序（即其在栈T[]中的秩）
 	Rank* T; Rank top; // 容量为N的栈，记录被标记各位秩的栈，以及栈顶指针
 };
+
+}

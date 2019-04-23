@@ -1,11 +1,18 @@
 ﻿#pragma once
 
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <stdio.h>
 #include <typeinfo.h>
 
 #include "../dtl/graph.h"
 #include "../dtl/quadlist.h"
 #include "../dtl/skiplist.h"
+
+namespace dtl 
+{
 
 //! 萃取指针类型，转为引用
 template <typename T>
@@ -96,3 +103,5 @@ public:
 	}
 
 };
+
+}

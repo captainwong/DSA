@@ -1,5 +1,14 @@
-﻿#include <stdlib.h>
+﻿#pragma once
+
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
+#include <stdlib.h>
 #include "fibnacci.h"
+
+namespace dtl 
+{
 
 template <typename T>
 Rank Vector<T>::binary_search(T* A, T const& e, Rank lo, Rank hi)
@@ -313,4 +322,6 @@ int Vector<T>::uniquify()
 	_size = ++i;
 	shrink();
 	return j - i;
+}
+
 }

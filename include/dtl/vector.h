@@ -2,6 +2,9 @@
 
 #include <assert.h>
 
+namespace dtl 
+{
+
 typedef int Rank;
 
 template <typename T>
@@ -85,5 +88,7 @@ protected:
 	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi);
 	static Rank interpolation_search(T* A, T const& e, Rank lo, Rank hi);
 };
+
+}
 
 #include "vector_implementation.h"

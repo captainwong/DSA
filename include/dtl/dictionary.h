@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+namespace dtl 
+{
+
 //! 词典
 template <typename K, typename V>
 struct Dictionary
@@ -13,3 +16,5 @@ struct Dictionary
 	//! 删除词条
 	virtual bool remove(K k) = 0;
 };
+
+}

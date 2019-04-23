@@ -2,6 +2,9 @@
 
 #include "quadlist_node.h"
 
+namespace dtl 
+{
+
 //! 四联表
 template <typename T>
 class Quadlist
@@ -73,3 +76,5 @@ public:
 		while ((p = p->succ) != trailer) { visit(p->entry); }
 	}
 };
+
+}

@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+namespace dtl
+{
+
 enum class RBColor {
 	RB_RED,
 	RB_BLACK,
@@ -146,4 +149,6 @@ bool blackHeightUpdated(BinNode<T>* node)
 {
 	return (stature(node->lChild_) == stature(node->rChild_))
 		&& (node->height_ == (isRed(node) ? stature(node->lChild_) : stature(node->lChild_) + 1));
+}
+
 }

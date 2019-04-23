@@ -2,6 +2,9 @@
 
 #include "bst.h"
 
+namespace dtl 
+{
+
 //! 伸展树
 template <typename T>
 class Splay : public BST<T>
@@ -166,3 +169,5 @@ public:
 		return true;
 	}
 };
+
+}

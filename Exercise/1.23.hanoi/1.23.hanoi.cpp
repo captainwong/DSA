@@ -6,6 +6,8 @@
 #include <assert.h>
 #include <stdio.h>
 
+using namespace dtl;
+
 struct Disk {
 	int index;
 

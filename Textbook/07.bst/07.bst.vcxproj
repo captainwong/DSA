@@ -151,8 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="bst\avl.h" />
-    <ClInclude Include="bst\bst.h" />
+    <ClInclude Include="..\..\include\dtl\avl.h" />
+    <ClInclude Include="..\..\include\dtl\binnode.h" />
+    <ClInclude Include="..\..\include\dtl\bintree.h" />
+    <ClInclude Include="..\..\include\dtl\bst.h" />
+    <ClInclude Include="..\..\include\dtl\swap.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

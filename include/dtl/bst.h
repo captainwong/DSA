@@ -1,6 +1,10 @@
 ﻿#pragma once
+
 #include "bintree.h"
-#include <algorithm>
+#include "swap.h"
+
+namespace dtl
+{
 
 template <typename K, typename V>
 struct Entry
@@ -26,7 +30,7 @@ struct Entry
 	bool operator != (const EntryType & e) { return key != e.key; }
 };
 
-template <typename T> 
+template <typename T>
 class BST : public BinTree<T>
 {
 public:
@@ -41,7 +45,7 @@ public:
 
 	//! 查找
 	virtual NodePtr& search(const T& e) { return searchIn(this->root_, e, this->hot_ = nullptr); }
-	
+
 	//! 插入
 	virtual NodePtr insert(const T& e) {
 		auto& x = search(e);
@@ -61,7 +65,7 @@ public:
 		} else if (!x->rChild_) { // 右子树为空
 			succ = x = x->lChild_; // 接替者为其左孩子（可能为空）
 		} else { // 左右子树并存的情况
-			w = w->succ(); std::swap(x->data_, w->data_); // 令x与其后继w互换数据
+			w = w->succ(); swap(x->data_, w->data_); // 令x与其后继w互换数据
 			auto u = w->parent_;
 			(u == x ? u->rChild_ : u->lChild_) = succ = w->rChild_;
 		}
@@ -118,19 +122,19 @@ protected:
 				v->parent_ = g->parent_; // 向上联接
 				return connect34(p, v, g,
 								 p->lChild_, v->lChild_, v->rChild_, g->rChild_);
-			}			
+			}
 		} else { // zag
 			if (v->isRChild()) { // zag-zag
 				p->parent_ = g->parent_; //向上联接
-				return connect34(g, p, v, 
+				return connect34(g, p, v,
 								 g->lChild_, p->lChild_, v->lChild_, v->rChild_);
 			} else { // zag-zig
 				v->parent_ = g->parent_; //向上联接
-				return connect34(g, v, p, 
+				return connect34(g, v, p,
 								 g->lChild_, v->lChild_, v->rChild_, p->rChild_);
 			}
 		}
 	}
-
-
 };
+
+}

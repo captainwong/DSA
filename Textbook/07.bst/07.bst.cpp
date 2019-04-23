@@ -4,6 +4,8 @@
 #include "pch.h"
 #include "../../include/dtl/avl.h"
 
+using namespace dtl;
+
 int main()
 {
 	BST<int> bst;

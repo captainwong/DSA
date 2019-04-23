@@ -4,6 +4,9 @@
 #include "vector.h"
 #include <assert.h>
 
+namespace dtl 
+{
+
 template <typename T>
 struct Vertex
 {
@@ -141,3 +144,5 @@ public:
 		return eBak;
 	}
 };
+
+}

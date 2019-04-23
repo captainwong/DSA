@@ -18,7 +18,11 @@
  * 此处，借助C++中偏特化技术区分上述两种情况，并做对应处理
  ******************************************************************************************/
 
-template <typename T> struct Cleaner {
+namespace dtl 
+{
+
+template <typename T> 
+struct Cleaner {
    static void clean ( T x ) { //相当于递归基
 #ifdef _DEBUG
       static int n = 0;
@@ -31,7 +35,8 @@ template <typename T> struct Cleaner {
    }
 };
 
-template <typename T> struct Cleaner<T*> {
+template <typename T> 
+struct Cleaner<T*> {
    static void clean ( T* x ) {
       if ( x ) { delete x; } //如果其中包含指针，递归释放
 #ifdef _DEBUG
@@ -41,4 +46,7 @@ template <typename T> struct Cleaner<T*> {
    }
 };
 
-template <typename T> void release ( T x ) { Cleaner<T>::clean ( x ); }
+template <typename T> 
+inline void release ( T x ) { Cleaner<T>::clean ( x ); }
+
+}

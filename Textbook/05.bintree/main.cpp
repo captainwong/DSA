@@ -8,6 +8,8 @@
 #include <string>
 #include <assert.h>
 
+using namespace dtl;
+
 void test_tree()
 {
 	/*

@@ -1,5 +1,8 @@
 #pragma once
 
+namespace dtl 
+{
+
 class Fibnacci
 {
 private:
@@ -28,3 +31,5 @@ public:
 		return g;
 	}
 };
+
+}
