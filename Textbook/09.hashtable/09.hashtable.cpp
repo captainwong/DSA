@@ -1,4 +1,4 @@
-// 09.hashtable.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 09.hashtable.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
@@ -8,17 +8,17 @@
 using namespace dtl;
 
 /******************************************************************************************
- * ²âÊÔÉ¢ÁĞ±í
+ * æµ‹è¯•æ•£åˆ—è¡¨
  ******************************************************************************************/
-template <typename K, typename V> //key¡¢value
+template <typename K, typename V> //keyã€value
 void testHashtable(int n) {
 	Hashtable<K, V> ht(n); print(ht);
 	while (ht.size() < 4 * n) {
 		printf("\n");
 		switch (dice(3)) {
 			case 0:
-			{ //²éÕÒ£¬³É¹¦ÂÊ <= 33.3%
-				K key = dice((K)n * 12); //[0, 3n)·¶Î§ÄÚµÄkey
+			{ //æŸ¥æ‰¾ï¼ŒæˆåŠŸç‡ <= 33.3%
+				K key = dice((K)n * 12); //[0, 3n)èŒƒå›´å†…çš„key
 				printf("Searching "); print(key); printf("(%04d) :\n", hashCode(key));
 				V* pValue = ht.get(key);
 				if (pValue) { printf("Found with "); print(*pValue); }
@@ -27,16 +27,16 @@ void testHashtable(int n) {
 				break;
 			}
 			case 1:
-			{ //É¾³ı£¬³É¹¦ÂÊ <= 33.3%
-				K key = dice((K)n * 12); //[0, 3n)·¶Î§ÄÚµÄkey
+			{ //åˆ é™¤ï¼ŒæˆåŠŸç‡ <= 33.3%
+				K key = dice((K)n * 12); //[0, 3n)èŒƒå›´å†…çš„key
 				printf("Removing "); print(key); printf("(%04d) :\n", hashCode(key));
 				if (ht.remove(key)) { printf("Done\n"), print(ht); }
 				else { printf("Entry not exists\n"); }
 				break;
 			}
 			default:
-			{//²åÈë£¬³É¹¦ÂÊ == 100%
-				K key = dice((K)n * 12); V v = (V) 'A' + dice(26); //ÔÚ[0, 2n)*['A'~'Z']·¶Î§ÄÚµÄ´ÊÌõ
+			{//æ’å…¥ï¼ŒæˆåŠŸç‡ == 100%
+				K key = dice((K)n * 12); V v = (V) 'A' + dice(26); //åœ¨[0, 2n)*['A'~'Z']èŒƒå›´å†…çš„è¯æ¡
 				printf("Inserting <"); print(key); printf("(%04d)", hashCode(key)); printf(","); print(v); printf(">\n");
 				if (ht.put(key, v)) { printf("Done\n"), print(ht); }
 				else { printf("Dup key\n"); }
@@ -46,7 +46,7 @@ void testHashtable(int n) {
 	} //while
 	while (ht.size() > 0) {
 		printf("\n");
-		K key = dice((K)n * 12); //[0, 3n)·¶Î§ÄÚµÄkey
+		K key = dice((K)n * 12); //[0, 3n)èŒƒå›´å†…çš„key
 		printf("Removing "); print(key); printf(" :\n");
 		if (ht.remove(key)) { printf("Done\n"), print(ht); }
 		else { printf("Entry not exists\n"); }

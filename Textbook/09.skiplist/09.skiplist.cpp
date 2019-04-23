@@ -1,4 +1,4 @@
-// 09.skiplist.cpp : This file contains the 'main' function. Program execution begins and ends there.
+ï»¿// 09.skiplist.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include "pch.h"
@@ -14,7 +14,7 @@ void testSkiplist(int n)
 	Skiplist<K, V> list;
 	while (list.size() < n) {
 		switch (dice(3)) {
-			case 0: // ²éÕÒ£¬³É¹¦ÂÊ <= 33.3%
+			case 0: // æŸ¥æ‰¾ï¼ŒæˆåŠŸç‡ <= 33.3%
 			{
 				K key = dice(static_cast<K>(n) * 3); // [0, 3n)
 				printf("Searching for "); print(key); printf(" ... ");
@@ -27,7 +27,7 @@ void testSkiplist(int n)
 				printf("\n");
 				break;
 			}
-			case 1: // É¾³ı£¬³É¹¦ÂÊ <= 33.3%
+			case 1: // åˆ é™¤ï¼ŒæˆåŠŸç‡ <= 33.3%
 			{
 				K key = dice(static_cast<K>(n) * 3); // [0, 3n)
 				printf("Removing "); print(key); printf(" ... ");
@@ -35,7 +35,7 @@ void testSkiplist(int n)
 				print(list);
 				break;
 			}
-			default: // ²åÈë£¬³É¹¦ÂÊ == 100%
+			default: // æ’å…¥ï¼ŒæˆåŠŸç‡ == 100%
 			{
 				K k = dice(static_cast<K>(n) * 3); // [0, 3n)
 				V v = static_cast<V>('A' + dice(26)); // [A,Z]
