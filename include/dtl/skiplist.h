@@ -36,7 +36,7 @@ protected:
 	*		  若失败，p为所属塔的基座，该塔对应于不大于k的最大且最靠右关键码，qlist为空
 	* @note 多个词条命中时，沿四联表取最靠右者
 	*/
-	bool skipSearch(ListNodePtr& qlist, QuadlistNodePtr& p, K& k) {
+	bool skipSearch(ListNodePtr& qlist, QuadlistNodePtr& p, K const& k) {
 		while (true) { // 在每一层
 			while (p->succ && (p->entry.key <= k)) { // 从前向后查找
 				p = p->succ; // 直到出现更大的key或溢出至trailer
@@ -51,12 +51,12 @@ protected:
 
 public:
 	//! 底层Quadlist的规模
-	int size() const { return ListType::empty() ? 0 : ListType::last()->data->size(); }
+	virtual int size() const override { return ListType::empty() ? 0 : ListType::last()->data->size(); }
 	//! 层高 == #Quadlist
 	int level() { return ListType::size(); }
 
 	//! 插入（与Map有区别 —— Skiplist允许词条重复，故必然成功）
-	bool put(K k, V v) {
+	virtual bool put(K const& k, V const& v) override {
 		auto entry = EntryType(k, v); // 待插入的词条，将被随机地插入多个副本
 		if (ListType::empty()) { ListType::insert_as_first(new QuadlistType()); } // 插入首个entry
 		ListNodePtr qlist = ListType::first(); // 从顶层四联表的
@@ -83,7 +83,7 @@ public:
 	}
 
 	//! 读取（有多个命中时靠后者优先）
-	V* get(K k) {
+	virtual V* get(K const& k) override {
 		if (ListType::empty()) { return nullptr; }
 		ListNodePtr qlist = ListType::first(); // 从定长Quadlist开始
 		QuadlistNodePtr p = qlist->data->first(); // 首节点开始
@@ -91,7 +91,7 @@ public:
 	}
 
 	//! 删除
-	bool remove(K k) {
+	virtual bool remove(K const& k) override {
 		if (ListType::empty()) { return false; }
 		ListNodePtr qlist = ListType::first(); // 从顶层Quadlist的
 		QuadlistNodePtr p = qlist->data->first(); // 首节点开始

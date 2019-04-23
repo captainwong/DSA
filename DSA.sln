@@ -120,6 +120,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 		include\dtl\skiplist.h = include\dtl\skiplist.h
 		include\dtl\splay.h = include\dtl\splay.h
 		include\dtl\stack.h = include\dtl\stack.h
+		include\dtl\swap.h = include\dtl\swap.h
 		include\dtl\vector.h = include\dtl\vector.h
 		include\dtl\vector_implementation.h = include\dtl\vector_implementation.h
 	EndProjectSection

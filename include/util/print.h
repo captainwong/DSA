@@ -8,6 +8,7 @@
 #include <typeinfo.h>
 
 #include "../dtl/graph.h"
+#include "../dtl/hashtable.h"
 #include "../dtl/quadlist.h"
 #include "../dtl/skiplist.h"
 
@@ -102,6 +103,28 @@ public:
 		printf("\n");
 	}
 
+	//! 散列表
+	template <typename K, typename V>
+	static void p(Hashtable<K, V>& ht) {
+		printf("%s[0x%p]*%d/%d:\n", typeid (ht).name(), &ht, ht.N, ht.M); //基本信息
+		for (int i = 0; i < ht.M; i++) { //输出桶编号
+			printf("  %4d  ", i);
+		}
+		printf("\n");
+		for (int i = 0; i < ht.M; i++) { //输出所有元素
+			if (ht.buckets[i]) { printf("-<%04d>-", ht.buckets[i]->key); } //演示用，仅适用于int
+			else if (ht.lazyRemoval->test(i)) { printf("-<xxxx>-"); }
+			else { printf("--------"); }
+		}
+		printf("\n");
+		for (int i = 0; i < ht.M; i++) { //输出所有元素
+			if (ht.buckets[i]) { printf("    %c   ", ht.buckets[i]->value); } //演示用，仅适用于char
+			// if (ht.ht[i]) printf("%8s", ht.ht[i]->value); //针对Huffman编码中使用的散列表
+			else if (ht.lazyRemoval->test(i)) { printf(" <xxxx> "); }
+			else { printf("        "); }
+		}
+		printf("\n");
+	}
 };
 
 }

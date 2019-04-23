@@ -42,7 +42,7 @@ static void eratosthenes_to_file(int n, const char* path)
 }
 
 /**
-* @brief 计算不小于c：[c, n)内的最小素数
+* @brief 计算不小于(not less then) c：[c, n)内的最小素数
 * @param c 不小于c
 * @param n 小于n
 * @param path 可选，如果传入则从该文件读取筛子，否则计算
