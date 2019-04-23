@@ -6,7 +6,7 @@
 #ifdef _OJ_
 #include "bintree.h"
 #else
-#include "../../include/bintree.h"
+#include "../../include/dtl/bintree.h"
 #endif
 
 //struct fastio

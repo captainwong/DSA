@@ -58,28 +58,6 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "THUPA3_1_TravelingSalesmanProblem", "PA\THUPA3_1_TravelingSalesmanProblem\THUPA3_1_TravelingSalesmanProblem.vcxproj", "{B51A739B-8AF1-4BF2-83C0-188899E23FAB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{07A46C78-1B1A-4034-81D8-22B45D8FD879}"
-	ProjectSection(SolutionItems) = preProject
-		include\avl.h = include\avl.h
-		include\binnode.h = include\binnode.h
-		include\bintree.h = include\bintree.h
-		include\bitmap.h = include\bitmap.h
-		include\bst.h = include\bst.h
-		include\btnode.h = include\btnode.h
-		include\btree.h = include\btree.h
-		include\dictionary.h = include\dictionary.h
-		include\fibnacci.h = include\fibnacci.h
-		include\graph.h = include\graph.h
-		include\graph_matrix.h = include\graph_matrix.h
-		include\list.h = include\list.h
-		include\list_node.h = include\list_node.h
-		include\queue.h = include\queue.h
-		include\rbtree.h = include\rbtree.h
-		include\release.h = include\release.h
-		include\splay.h = include\splay.h
-		include\stack.h = include\stack.h
-		include\vector.h = include\vector.h
-		include\vector_implementation.h = include\vector_implementation.h
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quick_sort", "Exercise\quick_sort\quick_sort.vcxproj", "{955EE8CA-240E-4A3F-B2FD-180791124F1D}"
 EndProject
@@ -114,6 +92,39 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "08.advanced_search_tree", "Textbook\08.advanced_search_tree\08.advanced_search_tree.vcxproj", "{5A486F0D-431D-492B-8FC4-9998E41E4BF7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09.skiplist", "Textbook\09.skiplist\09.skiplist.vcxproj", "{25EB799B-86D1-4D6A-A016-C5A2A12703C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB0-49A2-AF96-09316A8487C2}"
+	ProjectSection(SolutionItems) = preProject
+		include\dtl\avl.h = include\dtl\avl.h
+		include\dtl\binnode.h = include\dtl\binnode.h
+		include\dtl\bintree.h = include\dtl\bintree.h
+		include\dtl\bitmap.h = include\dtl\bitmap.h
+		include\dtl\bst.h = include\dtl\bst.h
+		include\dtl\btnode.h = include\dtl\btnode.h
+		include\dtl\btree.h = include\dtl\btree.h
+		include\dtl\dictionary.h = include\dtl\dictionary.h
+		include\dtl\entry.h = include\dtl\entry.h
+		include\dtl\fibnacci.h = include\dtl\fibnacci.h
+		include\dtl\graph.h = include\dtl\graph.h
+		include\dtl\graph_matrix.h = include\dtl\graph_matrix.h
+		include\dtl\list.h = include\dtl\list.h
+		include\dtl\list_node.h = include\dtl\list_node.h
+		include\dtl\quadlist.h = include\dtl\quadlist.h
+		include\dtl\quadlist_node.h = include\dtl\quadlist_node.h
+		include\dtl\queue.h = include\dtl\queue.h
+		include\dtl\rbtree.h = include\dtl\rbtree.h
+		include\dtl\README.md = include\dtl\README.md
+		include\dtl\skiplist.h = include\dtl\skiplist.h
+		include\dtl\splay.h = include\dtl\splay.h
+		include\dtl\stack.h = include\dtl\stack.h
+		include\dtl\vector.h = include\dtl\vector.h
+		include\dtl\vector_implementation.h = include\dtl\vector_implementation.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "util", "util", "{61AB718E-7C05-4BE6-873E-7EB26ED0FBCD}"
+	ProjectSection(SolutionItems) = preProject
+		include\util\rand.h = include\util\rand.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -447,6 +458,8 @@ Global
 		{80B862E2-AA7C-4650-AB9F-6D433C99791F} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 		{5A486F0D-431D-492B-8FC4-9998E41E4BF7} = {892B67BA-F721-4C46-BD58-02D288B0B349}
 		{25EB799B-86D1-4D6A-A016-C5A2A12703C5} = {892B67BA-F721-4C46-BD58-02D288B0B349}
+		{58BAD2C0-2DB0-49A2-AF96-09316A8487C2} = {07A46C78-1B1A-4034-81D8-22B45D8FD879}
+		{61AB718E-7C05-4BE6-873E-7EB26ED0FBCD} = {07A46C78-1B1A-4034-81D8-22B45D8FD879}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}

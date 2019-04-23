@@ -9,7 +9,7 @@
 #include <vector>
 /*****************/
 
-#include "../../include/bitmap.h"
+#include "../../include/dtl/bitmap.h"
 
 typedef std::vector<char> ascii;
 

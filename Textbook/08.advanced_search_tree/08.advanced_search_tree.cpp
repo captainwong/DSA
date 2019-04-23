@@ -2,9 +2,9 @@
 //
 
 #include "pch.h"
-#include "../../include/splay.h"
-#include "../../include/btree.h"
-#include "../../include/rbtree.h"
+#include "../../include/dtl/splay.h"
+#include "../../include/dtl/btree.h"
+#include "../../include/dtl/rbtree.h"
 
 int main()
 {

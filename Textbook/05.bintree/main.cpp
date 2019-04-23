@@ -2,9 +2,9 @@
 #include <stdio.h>
 //#include <stdlib.h>
 //#include <string.h>
-//#include "../include/bintree.h"
+//#include "../include/dtl/bintree.h"
 
-#include "../include/bintree.h"
+#include "../include/dtl/bintree.h"
 #include <string>
 #include <assert.h>
 

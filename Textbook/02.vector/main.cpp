@@ -9,7 +9,7 @@ void swap(t& a, t& b)
 	b = t;
 }
 
-#include "../include/vector.h"
+#include "../include/dtl/vector.h"
 
 int main(int argc, char* argv[])
 {

@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include <iostream>
-#include "../../include/bitmap.h"
+#include "../../include/dtl/bitmap.h"
 
 int main()
 {
