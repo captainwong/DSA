@@ -107,8 +107,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 		include\dtl\fibnacci.h = include\dtl\fibnacci.h
 		include\dtl\graph.h = include\dtl\graph.h
 		include\dtl\graph_matrix.h = include\dtl\graph_matrix.h
+		include\dtl\hashtable.h = include\dtl\hashtable.h
 		include\dtl\list.h = include\dtl\list.h
 		include\dtl\list_node.h = include\dtl\list_node.h
+		include\dtl\prime.h = include\dtl\prime.h
 		include\dtl\quadlist.h = include\dtl\quadlist.h
 		include\dtl\quadlist_node.h = include\dtl\quadlist_node.h
 		include\dtl\queue.h = include\dtl\queue.h
@@ -127,6 +129,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "util", "util", "{61AB718E-7
 		include\util\rand.h = include\util\rand.h
 		include\util\util.h = include\util\util.h
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "09.hashtable", "Textbook\09.hashtable\09.hashtable.vcxproj", "{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_input", "_input", "{3B9B807C-120F-457D-AE0B-E6BF405B6784}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -414,6 +420,14 @@ Global
 		{25EB799B-86D1-4D6A-A016-C5A2A12703C5}.Release|Win32.Build.0 = Release|Win32
 		{25EB799B-86D1-4D6A-A016-C5A2A12703C5}.Release|x64.ActiveCfg = Release|x64
 		{25EB799B-86D1-4D6A-A016-C5A2A12703C5}.Release|x64.Build.0 = Release|x64
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Debug|Win32.Build.0 = Debug|Win32
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Debug|x64.ActiveCfg = Debug|x64
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Debug|x64.Build.0 = Debug|x64
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Release|Win32.ActiveCfg = Release|Win32
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Release|Win32.Build.0 = Release|Win32
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Release|x64.ActiveCfg = Release|x64
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -462,6 +476,7 @@ Global
 		{25EB799B-86D1-4D6A-A016-C5A2A12703C5} = {892B67BA-F721-4C46-BD58-02D288B0B349}
 		{58BAD2C0-2DB0-49A2-AF96-09316A8487C2} = {07A46C78-1B1A-4034-81D8-22B45D8FD879}
 		{61AB718E-7C05-4BE6-873E-7EB26ED0FBCD} = {07A46C78-1B1A-4034-81D8-22B45D8FD879}
+		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5} = {892B67BA-F721-4C46-BD58-02D288B0B349}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}

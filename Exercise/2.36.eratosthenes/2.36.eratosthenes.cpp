@@ -2,8 +2,8 @@
 //
 
 #include "pch.h"
+#include "../../include/dtl/prime.h"
 #include <stdio.h>
-#include <stdlib.h> // __min
 
 /***测试用******/
 #include <assert.h>
@@ -11,30 +11,14 @@
 #include <time.h>
 /*****************/
 
-#include "../../include/dtl/bitmap.h"
-
-
-
 // 计算不大于10^8的所有素数（埃拉托斯特尼筛法）
 // https://zh.wikipedia.org/zh-cn/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95
-std::vector<int> eratosthenes(int n)
+std::vector<int> eratosthenes_to_vec(int n)
 {
 	std::vector<int> primes;
 
 	Bitmap bmp;
-	bmp.set(0); bmp.set(1); // 0, 1 都不是素数
-
-	for (int i = 2; i < n; i++) {
-		if (!bmp.test(i)) {
-			// 46340^2 = 2147395600 未超过int可以表示的范围 2147483647
-			// 46341^2 = 2147488281 超过了int可以表示的范围
-			// 选用 46340 可以避免整数溢出
-			// 位于[2i, i^2)之间的整数，均已经在此前的迭代中被筛除了
-			for (int j = __min(i, 46340) * __min(i, 46340); j < n; j += i) {
-				bmp.set(j);
-			}
-		}
-	}
+	eratosthenes(n, bmp);
 
 	for (int i = 2; i < n; i++) {
 		if (!bmp.test(i)) {
@@ -47,9 +31,11 @@ std::vector<int> eratosthenes(int n)
 
 int main()
 {
+	eratosthenes_to_file(1048576, "../../_input/prime-1048576-bitmap.txt");
+
 	printf("cacl 1000...\n");
 	auto t = clock();
-	auto ret = eratosthenes(1000);
+	auto ret = eratosthenes_to_vec(1000);
 	printf("cacl 1000 elapsed %lf ms, primes are:\n", (clock() - t) * 1000.0 / CLOCKS_PER_SEC);
 	for (auto p : ret) {
 		printf("%d ", p);
@@ -58,15 +44,16 @@ int main()
 
 	printf("cacl 1000000...\n");
 	t = clock();
-	ret = eratosthenes(1000000);
+	ret = eratosthenes_to_vec(1000000);
 	printf("cacl 1000000 elapsed %lf ms\n", (clock() - t) * 1000.0 / CLOCKS_PER_SEC);
 	printf("\n");
 
 	printf("cacl 100000000...\n");
 	t = clock();
-	ret = eratosthenes(100000000);
+	ret = eratosthenes_to_vec(100000000);
 	printf("cacl 100000000 elapsed %lf ms\n", (clock() - t) * 1000.0 / CLOCKS_PER_SEC);
 	printf("\n");
+
 }
 
 

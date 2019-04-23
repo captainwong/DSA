@@ -57,7 +57,7 @@ void testSkiplist(int n)
 int main()
 {
 	srand_time();
-	testSkiplist<int, char>(10);
+	testSkiplist<int, char>(3);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

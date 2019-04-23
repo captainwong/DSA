@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{B5E7D2C0-F8C7-4BFF-BC4B-AA90525DF939}</ProjectGuid>
+    <ProjectGuid>{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My236eratosthenes</RootNamespace>
+    <RootNamespace>My09hashtable</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,11 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\dtl\prime.h" />
+    <ClInclude Include="..\..\include\dtl\hashtable.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="2.36.eratosthenes.cpp" />
+    <ClCompile Include="09.hashtable.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
