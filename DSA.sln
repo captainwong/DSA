@@ -123,7 +123,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "util", "util", "{61AB718E-7C05-4BE6-873E-7EB26ED0FBCD}"
 	ProjectSection(SolutionItems) = preProject
+		include\util\print.h = include\util\print.h
 		include\util\rand.h = include\util\rand.h
+		include\util\util.h = include\util\util.h
 	EndProjectSection
 EndProject
 Global

@@ -116,4 +116,13 @@ public:
 		while ((q = p->succ) != trailer) { if (q->data != p->data) { p = q; } else { remove(q); } }
 		return old_size - _size;
 	}
+
+	void traverse(void(*visit)(T&)) {
+		for (auto p = header->succ; p != trailer; p = p->succ) { visit(p->data); }
+	}
+
+	template <typename VST>
+	void traverse(VST& visit) {
+		for (auto p = header->succ; p != trailer; p = p->succ) { visit(p->data); }
+	}
 };

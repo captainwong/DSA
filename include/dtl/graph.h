@@ -61,7 +61,7 @@ private:
 	void DFS(int v, int& clock) {
 		dTime(v) = ++clock;
 		status(v) = VertexStatus::discovered;
-		for (int u = = firstNbr(v); -1 < u; u = nextNbr(v, u)) {
+		for (int u = firstNbr(v); -1 < u; u = nextNbr(v, u)) {
 			switch (status(u)) {
 				case VertexStatus::undiscovered:
 					status(v, u) = EdgeStatus::tree;
