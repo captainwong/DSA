@@ -10,8 +10,8 @@ template <typename T>
 class Splay : public BST<T>
 {
 public:
-	typedef typename BinNode<T> Node;
-	typedef typename Node::Ptr NodePtr;
+	typedef BinNode<T> Node;
+	typedef Node* NodePtr;
 
 protected:
 

@@ -9,8 +9,8 @@ template <typename T>
 class AVL : public BST<T>
 {
 public:
-	typedef typename BinNode<T> Node;
-	typedef typename Node::Ptr NodePtr;
+	typedef BinNode<T> Node;
+	typedef Node* NodePtr;
 
 	virtual NodePtr insert(T const& e) override {
 		auto& x = this->search(e); if (x) { return x; }

@@ -157,7 +157,7 @@ int main_ac95(int /*argc*/, char** /*argv*/)
 	parseSubTree(bintree, lpos, preorder + 1, postorder, rpos_in_pre - lpos_in_pre);
 	parseSubTree(bintree, rpos, preorder + rpos_in_pre, postorder + 1 + lpos_in_post, rpos_in_post - lpos_in_post);
 
-	bintree.travInOrder(bintree.root(), visit);
+	bintree.travInOrder(visit);
 #ifdef USE_BUFF
 	// printf(g_buff);
 	//printf("\n");

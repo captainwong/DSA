@@ -12,7 +12,7 @@ struct Entry
 	K key;
 	V value;
 
-	typedef typename Entry<K, V> EntryType;
+	typedef Entry<K, V> EntryType;
 
 	Entry(K k = K(), V v = V())
 		: key(k)
@@ -34,8 +34,8 @@ template <typename T>
 class BST : public BinTree<T>
 {
 public:
-	typedef typename BinNode<T> Node;
-	typedef typename Node::Ptr NodePtr;
+	typedef BinNode<T> Node;
+	typedef Node* NodePtr;
 
 	static NodePtr& searchIn(NodePtr& v, const T& e, NodePtr & hot) {
 		if (!v || (e == v->data_)) { return v; }

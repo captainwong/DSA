@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include "stack.h"
+#include "queue.h"
+
 namespace dtl
 {
 
@@ -11,7 +14,7 @@ enum class RBColor {
 template <typename T>
 struct BinNode
 {
-	typedef typename BinNode<T>* Ptr;
+	typedef BinNode<T>* Ptr;
 
 	T data_;
 	Ptr parent_;
@@ -85,10 +88,111 @@ struct BinNode
 
 	//! 与rc（可能为空）之间建立父（右）子关系
 	void attachAsRChild(Ptr rc) { rChild_ = rc; if (rc) { rc->parent_ = this; } }
+
+	/*****************traverse*******************/
+
+	//! 先序遍历算法（迭代版#1）
+	template <typename VST>
+	void travPre_I1(VST& visit) {
+		Stack<Ptr> s;
+		s.push(this);
+		while (!s.empty()) {
+			auto x = s.pop();
+			visit(x->data_);
+			if (x->rChild_) { s.push(x->rChild_); }
+			if (x->lChild_) { s.push(x->lChild_); }
+		}
+	}
+
+	//! 先序遍历算法（迭代版#2）
+	template <typename VST>
+	void travPre_I2(VST& visit) {
+		Stack<Ptr> s;
+		auto x = this;
+		while (true) {
+			visitAlongLeftBranch(x, visit, s);
+			if (s.empty()) { break; }
+			x = s.pop();
+		}
+	}
+
+	//! 先序遍历算法（递归版）
+	template <typename VST>
+	void travPre_R(VST& visit) {
+		visitTravPre(this, visit);
+	}
+
+	//! 中序遍历算法（迭代版#1）
+	template <typename VST>
+	void travIn_I1(VST& visit) {
+		Stack<Ptr> s;
+		auto x = this;
+		while (true) {
+			goAlongLeftBranch(x, s);
+			if (s.empty()) { break; }
+			x = s.pop(); 
+			visit(x->data_);
+			x = x->rChild_;
+		}
+	}
+
+	//! 中序遍历算法（迭代版#2）
+	template <typename VST>
+	void travIn_I2(VST& visit) {
+		Stack<Ptr> s;
+		auto x = this;
+		while (true) {
+			if (x) {
+				s.push(x);
+				x = x->lChild_;
+			} else if (!s.empty()) {
+				x = s.pop();
+				visit(x->data_);
+				x = x->rChild_;
+			} else { break; }
+		}
+	}
+
+	//! 中序遍历算法（迭代版#3，无需辅助栈）
+	template <typename VST>
+	void travIn_I3(VST& visit) {
+
+	}
 };
 
 
 /***********************一些辅助模板函数***************************/
+
+//! 从当前节点出发，沿左分支不断深入，直至没有左分支的节点；沿途节点遇到后立即访问
+template <typename T, typename VST>
+static void visitAlongLeftBranch(typename BinNode<T>::Ptr node, VST& visit, Stack<typename BinNode<T>::Ptr>& stack)
+{
+	while (node) {
+		visit(node->data_);
+		stack.push(node->rChild_);
+		node = node->lChild_;
+	}
+}
+
+//! 先序遍历算法（递归版）辅助递归函数
+template <typename T, typename VST>
+static void visitTravPre(typename BinNode<T>::Ptr node, VST& visit)
+{
+	if (!node) { return; }
+	visit(node->data_);
+	visitTravPre(node->lChild_);
+	visitTravPre(node->rChild_);
+}
+
+//! 中序遍历算法（迭代版#1）辅助函数，从当前节点出发，沿左分支不断深入，直至没有左分支的节点
+template <typename T>
+static void goAlongLeftBranch(typename BinNode<T>::Ptr node, Stack<typename BinNode<T>::Ptr>& stack)
+{
+	while (node) {
+		stack.push(node);
+		node = node->lChild_;
+	}
+}
 
 //! 节点高度
 template <typename T>
@@ -130,13 +234,14 @@ BinNode<T>* tallerChild(BinNode<T>* node)
 			node->isLChild() ? node->lChild_ : node->rChild_)); // 等高：与父亲x同侧者（zIg-zIg或zAg-zAg）优先
 }
 
-//! 红黑树节点判断颜色
+//! 红黑树节点判黑
 template <typename T>
 bool isBlack(BinNode<T>* node)
 {
 	return !node || (RBColor::RB_BLACK == node->color_); // 外部节点也视作黑节点
 }
 
+//! 红黑树节点判红
 template <typename T>
 bool isRed(BinNode<T>* node)
 {

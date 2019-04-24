@@ -76,19 +76,19 @@ void test_tree()
 		str += c;
 	};
 
-	tree.travPreOrder(i, visit);
+	tree.travPreOrder(visit);
 	assert(str == "idcabhfeglkjnmpo");
 
 	str.clear();
-	tree.travInOrder(i, visit);
+	tree.travInOrder(visit);
 	assert(str == "abcdefghijklmnop");
 
 	str.clear();
-	tree.travPostOrder(i, visit);
+	tree.travPostOrder(visit);
 	assert(str == "bacegfhdjkmopnli");
 
 	str.clear();
-	tree.travLevelOrder(i, visit);
+	tree.travLevelOrder(visit);
 	assert(str == "idlchknafjmpbego");
 
 	
