@@ -49,11 +49,11 @@ struct BinNode
 		if (rChild_) { s += rChild_->size(); }
 		return s;
 	}
-
-	bool operator<(const BinNode& rhs) { return this->data_ < rhs.data_; }
-	bool operator>(const BinNode& rhs) { return this->data_ > rhs.data_; }
-	bool operator==(const BinNode& rhs) { return this->data_ == rhs.data_; }
-	bool operator!=(const BinNode& rhs) { return this->data_ != rhs.data_; }
+	
+	bool operator<(const BinNode& rhs) const { return this->data_ < rhs.data_; }
+	bool operator>(const BinNode& rhs) const { return this->data_ > rhs.data_; }
+	bool operator==(const BinNode& rhs) const { return this->data_ == rhs.data_; }
+	bool operator!=(const BinNode& rhs) const { return this->data_ != rhs.data_; }
 	
 	inline bool isRoot() const { return !parent_; }
 	inline bool isLChild() const { return parent_ && parent_->lChild_ == this; }
@@ -67,15 +67,12 @@ struct BinNode
 	inline Ptr sibling() const { return isLChild() ? parent_->rChild_ : parent_->lChild_; }
 	inline Ptr uncle() const { return parent_->isLChild() ? parent_->parent_->rChild_ : parent_->parent_->lChild_; }
 
-	Ptr insertAsLeftChild(const T& data) { return (lChild_ = new BinNode(data, this)); }
-	Ptr insertAsRightChild(const T& data) { return (rChild_ = new BinNode(data, this)); }	
-
-	//! 定位节点v的直接后继
+	//! 定位节点v的直接后继（中序遍历意义下）
 	Ptr succ() {
-		auto s = this; // 记录后继的临时变量
+		Ptr s = this; // 记录后继的临时变量
 		if (rChild_) { // 若有右孩子，则直接后继必在右子树中，具体地就是
 			s = rChild_; // 右子树中
-			while (s->lChild_) {  s = s->lChild_; } // 最靠左（最小）的节点
+			while (s->lChild_) { s = s->lChild_; } // 最靠左（最小）的节点
 		} else { // 否则，直接后继应是“将当前节点包含于其左子树中的最低祖先”，具体地就是
 			while (s->isRChild()) { s = s->parent_; } // 逆向地沿右向分支，不断朝左上方移动
 			s = s->parent_; //最后再朝右上方移动一步，即抵达直接后继（如果存在）
@@ -83,13 +80,60 @@ struct BinNode
 		return s;
 	}
 
+	/*****************mutable********************/
+
+	Ptr insertAsLeftChild(const T& data) { return (lChild_ = new BinNode(data, this)); }
+	Ptr insertAsRightChild(const T& data) { return (rChild_ = new BinNode(data, this)); }
+	
 	//! 与lc（可能为空）之间建立父（左）子关系
 	void attachAsLChild(Ptr lc) { lChild_ = lc; if (lc) { lc->parent_ = this; } }
 
 	//! 与rc（可能为空）之间建立父（右）子关系
 	void attachAsRChild(Ptr rc) { rChild_ = rc; if (rc) { rc->parent_ = this; } }
 
+
 	/*****************traverse*******************/
+
+protected: /***************一些traverse函数**************/
+
+	//! 先序遍历算法（递归版）辅助递归函数
+	template <typename VST>
+	static void visitTravPre(Ptr node, VST& visit) {
+		if (!node) { return; }
+		visit(node->data_);
+		visitTravPre(node->lChild_, visit);
+		visitTravPre(node->rChild_, visit);
+	}
+
+	//! 中序遍历算法（递归版）辅助函数
+	template <typename VST>
+	static void visitTravIn(Ptr node, VST& visit) {
+		if (!node) { return; }
+		visitTravIn(node->lChild_, visit);
+		visit(node->data_);
+		visitTravIn(node->rChild_, visit);
+	}
+
+	//! 从当前节点出发，沿左分支不断深入，直至没有左分支的节点；沿途节点遇到后立即访问
+	template <typename VST>
+	static void visitAlongLeftBranch(Ptr node, VST& visit, Stack<Ptr>& stack) {
+		while (node) {
+			visit(node->data_);
+			stack.push(node->rChild_);
+			node = node->lChild_;
+		}
+	}
+
+	//! 后续遍历算法辅助函数
+	template <typename VST>
+	static void visitTravPost(Ptr node, VST& visit) {
+		if (!node) { return; }
+		visitTravPost(node->lChild_, visit);
+		visitTravPost(node->rChild_, visit);
+		visit(node->data_);
+	}
+	
+public: /*****************traverse实现*******************/
 
 	//! 先序遍历算法（迭代版#1）
 	template <typename VST>
@@ -125,6 +169,14 @@ struct BinNode
 	//! 中序遍历算法（迭代版#1）
 	template <typename VST>
 	void travIn_I1(VST& visit) {
+		//! 辅助函数，从当前节点出发，沿左分支不断深入，直至没有左分支的节点
+		static auto goAlongLeftBranch = [](Ptr node, Stack<Ptr>& stack) {
+			while (node) {
+				stack.push(node);
+				node = node->lChild_;
+			}
+		};
+
 		Stack<Ptr> s;
 		auto x = this;
 		while (true) {
@@ -156,43 +208,98 @@ struct BinNode
 	//! 中序遍历算法（迭代版#3，无需辅助栈）
 	template <typename VST>
 	void travIn_I3(VST& visit) {
+		bool backtrack = false; // 前一步是否刚从右子树回溯 —— 省去栈，仅O(1)辅助空间
+		auto x = this;
+		while (true) {
+			if (!backtrack && x->lChild_) { // 若有左子树且不是刚刚回溯，则
+				x = x->lChild_; // 深入遍历左子树
+			} else { // 否则——无左子树或刚刚回溯（相当于无左子树）
+				visit(x->data_);
+				if (x->rChild_) { // 若其右子树非空，则深入右子树继续遍历
+					x = x->rChild_; 
+					backtrack = false;
+				} else {
+					if (!(x = x->succ())) { break; } // 回溯（含抵达末节点时的退出返回）
+					backtrack = true;
+				}
+			}
+		}
+	}
 
+	//! 中序遍历（迭代版#4，无需栈或标志位）
+	template <typename VST>
+	void travIn_I4(VST& visit) {
+		auto x = this;
+		while (true) {
+			if (x->lChild_) {
+				x = x->lChild_;
+			} else {
+				visit(x->data_);
+				while (!x->rChild_) { // 不断地在无右分支处回溯至直接后继
+					if (!(x = x->succ())) { return; } // 在没有后继的末节点处，直接退出
+					else { visit(x->data_); }
+				}
+				x = x->rChild_; // 转向非空的右子树
+			}
+		}
+	}
+
+	//! 中序遍历算法（递归版）
+	template <typename VST>
+	void travIn_R(VST& visit) {		
+		visitTravIn(this, visit);
+	}
+
+	//! 后序遍历算法（递归版）
+	template <typename VST>
+	void travPost_R(VST& visit) {
+		visitTravPost(this, visit);
+	}
+
+	//! 后序遍历（迭代版）
+	template <typename VST>
+	void travPost_I(VST& visit) {
+		//! go to highest leaf visible from left
+		static auto goToHLVFL = [](Stack<Ptr>& stack) {
+			while (auto node = stack.top()) {
+				if (node->lChild_) {
+					if (node->rChild_) { stack.push(node->rChild_); }
+					stack.push(node->lChild_);
+				} else {
+					stack.push(node->rChild_);
+				}
+			}
+			stack.pop();
+		};
+
+		Stack<Ptr> s;
+		auto x = this;
+		s.push(x);
+		while (!s.empty()) {
+			if (s.top() != x->parent_) {
+				goToHLVFL(s);
+			}
+			x = s.pop();
+			visit(x->data_);
+		}
+	}
+
+	//! 层次遍历
+	template <typename VST>
+	void travLevel(VST& visit) {
+		Queue<Ptr> q;
+		q.enqueue(this);
+		while (!q.empty()) {
+			auto x = q.dequeue();
+			visit(x->data_);
+			if (x->lChild_) { q.enqueue(x->lChild_); }
+			if (x->rChild_) { q.enqueue(x->rChild_); }
+		}
 	}
 };
 
 
 /***********************一些辅助模板函数***************************/
-
-//! 从当前节点出发，沿左分支不断深入，直至没有左分支的节点；沿途节点遇到后立即访问
-template <typename T, typename VST>
-static void visitAlongLeftBranch(typename BinNode<T>::Ptr node, VST& visit, Stack<typename BinNode<T>::Ptr>& stack)
-{
-	while (node) {
-		visit(node->data_);
-		stack.push(node->rChild_);
-		node = node->lChild_;
-	}
-}
-
-//! 先序遍历算法（递归版）辅助递归函数
-template <typename T, typename VST>
-static void visitTravPre(typename BinNode<T>::Ptr node, VST& visit)
-{
-	if (!node) { return; }
-	visit(node->data_);
-	visitTravPre(node->lChild_);
-	visitTravPre(node->rChild_);
-}
-
-//! 中序遍历算法（迭代版#1）辅助函数，从当前节点出发，沿左分支不断深入，直至没有左分支的节点
-template <typename T>
-static void goAlongLeftBranch(typename BinNode<T>::Ptr node, Stack<typename BinNode<T>::Ptr>& stack)
-{
-	while (node) {
-		stack.push(node);
-		node = node->lChild_;
-	}
-}
 
 //! 节点高度
 template <typename T>
@@ -254,6 +361,16 @@ bool blackHeightUpdated(BinNode<T>* node)
 {
 	return (stature(node->lChild_) == stature(node->rChild_))
 		&& (node->height_ == (isRed(node) ? stature(node->lChild_) : stature(node->lChild_) + 1));
+}
+
+//! 删除二叉树中位置x处的节点及其后代，返回被删除节点的数值
+template <typename T>
+static int removeAt(BinNode<T>* x)
+{
+	if (!x) { return 0; }
+	int n = 1 + removeAt(x->lChild_) + removeAt(x->rChild_);
+	release(x->data_); release(x);
+	return n;
 }
 
 }

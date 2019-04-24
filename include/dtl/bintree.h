@@ -6,17 +6,6 @@
 namespace dtl
 {
 
-/************辅助函数************/
-//! 删除二叉树中位置x处的节点及其后代，返回被删除节点的数值
-template <typename T>
-static int removeAt(BinNode<T>* x)
-{
-	if (!x) { return 0; }
-	int n = 1 + removeAt(x->lChild_) + removeAt(x->rChild_);
-	release(x->data_); release(x);
-	return n;
-}
-
 template <typename T>
 class BinTree
 {
@@ -55,7 +44,6 @@ public:
 	int size() const { return size_; }
 	bool empty() const { return !root_; }
 	NodePtr root() const { return root_; }
-
 
 
 	/*******************************************mutable*****************************************/
@@ -123,34 +111,43 @@ public:
 	}
 
 
-	/*************************************traverse**************************************/
-
-	
+	/*************************************traverse**************************************/	
 
 	//! 先序遍历
 	template <typename VST>
 	void travPreOrder(VST& visit) {
-		
+		if (root_) { 
+			root_->travPre_I1(visit); // personal prefer
+			//root_->travPre_I2(visit);
+			//root_->travPre_R(visit);
+		}
 	}
-
-	
 
 	//! 中序遍历
 	template <typename VST>
 	void travInOrder(VST& visit) {
-		
+		if (root_) {
+			//root_->travIn_I1(visit);
+			//root_->travIn_I2(visit);
+			//root_->travIn_I3(visit);
+			root_->travIn_I4(visit); // personal prefer
+			//root_->travIn_R(visit);
+		}
 	}
 
 	//! 后序遍历
 	template <typename VST>
 	void travPostOrder(VST& visit) {
-		
+		if (root_) {
+			root_->travPost_I(visit); // personal prefer
+			//root_->travPost_R(visit);
+		}
 	}
 
 	//! 层次遍历
 	template <typename VST>
 	void travLevelOrder(VST& visit) {
-		
+		if (root_) { root_->travLevel(visit); }
 	}
 };
 
