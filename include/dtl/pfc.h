@@ -40,8 +40,14 @@ namespace PFC
 			auto tree = new PFCTree();
 			tree->insertAsRootNode('^');
 			auto r1 = rand() % forest->size();
-			
+			tree->attachAsLChild(tree->root(), forest->operator[](r1));
+			forest->remove(r1);
+			auto r2 = rand() % forest->size();
+			tree->attachAsRChild(tree->root(), forest->operator[](r2));
+			forest->remove(r2);
+			forest->insert(forest->size(), tree);
 		}
+		return forest->operator[](0);
 	}
 
 	//! 由编码树转换为编码表
