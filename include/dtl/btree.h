@@ -44,13 +44,20 @@ protected:
 		}
 		u->child_[m_ - s - 1] = node->child_.remove(s + 1); //  移动node最靠右的孩子
 		if (u->child_[0]) { // 若u的孩子们非空
-			for (Rank i = 0; i < m_ - s; i++) { u->child_[i]->parent_ = u; } // 将孩子们的父节点统一指向u
+			for (Rank i = 0; i < m_ - s; i++) { 
+				u->child_[i]->parent_ = u; 
+			} // 将孩子们的父节点统一指向u
 		}
 		auto p = node->parent_;
-		if (!p) { root_ = p = new Node(); p->child_[0] = node; node->parent_ = p; }
+		if (!p) { 
+			root_ = p = new Node(); 
+			p->child_[0] = node; 
+			node->parent_ = p; 
+		}
 		auto r = 1 + p->key_.search(node->key_[0]); // p中指向node的指针的秩+1，即为u应有的秩
 		p->key_.insert(r, node->key_.remove(s)); // 轴点关键码上升
-		p->child_.insert(r + 1, u); u->parent_ = p; // 新节点u与父节点p互联
+		p->child_.insert(r + 1, u); 
+		u->parent_ = p; // 新节点u与父节点p互联
 		solveOverflow(p); // 上升一层，如有必要则继续分裂 —— 至多递归h = O(logN)层
 	}
 
@@ -61,14 +68,16 @@ protected:
 		if (!p) { // 递归基：已到根节点，没有孩子的下限
 			if (node->key_.empty() && node->child_[0]) {
 				// 但倘若作为树根的node已不含关键码，却有（唯一的）非空孩子，则
-				root_ = node->child_[0]; root_->parent_ = nullptr; // 这个节点可被跳过
+				root_ = node->child_[0]; // 这个节点可被跳过
+				root_->parent_ = nullptr; 
 				node->child_[0] = nullptr; /* release(node); */ // 并因不再有用而被销毁
 			} // 整树高度降低一层
 			return;
 		}
 		// 确定node是p的第r个孩子 —— 此时node可能不含关键码，故不能通过关键码查找
 		// 另外，在实现了孩子指针的判等器之后，也可直接调用vector::find定位
-		Rank r = 0; while (p->child_[r] != node) { r++; }
+		Rank r = 0; 
+		while (p->child_[r] != node) { r++; }
 
 		// 情况1：向左兄弟借关键码
 		if (0 < r) { // 若node不是p的第一个孩子
