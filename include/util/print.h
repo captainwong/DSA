@@ -7,7 +7,9 @@
 #include <stdio.h>
 #include <typeinfo.h>
 
+#include "../dtl/vector.h"
 #include "../dtl/graph.h"
+#include "../dtl/bintree.h"
 #include "../dtl/hashtable.h"
 #include "../dtl/quadlist.h"
 #include "../dtl/skiplist.h"
@@ -17,7 +19,7 @@ namespace dtl
 
 //! 萃取指针类型，转为引用
 template <typename T>
-static void print(T* x) { x ? print(*x) : printf(" <NULL>"); }
+static void print(T* x) { if (x) { print(*x); } else { printf(" <NULL>"); } }
 
 template <typename T>
 static void print(T& x) { UniPrint::p(x); }
@@ -72,6 +74,22 @@ public:
 	template <typename K, typename V>
 	static void p(Entry<K, V>& e) {
 		printf("-<"); print(e.key); printf(":"); print(e.value); printf(">-");
+	}
+
+
+	//! BinNode
+	template <typename T>
+	static void p(BinNode<T>& node) {
+		p(node.data_);
+		printf("(%-2d)", node.height_);
+
+
+	}
+
+	//! BinTree
+	template <typename T>
+	static void p(BinTree<T>& tree) {
+		printf("%s[0x%p]*%03d: ", typeid(tree).name(), &tree, tree.size());
 	}
 
 	//! 四联表

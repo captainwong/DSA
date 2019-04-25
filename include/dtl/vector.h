@@ -20,26 +20,58 @@ protected:
 public:
 	// Constructors
 	Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = 0) {
-		_elem = new T[_capacity = c]; _size = 0; while (_size < s) { _elem[_size++] = v; }
+		_elem = new T[_capacity = c]; 
+		_size = 0; 
+		while (_size < s) { 
+			_elem[_size++] = v; 
+		}
 	}
-	Vector(T const* A, Rank n) { copy_from(A, 0, n); }
-	Vector(T const* A, Rank lo, Rank hi) { copy_from(A, lo, hi); }
-	Vector(Vector<T> const& V) { copy_from(V._elem, 0, V._size); }
-	Vector(Vector<T> const& V, Rank lo, Rank hi) { copy_from(V._elem, lo, hi); }
-	Vector<T>& operator=(Vector<T> const& V) { if (_elem) { delete[] _elem; } copy_from(V._elem, 0, V._size); return *this; }
+
+	Vector(T const* A, Rank n) {
+		copy_from(A, 0, n); 
+	}
+
+	Vector(T const* A, Rank lo, Rank hi) { 
+		copy_from(A, lo, hi); 
+	}
+
+	Vector(Vector<T> const& V) { 
+		copy_from(V._elem, 0, V._size);
+	}
+
+	Vector(Vector<T> const& V, Rank lo, Rank hi) { 
+		copy_from(V._elem, lo, hi); 
+	}
+
+	Vector<T>& operator=(Vector<T> const& V) { 
+		if (_elem) { 
+			delete[] _elem;
+		}
+		copy_from(V._elem, 0, V._size);
+		return *this;
+	}
 
 	// Destructor
-	~Vector() { delete[] _elem; }
+	~Vector() { 
+		delete[] _elem;
+	}
 
 	// Read only 
 	Rank size() const { return _size; }
 	bool empty() const { return !_size; }
 	int disordered() const {
-		int n = 0; for (int i = 1; i < _size; i++) { if (_elem[i - 1] > _elem[i]) { n++; } } return n;
+		int n = 0; 
+		for (int i = 1; i < _size; i++) { 
+			if (_elem[i - 1] > _elem[i]) { 
+				n++; 
+			}
+		}
+		return n;
 	}
 	Rank find(T const& e, Rank lo, Rank hi) const {
 		assert(0 <= lo); assert(lo < hi); assert(hi <= _size);
-		while ((lo < hi--) && (e != _elem[hi])) {} return hi;
+		while ((lo < hi--) && (e != _elem[hi])) {} 
+		return hi;
 	}
 	Rank find(T const& e) const { return find(e, 0, _size); }
 	Rank search(T const& e) const { return (0 >= _size) ? -1 : search(e, 0, _size); }
@@ -62,6 +94,16 @@ public:
 	void unsort() { unsort(0, _size); }
 	int deduplicate();	// unsorted
 	int uniquify();		// sorted
+
+	// Traverse
+	void traverse(void(*visit)(T&)) {
+		for (int i = 0; i < _size; i++) { visit(_elem[i]); }
+	}
+
+	template <typename VST>
+	void traverse(VST& visit) {
+		for (int i = 0; i < _size; i++) { visit(_elem[i]); }
+	}
 
 protected:
 	void copy_from(T const* A, Rank lo, Rank hi) {

@@ -3,12 +3,33 @@
 
 #include "pch.h"
 #include "../../include/dtl/pfc.h"
+#include "../../include/util/util.h"
 
 using namespace dtl;
 
 
 int main()
 {
+	auto forest = PFC::initForest(); //print(forest);
+	auto tree = PFC::generateTree(forest); 
+	release(forest);
+	print(tree);
+	auto table = PFC::generateTable(tree);
+	for (int i = 0; i < PFC::PRINTABLE_RANGE; i++) {
+		printf(" %c: %s\n", i + PFC::PRINTABLE_MIN, *(table->get(i + PFC::PRINTABLE_MIN)));
+	}
+
+	auto msg = "Hello world!";
+	printf("\nEncoding: %s\n", msg);
+
+	Bitmap bmp;
+	int n = PFC::encode(table, bmp, msg);
+	printf("%s\n", bmp.toString(n));
+	printf("Decoding: ");
+	PFC::decode(tree, bmp, n);
+
+	release(table);
+	release(tree);
 
 }
 

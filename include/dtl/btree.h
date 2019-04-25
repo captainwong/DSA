@@ -133,7 +133,7 @@ protected:
 				rs->child_.insert(0, node->child_.remove(node->child_.size() - 1));
 				if (rs->child_[0]) { rs->child_[0]->parent_ = rs; }
 			}
-			/* release(node); */
+			release(node);
 		}
 
 		solveUnderflow(p); // 上升一层，如有必要继续旋转或合并 —— 至多递归h = O(logN)层
@@ -141,7 +141,7 @@ protected:
 
 public:
 	BTree(int order = 3) : m_(order), N_(0) { root_ = new Node(); }
-	~BTree() { if (root_) { /*release(root_);*/ } }
+	~BTree() { if (root_) { release(root_); } }
 
 	//! 阶次
 	int order() const { return m_; }
