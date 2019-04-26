@@ -139,6 +139,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_input", "_input", "{3B9B80
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05.prefix_free_code", "Textbook\05.prefix_free_code\05.prefix_free_code.vcxproj", "{DBDB5873-84F0-438B-AE51-BFB3AD7BF737}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05.huffman", "Textbook\05.huffman\05.huffman.vcxproj", "{B615A905-381E-431C-A19E-FB95DF0D8D5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -441,6 +443,14 @@ Global
 		{DBDB5873-84F0-438B-AE51-BFB3AD7BF737}.Release|Win32.Build.0 = Release|Win32
 		{DBDB5873-84F0-438B-AE51-BFB3AD7BF737}.Release|x64.ActiveCfg = Release|x64
 		{DBDB5873-84F0-438B-AE51-BFB3AD7BF737}.Release|x64.Build.0 = Release|x64
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Debug|Win32.Build.0 = Debug|Win32
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Debug|x64.ActiveCfg = Debug|x64
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Debug|x64.Build.0 = Debug|x64
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Release|Win32.ActiveCfg = Release|Win32
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Release|Win32.Build.0 = Release|Win32
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Release|x64.ActiveCfg = Release|x64
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -491,6 +501,7 @@ Global
 		{61AB718E-7C05-4BE6-873E-7EB26ED0FBCD} = {07A46C78-1B1A-4034-81D8-22B45D8FD879}
 		{E0DBF093-C974-42C5-8A27-ADA04BA8BAD5} = {892B67BA-F721-4C46-BD58-02D288B0B349}
 		{DBDB5873-84F0-438B-AE51-BFB3AD7BF737} = {892B67BA-F721-4C46-BD58-02D288B0B349}
+		{B615A905-381E-431C-A19E-FB95DF0D8D5D} = {892B67BA-F721-4C46-BD58-02D288B0B349}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}
