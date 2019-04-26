@@ -67,10 +67,10 @@ static HuffForest* initForest(int* freq)
 	return forest;
 }
 
-//! Huffman编码算法
+//! Huffman编码算法 O(n^2)
 static HuffTree* generateTree(HuffForest* forest)
 {
-	//! 在Huffman森林中找出权重最小的（超）字符
+	//! 在Huffman森林中找出权重最小的（超）字符, O(n)
 	static auto minHuffChar = [](HuffForest* forest)
 	{
 		auto p = forest->first();
