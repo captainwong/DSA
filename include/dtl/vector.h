@@ -1,7 +1,13 @@
 ﻿#pragma once
 
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <assert.h>
+#include <stdlib.h> // rand
 #include "fibnacci.h"
+#include "swap.h"
 
 namespace dtl 
 {

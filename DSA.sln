@@ -102,6 +102,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 		include\dtl\bst.h = include\dtl\bst.h
 		include\dtl\btnode.h = include\dtl\btnode.h
 		include\dtl\btree.h = include\dtl\btree.h
+		include\dtl\comparator.h = include\dtl\comparator.h
 		include\dtl\dictionary.h = include\dtl\dictionary.h
 		include\dtl\entry.h = include\dtl\entry.h
 		include\dtl\fibnacci.h = include\dtl\fibnacci.h
@@ -141,6 +142,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "05.huffman", "Textbook\05.huffman\05.huffman.vcxproj", "{B615A905-381E-431C-A19E-FB95DF0D8D5D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10.priority_queue", "Textbook\10.priority_queue\10.priority_queue.vcxproj", "{D663C066-3EAA-495E-9E19-263891D0FEA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DFA2CDDC-8413-494A-85C8-0021F8F38C60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -512,6 +515,7 @@ Global
 		{DBDB5873-84F0-438B-AE51-BFB3AD7BF737} = {892B67BA-F721-4C46-BD58-02D288B0B349}
 		{B615A905-381E-431C-A19E-FB95DF0D8D5D} = {892B67BA-F721-4C46-BD58-02D288B0B349}
 		{D663C066-3EAA-495E-9E19-263891D0FEA5} = {892B67BA-F721-4C46-BD58-02D288B0B349}
+		{DFA2CDDC-8413-494A-85C8-0021F8F38C60} = {07A46C78-1B1A-4034-81D8-22B45D8FD879}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}

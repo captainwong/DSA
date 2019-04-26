@@ -2,11 +2,13 @@
 //
 
 #include "pch.h"
-#include <iostream>
+#include "../../include/test/test_priority_quque.h"
+
+using namespace dtl::test;
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	priority_queue_test<dtl::CompleteHeap<int>, int>(10);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

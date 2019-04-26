@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\dtl\priority_queue.h" />
+    <ClInclude Include="..\..\include\test\test_priority_quque.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
