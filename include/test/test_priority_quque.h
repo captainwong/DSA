@@ -11,7 +11,7 @@ namespace test
 {
 
 template <typename PQType, typename T>
-static void priority_queue_test(int n)
+static void priority_queue_test(int n, size_t gap_ms = 1000)
 {
 	auto A = new T[2 * n / 3];
 	for (int i = 0; i < 2 * n / 3; i++) {
@@ -21,9 +21,9 @@ static void priority_queue_test(int n)
 	for (int i = 0; i < 2 * n / 3; i++) {
 		print(A[i]);
 	}printf("\n");
-
+	std::this_thread::sleep_for(std::chrono::milliseconds(gap_ms));
 	PQType heap(A + n / 6, n / 3); delete[] A;
-	system("cls"); print(heap); std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	system("cls"); print(heap); std::this_thread::sleep_for(std::chrono::milliseconds(gap_ms));
 	while (heap.size() < n) {
 		if (dice(100) < 70) {
 			T e = dice(static_cast<T>(n) * 3);
@@ -41,10 +41,10 @@ static void priority_queue_test(int n)
 				printf("\n");
 			}
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(gap_ms));
 		system("cls");
 		print(heap);
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(gap_ms));
 	}
 
 	while (!heap.empty()) {
@@ -52,10 +52,10 @@ static void priority_queue_test(int n)
 		printf("Deletion done with");
 		print(e);
 		printf("\n"); 
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(gap_ms));
 		system("cls");
 		print(heap);
-		std::this_thread::sleep_for(std::chrono::milliseconds(500));
+		std::this_thread::sleep_for(std::chrono::milliseconds(gap_ms));
 	}
 }
 
