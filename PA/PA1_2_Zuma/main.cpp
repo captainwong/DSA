@@ -28,12 +28,12 @@ struct fastio
 //class list
 //{
 //private:
-//	int _size;
+//	int size_;
 //	list_node* _head;
 //	list_node* _tail;
 //	//list_node* _v[MAX_VAR];
 //public:
-//	list() : _size(0), _head(NULL), _tail(NULL)
+//	list() : size_(0), _head(NULL), _tail(NULL)
 //	{
 //		_head = new list_node();
 //		_tail = new list_node();
@@ -47,7 +47,7 @@ struct fastio
 //
 //	~list() { clear(); }
 //
-//	int size() const { return _size; }
+//	int size() const { return size_; }
 //	list_node* begin() { return _head->next; }
 //	list_node* end() { return _tail; }
 //
@@ -61,7 +61,7 @@ struct fastio
 //		}
 //		_head->next = _tail;
 //		_tail->prev = _head;
-//		_size = 0;
+//		size_ = 0;
 //	}
 //
 //	void push_back(T const& data)
@@ -71,7 +71,7 @@ struct fastio
 //		node->prev = _tail->prev;
 //		node->next = _tail;
 //		_tail->prev = node;
-//		_size++;
+//		size_++;
 //	}
 //
 //	list_node* insert(int rank, T const& data)
@@ -106,7 +106,7 @@ struct fastio
 //		delete node;
 //		prev->next = next;
 //		next->prev = prev;
-//		_size--;
+//		size_--;
 //	}
 //};
 //

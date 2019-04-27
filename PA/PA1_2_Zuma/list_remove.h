@@ -8,7 +8,7 @@ T List<T>::remove(ListNodePosi(T) p)
 	p->pred->succ = p->succ;
 	p->succ->pred = p->pred;
 	delete p;
-	_size--;
+	size_--;
 	return data;
 }
 

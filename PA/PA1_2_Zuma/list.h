@@ -7,7 +7,7 @@ template <typename T>
 class List
 {
 private:
-	int _size;
+	int size_;
 	ListNodePosi(T) header;
 	ListNodePosi(T) trailer;
 
@@ -31,18 +31,18 @@ public:
 	~List();
 
 	// Read only
-	Rank size() const { return _size; }
-	bool empty() const { return _size <= 0; }
+	Rank size() const { return size_; }
+	bool empty() const { return size_ <= 0; }
 	ListNodePosi(T) first() const { return header->succ; }
 	ListNodePosi(T) last() const { return trailer->pred; }
 	bool valid(ListNodePosi(T) p) { return p && p != header && p != trailer; }
 	T& operator[] (Rank r) const;
 	int disordered() const;
-	ListNodePosi(T) find(T const& e) const { return find(e, _size, trailer); }
+	ListNodePosi(T) find(T const& e) const { return find(e, size_, trailer); }
 	ListNodePosi(T) find(T const& e, int n, ListNodePosi(T) p) const;
-	ListNodePosi(T) search(T const& e) const { return search(e, _size, trailer); }
+	ListNodePosi(T) search(T const& e) const { return search(e, size_, trailer); }
 	ListNodePosi(T) search(T const& e, int n, ListNodePosi(T) p) const;
-	ListNodePosi(T) select_max() { return selectMax(header->succ, _size); }
+	ListNodePosi(T) select_max() { return selectMax(header->succ, size_); }
 	ListNodePosi(T) select_max(ListNodePosi(T) p, int n);
 
 	// Writable
@@ -51,9 +51,9 @@ public:
 	ListNodePosi(T) insert_after(ListNodePosi(T) p, T const& e);
 	ListNodePosi(T) insert_before(ListNodePosi(T) p, T const& e);
 	T remove(ListNodePosi(T) p);
-	void merge(List<T>& L) { merge(first(), _size, L, L.first(), L._size); }
+	void merge(List<T>& L) { merge(first(), size_, L, L.first(), L.size_); }
 	void sort(ListNodePosi(T) p, int n);
-	void sort() { sort(first(), _size); }
+	void sort() { sort(first(), size_); }
 	int deduplicate();	// unsorted
 	int uniquify();		// sorted
 };

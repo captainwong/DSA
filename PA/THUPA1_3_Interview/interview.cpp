@@ -31,18 +31,18 @@ class SimpleList
 private:
 	Node* head;
 	Node* tail;
-	int _size;
+	int size_;
 protected:
 	void init()
 	{
 		head = NULL;
 		tail = NULL;
-		_size = 0;
+		size_ = 0;
 	}
 	void clear()
 	{
 		Node* node = head;
-		for (int i = 0; i < _size; i++) {
+		for (int i = 0; i < size_; i++) {
 			Node* temp = node;
 			node = node->succ;
 			delete temp;
@@ -52,14 +52,14 @@ public:
 	SimpleList() { init(); }
 	~SimpleList() { clear(); }
 	Node* last() const { return tail; }
-	int size() const { return _size; }
+	int size() const { return size_; }
 	void insert(int data, int rank = 0)
 	{
-		if (_size == 0) {
+		if (size_ == 0) {
 			Node* node = new Node(data);
 			node->pred = node->succ = node;
 			head = tail = node;
-		} else if (_size == 1) {
+		} else if (size_ == 1) {
 			Node* node = new Node(data);
 			node->pred = node->succ = head;
 			head->pred = head->succ = node;
@@ -71,7 +71,7 @@ public:
 			}
 			tail = pos->insertA(data);
 		}
-		_size++;
+		size_++;
 	}
 };
 

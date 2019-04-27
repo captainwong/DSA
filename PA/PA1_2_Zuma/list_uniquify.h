@@ -3,10 +3,10 @@
 template <typename T>
 int List<T>::uniquify()
 {
-	if (_size < 2)
+	if (size_ < 2)
 		return 0;
 
-	int old_size = _size;
+	int old_size = size_;
 	ListNodePosi(T) p = first();
 	ListNodePosi(T) q;
 	while ((q = p->succ) != trailer) {
@@ -17,5 +17,5 @@ int List<T>::uniquify()
 		}
 	}
 
-	return old_size - _size;
+	return old_size - size_;
 }

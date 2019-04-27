@@ -9,6 +9,6 @@ void List<T>::init()
 	header->succ = trailer;
 	trailer->pred = header;
 	trailer->succ = NULL;
-	_size = 0;
+	size_ = 0;
 }
 

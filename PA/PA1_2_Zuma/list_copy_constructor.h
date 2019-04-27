@@ -4,7 +4,7 @@
 template <typename T>
 List<T>::List(List<T> const& L)
 {
-	copy_nodes(L.first(), L._size);
+	copy_nodes(L.first(), L.size_);
 }
 
 

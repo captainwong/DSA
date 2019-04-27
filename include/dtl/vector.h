@@ -8,6 +8,7 @@
 #include <stdlib.h> // rand
 #include "fibnacci.h"
 #include "swap.h"
+//#include "priority_queue.h" // heap sort
 
 namespace dtl 
 {
@@ -18,19 +19,19 @@ template <typename T>
 class Vector
 {
 protected:
-	Rank	_size;
-	int		_capacity;
-	T*		_elem;
+	Rank	size_;
+	int		capacity_;
+	T*		elem_;
 
 	static constexpr int DEFAULT_CAPACITY = 3;
 
 public:
 	// Constructors
 	Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = 0) {
-		_elem = new T[_capacity = c]; 
-		_size = 0; 
-		while (_size < s) { 
-			_elem[_size++] = v; 
+		elem_ = new T[capacity_ = c]; 
+		size_ = 0; 
+		while (size_ < s) { 
+			elem_[size_++] = v; 
 		}
 	}
 
@@ -43,123 +44,134 @@ public:
 	}
 
 	Vector(Vector<T> const& V) { 
-		copy_from(V._elem, 0, V._size);
+		copy_from(V.elem_, 0, V.size_);
 	}
 
 	Vector(Vector<T> const& V, Rank lo, Rank hi) { 
-		copy_from(V._elem, lo, hi); 
+		copy_from(V.elem_, lo, hi); 
 	}
 
 	Vector<T>& operator=(Vector<T> const& V) { 
-		if (_elem) { 
-			delete[] _elem;
+		if (elem_) { 
+			delete[] elem_;
 		}
-		copy_from(V._elem, 0, V._size);
+		copy_from(V.elem_, 0, V.size_);
 		return *this;
 	}
 
 	// Destructor
 	~Vector() { 
-		delete[] _elem;
+		delete[] elem_;
 	}
 
 	// Read only 
-	Rank size() const { return _size; }
-	bool empty() const { return !_size; }
+	Rank size() const { return size_; }
+	bool empty() const { return !size_; }
 	int disordered() const {
 		int n = 0; 
-		for (int i = 1; i < _size; i++) { 
-			if (_elem[i - 1] > _elem[i]) { 
+		for (int i = 1; i < size_; i++) { 
+			if (elem_[i - 1] > elem_[i]) { 
 				n++; 
 			}
 		}
 		return n;
 	}
 	Rank find(T const& e, Rank lo, Rank hi) const {
-		assert(0 <= lo); assert(lo < hi); assert(hi <= _size);
-		while ((lo < hi--) && (e != _elem[hi])) {} 
+		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
+		while ((lo < hi--) && (e != elem_[hi])) {} 
 		return hi;
 	}
-	Rank find(T const& e) const { return find(e, 0, _size); }
-	Rank search(T const& e) const { return (0 >= _size) ? -1 : search(e, 0, _size); }
+	Rank find(T const& e) const { return find(e, 0, size_); }
+	Rank search(T const& e) const { return (0 >= size_) ? -1 : search(e, 0, size_); }
 	Rank search(T const& e, Rank lo, Rank hi) const {
-		assert(0 <= lo); assert(lo < hi); assert(hi <= _size);
+		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
 		//return (rand() % 2) ?
-		//	binary_search(_elem, e, lo, hi) : fibnacci_search(_elem, e, lo, hi);
-		return fibnacci_search(_elem, e, lo, hi);
+		//	binary_search(elem_, e, lo, hi) : fibnacci_search(elem_, e, lo, hi);
+		return fibnacci_search(elem_, e, lo, hi);
 	}
-	T& operator[] (Rank r) const { assert(r >= 0 && r < _size); return _elem[r]; }
+	T& operator[] (Rank r) const { assert(r >= 0 && r < size_); return elem_[r]; }
 
 	// Mutable
 	T remove(Rank r) {
-		assert(r >= 0 && r < _size);
-		T e = _elem[r];
+		assert(r >= 0 && r < size_);
+		T e = elem_[r];
 		remove(r, r + 1);
 		return e;
 	}
 
 	int remove(Rank lo, Rank hi) {
-		assert(lo >= 0 && lo <= hi && hi <= _size);
+		assert(lo >= 0 && lo <= hi && hi <= size_);
 		if (lo == hi) {
 			return 0;
 		}
 
-		while (hi < _size) {
-			_elem[lo++] = _elem[hi++];
+		while (hi < size_) {
+			elem_[lo++] = elem_[hi++];
 		}
-		_size = lo;
+		size_ = lo;
 		shrink();
 		return hi - lo;
 	}
 
+	//! 插入元素
 	Rank insert(Rank r, T const& e) {
-		assert(r >= 0 && r <= _size);
+		assert(r >= 0 && r <= size_);
 		expand();
-		for (int i = _size; i > r; i--) {
-			_elem[i] = _elem[i - 1];
+		for (int i = size_; i > r; i--) {
+			elem_[i] = elem_[i - 1];
 		}
-		_elem[r] = e;
-		_size++;
+		elem_[r] = e;
+		size_++;
 		return r;
 	}
 
-	Rank insert(T const& e) { 
-		return insert(_size, e); 
-	}
+	//! 默认作为末元素插入
+	Rank insert(T const& e) { return insert(size_, e); }
 
+	//! 对[lo, hi)排序
 	void sort(Rank lo, Rank hi) {
-		merge_sort(lo, hi);
+#define TEST_BUILD
+#ifdef TEST_BUILD
+		bubble_sort(lo, hi);
+		//heapSort(lo, hi);
+#endif // TEST_BUILD
+
+		merge_sort(lo, hi); 
 	}
 
-	void sort() { 
-		sort(0, _size);
-	}
+	//! 整体排序
+	void sort() { sort(0, size_); }
 
+	//! 对[lo, hi)置乱
 	void unsort(Rank lo, Rank hi) {
-		T* V = _elem + lo;
+		T* V = elem_ + lo;
 		for (Rank i = hi - lo; i > 0; i--) {
 			swap(V[i] - 1, V[rand() % i]);
 		}
 	}
 
-	void unsort() { unsort(0, _size); }
+	//! 整体置乱
+	void unsort() { unsort(0, size_); }
+
+	//! 无序去重
 	int deduplicate() {	// unsorted
-		int old_size = _size;
+		int old_size = size_;
 		int i = 1;
-		while (i < _size) {
-			(find(_elem[i], 0, i) < 0) ? i++ : remove(i);
+		while (i < size_) {
+			(find(elem_[i], 0, i) < 0) ? i++ : remove(i);
 		}
-		return old_size - _size;
+		return old_size - size_;
 	}
 
+	//! 有序去重
 	int uniquify() { // sorted
 		Rank i = 0, j = 0;
-		while (++j < _size) {
-			if (_elem[i] != _elem[j]) {
-				_elem[++i] = _elem[j];
+		while (++j < size_) {
+			if (elem_[i] != elem_[j]) {
+				elem_[++i] = elem_[j];
 			}
 		}
-		_size = ++i;
+		size_ = ++i;
 		shrink();
 		return j - i;
 	}
@@ -167,34 +179,36 @@ public:
 
 	// Traverse
 	void traverse(void(*visit)(T&)) {
-		for (int i = 0; i < _size; i++) { visit(_elem[i]); }
+		for (int i = 0; i < size_; i++) { visit(elem_[i]); }
 	}
 
 	template <typename VST>
 	void traverse(VST& visit) {
-		for (int i = 0; i < _size; i++) { visit(_elem[i]); }
+		for (int i = 0; i < size_; i++) { visit(elem_[i]); }
 	}
 
 protected:
 	void copy_from(T const* A, Rank lo, Rank hi) {
-		_elem = new T[_capacity = 2 * (hi - lo)]; _size = 0; 
-		while (lo < hi) { _elem[_size++] = A[lo++]; }
+		elem_ = new T[capacity_ = 2 * (hi - lo)]; size_ = 0; 
+		while (lo < hi) { elem_[size_++] = A[lo++]; }
 	}
+
 	void expand() {
-		if (_size < _capacity) { return; }
-		if (_capacity < DEFAULT_CAPACITY) { _capacity = DEFAULT_CAPACITY; }
-		T* old_elem = _elem; _elem = new T[_capacity <<= 1];
-		for (int i = 0; i < _size; i++) { _elem[i] = old_elem[i]; }
+		if (size_ < capacity_) { return; }
+		if (capacity_ < DEFAULT_CAPACITY) { capacity_ = DEFAULT_CAPACITY; }
+		T* old_elem = elem_; 
+		elem_ = new T[capacity_ <<= 1];
+		for (int i = 0; i < size_; i++) { elem_[i] = old_elem[i]; }
 		delete[] old_elem;
 	}
 
 	void shrink() {
-		if (_capacity < DEFAULT_CAPACITY << 1) { return; }
-		if (_size << 2 > _capacity) { return; }
-		T* old_elem = _elem;
-		_elem = new T[_capacity >>= 1];
-		for (int i = 0; i < _size; i++) {
-			_elem[i] = old_elem[i];
+		if (capacity_ < DEFAULT_CAPACITY << 1) { return; }
+		if (size_ << 2 > capacity_) { return; }
+		T* old_elem = elem_;
+		elem_ = new T[capacity_ >>= 1];
+		for (int i = 0; i < size_; i++) {
+			elem_[i] = old_elem[i];
 		}
 		delete[] old_elem;
 	}
@@ -202,48 +216,43 @@ protected:
 	bool bubble(Rank lo, Rank hi) {
 		bool sorted = true;
 		while (++lo < hi) {
-			if (_elem[lo - 1] > _elem[lo]) {
+			if (elem_[lo - 1] > elem_[lo]) {
 				sorted = false;
-				swap(_elem[lo - 1], _elem[lo]);
+				swap(elem_[lo - 1], elem_[lo]);
 			}
 		}
 		return sorted;
 	}
 
 	void bubble_sort(Rank lo, Rank hi) {
-		assert(0 <= lo);
-		assert(lo < hi);
-		assert(hi <= _size);
+		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
 		while (!bubble(lo, hi--)) {}
 	}
 
 	Rank bubble_fast(Rank lo, Rank hi) {
 		Rank last = lo;
 		while (++lo < hi) {
-			if (_elem[lo - 1] > _elem[lo]) {
+			if (elem_[lo - 1] > elem_[lo]) {
 				last = lo;
-				swap(_elem[lo - 1], _elem[lo]);
+				swap(elem_[lo - 1], elem_[lo]);
 			}
 		}
 		return last;
 	}
 
 	void bubble_sort_fast(Rank lo, Rank hi) {
-		assert(0 <= lo);
-		assert(lo < hi);
-		assert(hi <= _size);
-
+		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
 		while (lo < (hi = bubble_fast(lo, hi))) {}
 	}
 
 	void merge(Rank lo, Rank mi, Rank hi) {
-		T* A = _elem + lo;
+		T* A = elem_ + lo;
 		int lb = mi - lo;
 		T* B = new T[lb];	// [lo, mi)
 		for (int i = 0; i < lb; i++) {
 			B[i] = A[i];
 		}
-		T* C = _elem + mi;	// [mi, hi)
+		T* C = elem_ + mi;	// [mi, hi)
 		int lc = hi - mi;
 
 		for (int i = 0, j = 0, k = 0; (j < lb) || (k < lc);) {
@@ -258,9 +267,7 @@ protected:
 	}
 
 	void merge_sort(Rank lo, Rank hi) {
-		assert(0 <= lo);
-		assert(lo < hi);
-		assert(hi <= _size);
+		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
 
 		if (hi - lo < 2)
 			return;
@@ -271,11 +278,16 @@ protected:
 		merge(lo, mi, hi);
 	}
 
+	/*void heapSort(Rank lo, Rank hi) {
+		CompleteHeap<T> heap(elem_ + lo, hi - lo);
+		while (!heap.empty()) {
+			elem_[--hi] = heap.delMax();
+		}
+	}*/
+
 	// Common functions
 	static Rank binary_search(T* A, T const& e, Rank lo, Rank hi) {
-		assert(0 <= lo);
-		assert(lo <= hi);
-		//assert(hi <= _size);
+		assert(0 <= lo); assert(lo <= hi); //assert(hi <= size_);
 
 #define USE_VERSION_3
 
@@ -322,7 +334,7 @@ protected:
 	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi) {
 		assert(0 <= lo);
 		assert(lo <= hi);
-		//assert(hi <= A->_size);
+		//assert(hi <= A->size_);
 
 #define USE_VERSION_2
 
@@ -360,9 +372,7 @@ protected:
 	}
 
 	static Rank interpolation_search(T* A, T const& e, Rank lo, Rank hi) {
-		assert(0 <= lo);
-		assert(lo <= hi);
-		assert(hi <= A->_size);
+		assert(0 <= lo); assert(lo <= hi); assert(hi <= A->size_);
 
 		while (A[lo] <= e && e <= A[hi]) {
 			Rank mi = lo + (hi - lo) * (e - A[lo]) / (A[hi] - A[lo]);

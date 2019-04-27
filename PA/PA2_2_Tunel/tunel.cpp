@@ -15,34 +15,34 @@ T max(T const& a, T const& b)
 //class SimpleStack
 //{
 //private:
-//	int _size;
-//	int _capacity;
-//	T* _elem;
+//	int size_;
+//	int capacity_;
+//	T* elem_;
 //
 //protected:
 //	void expand()
 //	{
-//		if (_size < _capacity)
+//		if (size_ < capacity_)
 //			return;
-//		T* old_elem = _elem;
-//		_capacity <<= 2;
-//		_elem = new T[_capacity];
-//		for (int i = 0; i < _size; i++) {
-//			_elem[i] = old_elem[i];
+//		T* old_elem = elem_;
+//		capacity_ <<= 2;
+//		elem_ = new T[capacity_];
+//		for (int i = 0; i < size_; i++) {
+//			elem_[i] = old_elem[i];
 //		}
 //		delete[] old_elem;
 //	}
 //
 //	void shrink()
 //	{
-//		if (_size > _capacity >> 2 || _capacity >> 2 < DEFAULT_CAPACITY)
+//		if (size_ > capacity_ >> 2 || capacity_ >> 2 < DEFAULT_CAPACITY)
 //			return;
 //
-//		T* old_elem = _elem;
-//		_capacity >>= 2;
-//		_elem = new T[_capacity];
-//		for (int i = 0; i < _size; i++) {
-//			_elem[i] = old_elem[i];
+//		T* old_elem = elem_;
+//		capacity_ >>= 2;
+//		elem_ = new T[capacity_];
+//		for (int i = 0; i < size_; i++) {
+//			elem_[i] = old_elem[i];
 //		}
 //		delete[] old_elem;
 //	}
@@ -52,20 +52,20 @@ T max(T const& a, T const& b)
 //	{
 //		if (size < DEFAULT_CAPACITY)
 //			size = DEFAULT_CAPACITY;
-//		_size = 0;
-//		_capacity = size << 2;
-//		_elem = new T[_capacity];
+//		size_ = 0;
+//		capacity_ = size << 2;
+//		elem_ = new T[capacity_];
 //	}
 //
-//	~SimpleStack() { delete[] _elem; }
+//	~SimpleStack() { delete[] elem_; }
 //
-//	bool empty() { return _size == 0; }
+//	bool empty() { return size_ == 0; }
 //
-//	void push(T const& e) { expand(); _elem[_size++] = e; }
+//	void push(T const& e) { expand(); elem_[size_++] = e; }
 //
-//	T pop() { return _elem[--_size]; }
+//	T pop() { return elem_[--size_]; }
 //
-//	T top() { return _size == 0 ? 0 : _elem[_size - 1]; }
+//	T top() { return size_ == 0 ? 0 : elem_[size_ - 1]; }
 //};
 
 #define MAX_INPUT (2000001)

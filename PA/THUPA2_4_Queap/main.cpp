@@ -32,7 +32,7 @@ static const int MAX_VAR = 1000001;
 //private:
 //	Node* head;
 //	Node* tail;
-//	int _size;
+//	int size_;
 //protected:
 //	void init()
 //	{
@@ -40,13 +40,13 @@ static const int MAX_VAR = 1000001;
 //		tail = new Node(0, NULL, NULL);
 //		head->succ = tail;
 //		tail->pred = head;
-//		_size = 0;
+//		size_ = 0;
 //	}
 //
 //	void clear()
 //	{
 //		Node* node = head;
-//		for (int i = 0; i < _size; i++) {
+//		for (int i = 0; i < size_; i++) {
 //			Node* temp = node;
 //			node = node->succ;
 //			delete temp;
@@ -57,22 +57,22 @@ static const int MAX_VAR = 1000001;
 //	~SimpleList() { clear(); }
 //	Node* first() const { return head->succ; }
 //	Node* last() const { return tail->pred; }
-//	int size() const { return _size; }
+//	int size() const { return size_; }
 //	void insert(int data, int rank = 0)
 //	{
-//		int minval = _size < rank ? _size : rank;
+//		int minval = size_ < rank ? size_ : rank;
 //		Node* node = head;
 //		for (int i = 0; i < minval; i++) {
 //			node = node->succ;
 //		}
 //		node->insertA(data);
-//		_size++;
+//		size_++;
 //	}
 //
 //	int remove(int rank)
 //	{
 //		Node* node = head->succ;
-//		int minval = _size < rank ? _size : rank;
+//		int minval = size_ < rank ? size_ : rank;
 //		for (int i = 0; i < minval; i++) {
 //			node = node->succ;
 //		}
@@ -80,7 +80,7 @@ static const int MAX_VAR = 1000001;
 //		node->succ->pred = node->pred;
 //		int data = node->data;
 //		delete node;
-//		_size--;
+//		size_--;
 //		return data;
 //	}
 //};
@@ -98,43 +98,43 @@ public:
 private:
 	//此处可以扩展
 	//SimpleList list;
-	int _size;
-	int *_elem;
+	int size_;
+	int *elem_;
 };
 
 Stack::Stack()
 {
-	_size = 0;
-	_elem = new int[MAX_VAR];
+	size_ = 0;
+	elem_ = new int[MAX_VAR];
 }
 
 Stack::~Stack()
 {
-	delete[] _elem;
+	delete[] elem_;
 }
 
 bool Stack::empty()
 {
 	//return list.size() == 0;
-	return _size == 0;
+	return size_ == 0;
 }
 
 void Stack::push(int value)
 {
 	//list.insert(value, list.size());
-	_elem[_size++] = value;
+	elem_[size_++] = value;
 }
 
 int Stack::pop()
 {
 	//return list.remove(list.size() - 1);
-	return _elem[--_size];
+	return elem_[--size_];
 }
 
 int Stack::top()
 {
 	//return list.last()->data;
-	return _elem[_size - 1];
+	return elem_[size_ - 1];
 }
 
 // 极值栈的思路来源于课程讨论中farui的思路
