@@ -1,106 +1,18 @@
-#pragma once
-
-#include "comparator.h"
-#include "swap.h"
-#include "vector.h"
+ï»¿#pragma once
 
 namespace dtl
 {
 
-//! ÓÅÏÈ¼¶¶ÓÁĞ½Ó¿Ú¶¨Òå
+//! ä¼˜å…ˆçº§é˜Ÿåˆ—æ¥å£å®šä¹‰
 template <typename T>
 struct PriorityQueue
 {
-	//! °´ÕÕ±È½ÏÆ÷È·¶¨µÄÓÅÏÈ¼¶´ÎĞò²åÈë´ÊÌõ
+	//! æŒ‰ç…§æ¯”è¾ƒå™¨ç¡®å®šçš„ä¼˜å…ˆçº§æ¬¡åºæ’å…¥è¯æ¡
 	virtual void insert(T const&) = 0;
-	//! »ñÈ¡ÓÅÏÈ¼¶×î¸ßµÄ´ÊÌõ
+	//! è·å–ä¼˜å…ˆçº§æœ€é«˜çš„è¯æ¡
 	virtual T getMax() = 0;
-	//! É¾³ıÓÅÏÈ¼¶×î¸ßµÄ´ÊÌõ
+	//! åˆ é™¤ä¼˜å…ˆçº§æœ€é«˜çš„è¯æ¡
 	virtual T delMax() = 0;
-};
-
-
-//! »ùÓÚÏòÁ¿£¬ÒÔÍêÈ«¶ş²æ¶ÑĞÎÊ½ÊµÏÖµÄÓÅÏÈ¼¶¶ÓÁĞ
-template <typename T>
-class CompleteHeap : public PriorityQueue<T>, public Vector<T>
-{
-public:
-	typedef PriorityQueue<T> PQType;
-	typedef Vector<T> VectorType;
-
-	CompleteHeap() {}
-	
-	CompleteHeap(T* A, Rank lo, Rank hi) {
-		VectorType::copy_from(A, lo, hi);
-		heapify(hi - lo);
-	}
-
-	CompleteHeap(T* A, Rank n) {
-		VectorType::copy_from(A, 0, n);
-		heapify(n);
-	}
-
-	void insert(T const& e) {
-		VectorType::insert(e);
-		percolateUp(VectorType::size_ - 1);
-	}
-
-	T getMax() {
-		return VectorType::elem_[0];
-	}
-
-	T delMax() {
-		auto maxElem = VectorType::elem_[0];
-		VectorType::elem_[0] = VectorType::remove(VectorType::size_ - 1);
-		percolateDown(VectorType::size_, 0);
-		return maxElem;
-	}
-
-	/*****************helpers*******************/
-	
-	inline bool inHeap(Rank i) const { return -1 < i && i < VectorType::size_; }
-	inline bool hasParent(Rank i) const { return 0 < i; }
-	inline Rank parent(Rank i) const { return (i - 1) >> 1; }
-	inline Rank lChild(Rank i) const { return 1 + (i << 1); }
-	inline Rank rChild(Rank i) const { return (1 + i) << 1; }
-	inline bool hasLChild(Rank i) const { return inHeap(lChild(i)); }
-	inline bool hasRChild(Rank i) const { return inHeap(rChild(i)); }
-	inline Rank bigger(Rank i, Rank j) const { return lt(VectorType::elem_[i], VectorType::elem_[j]) ? j : i; }
-	inline Rank properParent(Rank i) const {
-		return hasRChild(i) ? bigger(bigger(i, lChild(i)), rChild(i)) : (hasLChild(i) ? bigger(i, lChild(i)) : i);
-	}
-	inline Rank lastInternal(Rank n) const { return parent(n - 1); }
-
-protected:
-	//! ÏÂÂË
-	Rank percolateDown(Rank n, Rank i) {
-		Rank j;
-		while (i != (j = properParent(i))) {
-			swap(VectorType::elem_[i], VectorType::elem_[j]);
-			i = j;
-		}
-		return i;
-	}
-
-	//! ÉÏÂË
-	Rank percolateUp(Rank i) {
-		while (hasParent(i)) {
-			auto j = parent(i);
-			if (lt(VectorType::elem_[i], VectorType::elem_[j])) {
-				break;
-			}
-			swap(VectorType::elem_[i], VectorType::elem_[j]);
-			i = j;
-		}
-		return i;
-	}
-
-	//! Floyd½¨¶ÑËã·¨ O(n)
-	void heapify(Rank n) {
-		for (int i = lastInternal(n); inHeap(i); i--) {
-			percolateDown(n, i);
-		}
-	}
 };
 
 }

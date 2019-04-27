@@ -6,3 +6,4 @@
 
 #include "print.h"
 #include "rand.h"
+#include "wait.h"

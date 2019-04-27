@@ -7,12 +7,17 @@
 #include <stdio.h>
 #include <typeinfo.h>
 
+#include "../dtl/bitmap.h"
 #include "../dtl/vector.h"
 #include "../dtl/graph.h"
 #include "../dtl/bintree.h"
+#include "../dtl/huffman.h"
 #include "../dtl/hashtable.h"
 #include "../dtl/quadlist.h"
 #include "../dtl/skiplist.h"
+#include "../dtl/complete_heap.h"
+#include "../dtl/left_heap.h"
+
 
 namespace dtl 
 {
@@ -33,6 +38,21 @@ static void print(const char* x) { printf(" %s", x ? x : "<NULL>"); }
 
 class UniPrint
 {
+	enum class TreeNodeType
+	{
+		R_CHILD = -1,
+		ROOT = 0,
+		L_CHILD = 1,
+	};
+
+	static void p(TreeNodeType t) {
+		switch (t) {
+			case TreeNodeType::R_CHILD: printf("┌─"); break;
+			case TreeNodeType::L_CHILD: printf("└─"); break;
+			default:printf("──"); break;
+		}
+	}
+
 public:
 	static void p(int e) { printf(" %04d", e); }
 	static void p(char e) { printf(" %c", (31 < e) && (e < 128) ? e : '$'); }
@@ -59,14 +79,6 @@ public:
 		}
 	}
 
-	//! 向量、列表等支持traverse()遍历的线性结构
-	template <typename T> 
-	static void p(T& s){
-		printf("%s[0x%p]*%d:\n", typeid(s).name(), &s, s.size());
-		s.traverse(print);
-		printf("\n");
-	}
-
 	//! 萃取指针类型，统一转为引用
 	template <typename T>
 	static void p(T* s) { if (s) { p(*s); } else { printf(" <NULL>"); } }
@@ -82,20 +94,53 @@ public:
 	static void p(BinNode<T>& node) {
 		p(node.data_);
 		printf("(%-2d)", node.height_);
-
+		printf(((node.lChild_ && &node != node.lChild_->parent_) ||
+				(node.rChild_ && &node != node.rChild_->parent_)
+				) ? "@" : " ");
+		if (node.color_ == RBColor::RB_BLACK) { printf("B"); }
 
 	}
 
 	//! BinTree
 	template <typename T>
 	static void p(BinTree<T>& tree) {
-		printf("%s[0x%p]*%03d: ", typeid(tree).name(), &tree, tree.size());
+		printf("%s[0x%p]*%03d\n", typeid(tree).name(), &tree, tree.size());
+		Bitmap bmp;
+		printBinTree(tree.root(), -1, TreeNodeType::ROOT, &bmp);
+		printf("\n");
+	}
+
+	//! 二叉树各种派生类的统一打印
+	template <typename T>
+	static void printBinTree(BinNode<T>* bt, int depth, TreeNodeType type, Bitmap* bType) {
+		if (!bt) { return; }
+		if (-1 < depth) {
+			type == TreeNodeType::R_CHILD ? bType->set(depth) : bType->clear(depth);
+		}
+		printBinTree(bt->rChild_, depth + 1, TreeNodeType::R_CHILD, bType);
+		print(bt); printf(" *");
+		for (int i = -1; i < depth; i++) {
+			if ((i < 0) || bType->test(i) == bType->test(i + 1)) {
+				printf("      ");
+			} else {
+				printf("│    ");
+			}
+		}
+		p(type);
+		print(bt);
+		printf("\n");
+		printBinTree(bt->lChild_, depth + 1, TreeNodeType::L_CHILD, bType);
+	}
+
+	//! HuffChar
+	static void p(huffman::HuffChar& e) {
+		printf("[%c]:%-5d", e.ch, e.weight);
 	}
 
 	//! 四联表
 	template <typename T>
 	static void p(Quadlist<T>& q) {
-		printf("%s[0x%p]*%03d: ", typeid(q).name(), &q, q.size());
+		printf("%s[0x%p]*%03d\n", typeid(q).name(), &q, q.size());
 		if (q.empty()) { printf("\n"); return; }
 		auto curr = q.first()->pred; // 当前层之header
 		auto base = q.first(); // 当前节点所在
@@ -116,7 +161,7 @@ public:
 	//! 跳转表
 	template <typename K, typename V>
 	static void p(Skiplist<K, V>& s) {
-		printf("%s[0x%p]*%d*%d:\n", typeid(s).name(), &s, s.level(), s.size());
+		printf("%s[0x%p]*%d*%d\n", typeid(s).name(), &s, s.level(), s.size());
 		s.traverse(print);
 		printf("\n");
 	}
@@ -124,7 +169,7 @@ public:
 	//! 散列表
 	template <typename K, typename V>
 	static void p(Hashtable<K, V>& ht) {
-		printf("%s[0x%p]*%d/%d:\n", typeid (ht).name(), &ht, ht.N, ht.M); //基本信息
+		printf("%s[0x%p]*%d/%d\n", typeid (ht).name(), &ht, ht.N, ht.M); //基本信息
 		for (int i = 0; i < ht.M; i++) { //输出桶编号
 			printf("  %4d  ", i);
 		}
@@ -141,6 +186,52 @@ public:
 			else if (ht.lazyRemoval->test(i)) { printf(" <xxxx> "); }
 			else { printf("        "); }
 		}
+		printf("\n");
+	}
+
+	//! 完全二叉堆
+	template <typename T>
+	static void p(CompleteHeap<T>& heap) {
+		printf("%s[0x%p]*%d\n", typeid(heap).name(), &heap, heap.size());
+		int branchType[256];
+		printCompleteHeap(heap, heap.size(), 0, 0, TreeNodeType::ROOT, branchType);
+		printf("\n");
+	}
+
+	//! 完全二叉堆递归辅助函数(type: 0 root, 1 left-child, -1 right-child
+	template <typename T>
+	static void printCompleteHeap(Vector<T>& heap, int n, int k, int depth, TreeNodeType type, int* bType) {
+		if (k >= n) { return; }
+		bType[depth] = type;
+		printCompleteHeap(heap, n, CompleteHeap<T>::rChild(k), depth + 1, TreeNodeType::R_CHILD, bType);
+		print(heap[k]);
+		CompleteHeap<T>::hasParent(k) && (heap[CompleteHeap<T>::parent(k)] < heap[k]) ? printf("X") : printf(" ");
+		printf("*");
+		for (int i = 0; i < depth; i++) {
+			if (bType[i] + bType[i + 1]) {
+				printf("      ");
+			} else {
+				printf("│    ");
+			}
+		}
+		p(type);
+		print(heap[k]);
+		CompleteHeap<T>::hasParent(k) && (heap[CompleteHeap<T>::parent(k)] < heap[k]) ? printf("X") : printf("*");
+		printf("\n");
+		printCompleteHeap(heap, n, CompleteHeap<T>::lChild(k), depth + 1, TreeNodeType::L_CHILD, bType);
+	}
+
+	//! 左式堆
+	template <typename T>
+	static void p(LeftHeap<T>& heap) {
+		p(static_cast<BinTree<T>&>(heap));
+	}
+
+	//! 向量、列表等支持traverse()遍历的线性结构
+	template <typename T>
+	static void p(T& s) {
+		printf("%s[0x%p]*%d\n", typeid(s).name(), &s, s.size());
+		s.traverse(print);
 		printf("\n");
 	}
 };

@@ -2,13 +2,16 @@
 //
 
 #include "pch.h"
+#include "../../include/dtl/complete_heap.h"
+#include "../../include/dtl/left_heap.h"
 #include "../../include/test/test_priority_quque.h"
 
 using namespace dtl::test;
 
 int main()
 {
-	priority_queue_test<dtl::CompleteHeap<int>, int>(10);
+	//priority_queue_test<dtl::CompleteHeap<int>, int>(10, 0);
+	priority_queue_test<dtl::LeftHeap<int>, int>(10, 0);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
