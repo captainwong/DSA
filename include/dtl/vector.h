@@ -13,21 +13,27 @@
 namespace dtl 
 {
 
+//! 秩
 typedef int Rank;
 
 template <typename T>
 class Vector
 {
 protected:
-	Rank	size_;
-	int		capacity_;
-	T*		elem_;
-
-	static constexpr int DEFAULT_CAPACITY = 3;
+	//! 规模
+	Rank size_;
+	//! 容量
+	int capacity_;
+	//! 数据
+	T* elem_;
 
 public:
-	// Constructors
+	//! 默认初始容量
+	static constexpr int DEFAULT_CAPACITY = 3;
+
+	//! 容量为c、规模为n，所有元素初始为v
 	Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = 0) {
+		assert(s <= c);
 		elem_ = new T[capacity_ = c]; 
 		size_ = 0; 
 		while (size_ < s) { 
@@ -35,22 +41,27 @@ public:
 		}
 	}
 
+	//! 从数组整体构造
 	Vector(T const* A, Rank n) {
 		copy_from(A, 0, n); 
 	}
 
+	//! 从数组区间构造
 	Vector(T const* A, Rank lo, Rank hi) { 
 		copy_from(A, lo, hi); 
 	}
 
+	//! 从向量整体复制
 	Vector(Vector<T> const& V) { 
 		copy_from(V.elem_, 0, V.size_);
 	}
 
+	//! 从向量区间复制
 	Vector(Vector<T> const& V, Rank lo, Rank hi) { 
 		copy_from(V.elem_, lo, hi); 
 	}
 
+	//! 从向量整体复制
 	Vector<T>& operator=(Vector<T> const& V) { 
 		if (elem_) { 
 			delete[] elem_;
@@ -59,14 +70,17 @@ public:
 		return *this;
 	}
 
-	// Destructor
 	~Vector() { 
 		delete[] elem_;
 	}
 
-	// Read only 
+
+	/************** Read only ***************************************/
+
 	Rank size() const { return size_; }
 	bool empty() const { return !size_; }
+
+	//! 相邻逆序对的总数
 	int disordered() const {
 		int n = 0; 
 		for (int i = 1; i < size_; i++) { 
@@ -76,31 +90,57 @@ public:
 		}
 		return n;
 	}
+
+	/**
+	* @brief 无序向量的顺序查找
+	* @return 查找成功时返回元素e最后一次出现的位置（秩）；失败时返回lo-1
+	* @warn input sensitive 输入敏感，平均O(n)
+	*/
 	Rank find(T const& e, Rank lo, Rank hi) const {
-		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
+		assert(0 <= lo && lo < hi && hi <= size_);
 		while ((lo < hi--) && (e != elem_[hi])) {} 
 		return hi;
 	}
+
+	//! 无序向量整体查找
 	Rank find(T const& e) const { return find(e, 0, size_); }
-	Rank search(T const& e) const { return (0 >= size_) ? -1 : search(e, 0, size_); }
+
+
 	Rank search(T const& e, Rank lo, Rank hi) const {
 		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
 		//return (rand() % 2) ?
 		//	binary_search(elem_, e, lo, hi) : fibnacci_search(elem_, e, lo, hi);
 		return fibnacci_search(elem_, e, lo, hi);
 	}
-	T& operator[] (Rank r) const { assert(r >= 0 && r < size_); return elem_[r]; }
 
-	// Mutable
-	T remove(Rank r) {
-		assert(r >= 0 && r < size_);
-		T e = elem_[r];
-		remove(r, r + 1);
-		return e;
+	Rank search(T const& e) const { return (0 >= size_) ? -1 : search(e, 0, size_); }
+
+
+	/************* Mutable *****************************/
+
+	//! 下标
+	T& operator[] (Rank r) const { 
+		assert(0 <= r && r < size_); 
+		return elem_[r]; 
 	}
 
+	//! 插入元素 
+	Rank insert(Rank r, T const& e) { // input sensitive 输入敏感，平均O(n)
+		assert(0 <= r && r <= size_);
+		expand();
+		for (int i = size_; i > r; i--) { // r之后的元素整体右移
+			elem_[i] = elem_[i - 1];
+		}
+		elem_[r] = e;
+		size_++;
+		return r;
+	}
+
+	//! 默认作为末元素插入
+	Rank insert(T const& e) { return insert(size_, e); }
+
 	int remove(Rank lo, Rank hi) {
-		assert(lo >= 0 && lo <= hi && hi <= size_);
+		assert(0 <= lo && lo <= hi && hi <= size_);
 		if (lo == hi) {
 			return 0;
 		}
@@ -113,20 +153,13 @@ public:
 		return hi - lo;
 	}
 
-	//! 插入元素
-	Rank insert(Rank r, T const& e) {
-		assert(r >= 0 && r <= size_);
-		expand();
-		for (int i = size_; i > r; i--) {
-			elem_[i] = elem_[i - 1];
-		}
-		elem_[r] = e;
-		size_++;
-		return r;
+	T remove(Rank r) {
+		assert(0 <= r && r < size_);
+		T e = elem_[r];
+		remove(r, r + 1);
+		return e;
 	}
 
-	//! 默认作为末元素插入
-	Rank insert(T const& e) { return insert(size_, e); }
 
 	//! 对[lo, hi)排序
 	void sort(Rank lo, Rank hi) {
@@ -142,15 +175,16 @@ public:
 	//! 整体排序
 	void sort() { sort(0, size_); }
 
-	//! 对[lo, hi)置乱
+	//! 对区间[lo, hi)（等概率随机）置乱
 	void unsort(Rank lo, Rank hi) {
+		assert(0 <= lo && lo <= hi && hi <= size_);
 		T* V = elem_ + lo;
 		for (Rank i = hi - lo; i > 0; i--) {
 			swap(V[i] - 1, V[rand() % i]);
 		}
 	}
 
-	//! 整体置乱
+	//! 整体（等概率随机）置乱
 	void unsort() { unsort(0, size_); }
 
 	//! 无序去重
@@ -177,7 +211,8 @@ public:
 	}
 
 
-	// Traverse
+	/****************** Traverse *******************************/
+
 	void traverse(void(*visit)(T&)) {
 		for (int i = 0; i < size_; i++) { visit(elem_[i]); }
 	}
@@ -188,11 +223,17 @@ public:
 	}
 
 protected:
+	//! 辅助构造，以数组区间A[lo, hi)为蓝本复制向量
 	void copy_from(T const* A, Rank lo, Rank hi) {
 		elem_ = new T[capacity_ = 2 * (hi - lo)]; size_ = 0; 
 		while (lo < hi) { elem_[size_++] = A[lo++]; }
 	}
 
+	/**
+	* @brief 扩容
+	* @note 容量满时倍增。分摊意义O(1)时间
+	* @note 始终有 size_ <= capacity_ <= 2*size_
+	*/
 	void expand() {
 		if (size_ < capacity_) { return; }
 		if (capacity_ < DEFAULT_CAPACITY) { capacity_ = DEFAULT_CAPACITY; }
@@ -202,6 +243,11 @@ protected:
 		delete[] old_elem;
 	}
 
+	/**
+	* @brief 缩容
+	* @note 以25%为界，容量减半。相当于expand的逆过程，分摊复杂度O(1)
+	* @warn 不适用对单次操作的执行速度敏感的应用场合
+	*/
 	void shrink() {
 		if (capacity_ < DEFAULT_CAPACITY << 1) { return; }
 		if (size_ << 2 > capacity_) { return; }
@@ -213,6 +259,7 @@ protected:
 		delete[] old_elem;
 	}
 
+	//! 扫描交换
 	bool bubble(Rank lo, Rank hi) {
 		bool sorted = true;
 		while (++lo < hi) {
