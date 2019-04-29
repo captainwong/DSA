@@ -192,42 +192,6 @@ void quik_sort(int lo, int hi)
 	quik_sort(lo, mi);
 	quik_sort(mi + 1, hi);
 }
-//
-//int Partition(int *A, int p, int r);
-//void QuickSort(int *A, int p, int r) //��������  
-//{
-//	int q;
-//	if (p<r)               //���p���ڵ���r ��ô�ͳ���ִ��  
-//	{
-//		q = Partition(A, p, r);  //���÷��η� �ҵ�q��ֵ  
-//		QuickSort(A, p, q - 1);
-//		QuickSort(A, q + 1, r);
-//	}
-//}
-//
-//int Partition(int *A, int p, int r) //���η������þ��ǽ������ΪA[p..q-1] ��A[q+1..r]  
-//{                                                   //Ȼ�����Ԫ��ʹ��A[p..q-1]С�ڵ���q��ҲС�ڵ���A[q+1..r]  
-//	int x, i, j, temp;
-//
-//	x = A[r];  //�����һ��ֵ������x��  
-//	i = p - 1;   //��ʼ��ʱ��i �ƶ������������  
-//	for (j = p; j <= r - 1; j++) {
-//		if (A[j] <= x) {
-//			i += 1;
-//			temp = A[i]; //exchange  
-//			A[i] = A[j];
-//			A[j] = temp;
-//		}
-//	}
-//
-//	temp = A[i + 1];  //exchange  
-//	A[i + 1] = A[r];
-//	A[r] = temp;
-//
-//	return i + 1;  //����qֵ  
-//}
-
-//char bf[180 * 1024 * 1024] = { 0 };
 
 int main_5(int argc, char* argv[])
 {
