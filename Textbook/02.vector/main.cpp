@@ -1,15 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-template <typename t>
-void swap(t& a, t& b)
-{
-	t t = a;
-	a = b;
-	b = t;
-}
 
 #include "../include/dtl/vector.h"
+#include "../include/test/test_vector.h"
 
 using namespace dtl;
 
@@ -54,5 +45,10 @@ int main(int argc, char* argv[])
 	printf("\n");
 
 	getchar();
+
+	system("cls");
+
+	test::testVector<int>(10, 1000);
+
 	return 0;
 }

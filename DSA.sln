@@ -133,6 +133,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "util", "util", "{61AB718E-7C05-4BE6-873E-7EB26ED0FBCD}"
 	ProjectSection(SolutionItems) = preProject
+		include\util\check.h = include\util\check.h
 		include\util\print.h = include\util\print.h
 		include\util\rand.h = include\util\rand.h
 		include\util\util.h = include\util\util.h
@@ -150,6 +151,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10.priority_queue", "Textbook\10.priority_queue\10.priority_queue.vcxproj", "{D663C066-3EAA-495E-9E19-263891D0FEA5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DFA2CDDC-8413-494A-85C8-0021F8F38C60}"
+	ProjectSection(SolutionItems) = preProject
+		include\test\test_priority_quque.h = include\test\test_priority_quque.h
+		include\test\test_vector.h = include\test\test_vector.h
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

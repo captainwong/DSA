@@ -54,7 +54,7 @@ class UniPrint
 	}
 
 public:
-	static void p(int e) { printf(" %04d", e); }
+	static void p(int e) { printf(" %-4d", e); }
 	static void p(char e) { printf(" %c", (31 < e) && (e < 128) ? e : '$'); }
 	static void p(float e) { printf(" %4.1f", e); }
 	static void p(double e) { printf(" %4.1f", e); }

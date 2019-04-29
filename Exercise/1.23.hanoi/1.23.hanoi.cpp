@@ -11,7 +11,7 @@ using namespace dtl;
 struct Disk {
 	int index;
 
-	Disk(int i) : index(i) {}
+	Disk(int i = 0) : index(i) {}
 };
 
 class Tower : public Stack<Disk>

@@ -193,7 +193,7 @@ public:
 		assert(0 <= lo && lo <= hi && hi <= size_);
 		T* V = elem_ + lo;
 		for (Rank i = hi - lo; i > 0; i--) {
-			swap(V[i] - 1, V[rand() % i]);
+			swap(V[i - 1], V[rand() % i]);
 		}
 	}
 
@@ -290,7 +290,7 @@ protected:
 	* @note 稳定算法 stable algorithm
 	*/
 	void bubble_sort(Rank lo, Rank hi) {
-		assert(0 <= lo && lo < hi && hi <= size_);
+		assert(0 <= lo && lo <= hi && hi <= size_);
 		while (!bubble(lo, hi--)) {}
 	}
 
@@ -308,7 +308,7 @@ protected:
 
 	//! 冒泡排序加速版1，对[lo, hi)左侧部分有序时可以加快速度
 	void bubble_sort_fast(Rank lo, Rank hi) {
-		assert(0 <= lo && lo < hi && hi <= size_);
+		assert(0 <= lo && lo <= hi && hi <= size_);
 		while (lo < (hi = bubble_fast(lo, hi))) {}
 	}
 
@@ -326,7 +326,7 @@ protected:
 
 	//! 冒泡排序加速版2，对[lo, hi)两侧部分有序时可以加快速度，对两侧无序、中间有序无效
 	void bubble_sort_fast_2(Rank lo, Rank hi) {
-		assert(0 <= lo && lo < hi && hi <= size_);
+		assert(0 <= lo && lo <= hi && hi <= size_);
 		while ((lo = bubble_fast_2(lo, hi) < (hi = bubble_fast(lo, hi)))) {}
 	}
 
@@ -359,7 +359,7 @@ protected:
 	* @note 是第一个可以在最坏情况下依然保持O(nlogn)运行时间的确定性排序算法
 	*/
 	void merge_sort(Rank lo, Rank hi) {
-		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
+		assert(0 <= lo && lo <= hi && hi <= size_);
 		if (hi - lo < 2) { // 递归基
 			return;
 		}
@@ -449,7 +449,7 @@ protected:
 	* @note 复杂度 平均查找长度为O(1.44 * logn)
 	*/
 	static Rank fibnacci_search_A(T* A, T const& e, Rank lo, Rank hi) {
-		Fibnacci fib(hi - lo); // 用O(log_phi(n = hi - lo)时间创建Fib数列
+		Fibnacci<int> fib(hi - lo); // 用O(log_phi(n = hi - lo)时间创建Fib数列
 		while (lo < hi) {
 			while (hi - lo < fib.get()) {
 				fib.prev();
@@ -473,7 +473,7 @@ protected:
 	* @note 复杂度 平均查找长度为O(1.44 * logn)
 	*/
 	static Rank fibnacci_search_B(T* A, T const& e, Rank lo, Rank hi) {
-		Fibnacci fib(hi - lo); // 用O(log_phi(n = hi - lo)时间创建Fib数列
+		Fibnacci<int> fib(hi - lo); // 用O(log_phi(n = hi - lo)时间创建Fib数列
 		while (lo < hi) {
 			while (hi - lo < fib.get()) { fib.prev(); }
 			Rank mi = lo + fib.get() - 1;

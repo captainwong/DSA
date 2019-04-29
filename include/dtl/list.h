@@ -6,6 +6,7 @@
 namespace dtl 
 {
 
+//! Á´±í
 template <typename T>
 class List
 {

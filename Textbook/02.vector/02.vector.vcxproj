@@ -74,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\dtl\config.h" />
+    <ClInclude Include="..\..\include\test\test_vector.h" />
+    <ClInclude Include="..\..\include\util\check.h" />
+    <ClInclude Include="..\..\include\util\op.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
