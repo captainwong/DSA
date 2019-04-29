@@ -3,38 +3,15 @@
 
 #include "pch.h"
 #include <stdio.h>
+#include "../../include/dtl/fibnacci.h"
+using namespace dtl;
 
 /***测试用******/
 #include <assert.h>
 #include <time.h>
 /*****************/
 
-// 二分递归版 O(2^n)
-__int64 fib(int n)
-{
-	return n < 2 ? n : fib(n - 1) + fib(n - 2);
-}
 
-// 线性递归版 O(n)
-__int64 fib(int n, __int64& prev)
-{
-	if (n == 0) {
-		prev = 1; return 0; // fib(-1) = 1, fib(0) = 0
-	} else {
-		__int64 prev_prev; prev = fib(n - 1, prev_prev); 
-		return prev_prev + prev;
-	}
-}
-
-// 迭代版 O(n)
-__int64 fibI(int n)
-{
-	__int64 f = 0, g = 1; // fib(0) = 0, fib(1) = 1
-	while (n--) {
-		g += f; f = g - f;
-	}
-	return f;
-}
 
 int main()
 {
@@ -47,13 +24,13 @@ int main()
 	printf("testing fib linear recursion...\n");
 	t = clock();
 	__int64 prev;
-	r = fib(64, prev);
+	r = fibL(64, prev);
 	e = clock() - t;
 	printf("fib linear recursion result=%lld elapsed %lf ms\n\n", r, e * 1000.0 / CLOCKS_PER_SEC);
 
 	printf("testing fib binary recursion...\n");
 	t = clock();
-	r = fib(64);
+	r = fibR(64);
 	e = clock() - t;
 	printf("fib binary recursion result=%lld elapsed %lf ms\n\n", r, e * 1000.0 / CLOCKS_PER_SEC); // 我就不等了。。。
 

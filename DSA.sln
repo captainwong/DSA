@@ -104,6 +104,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 		include\dtl\btree.h = include\dtl\btree.h
 		include\dtl\comparator.h = include\dtl\comparator.h
 		include\dtl\complete_heap.h = include\dtl\complete_heap.h
+		include\dtl\config.h = include\dtl\config.h
 		include\dtl\dictionary.h = include\dtl\dictionary.h
 		include\dtl\entry.h = include\dtl\entry.h
 		include\dtl\fibnacci.h = include\dtl\fibnacci.h

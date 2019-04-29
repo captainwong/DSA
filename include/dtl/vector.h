@@ -5,10 +5,14 @@
 #endif
 
 #include <assert.h>
-#include <stdlib.h> // rand
+#include "config.h"
 #include "fibnacci.h"
 #include "swap.h"
 //#include "priority_queue.h" // heap sort
+
+#ifdef TEST_BUILD
+#include <stdlib.h> // rand
+#endif
 
 namespace dtl 
 {
@@ -105,15 +109,20 @@ public:
 	//! 无序向量整体查找
 	Rank find(T const& e) const { return find(e, 0, size_); }
 
-
+	//! 有序向量查找，返回不大于e的最后一个节点的秩
 	Rank search(T const& e, Rank lo, Rank hi) const {
 		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
-		//return (rand() % 2) ?
-		//	binary_search(elem_, e, lo, hi) : fibnacci_search(elem_, e, lo, hi);
+#ifdef TEST_BUILD
+		return (rand() % 2) ?
+			binary_search(elem_, e, lo, hi) : fibnacci_search(elem_, e, lo, hi);
+#else
 		return fibnacci_search(elem_, e, lo, hi);
+#endif
 	}
 
-	Rank search(T const& e) const { return (0 >= size_) ? -1 : search(e, 0, size_); }
+	Rank search(T const& e) const { 
+		return (0 >= size_) ? -1 : search(e, 0, size_); 
+	}
 
 
 	/************* Mutable *****************************/
@@ -136,7 +145,7 @@ public:
 		return r;
 	}
 
-	//! 默认作为末元素插入
+	//! 作为末尾元素插入
 	Rank insert(T const& e) { return insert(size_, e); }
 
 	int remove(Rank lo, Rank hi) {
@@ -163,7 +172,6 @@ public:
 
 	//! 对[lo, hi)排序
 	void sort(Rank lo, Rank hi) {
-#define TEST_BUILD
 #ifdef TEST_BUILD
 		bubble_sort(lo, hi);
 		//heapSort(lo, hi);
@@ -187,7 +195,7 @@ public:
 	//! 整体（等概率随机）置乱
 	void unsort() { unsort(0, size_); }
 
-	//! 无序去重
+	//! 无序去重 O(n^2)
 	int deduplicate() {	// unsorted
 		int old_size = size_;
 		int i = 1;
@@ -197,7 +205,7 @@ public:
 		return old_size - size_;
 	}
 
-	//! 有序去重
+	//! 有序去重 O(n)
 	int uniquify() { // sorted
 		Rank i = 0, j = 0;
 		while (++j < size_) {
@@ -332,39 +340,51 @@ protected:
 		}
 	}*/
 
-	// Common functions
-	static Rank binary_search(T* A, T const& e, Rank lo, Rank hi) {
-		assert(0 <= lo); assert(lo <= hi); //assert(hi <= size_);
-
-#define USE_VERSION_3
-
-	// version 1
-#ifdef USE_VERSION_1
+	/**
+	* @brief 二分查找算法（版本A）
+	* @note 在有序向量的区间[lo, hi)内查找元素e，0 <= lo <= hi <= _size
+	* @warn 有多个命中元素时，不能保证返回秩最大者；
+	* @warn 查找失败时，简单地返回-1，而不能指示失败的位置
+	* @note 复杂度 平均查找长度为O(1.5 * logn)
+	*/
+	static Rank binary_search_A(T* A, T const& e, Rank lo, Rank hi) {
 		while (lo < hi) {	// 每步迭代可能要做两次比较判断，有三个分支
 			Rank mi = (lo + hi) >> 1;
 			if (e < A[mi]) {
 				hi = mi;
-			} else if (A[i] < e) {
+			} else if (A[mi] < e) {
 				lo = mi + 1;
 			} else {
 				return mi;
 			}
 		}
 		return -1;
-		// 有多个命中元素时，不能保证返回秩最大者；
-		// 查找失败时，简单地返回-1，而不能指示失败的位置
-#endif
+	}
 
-	// version 2
-#ifdef USE_VERSION_2
-		while (1 < hi - lo) {	// 每步迭代仅需一次比较
+	/**
+	* @brief 二分查找算法（版本B）
+	* @note 在有序向量的区间[lo, hi)内查找元素e，0 <= lo <= hi <= _size
+	* @warn 有多个命中元素时，不能保证返回秩最大者；
+	* @warn 查找失败时，简单地返回-1，而不能指示失败的位置
+	* @note 渐进复杂度O(logn)，但相比版本A，整体性能更加稳定
+	*/
+	static Rank binary_search_B(T* A, T const& e, Rank lo, Rank hi) {
+		while (1 < hi - lo) {	// 每步迭代仅需一次比较，有两个分支；成功查找不能提前终止
 			Rank mi = (lo + hi) >> 1;
 			(e < A[mi]) ? hi = mi : lo = mi;
 		}// 出口时hi = lo + 1，查找区间仅含一个元素A[lo]
-		return (e == A[lo]) ? lo : -1; // 查找成功时返回对应的秩，否则统一返回-1
-		// 有多个命中元素时，不能保证返回秩最大者；
-		// 查找失败时，简单地返回-1，而不能指示失败的位置
+		return (e == A[lo]) ? lo : -1;
+	}
+
+	static Rank binary_search(T* A, T const& e, Rank lo, Rank hi) {
+
+#ifdef TEST_BUILD
+		binary_search_A(A, e, lo, hi);
+		binary_search_B(A, e, lo, hi);
 #endif
+
+#define USE_VERSION_3
+
 
 	// version 3
 #ifdef USE_VERSION_3
@@ -378,15 +398,15 @@ protected:
 #endif
 	}
 
-	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi) {
-		assert(0 <= lo);
-		assert(lo <= hi);
-		//assert(hi <= A->size_);
-
-#define USE_VERSION_2
-
-#ifdef USE_VERSION_1
-		Fibnacci fib(hi - lo);
+	/**
+	* @brief Fibonacci查找算法（版本A）
+	* @note 在有序向量的区间[lo, hi)内查找元素e，0 <= lo <= hi <= _size
+	* @warn 有多个命中元素时，不能保证返回秩最大者；
+	* @warn 查找失败时，简单地返回-1，而不能指示失败的位置
+	* @note 复杂度 平均查找长度为O(1.44 * logn)
+	*/
+	static Rank fibnacci_search_A(T* A, T const& e, Rank lo, Rank hi) {
+		Fibnacci fib(hi - lo); // 用O(log_phi(n = hi - lo)时间创建Fib数列
 		while (lo < hi) {
 			while (hi - lo < fib.get()) {
 				fib.prev();
@@ -401,9 +421,15 @@ protected:
 			}
 		}
 		return -1;
-		// 有多个元素命中时，不能保证返回秩最大者
-		// 查找失败时，简单地返回-1，而不能指示失败的位置
+	}
+
+	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi) {
+#ifdef TEST_BUILD
+		fibnacci_search_A(A, e, lo, hi);
+
 #endif
+
+#define USE_VERSION_2
 
 #ifdef USE_VERSION_2
 		Fibnacci fib(hi - lo);
