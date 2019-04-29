@@ -111,7 +111,7 @@ public:
 
 	//! 有序向量查找，返回不大于e的最后一个节点的秩
 	Rank search(T const& e, Rank lo, Rank hi) const {
-		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
+		assert(0 <= lo && lo <= hi && hi <= size_);
 #ifdef TEST_BUILD
 		return (rand() % 2) ?
 			binary_search(elem_, e, lo, hi) : fibnacci_search(elem_, e, lo, hi);
@@ -148,12 +148,12 @@ public:
 	//! 作为末尾元素插入
 	Rank insert(T const& e) { return insert(size_, e); }
 
-	int remove(Rank lo, Rank hi) {
+	//! 删除[lo, hi)内元素 
+	int remove(Rank lo, Rank hi) { // input sensitive 输入敏感，平均O(n)
 		assert(0 <= lo && lo <= hi && hi <= size_);
 		if (lo == hi) {
 			return 0;
 		}
-
 		while (hi < size_) {
 			elem_[lo++] = elem_[hi++];
 		}
@@ -162,6 +162,7 @@ public:
 		return hi - lo;
 	}
 
+	//! 删除元素 
 	T remove(Rank r) {
 		assert(0 <= r && r < size_);
 		T e = elem_[r];
@@ -169,15 +170,19 @@ public:
 		return e;
 	}
 
-
 	//! 对[lo, hi)排序
 	void sort(Rank lo, Rank hi) {
 #ifdef TEST_BUILD
-		bubble_sort(lo, hi);
-		//heapSort(lo, hi);
+		switch (rand() % 4) {
+			case 0: bubble_sort(lo, hi); break;
+			case 1: bubble_sort_fast(lo, hi); break;
+			case 2: bubble_sort_fast_2(lo, hi); break;
+			case 3: //heapSort(lo, hi); break;
+			default: merge_sort(lo, hi);
+		}
+#else
+		merge_sort(lo, hi);
 #endif // TEST_BUILD
-
-		merge_sort(lo, hi); 
 	}
 
 	//! 整体排序
@@ -279,11 +284,17 @@ protected:
 		return sorted;
 	}
 
+	/**
+	* @brief 冒泡排序
+	* @note O(n^2)
+	* @note 稳定算法 stable algorithm
+	*/
 	void bubble_sort(Rank lo, Rank hi) {
-		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
+		assert(0 <= lo && lo < hi && hi <= size_);
 		while (!bubble(lo, hi--)) {}
 	}
 
+	//! 快速起泡，返回最右侧的逆序对位置，对[lo, hi)左侧部分有序时可以加快速度
 	Rank bubble_fast(Rank lo, Rank hi) {
 		Rank last = lo;
 		while (++lo < hi) {
@@ -295,42 +306,69 @@ protected:
 		return last;
 	}
 
+	//! 冒泡排序加速版1，对[lo, hi)左侧部分有序时可以加快速度
 	void bubble_sort_fast(Rank lo, Rank hi) {
-		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
+		assert(0 <= lo && lo < hi && hi <= size_);
 		while (lo < (hi = bubble_fast(lo, hi))) {}
 	}
 
+	//! 快速起泡2，返回最左侧的逆序对位置，对[lo, hi)右侧部分有序时可以加快速度
+	Rank bubble_fast_2(Rank lo, Rank hi) {
+		Rank first = hi;
+		while (lo < --hi) {
+			if (elem_[hi] < elem_[hi + 1]) {
+				first = hi;
+				swap(elem_[hi], elem_[hi + 1]);
+			}
+		}
+		return first;
+	}
+
+	//! 冒泡排序加速版2，对[lo, hi)两侧部分有序时可以加快速度，对两侧无序、中间有序无效
+	void bubble_sort_fast_2(Rank lo, Rank hi) {
+		assert(0 <= lo && lo < hi && hi <= size_);
+		while ((lo = bubble_fast_2(lo, hi) < (hi = bubble_fast(lo, hi)))) {}
+	}
+
+	//! 归并各自有序的子向量[lo, mi)和[mi, hi)
 	void merge(Rank lo, Rank mi, Rank hi) {
-		T* A = elem_ + lo;
-		int lb = mi - lo;
-		T* B = new T[lb];	// [lo, mi)
-		for (int i = 0; i < lb; i++) {
+		T* A = elem_ + lo; // 合并后的向量A = elem_[lo, hi)
+		int lengthB = mi - lo; 
+		T* B = new T[lengthB];	// [lo, mi)
+		for (int i = 0; i < lengthB; i++) {
 			B[i] = A[i];
 		}
 		T* C = elem_ + mi;	// [mi, hi)
-		int lc = hi - mi;
+		int lengthC = hi - mi;
 
-		for (int i = 0, j = 0, k = 0; (j < lb) || (k < lc);) {
-			if ((j < lb) && (!(k < lc) || B[j] <= C[k])) {
+		// B[j]和C[k]中的小者续至A末尾
+		for (int i = 0, j = 0, k = 0; (j < lengthB) || (k < lengthC);) {
+			if ((j < lengthB) && (!(k < lengthC) || B[j] <= C[k])) {
 				A[i++] = B[j++];
 			}
-			if ((k < lc) && (!(j < lb) || C[k] < B[j])) {
+			if ((k < lengthC) && (!(j < lengthB) || C[k] < B[j])) {
 				A[i++] = C[k++];
 			}
 		}
 		delete[] B;
 	}
 
+	/**
+	* @brief 归并排序
+	* @note 由冯·诺依曼于1945年在EDVAC上首次编程实现
+	* @note 是第一个可以在最坏情况下依然保持O(nlogn)运行时间的确定性排序算法
+	*/
 	void merge_sort(Rank lo, Rank hi) {
 		assert(0 <= lo); assert(lo < hi); assert(hi <= size_);
-
-		if (hi - lo < 2)
+		if (hi - lo < 2) { // 递归基
 			return;
-
+		}
 		Rank mi = (hi + lo) >> 1;
 		merge_sort(lo, mi);
 		merge_sort(mi, hi);
-		merge(lo, mi, hi);
+		if (elem_[mi - 1] > elem_[mi]) { // 增加此句，可以改进归并算法在最好情况下的速度
+			merge(lo, mi, hi);
+		}
 	}
 
 	/*void heapSort(Rank lo, Rank hi) {
@@ -376,25 +414,30 @@ protected:
 		return (e == A[lo]) ? lo : -1;
 	}
 
-	static Rank binary_search(T* A, T const& e, Rank lo, Rank hi) {
-
-#ifdef TEST_BUILD
-		binary_search_A(A, e, lo, hi);
-		binary_search_B(A, e, lo, hi);
-#endif
-
-#define USE_VERSION_3
-
-
-	// version 3
-#ifdef USE_VERSION_3
+	/**
+	* @brief 二分查找算法（版本C）
+	* @note 在有序向量的区间[lo, hi)内查找元素e，0 <= lo <= hi <= _size
+	* @note 有多个命中元素时，总能保证返回秩最大者；查找失败时，能够返回失败的位置
+	* @note 渐进复杂度O(logn)
+	*/
+	static Rank binary_search_C(T* A, T const& e, Rank lo, Rank hi) {
 		while (lo < hi) {	// 每步迭代仅需一次比较
 			Rank mi = (lo + hi) >> 1;
 			(e < A[mi]) ? hi = mi : lo = mi + 1;
-		}// 成功查找不能提前终止
+		} // 成功查找不能提前终止
 		return --lo;//循环结束时，lo为大于e的元素的最小秩，故lo-1即不大于e的元素的最大秩
-		// 有多个命中元素时，总能保证返回秩最大者
-		// 查找失败时，能够返回失败的位置
+	}
+
+	//! 在有序向量的区间[lo, hi)内，确定不大于e的最后一个节点的秩
+	static Rank binary_search(T* A, T const& e, Rank lo, Rank hi) {
+#ifdef TEST_BUILD
+		switch (rand() % 3) {
+			case 0: return binary_search_A(A, e, lo, hi);
+			case 1: return binary_search_B(A, e, lo, hi);
+			default: return binary_search_C(A, e, lo, hi);
+		}
+#else
+		return binary_search_C(A, e, lo, hi);
 #endif
 	}
 
@@ -423,30 +466,35 @@ protected:
 		return -1;
 	}
 
-	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi) {
-#ifdef TEST_BUILD
-		fibnacci_search_A(A, e, lo, hi);
-
-#endif
-
-#define USE_VERSION_2
-
-#ifdef USE_VERSION_2
-		Fibnacci fib(hi - lo);
+	/**
+	* @brief Fibonacci查找算法（版本B）
+	* @note 在有序向量的区间[lo, hi)内查找元素e，0 <= lo <= hi <= _size
+	* @note 有多个命中元素时，总能保证返回秩最大者；查找失败时，能够返回失败的位置
+	* @note 复杂度 平均查找长度为O(1.44 * logn)
+	*/
+	static Rank fibnacci_search_B(T* A, T const& e, Rank lo, Rank hi) {
+		Fibnacci fib(hi - lo); // 用O(log_phi(n = hi - lo)时间创建Fib数列
 		while (lo < hi) {
 			while (hi - lo < fib.get()) { fib.prev(); }
 			Rank mi = lo + fib.get() - 1;
 			(e < A[mi]) ? hi = mi : lo = mi + 1;
 		}// 成功查找不能提前终止
 		return --lo;//循环结束时，lo为大于e的元素的最小秩，故lo-1即不大于e的元素的最大秩
-		// 有多个命中元素时，总能保证返回秩最大者
-		// 查找失败时，能够返回失败的位置
+	}
+
+	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi) {
+#ifdef TEST_BUILD
+		switch (rand() % 2) {
+			case 0: return fibnacci_search_A(A, e, lo, hi);
+			default: return fibnacci_search_B(A, e, lo, hi);
+		}
+#else
+		return fibnacci_search_B(A, e, lo, hi);
 #endif
 	}
 
 	static Rank interpolation_search(T* A, T const& e, Rank lo, Rank hi) {
-		assert(0 <= lo); assert(lo <= hi); assert(hi <= A->size_);
-
+		assert(0 <= lo && lo <= hi && hi <= A->size_);
 		while (A[lo] <= e && e <= A[hi]) {
 			Rank mi = lo + (hi - lo) * (e - A[lo]) / (A[hi] - A[lo]);
 			if (A[mi] < e) {
