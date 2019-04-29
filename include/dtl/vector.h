@@ -5,14 +5,12 @@
 #endif
 
 #include <assert.h>
+#include <stdlib.h> // rand
 #include "config.h"
 #include "fibnacci.h"
 #include "swap.h"
 //#include "priority_queue.h" // heap sort
 
-#ifdef TEST_BUILD
-#include <stdlib.h> // rand
-#endif
 
 namespace dtl 
 {
@@ -112,7 +110,7 @@ public:
 	//! 有序向量查找，返回不大于e的最后一个节点的秩
 	Rank search(T const& e, Rank lo, Rank hi) const {
 		assert(0 <= lo && lo <= hi && hi <= size_);
-#ifdef TEST_BUILD
+#if TEST_BUILD
 		return (rand() % 2) ?
 			binary_search(elem_, e, lo, hi) : fibnacci_search(elem_, e, lo, hi);
 #else
@@ -172,7 +170,7 @@ public:
 
 	//! 对[lo, hi)排序
 	void sort(Rank lo, Rank hi) {
-#ifdef TEST_BUILD
+#if TEST_BUILD
 		switch (rand() % 4) {
 			case 0: bubble_sort(lo, hi); break;
 			case 1: bubble_sort_fast(lo, hi); break;
@@ -430,7 +428,7 @@ protected:
 
 	//! 在有序向量的区间[lo, hi)内，确定不大于e的最后一个节点的秩
 	static Rank binary_search(T* A, T const& e, Rank lo, Rank hi) {
-#ifdef TEST_BUILD
+#if TEST_BUILD
 		switch (rand() % 3) {
 			case 0: return binary_search_A(A, e, lo, hi);
 			case 1: return binary_search_B(A, e, lo, hi);
@@ -483,7 +481,7 @@ protected:
 	}
 
 	static Rank fibnacci_search(T* A, T const& e, Rank lo, Rank hi) {
-#ifdef TEST_BUILD
+#if TEST_BUILD
 		switch (rand() % 2) {
 			case 0: return fibnacci_search_A(A, e, lo, hi);
 			default: return fibnacci_search_B(A, e, lo, hi);

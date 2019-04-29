@@ -213,7 +213,7 @@ static void testVector(int testSize, size_t wait_ms = 1000)
 	wait(wait_ms);
 
 	printf("\n==== Test %2d. Clone from\n", testId++);
-	printV(v);
+	printV(U);
 	W = U;
 	printV(W);
 	wait(wait_ms);
