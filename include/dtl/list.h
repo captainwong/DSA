@@ -2,6 +2,7 @@
 
 #include <assert.h>
 #include "list_node.h"
+#include "swap.h"
 
 namespace dtl 
 {
@@ -54,7 +55,7 @@ public:
 		return p->data;
 	}
 
-	//! 相邻逆序对数量
+	//! 相邻逆序对数量 O(n)
 	int disordered() const {
 		if (0 == size_) { return 0; } 
 		int sum = 0; NodePtr p = first();
@@ -66,11 +67,10 @@ public:
 		return sum;
 	}
 
-	//! 无序列表查找
+	//! 无序列表查找 O(n)
 	NodePtr find(T const& e) const { return find(e, size_, trailer); }
-	//! 无序区间查找
+	//! 无序区间查找 O(n)
 	NodePtr find(T const& e, int n, NodePtr p) const {
-		assert(valid(p)); 
 		while (n--) { 
 			if ((p = p->pred)->data == e) { 
 				return p;
@@ -79,9 +79,9 @@ public:
 		return nullptr;
 	}
 
-	//! 有序列表查找
+	//! 有序列表查找 O(n)
 	NodePtr search(T const& e) const { return search(e, size_, trailer); }
-	//! 有序区间查找
+	//! 有序区间查找 O(n)
 	NodePtr search(T const& e, int n, NodePtr p) const {
 		assert(0 <= n && n <= size_);
 		if (size_ == 0) { return nullptr; } 
@@ -93,9 +93,9 @@ public:
 		return p;
 	}
 
-	//! 整体最大者
+	//! 整体最大者 O(n)
 	NodePtr select_max() { return selectMax(header->succ, size_); }
-	//! 在p及其n-1个后继中选出最大者
+	//! 在p及其n-1个后继中选出最大者 O(n)
 	NodePtr select_max(NodePtr p, int n) {
 		NodePtr max_p = p;
 		for (NodePtr cur = p; 1 < n; n--) { 
@@ -109,11 +109,14 @@ public:
 
 	/***************************** Mutable **********************************************/
 
+	/****4个插入 O(1) **********/
+
 	NodePtr insert_as_first(T const& e) { size_++; return header->insert_as_succ(e); }
 	NodePtr insert_as_last(T const& e) { size_++; return trailer->insert_as_pred(e); }
 	NodePtr insert_after(NodePtr p, T const& e) { size_++; return p->insert_as_succ(e); }
 	NodePtr insert_before(NodePtr p, T const& e) { size_++;return p->insert_as_pred(e); }
 
+	//! 删除节点，返回数据 O(1)
 	T remove(NodePtr p) {
 		assert(valid(p)); 
 		T data = p->data;
@@ -123,24 +126,56 @@ public:
 		return data;
 	}
 
+	//! 全列表归并 O(N), N = size_ + L.size_
 	void merge(List<T>& L) { merge(first(), size_, L, L.first(), L.size_); }
-	void sort(NodePtr p, int n) { merge_sort(p, n); }
+	//! 区间排序
+	void sort(NodePtr p, int n) {
+#if TEST_BUILD
+		switch (rand() % 3) {
+			case 0: insertion_sort(p, n); break;
+			case 1: selection_sort(p, n); break;
+			default: merge_sort(p, n); break;
+		}
+#else
+		merge_sort(p, n);
+#endif
+	}
+	//! 整体排序
 	void sort() { sort(first(), size_); }
 
-	//! 无序去重
+	//! 无序去重 O(n^2)
 	int deduplicate() {
 		if (size_ < 2) return 0;
-		int old_size = size_; NodePtr p = header; Rank r = 0;
-		while ((p = p->succ) != trailer) { find(p->data, r, p) ? remove(p) : r++; }
+		int old_size = size_; 
+		NodePtr p = header; 
+		Rank r = 0;
+		while ((p = p->succ) != trailer) { 
+			auto q = find(p->data, r, p);
+			q ? remove(q) : r++;
+		}
 		return old_size - size_;
 	}
 
-	//! 有序去重
+	//! 有序去重 O(n)
 	int uniquify() {
 		if (size_ < 2) return 0;
-		int old_size = size_; NodePtr p = first(); NodePtr q;
-		while ((q = p->succ) != trailer) { if (q->data != p->data) { p = q; } else { remove(q); } }
+		int old_size = size_; 
+		NodePtr p = first();
+		NodePtr q;
+		while ((q = p->succ) != trailer) {
+			if (q->data != p->data) { p = q; }
+			else { remove(q); }
+		}
 		return old_size - size_;
+	}
+
+	//! 前后倒置
+	void reverse() {
+		auto p = header;
+		auto q = trailer;
+		for (int i = 1; i < size_; i += 2) {
+			swap((p = p->succ)->data, (q = q->pred)->data);
+		}
 	}
 
 
@@ -157,6 +192,7 @@ public:
 
 
 protected:
+	//! construct
 	void init() {
 		header = new Node(); trailer = new Node();
 		header->pred = nullptr; header->succ = trailer;
@@ -164,6 +200,7 @@ protected:
 		size_ = 0;
 	}
 
+	//! destruct
 	int clear() {
 		int old_size = size_;
 		while (0 < size_) {
@@ -172,6 +209,7 @@ protected:
 		return old_size;
 	}
 
+	//! O(n)
 	void copy_nodes(NodePtr p, int n) {
 		init();
 		while (n--) {
@@ -180,8 +218,19 @@ protected:
 		}
 	}
 
+	/**
+	* @brief 有序列表的归并
+	* @param p 本列表内节点p的引用，归并完成时指示区间的新起点
+	* @param n 本列表内从p开始节点数量
+	* @param L 要归并的列表
+	* @param q L的节点q
+	* @param m L内从节点q开始节点数量
+	* @note 在归并排序时，有可能this == L && rank(p) + n == rank(q)
+	* @note O(n+m)
+	*/
 	void merge(NodePtr& p, int n, List<T>& L, NodePtr q, int m) {
-		NodePtr pp = p->pred; while (0 < m) {
+		NodePtr pp = p->pred; 
+		while (0 < m) {
 			if ((0 < n) && p->data <= q->data) {
 				if (q == (p = p->succ)) { break; }
 				n--;
@@ -189,9 +238,11 @@ protected:
 				insert_before(p, L.remove((q = q->succ)->pred));
 				m--;
 			}
-		} p = pp->succ;
+		}
+		p = pp->succ;
 	}
 
+	//! 归并排序 O(nlogn)
 	void merge_sort(NodePtr& p, int n) {
 		if (n < 2) return;
 		int m = n >> 1; NodePtr q = p;
@@ -201,6 +252,7 @@ protected:
 		merge(p, m, *this, q, n - m);
 	}
 
+	//! 选择排序 O(n^2)
 	void selection_sort(NodePtr p, int n) {
 		NodePtr head = p->pred; NodePtr tail = p;
 		for (int i = 0; i < n; i++) { tail = tail->succ; }
@@ -211,10 +263,15 @@ protected:
 		}
 	}
 
+	/**
+	* @brief 插入排序
+	* @note O(n^2)
+	*/
 	void insertion_sort(NodePtr p, int n) {
 		for (int sorted = 0; sorted < n; sorted++) {
 			insert_after(search(p->data, sorted, p), p->data);
-			p = p->succ; remove(p->pred);
+			p = p->succ; 
+			remove(p->pred);
 		}
 	}
 

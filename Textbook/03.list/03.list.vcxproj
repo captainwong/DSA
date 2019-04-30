@@ -84,6 +84,11 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\dtl\list.h" />
+    <ClInclude Include="..\..\include\dtl\list_node.h" />
+    <ClInclude Include="..\..\include\test\test_list.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

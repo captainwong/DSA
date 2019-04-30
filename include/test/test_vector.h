@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "../dtl/vector.h"
 #include "../util/util.h"
 #include "../util/check.h"
 #include "../util/op.h"
+#include "../dtl/vector.h"
 #include <limits.h> // INT_MAX
 
 namespace dtl

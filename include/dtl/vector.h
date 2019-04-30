@@ -104,10 +104,10 @@ public:
 		return hi;
 	}
 
-	//! 无序向量整体查找
+	//! 无序向量整体查找 O(n)
 	Rank find(T const& e) const { return find(e, 0, size_); }
 
-	//! 有序向量查找，返回不大于e的最后一个节点的秩
+	//! 有序向量区间查找，返回不大于e的最后一个节点的秩 O(logn)
 	Rank search(T const& e, Rank lo, Rank hi) const {
 		assert(0 <= lo && lo <= hi && hi <= size_);
 #if TEST_BUILD
@@ -118,6 +118,7 @@ public:
 #endif
 	}
 
+	//! 有序向量查找，O(logn)
 	Rank search(T const& e) const { 
 		return (0 >= size_) ? -1 : search(e, 0, size_); 
 	}
@@ -125,7 +126,7 @@ public:
 
 	/************* Mutable *****************************/
 
-	//! 下标
+	//! 下标 O(1)
 	T& operator[] (Rank r) const { 
 		assert(0 <= r && r < size_); 
 		return elem_[r]; 
@@ -143,7 +144,7 @@ public:
 		return r;
 	}
 
-	//! 作为末尾元素插入
+	//! 作为末尾元素插入 O(1)
 	Rank insert(T const& e) { return insert(size_, e); }
 
 	//! 删除[lo, hi)内元素 
@@ -160,7 +161,7 @@ public:
 		return hi - lo;
 	}
 
-	//! 删除元素 
+	//! 删除元素 O(n)
 	T remove(Rank r) {
 		assert(0 <= r && r < size_);
 		T e = elem_[r];
