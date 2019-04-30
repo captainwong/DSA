@@ -9,7 +9,7 @@ namespace test
 {
 
 template <typename PriorityQueue, typename T>
-static void priority_queue_test(int n, size_t gap_ms = 1000)
+static void priority_queue_test(int n, int gap_ms = 1000)
 {
 	auto A = new T[2 * n / 3];
 	for (int i = 0; i < 2 * n / 3; i++) {

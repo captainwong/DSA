@@ -6,6 +6,6 @@ using namespace dtl;
 
 int main(int argc, char* argv[])
 {
-	test::testVector<int>(10, 0);
+	test::testVector<int>(10, -1);
 	return 0;
 }
