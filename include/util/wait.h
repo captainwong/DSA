@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
@@ -11,7 +11,7 @@
 namespace dtl
 {
 
-// µÈ´ýÖ¸¶¨Ê±¼ägap_ms > 0£¬»òÖ±µ½ÓÃ»§ÊäÈë gap_ms=0
+// ç­‰å¾…æŒ‡å®šæ—¶é—´gap_ms > 0ï¼Œæˆ–ç›´åˆ°ç”¨æˆ·è¾“å…¥ gap_ms=0
 static void wait(size_t gap_ms = 1000)
 {
 	if (gap_ms == 0) {
