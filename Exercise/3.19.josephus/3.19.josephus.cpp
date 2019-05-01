@@ -8,12 +8,14 @@
 #include <assert.h>
 /*****************/
 
+//! 循环链表（Circular list）节点
 struct node 
 {
 	int n = 0;
 	node* next = nullptr;
 	node(int i, node* next_ = nullptr) :n(i), next(next_) {}
 
+	//! 输出本节点以及所有后继节点（再次遇到本节点时终止）
 	void print() const {
 		printf("%d ", n);
 		auto p = next;
@@ -28,6 +30,7 @@ struct node
 
 int josephus(int n, int k)
 {
+	//! 构造一个长度为n的循环链表
 	node* first = new node(0);
 	node* cur = first;
 	for (int i = 1; i < n; i++) {
@@ -36,6 +39,7 @@ int josephus(int n, int k)
 		cur = p;
 	}
 
+	// 从首节点开始游戏
 	cur = first;
 	while (n > 1) {
 		printf("n=%d k=%d, list is ", n, k); cur->print();
