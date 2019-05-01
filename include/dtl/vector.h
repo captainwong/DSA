@@ -171,13 +171,13 @@ public:
 
 	//! 对[lo, hi)排序
 	void sort(Rank lo, Rank hi) {
-#if TEST_BUILD
-		insertion_sort(lo, hi); return;
-		switch (rand() % 4) {
+#if TEST_BUILD		
+		switch (rand() % 6) {
 			case 0: bubble_sort(lo, hi); break;
 			case 1: bubble_sort_fast(lo, hi); break;
 			case 2: bubble_sort_fast_2(lo, hi); break;
-			case 3: //heapSort(lo, hi); break;
+			case 3: insertion_sort(lo, hi); break;
+			case 4: selection_sort(lo, hi); break;
 			default: merge_sort(lo, hi);
 		}
 #else
@@ -377,6 +377,25 @@ protected:
 		for (Rank r = lo + 1; r < hi; r++) {
 			Rank i = fibnacci_search_B(elem_, elem_[r], lo, r);
 			insert(i + 1, remove(r));
+		}
+	}
+
+	//! 选取最大元素 [lo, hi]
+	Rank getMax(Rank lo, Rank hi) const {
+		Rank m = hi;
+		while (lo < hi--) {
+			if (elem_[m] < elem_[hi]) {
+				m = hi;
+			}
+		}
+		return m;
+	}
+
+	//! 选择排序 O(n^2)
+	void selection_sort(Rank lo, Rank hi) {
+		assert(0 <= lo && lo <= hi && hi <= size_);
+		while (lo < --hi) {
+			swap(elem_[getMax(lo, hi)], elem_[hi]);
 		}
 	}
 
