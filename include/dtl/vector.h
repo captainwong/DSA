@@ -172,6 +172,7 @@ public:
 	//! 对[lo, hi)排序
 	void sort(Rank lo, Rank hi) {
 #if TEST_BUILD
+		insertion_sort(lo, hi); return;
 		switch (rand() % 4) {
 			case 0: bubble_sort(lo, hi); break;
 			case 1: bubble_sort_fast(lo, hi); break;
@@ -367,6 +368,15 @@ protected:
 		merge_sort(mi, hi);
 		if (elem_[mi - 1] > elem_[mi]) { // 增加此句，可以改进归并算法在最好情况下的速度
 			merge(lo, mi, hi);
+		}
+	}
+
+	//! 插入排序 O(n^2)
+	void insertion_sort(Rank lo, Rank hi) {
+		assert(0 <= lo && lo <= hi && hi <= size_);
+		for (Rank r = lo + 1; r < hi; r++) {
+			Rank i = fibnacci_search_B(elem_, elem_[r], lo, r);
+			insert(i + 1, remove(r));
 		}
 	}
 
