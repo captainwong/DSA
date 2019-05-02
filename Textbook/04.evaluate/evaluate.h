@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "../../include/util/util.h"
 #include "../../include/dtl/stack.h"
 #include "../../include/dtl/vector.h"
 #include <stdio.h>
@@ -47,6 +48,12 @@ static char opeator2char(Operator op)
 	static constexpr auto cc = "+-*/^!()\0";
 	if (op < Operator::EOO) { return cc[(int)op]; }
 	return '$';
+}
+
+namespace dtl
+{
+template <>
+static void print(Operator& op) { printf("%c", opeator2char(op)); }
 }
 
 //! 运算符优先级
@@ -185,9 +192,39 @@ static void errorHandler(const char* s)
 
 }
 
-//! 对（已剔除白空格的）表达式S求值，并转换为逆波兰式RPN
-static bool evaluate(const char* S, dtl::Vector<char>& RPN, float& result)
+//! 显示表达式处理过程
+static void displayProgress(const char* expr, const char* pch, dtl::Stack<float>& opnd, dtl::Stack<Operator>& optr, dtl::Vector<char>& rpn, int wait_ms)
 {
+	system("cls");
+	for (const char* p = expr; '\0' != *p; p++) {
+		printf(" %c", *p);
+	}printf(" $\n");
+
+	for (const char* p = expr; p < pch; p++) {
+		printf("  ");
+	}
+
+	if ('\0' != *(pch - 1)) {
+		for (const char* p = pch; '\0' != *p; p++) {
+			printf(" %c", *p);
+		}printf(" $");
+	}printf("\n");
+
+	for (const char* p = expr; p < pch; p++) {
+		printf("--");
+	}printf(" ^\n\n");
+
+	print(opnd);
+	print(optr);
+	print(rpn);
+	
+	dtl::wait(wait_ms);
+}
+
+//! 对（已剔除白空格的）表达式S求值，并转换为逆波兰式RPN
+static bool evaluate(const char* S, dtl::Vector<char>& RPN, float& result, int wait_ms)
+{
+	auto expr = S;
 	dtl::Stack<float> operands;
 	dtl::Stack<Operator> operators;
 	operators.push(Operator::EOE); // sentinel
@@ -208,6 +245,7 @@ static bool evaluate(const char* S, dtl::Vector<char>& RPN, float& result)
 					S++;
 					break;
 				case OperatorPriority::GREATER:
+				{
 					auto opCur = operators.pop();
 					append2RPN(RPN, opCur);
 					if (Operator::FAC == opCur) {
@@ -218,11 +256,15 @@ static bool evaluate(const char* S, dtl::Vector<char>& RPN, float& result)
 						auto opnd1 = operands.pop();
 						operands.push(calc(opnd1, opnd2, opCur));
 					}
+					break;
+				}
 				default:
 					assert(0);
 					break;
 			}
 		}
+
+		displayProgress(expr, S, operands, operators, RPN, wait_ms);
 	}
 
 	result = operands.pop();

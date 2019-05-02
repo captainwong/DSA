@@ -4,9 +4,22 @@
 #include "pch.h"
 #include "evaluate.h"
 
+
+
 int main()
 {
+	auto test = [](const char* expr, int expect_vaule) {
+		dtl::Vector<char> rpn;
+		float value;
+		bool res = evaluate(expr, rpn, value, 0); //求值
+		printf("EXPR\t: %s\n", expr); //输出原表达式
+		printf("RPN\t: \n"); print(rpn); //输出RPN
+		printf("Value\t= %.1f = %d\n", value, (int)value); //输出表达式的值
+		assert((int)value == expect_vaule);
+	};
 
+	//test("0+(1+23)/4*5*67-8+9", 2011);
+	test("(0!+1)*2^(3!+4)-(5!-67-(8+9))", 2012);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
