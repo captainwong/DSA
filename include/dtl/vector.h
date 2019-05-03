@@ -34,7 +34,7 @@ public:
 	static constexpr int DEFAULT_CAPACITY = 3;
 
 	//! 容量为c、规模为n，所有元素初始为v
-	Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = 0) {
+	Vector(int c = DEFAULT_CAPACITY, int s = 0, T v = {}) {
 		assert(s <= c);
 		elem_ = new T[capacity_ = c]; 
 		size_ = 0; 

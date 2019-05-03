@@ -16,11 +16,11 @@ class List
 
 private:
 	//! 规模
-	int size_;
+	int size_ = 0;
 	//! 头部哨兵
-	NodePtr header;
+	NodePtr header = nullptr;
 	//! 尾部哨兵
-	NodePtr trailer;
+	NodePtr trailer = nullptr;
 
 public:
 	// Constructor
@@ -31,9 +31,14 @@ public:
 	List(List<T> const& L, Rank r, int n) { copy_nodes(L[r], n); }
 	//! 复制列表中自位置p起的n项
 	List(NodePtr p, int n) { copy_nodes(p, n); }
+	
+	List<T>& operator=(List<T> const& L) {
+		copy_nodes(L.first(), L.size_);
+		return *this;
+	}
 
 	// Destructor
-	~List() { clear(); delete header; delete trailer; }
+	~List() { clear(); }
 
 
 	/********************** Read only ****************************************************/
@@ -194,7 +199,12 @@ public:
 protected:
 	//! construct
 	void init() {
-		header = new Node(); trailer = new Node();
+		if (!header) {
+			header = new Node();
+		}
+		if (!trailer) {
+			trailer = new Node();
+		}
 		header->pred = nullptr; header->succ = trailer;
 		trailer->pred = header; trailer->succ = nullptr;
 		size_ = 0;
