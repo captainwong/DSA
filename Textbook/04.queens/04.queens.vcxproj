@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="5queens_brute_force.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="queens.h" />
   </ItemGroup>

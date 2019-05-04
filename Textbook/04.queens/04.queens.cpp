@@ -3,15 +3,28 @@
 
 #include "pch.h"
 #include "queens.h"
+#include "5queens_brute_force.h"
 
 using namespace dtl;
 
 
-int main()
+void test_brute_force_5_queens()
+{
+	statistics stat = {};
+	place_5_queens_brute_force(stat, -1);
+}
+
+void test_n_queens_stack(int n)
 {
 	dtl::Vector<dtl::Stack<Queen>> solutions;
-	placeQueens(8, solutions);
+	placeQueens(n, solutions);
 	print(solutions);
+}
+
+
+int main()
+{
+	test_brute_force_5_queens();
 
 }
 
