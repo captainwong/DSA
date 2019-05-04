@@ -35,10 +35,11 @@ void test_n_queens_Recursive(int max_queens = 5, int wait_ms = WAIT_PAUSE)
 	}
 }
 
-void test_n_queens_stack(int n)
+void test_n_queens_stack(int n, int wait_ms = WAIT_PAUSE)
 {
 	dtl::Vector<dtl::Stack<Queen>> solutions;
-	placeQueens(n, solutions);
+	statistics stat = {};
+	placeQueens(n, solutions, stat, wait_ms);
 	print(solutions);
 }
 
@@ -46,7 +47,8 @@ void test_n_queens_stack(int n)
 int main()
 {
 	//test_n_queens_Iter();
-	test_n_queens_Recursive();
+	//test_n_queens_Recursive();
+	test_n_queens_stack(5);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
