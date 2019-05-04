@@ -95,3 +95,26 @@ static void place_5_queens_pruning(statistics& stat, int wait_ms = dtl::WAIT_NO_
 	}
 	printf("%d Queens, %d Solution(s), %d Check(s)\n\n", 5, stat.solution, stat.check);
 }
+
+
+static void place_n_queens_prunning_impl(int* solu, int i, int n, statistics& stat, int wait_ms)
+{
+	for (solu[i] = 0; solu[i] < n; solu[i]++) {
+		if (!collide(solu, i, stat)) {
+			if (i + 1 == n) {
+				stat.solution++;
+				display_solution(solu, n, stat, wait_ms);
+			} else {
+				place_n_queens_prunning_impl(solu, i + 1, n, stat, wait_ms);
+			}
+		}
+	}
+};
+
+static void place_n_queens_prunning(int n, statistics& stat, int wait_ms = dtl::WAIT_NO_WAIT)
+{
+	auto solu = new int[n];
+	place_n_queens_prunning_impl(solu, 0, n, stat, wait_ms);
+	delete[] solu;
+	printf("%d Queens, %d Solution(s), %d Check(s)\n\n", n, stat.solution, stat.check);
+}
