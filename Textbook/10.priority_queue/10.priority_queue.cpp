@@ -6,12 +6,12 @@
 #include "../../include/dtl/left_heap.h"
 #include "../../include/test/test_priority_quque.h"
 
-using namespace dtl::test;
+using namespace dtl;
 
 int main()
 {
-	//priority_queue_test<dtl::CompleteHeap<int>, int>(10, 0);
-	priority_queue_test<dtl::LeftHeap<int>, int>(10, -1);
+	//test::priority_queue_test<dtl::CompleteHeap<int>, int>(10, WAIT_PAUSE);
+	test::priority_queue_test<dtl::LeftHeap<int>, int>(10, WAIT_PAUSE);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
