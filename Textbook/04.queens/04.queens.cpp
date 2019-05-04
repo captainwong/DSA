@@ -8,7 +8,7 @@
 using namespace dtl;
 
 
-void test_brute_force_5_queens()
+void test_5_queens_brute_force()
 {
 	statistics stat = {};
 	place_5_queens_brute_force(stat, WAIT_PAUSE);
@@ -24,7 +24,7 @@ void test_n_queens_stack(int n)
 
 int main()
 {
-	test_brute_force_5_queens();
+	test_5_queens_brute_force();
 
 }
 

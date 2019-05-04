@@ -1,36 +1,36 @@
-#pragma once
+ï»¿#pragma once
 #include "../../include/util/util.h"
 
-//! Í³¼Æ
+//! ç»Ÿè®¡
 struct statistics
 {
-	//! ºòÑ¡½âÊıÁ¿
+	//! å€™é€‰è§£æ•°é‡
 	int candidate = 0;
-	//! ³åÍ»¼ì²â´ÎÊı
+	//! å†²çªæ£€æµ‹æ¬¡æ•°
 	int check = 0;
-	//! ½â¾ö·½°¸ÊıÁ¿
+	//! è§£å†³æ–¹æ¡ˆæ•°é‡
 	int solution = 0;
 };
 
-//! ÅĞ¶ÏÊÇ·ñ¿ÉÒÔÔÚµ±Ç°ĞĞµÄµÚkÁĞ·ÅÖÃÏÂÒ»¸ö»Êºó
+//! åˆ¤æ–­æ˜¯å¦å¯ä»¥åœ¨å½“å‰è¡Œçš„ç¬¬kåˆ—æ”¾ç½®ä¸‹ä¸€ä¸ªçš‡å
 static bool collide(int* solu, int k, statistics& stat)
 {
 	stat.check++;
 	for (int i = 0; i < k; i++) {
-		if ((solu[k] == solu[i]) || // Í¬ÁĞ
-			(solu[k] - solu[i] == k - i) || // ¶Ô½ÇÏß
-			(solu[k] - solu[i] == i - k)) // ·´¶Ô½ÇÏß
+		if ((solu[k] == solu[i]) || // åŒåˆ—
+			(solu[k] - solu[i] == k - i) || // å¯¹è§’çº¿
+			(solu[k] - solu[i] == i - k)) // åå¯¹è§’çº¿
 			return true;
 	}
 	return false;
 }
 
-//! Êä³ön*nµÄ¿ÉĞĞ²¼¾Ö
+//! è¾“å‡ºn*nçš„å¯è¡Œå¸ƒå±€
 static void display_solution(int* solu, int n, const statistics& stat, int wait_ms = 0)
 {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			printf((j == solu[i]) ? "¨€" : "[]");
+			printf((j == solu[i]) ? "â–ˆ" : "[]");
 		}
 		printf("\n");
 	}
@@ -43,10 +43,10 @@ static void display_solution(int* solu, int n, const statistics& stat, int wait_
 	}
 }
 
-//! 5»ÊºóÂùÁ¦Ëã·¨
+//! 5çš‡åè›®åŠ›ç®—æ³•
 static void place_5_queens_brute_force(statistics& stat, int wait_ms = 0)
 {
-	// ÏÂ±êÎªĞĞ£¬ÖµÎªÁĞ
+	// ä¸‹æ ‡ä¸ºè¡Œï¼Œå€¼ä¸ºåˆ—
 	int solu[5] = { 0 };
 	for (solu[0] = 0; solu[0] < 5; solu[0]++) {
 		for (solu[1] = 0; solu[1] < 5; solu[1]++) {
@@ -54,7 +54,7 @@ static void place_5_queens_brute_force(statistics& stat, int wait_ms = 0)
 				for (solu[3] = 0; solu[3] < 5; solu[3]++) {
 					for (solu[4] = 0; solu[4] < 5; solu[4]++) {
 						stat.candidate++;
-						if (collide(solu, 0, stat) ||
+						if (/*collide(solu, 0, stat) ||*/ // å®Œå…¨å¯ä»¥çœç•¥
 							collide(solu, 1, stat) ||
 							collide(solu, 2, stat) ||
 							collide(solu, 3, stat) ||

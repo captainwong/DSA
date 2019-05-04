@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "../../include/util/util.h"
 #include "../../include/dtl/stack.h"
