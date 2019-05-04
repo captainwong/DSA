@@ -60,7 +60,7 @@ void randomList(List<T>& list, int n) // 在[0, 2n)中选择n个偶数，随机�
 
 
 template <typename T>
-void testList(int testSize, int wait_ms = 1000)
+void testList(int testSize, int wait_ms = dtl::WAIT_NO_WAIT)
 {
 	int testID = 0;
 	printf("\n  ==== Test %2d. Generate two lists each of size %d by random insertions\n", testID++, testSize);

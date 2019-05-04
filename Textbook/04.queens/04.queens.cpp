@@ -2,16 +2,28 @@
 //
 
 #include "pch.h"
-#include "queens.h"
-#include "5queens_brute_force.h"
+#include "queens_brute_force.h"
+#include "queens_pruning.h"
+#include "queens_stack.h"
 
 using namespace dtl;
 
 
-void test_5_queens_brute_force()
+void test_n_queens_Iter(int wait_ms = WAIT_PAUSE)
 {
-	statistics stat = {};
-	place_5_queens_brute_force(stat, WAIT_PAUSE);
+	auto funcs = {
+		place_5_queens_brute_force,
+		place_2_queens_pruning,
+		place_3_queens_pruning,
+		place_4_queens_pruning,
+		place_5_queens_pruning,
+	};
+
+	for (auto func : funcs) {
+		statistics stat = {};
+		func(stat, wait_ms);
+		wait(wait_ms);
+	}
 }
 
 void test_n_queens_stack(int n)
@@ -24,8 +36,8 @@ void test_n_queens_stack(int n)
 
 int main()
 {
-	test_5_queens_brute_force();
-
+	//test_5_queens_brute_force();
+	test_n_queens_Iter();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

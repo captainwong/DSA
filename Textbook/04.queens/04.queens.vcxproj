@@ -151,9 +151,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="5queens_brute_force.h" />
+    <ClInclude Include="queens_brute_force.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="queens.h" />
+    <ClInclude Include="queens_pruning.h" />
+    <ClInclude Include="queen.h" />
+    <ClInclude Include="queens_stack.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="04.queens.cpp" />

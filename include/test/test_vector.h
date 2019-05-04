@@ -118,7 +118,7 @@ void testOrderedInsertion(Vector<T> & V, int n)
 }
 
 template <typename T>
-static void testVector(int testSize, int wait_ms = 1000)
+static void testVector(int testSize, int wait_ms = dtl::WAIT_NO_WAIT)
 {
 	srand_time();
 	int testId = 0;
