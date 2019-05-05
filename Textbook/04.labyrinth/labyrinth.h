@@ -42,6 +42,9 @@ struct Labyrinth
 		Direction incoming = Direction::UNKNOWN;
 		Direction outgoing = Direction::UNKNOWN;
 
+		/**********************习题4-17（a）*************************/
+		// 由于每个格点都是固定地按照东南西北的次序，逐个试探相邻格点
+		// 因此，即使目标格点紧邻起始点，也有可能最坏情况下遍历所有(n-2)^2个格点之后才能抵达终点
 		Direction nextDirection() const {
 			switch (outgoing) {
 				case Direction::UNKNOWN: return Direction::EAST;
@@ -51,6 +54,40 @@ struct Labyrinth
 				case Direction::NORTH: return Direction::NO_WAY;
 				default: assert(0); return Direction::NO_WAY; break;
 			}
+		}
+
+		/**********************习题4-17（b）*************************/
+		// 按照随机次序试探相邻格点
+
+		// 保存已经试探过的方向
+		bool triedDirections[(size_t)Direction::NO_WAY] = { false };
+
+		Direction nextDirection2() {
+			switch (outgoing) {
+				case Direction::UNKNOWN: 
+				case Direction::EAST:
+				case Direction::SOUTH:
+				case Direction::WEST:
+				case Direction::NORTH: 
+					{
+						triedDirections[(size_t)outgoing] = true;
+						Direction da[(size_t)Direction::NO_WAY];
+						int ds = 0;
+						for (Direction d = Direction::EAST; d != Direction::NO_WAY; d = (Direction)((size_t)d + 1)) {
+							if (!triedDirections[(size_t)d]) {
+								da[ds++] = d;
+							}
+						}
+
+						if (ds > 0) {
+							return outgoing = da[rand() % ds];
+						}
+					}
+					break;
+				default: assert(0); break;
+			}
+
+			return outgoing = Direction::NO_WAY;
 		}
 
 		void display() const {
@@ -114,7 +151,7 @@ struct Labyrinth
 			if (cell == goalCell) { return true; }
 
 			cell->display();
-			while ((cell->outgoing = cell->nextDirection()) < Direction::NO_WAY) {
+			while ((cell->nextDirection2()) < Direction::NO_WAY) {
 				if (neighbor(cell) && Status::AVAILABLE == neighbor(cell)->status) {
 					break;
 				}
@@ -137,6 +174,7 @@ struct Labyrinth
 		return false;
 	}
 
+	
 	PCell neighbor(PCell cell) {
 		PCell next = nullptr;
 		switch (cell->outgoing) {
