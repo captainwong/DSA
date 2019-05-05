@@ -1,10 +1,10 @@
-# [1-2] 
+# [1-02] 
 
 《海岛算经》讨论了如下遥测海岛高度的问题：
 
 > 今有望海岛，立两表，齐高三丈，前后相去千步，今后表于前表参相直。从前表却行一百二十三步，人目著地取望岛峰，与表末参合。从后表却行一百二十七步，人目著地取望岛峰，亦与表末参合。问岛高及去表各几何？
 
-![img](https://github.com/captainwong/dsa/blob/master/Exercise/1.2.island/1.2-%E6%B5%B7%E5%B2%9B%E7%AE%97%E7%BB%8F%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86.jpg?raw=true)
+![img](https://github.com/captainwong/dsa/blob/master/Exercise/1.02.island/1.02-%E6%B5%B7%E5%B2%9B%E7%AE%97%E7%BB%8F%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86.jpg?raw=true)
 
 根据相似三角形的等比关系，列出两式：
 
