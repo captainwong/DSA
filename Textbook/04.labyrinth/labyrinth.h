@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "../../include/util/util.h"
 #include "../../include/dtl/stack.h"
@@ -42,9 +42,9 @@ struct Labyrinth
 		Direction incoming = Direction::UNKNOWN;
 		Direction outgoing = Direction::UNKNOWN;
 
-		/**********************Ï°Ìâ4-17£¨a£©*************************/
-		// ÓÉÓÚÃ¿¸ö¸ñµã¶¼ÊÇ¹Ì¶¨µØ°´ÕÕ¶«ÄÏÎ÷±±µÄ´ÎĞò£¬Öğ¸öÊÔÌ½ÏàÁÚ¸ñµã
-		// Òò´Ë£¬¼´Ê¹Ä¿±ê¸ñµã½ôÁÚÆğÊ¼µã£¬Ò²ÓĞ¿ÉÄÜ×î»µÇé¿öÏÂ±éÀúËùÓĞ(n-2)^2¸ö¸ñµãÖ®ºó²ÅÄÜµÖ´ïÖÕµã
+		/**********************ä¹ é¢˜4-17ï¼ˆaï¼‰*************************/
+		// ç”±äºæ¯ä¸ªæ ¼ç‚¹éƒ½æ˜¯å›ºå®šåœ°æŒ‰ç…§ä¸œå—è¥¿åŒ—çš„æ¬¡åºï¼Œé€ä¸ªè¯•æ¢ç›¸é‚»æ ¼ç‚¹
+		// å› æ­¤ï¼Œå³ä½¿ç›®æ ‡æ ¼ç‚¹ç´§é‚»èµ·å§‹ç‚¹ï¼Œä¹Ÿæœ‰å¯èƒ½æœ€åæƒ…å†µä¸‹éå†æ‰€æœ‰(n-2)^2ä¸ªæ ¼ç‚¹ä¹‹åæ‰èƒ½æŠµè¾¾ç»ˆç‚¹
 		Direction nextDirection() const {
 			switch (outgoing) {
 				case Direction::UNKNOWN: return Direction::EAST;
@@ -56,10 +56,10 @@ struct Labyrinth
 			}
 		}
 
-		/**********************Ï°Ìâ4-17£¨b£©*************************/
-		// °´ÕÕËæ»ú´ÎĞòÊÔÌ½ÏàÁÚ¸ñµã
+		/**********************ä¹ é¢˜4-17ï¼ˆbï¼‰*************************/
+		// æŒ‰ç…§éšæœºæ¬¡åºè¯•æ¢ç›¸é‚»æ ¼ç‚¹
 
-		// ±£´æÒÑ¾­ÊÔÌ½¹ıµÄ·½Ïò
+		// ä¿å­˜å·²ç»è¯•æ¢è¿‡çš„æ–¹å‘
 		bool triedDirections[(size_t)Direction::NO_WAY] = { false };
 
 		Direction nextDirection2() {
@@ -97,12 +97,12 @@ struct Labyrinth
 
 	typedef Cell* PCell;
 
-	// TODO: ¿Õ¼äÁ¬Ğø¡£µ«Ã»·¨Ö§³Ö¾Ş´óµÄÃÔ¹¬£¬ÓĞ´ı¸Ä½ø
+	// TODO: ç©ºé—´è¿ç»­ã€‚ä½†æ²¡æ³•æ”¯æŒå·¨å¤§çš„è¿·å®«ï¼Œæœ‰å¾…æ”¹è¿›
 	PCell laby[W][H];
 	
-	//! Æğµã
+	//! èµ·ç‚¹
 	PCell startCell;
-	//! Ä¿±ê
+	//! ç›®æ ‡
 	PCell goalCell;
 
 	Labyrinth() {
@@ -112,10 +112,10 @@ struct Labyrinth
 				cell->x = x;
 				cell->y = y;
 
-				// ·Ç±ß½çµ¥Ôª75%¸ÅÂÊ¿ÉÓÃ
+				// éè¾¹ç•Œå•å…ƒ75%æ¦‚ç‡å¯ç”¨
 				if (0 < x && x < W - 1 && 0 < y && y < H - 1 && dtl::dice(4)) {
 					cell->status = Status::AVAILABLE;
-				} else { // ·ñÔòÉèÖÃÎªÇ½
+				} else { // å¦åˆ™è®¾ç½®ä¸ºå¢™
 					cell->status = Status::WALL;
 				}
 
@@ -125,17 +125,17 @@ struct Labyrinth
 
 		dtl::srand_time();
 
-		// ÆğµãÎ»ÓÚ±ß½ç
+		// èµ·ç‚¹ä½äºè¾¹ç•Œ
 		startCell = laby[dtl::dice(W - 1) + 1][dtl::dice(H - 1) + 1];
 		startCell->incoming = Direction::UNKNOWN;
-		// ÖÕµãÎ»ÓÚ±ß½ç
+		// ç»ˆç‚¹ä½äºè¾¹ç•Œ
 		goalCell = laby[dtl::dice(W - 1) + 1][dtl::dice(H - 1) + 1];
-		// Æğµã¡¢ÖÕµã±ØĞëÎª¿ÉÓÃ×´Ì¬
+		// èµ·ç‚¹ã€ç»ˆç‚¹å¿…é¡»ä¸ºå¯ç”¨çŠ¶æ€
 		startCell->status = goalCell->status = Status::AVAILABLE;
 	}
 
 	bool solve(int wait_ms = dtl::WAIT_PAUSE) {
-		dtl::Stack<PCell> path; // Í¨Â·
+		dtl::Stack<PCell> path; // é€šè·¯
 		startCell->status = Status::ROUTE;
 		path.push(startCell);
 		do {
@@ -199,13 +199,13 @@ struct Labyrinth
 		return next;
 	}
 
-	void display() { // ©¼ ©¸ ©´ ©° ©¦ ©¤
+	void display() { // â”˜ â”” â” â”Œ â”‚ â”€
 		static const char* pattern[5][5] = {
-		   "©à", "©à", "©à", "©à", "©à",
-		   "©à", "  ", "©°", "©¤", "©¸",
-		   "©à", "©°", "  ", "©´", "©¦",
-		   "©à", "©¤", "©´", "  ", "©¼",
-		   "©à", "©¸", "©¦", "©¼", "  "
+		   "â”¼", "â”¼", "â”¼", "â”¼", "â”¼",
+		   "â”¼", "  ", "â”Œ", "â”€", "â””",
+		   "â”¼", "â”Œ", "  ", "â”", "â”‚",
+		   "â”¼", "â”€", "â”", "  ", "â”˜",
+		   "â”¼", "â””", "â”‚", "â”˜", "  "
 		};
 		system("cls");
 		printf("  ");
@@ -216,11 +216,11 @@ struct Labyrinth
 			(j < 10) ? printf("%2X", j) : printf(" %c", 'A' - 10 + j);
 			for (int i = 0; i < W; i++)
 				if (goalCell == laby[i][j])
-					printf("©†");
+					printf("ï¹©");
 				else
 					switch (laby[i][j]->status) {
-						case Status::WALL:  printf("¨€");   break;
-						case Status::BACKTRACKED: printf("¡ğ");   break;
+						case Status::WALL:  printf("â–ˆ");   break;
+						case Status::BACKTRACKED: printf("â—‹");   break;
 						case Status::AVAILABLE: printf("  ");   break;
 						default: printf("%s", pattern[int(laby[i][j]->outgoing)][int(laby[i][j]->incoming)]);   break;
 					}
