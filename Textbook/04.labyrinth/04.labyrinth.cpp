@@ -8,7 +8,7 @@
 int main()
 {
 	Labyrinth<24, 24> laby;
-	laby.solve();
+	laby.solve(0) ? printf("\nRoute found!\n") : printf("\nNo route found!\n");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

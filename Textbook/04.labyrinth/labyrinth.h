@@ -102,6 +102,12 @@ struct Labyrinth
 		startCell->status = Status::ROUTE;
 		path.push(startCell);
 		do {
+			printf("startCell: ");
+			startCell->display();
+			printf("goalCell: ");
+			goalCell->display();
+			dtl::wait(wait_ms);
+			
 			display();
 			dtl::wait(wait_ms);
 			auto cell = path.top();
@@ -109,7 +115,7 @@ struct Labyrinth
 
 			cell->display();
 			while ((cell->outgoing = cell->nextDirection()) < Direction::NO_WAY) {
-				if (Status::AVAILABLE == neighbor(cell)->status) {
+				if (neighbor(cell) && Status::AVAILABLE == neighbor(cell)->status) {
 					break;
 				}
 			}
@@ -134,10 +140,10 @@ struct Labyrinth
 	PCell neighbor(PCell cell) {
 		PCell next = nullptr;
 		switch (cell->outgoing) {
-			case Direction::EAST: next = cell + W; break;
-			case Direction::SOUTH: next = cell + 1; break;
-			case Direction::WEST: next = cell - W; break;
-			case Direction::NORTH: next = cell - 1; break;
+			case Direction::EAST: if (cell->x + 1 >= W) { break; } next = laby[cell->x + 1][cell->y]; break;
+			case Direction::SOUTH: if (cell->y + 1 >= H) { break; } next = laby[cell->x][cell->y + 1]; break;
+			case Direction::WEST: if (cell->x - 1 < 0) { break; } next = laby[cell->x - 1][cell->y]; break;
+			case Direction::NORTH: if (cell->y - 1 < 0) { break; } next = laby[cell->x][cell->y - 1]; break;
 			default: assert(0); next = nullptr; break;
 		}
 		return next;
@@ -146,10 +152,10 @@ struct Labyrinth
 	PCell move(PCell cell) {
 		PCell next = nullptr;
 		switch (cell->outgoing) {
-			case Direction::EAST: next = cell + W; next->incoming = Direction::WEST; break;
-			case Direction::SOUTH: next = cell + 1; next->incoming = Direction::NORTH; break;
-			case Direction::WEST: next = cell - W; next->incoming = Direction::EAST; break;
-			case Direction::NORTH: next = cell - 1; next->incoming = Direction::SOUTH; break;
+			case Direction::EAST: if (cell->x + 1 >= W) { break; } next = laby[cell->x + 1][cell->y]; next->incoming = Direction::WEST; break;
+			case Direction::SOUTH: if (cell->y + 1 >= H) { break; } next = laby[cell->x][cell->y + 1]; next->incoming = Direction::NORTH; break;
+			case Direction::WEST: if (cell->x - 1 < 0) { break; } next = laby[cell->x - 1][cell->y]; next->incoming = Direction::EAST; break;
+			case Direction::NORTH: if (cell->y - 1 < 0) { break; } next = laby[cell->x][cell->y - 1]; next->incoming = Direction::SOUTH; break;
 			default: assert(0); break;
 		}
 		return next;
