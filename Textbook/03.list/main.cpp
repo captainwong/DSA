@@ -5,7 +5,7 @@ using namespace dtl;
 
 int main(int argc, char* arv[])
 {
-	test::testList<int>(10, WAIT_PAUSE);
+	test::testList<int>(10, WAIT_NO_WAIT);
 
 	return 0;
 }

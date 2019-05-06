@@ -241,6 +241,13 @@ static void testVector(int testSize, int wait_ms = dtl::WAIT_NO_WAIT)
 	printf("%d node(s) removed\n", v.uniquify());
 	printV(v);
 	wait(wait_ms);
+
+#if ENABLE_INITIALIZER_LIST
+	printf("\n==== Test %2d. Construct from initializer_list\n", testId++);
+	Vector<T> vi = { 0,1,2,3,4,5 };
+	printV(vi);
+	wait(wait_ms);
+#endif
 }
 
 }

@@ -10,6 +10,9 @@
 #include "fibnacci.h"
 #include "swap.h"
 //#include "priority_queue.h" // heap sort
+#if ENABLE_INITIALIZER_LIST
+#include <initializer_list>
+#endif
 
 
 namespace dtl 
@@ -63,6 +66,16 @@ public:
 		copy_from(V.elem_, lo, hi); 
 	}
 
+#if ENABLE_INITIALIZER_LIST
+	//! 从std::initialize_list 构造
+	Vector(std::initializer_list<T> V) {
+		elem_ = new T[capacity_ = V.size()];
+		for (const auto& v : V) {
+			elem_[size_++] = v;
+		}
+	}
+#endif
+
 	//! 从向量整体复制
 	Vector<T>& operator=(Vector<T> const& V) { 
 		if (elem_) { 
@@ -71,6 +84,8 @@ public:
 		copy_from(V.elem_, 0, V.size_);
 		return *this;
 	}
+
+	
 
 	~Vector() { 
 		delete[] elem_;

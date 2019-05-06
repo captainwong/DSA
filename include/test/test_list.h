@@ -183,6 +183,13 @@ void testList(int testSize, int wait_ms = dtl::WAIT_NO_WAIT)
 	Le.sort();
 	PRINT(Le);
 	wait(wait_ms);
+
+#if ENABLE_INITIALIZER_LIST
+	printf("\n==== Test %2d. Construct from initializer_list\n", testID++);
+	List<T> li = { 0,1,2,3,4,5 };
+	PRINT(li);
+	wait(wait_ms);
+#endif
 }
 
 }

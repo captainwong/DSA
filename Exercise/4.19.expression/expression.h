@@ -30,3 +30,8 @@ static void program_a(int S)
 		}
 	}
 }
+
+static void calc(int S)
+{
+
+}

@@ -4,6 +4,10 @@
 #include "list_node.h"
 #include "swap.h"
 
+#if ENABLE_INITIALIZER_LIST
+#include <initializer_list>
+#endif
+
 namespace dtl 
 {
 
@@ -31,6 +35,16 @@ public:
 	List(List<T> const& L, Rank r, int n) { copy_nodes(L[r], n); }
 	//! 复制列表中自位置p起的n项
 	List(NodePtr p, int n) { copy_nodes(p, n); }
+
+#if ENABLE_INITIALIZER_LIST
+	//! 从std::initialize_list 构造
+	List(std::initializer_list<T> L) {
+		init();
+		for (const auto& e : L) {
+			insert_as_last(e);
+		}
+	}
+#endif
 	
 	List<T>& operator=(List<T> const& L) {
 		copy_nodes(L.first(), L.size_);
