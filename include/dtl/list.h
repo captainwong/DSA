@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config.h"
 #include <assert.h>
 #include "list_node.h"
 #include "swap.h"
