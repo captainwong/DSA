@@ -1,8 +1,6 @@
 #pragma once
 
 #include "../util/util.h"
-#include "../util/check.h"
-#include "../util/op.h"
 #include "../dtl/stack.h"
 
 namespace dtl

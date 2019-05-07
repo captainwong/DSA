@@ -1,9 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-
-#include "../include/dtl/queue.h"
+#include "../../include/test/test_queue.h"
 
 int main(int /*argc*/, char** /*argv[]*/)
 {
-	return 0;
+	dtl::test::testQueue<int>(10);
 }

@@ -1,10 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include "list.h"
 
 namespace dtl 
 {
 
+//! 队列
 template <typename T> 
 class Queue : public List<T>
 {
