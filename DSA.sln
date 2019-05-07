@@ -103,6 +103,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dtl", "dtl", "{58BAD2C0-2DB
 		include\dtl\comparator.h = include\dtl\comparator.h
 		include\dtl\complete_heap.h = include\dtl\complete_heap.h
 		include\dtl\config.h = include\dtl\config.h
+		include\dtl\deque.h = include\dtl\deque.h
 		include\dtl\dictionary.h = include\dtl\dictionary.h
 		include\dtl\entry.h = include\dtl\entry.h
 		include\dtl\fibnacci.h = include\dtl\fibnacci.h
@@ -151,8 +152,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "10.priority_queue", "Textbo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DFA2CDDC-8413-494A-85C8-0021F8F38C60}"
 	ProjectSection(SolutionItems) = preProject
+		include\test\test_deque.h = include\test\test_deque.h
 		include\test\test_list.h = include\test\test_list.h
 		include\test\test_priority_quque.h = include\test\test_priority_quque.h
+		include\test\test_queue.h = include\test\test_queue.h
+		include\test\test_stack.h = include\test\test_stack.h
 		include\test\test_statck.h = include\test\test_statck.h
 		include\test\test_vector.h = include\test\test_vector.h
 	EndProjectSection

@@ -31,9 +31,13 @@ std::vector<int> eratosthenes_to_vec(int n)
 	return primes;
 }
 
-int main()
+int main(int argc, char** argv)
 {
-	eratosthenes_to_file(1048576, "../../_input/prime-1048576-bitmap.txt");
+	if (argc < 2) {
+		eratosthenes_to_file(1048576, "../../_input/prime-1048576-bitmap.txt");
+	} else {
+		eratosthenes_to_file(1048576, argv[1]);
+	}
 
 	printf("cacl 1000...\n");
 	auto t = clock();
