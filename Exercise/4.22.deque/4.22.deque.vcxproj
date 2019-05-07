@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\dtl\deque.h" />
+    <ClInclude Include="..\..\include\test\test_deque.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

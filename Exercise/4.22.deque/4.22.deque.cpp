@@ -2,11 +2,12 @@
 //
 
 #include "pch.h"
-#include <iostream>
+#include "../../include/test/test_deque.h"
+
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	dtl::test::testDeque<int>(10);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
