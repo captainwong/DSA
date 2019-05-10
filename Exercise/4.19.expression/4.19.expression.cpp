@@ -7,7 +7,7 @@
 
 int main()
 {
-
+	brute_force(100);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
