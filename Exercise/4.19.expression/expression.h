@@ -232,7 +232,7 @@ static __int64 factorial(__int64 n)
 }
 
 //! 二元计算
-static float calc(float a, float b, Operator op)
+static __int64 calc(__int64 a, __int64 b, Operator op)
 {
 	switch (op) {
 		case Operator::ADD: return a + b;
@@ -248,7 +248,7 @@ static float calc(float a, float b, Operator op)
 			}
 			return a / b;
 			break;
-		case Operator::POW: return pow(a, b);
+		case Operator::POW: return static_cast<__int64>(pow(a, b));
 			break;
 		default:
 			assert(0);
@@ -265,52 +265,58 @@ static __int64 calc(__int64 a, Operator op)
 	return 0;
 }
 
+static __int64 read_number(const char*& s)
+{
+	__int64 n = *s++ - '0';
+	while (isdigit(*s) || ' ' == *s) {
+		if (' ' == *s) {
+			if (n == 0) {
+				return -1;
+			}
+			s++;
+			continue;
+		}
+
+		n = n * 10 + (*s++ - '0');
+	}
+	return n;
+}
+
+struct Statistics
+{
+	int candidate = 0;
+	int check = 0;
+	int solution = 0;
+};
 
 static void brute_force(int target)
 {
 	char expr[] = "0 1 2 3 4 5 6 7 8 9";
 	char optrs[3] = { ' ', '+', '*' };
+	Statistics stat = {};
 	
-	auto evaluate = [&expr]() -> __int64 {
+	auto evaluate = [&expr, target]() -> __int64 {
 		const char* s = expr;
 		dtl::Stack<__int64> opnd;
 		dtl::Stack<char> optr; optr.push('\0');
 
 		do {
 			if (isdigit(*s)) {
-				__int64 n = *s++ - '0';
-				while (isdigit(*s) || ' ' == *s) {
-					if (' ' == *s) {
-						if (n == 0) {
-							return -1;
-						}
-						s++;
-						continue;
-					}
-					
-					n = n * 10 + (*s++ - '0');
+				auto n = read_number(s);
+				if (n < 0 || n > target) { // 剪枝 非法数字、过大数字的情况
+					return -1;
 				}
-
 				opnd.push(n);
-
 			} else {
-
 				auto o1 = optr.top();
 				auto o2 = *s;
 
 				switch (compareOperator(o1, o2)) {
 					case OperatorPriority::GT:
-					{
-						auto calc = [](__int64 a, __int64 b, char op) {
-							switch (op) {
-								case '+': return a + b;
-								case '*': return a * b;
-								default: return 0LL;
-							}
-						};
+					{						
 						auto b = opnd.pop();
 						auto a = opnd.pop();
-						opnd.push(calc(a, b, o1));
+						opnd.push(calc(a, b, operatorFromChar(o1)));
 						optr.pop();
 						break;
 					}
@@ -334,7 +340,12 @@ static void brute_force(int target)
 		static int i = 0;
 		printf("#%d:\t", i++);
 		for (auto c : expr) {
-			if (c != ' ') { printf("%c", c); }
+			if (c != ' ') {
+				printf("%c", c);
+				//if (!isdigit(c)) {
+				//	printf(" ");
+				//}
+			}
 		}
 		printf("\t=\t%lld", res);
 		printf("\n");
@@ -342,7 +353,7 @@ static void brute_force(int target)
 
 	int pos = 1;
 	for (auto o0 : optrs) {
-		if (o0 == ' ') { continue; }
+		if (o0 == ' ') { continue; } // 剪枝 012... 的情况
 		expr[pos] = o0;
 		for (auto o1 : optrs) {
 			expr[pos + 2] = o1;
@@ -360,10 +371,12 @@ static void brute_force(int target)
 									expr[pos + 14] = o7;
 									for (auto o8 : optrs) {
 										expr[pos + 16] = o8; 
+										stat.candidate++;
 										auto res = evaluate();
-										//printE(res);
+										//printE(res); 
 										if (res == target) {
 											printE(res);
+											stat.solution++;
 										}
 									}
 								}
@@ -374,4 +387,6 @@ static void brute_force(int target)
 			}
 		}
 	}
+
+	printf("%d candidates, %d solutions\n", stat.candidate, stat.solution);
 }
