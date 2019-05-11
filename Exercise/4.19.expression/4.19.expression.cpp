@@ -7,7 +7,14 @@
 
 int main()
 {
-	brute_force(100);
+	a_brute_force(100);
+	a_brute_force(2012);
+	a_brute_force(2019);
+
+	b_brute_force(100);
+	b_brute_force(2012);
+	b_brute_force(2019);
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

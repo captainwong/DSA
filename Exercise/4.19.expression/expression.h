@@ -4,125 +4,6 @@
 #include "../../include/dtl/stack.h"
 #include "../../include/dtl/deque.h"
 #include "../../include/dtl/queue.h"
-#include <stdio.h>
-#include <ctype.h>
-
-// a) 支持 + *
-static void program_a(int S)
-{
-	dtl::Stack<int> opnd;
-	for (int i = 9; i >= 0; i--) {
-		opnd.push(i);
-	}
-
-	auto giveBack = [&opnd](int n) {
-		int m = n % 10;
-		n /= 10;
-		opnd.push(m);
-		return n;
-	};
-
-	auto a = opnd.pop();
-
-	while (!opnd.empty()) {
-		char optrs[] = "+*";
-		for (auto optr : optrs) {
-			if (optr == '+') {
-
-			} else {
-
-			}
-		}
-	}
-}
-
-static void impl(dtl::List<int>& opnd, int target)
-{
-	auto read = [&opnd](int size) {
-		int n = 0;
-		while (size--) {
-			n = n * 10 + opnd.first()->data;
-			opnd.remove(opnd.first());
-		}
-		return n;
-	};
-
-	for (int i = 1; i < opnd.size(); i++) {
-		auto n = read(i);
-	}
-}
-
-static void calc(int S)
-{
-	dtl::List<int> opnd = { 0,1,2,3,4,5,6,7,8,9 };
-
-	auto read = [](dtl::List<int> opnd, int size) {
-		int n = 0;
-		while (size--) {
-			n = n * 10 + opnd.first()->data;
-			opnd.remove(opnd.first());
-		}
-		return n;
-	};
-
-	char optr[] = "\0+*";
-
-	auto insert_optr = [](dtl::List<int> opnd, int pos, int optr) {
-		auto begin = opnd.first();
-		while (pos--) { begin = begin->succ; }
-		opnd.insert_after(begin, optr);
-		return opnd;
-	};
-
-	auto evaluate = [](dtl::List<int>& expr) {
-		auto p = expr.first(); expr.remove(expr.first());
-	};
-
-	for (int i = 0; i < 9; i++) {
-		for (int j = 0; j < 3; j++) {
-			auto expr = insert_optr(opnd, i, optr[j]);
-
-		}
-	}
-}
-
-static void calc2(int target)
-{
-	dtl::Deque<char> Q;
-	for (auto c : "0123456789") { Q.push_back(c); }
-
-	auto insert_optr = [](dtl::Deque<char> Q, int pos, char optr) {
-		auto p = Q.first();
-		while (pos--) { p = p->succ; }
-		Q.insert_after(p, optr);
-		return Q;
-	};
-
-
-
-	for (int i = 1; i < 10; i++) {
-
-	}
-}
-
-static void calc3(int target)
-{
-	dtl::Queue<char> Q;
-	for (auto c : "0123456789") { Q.enqueue(c); }
-
-	dtl::Stack<char> S;
-
-	S.push(Q.dequeue());
-
-	do {
-		for (auto optr : "\0+*") {
-			S.push(optr);
-
-		}
-
-	} while (!Q.empty());
-}
-
 #include <ctype.h> // isdigit
 #include <math.h> // pow
 
@@ -289,7 +170,8 @@ struct Statistics
 	int solution = 0;
 };
 
-static void brute_force(int target)
+// a) 支持 + * 暴力版
+static void a_brute_force(int target)
 {
 	char expr[] = "0 1 2 3 4 5 6 7 8 9";
 	char optrs[3] = { ' ', '+', '*' };
@@ -357,6 +239,7 @@ static void brute_force(int target)
 		expr[pos] = o0;
 		for (auto o1 : optrs) {
 			expr[pos + 2] = o1;
+
 			for (auto o2 : optrs) {
 				expr[pos + 4] = o2;
 				for (auto o3 : optrs) {
@@ -388,5 +271,113 @@ static void brute_force(int target)
 		}
 	}
 
-	printf("%d candidates, %d solutions\n", stat.candidate, stat.solution);
+	printf("a_brute_force, target=%d, %d candidates, %d solutions\n", target, stat.candidate, stat.solution);
+}
+
+
+// b) 支持 + * ! 暴力版
+static void b_brute_force(int target)
+{
+	char expr[] = "0 1 2 3 4 5 6 7 8 9";
+	char optrs[4] = { ' ', '+', '*', '!' };
+	Statistics stat = {};
+
+	auto evaluate = [&expr, target]() -> __int64 {
+		const char* s = expr;
+		dtl::Stack<__int64> opnd;
+		dtl::Stack<char> optr; optr.push('\0');
+
+		do {
+			if (isdigit(*s)) {
+				auto n = read_number(s);
+				if (n < 0 || n > target) { // 剪枝 非法数字、过大数字的情况
+					return -1;
+				}
+				opnd.push(n);
+			} else {
+				auto o1 = optr.top();
+				auto o2 = *s;
+
+				switch (compareOperator(o1, o2)) {
+					case OperatorPriority::GT:
+					{
+						auto b = opnd.pop();
+						if (o1 == '!') {
+							opnd.push(calc(b, Operator::FAC));
+						} else {
+							auto a = opnd.pop();
+							opnd.push(calc(a, b, operatorFromChar(o1)));
+						}
+						optr.pop();
+						break;
+					}
+					case OperatorPriority::LT:
+						optr.push(o2);
+						s++;
+						break;
+					case OperatorPriority::EQ:
+						optr.pop();
+						s++;
+						break;
+				}
+			}
+
+		} while (!optr.empty());
+
+		return opnd.pop();
+	};
+
+	auto printE = [&expr](__int64 res) {
+		static int i = 0;
+		printf("#%d:\t", i++);
+		for (auto c : expr) {
+			if (c != ' ') {
+				printf("%c", c);
+				//if (!isdigit(c)) {
+				//	printf(" ");
+				//}
+			}
+		}
+		printf("\t=\t%lld", res);
+		printf("\n");
+	};
+
+	int pos = 1;
+	for (auto o0 : optrs) {
+		if (o0 == ' ') { continue; } // 剪枝 012... 的情况
+		expr[pos] = o0;
+		for (auto o1 : optrs) {
+			expr[pos + 2] = o1;
+			for (auto o2 : optrs) {
+				expr[pos + 4] = o2;
+				for (auto o3 : optrs) {
+					expr[pos + 6] = o3;
+					for (auto o4 : optrs) {
+						expr[pos + 8] = o4;
+						for (auto o5 : optrs) {
+							expr[pos + 10] = o5;
+							for (auto o6 : optrs) {
+								expr[pos + 12] = o6;
+								for (auto o7 : optrs) {
+									expr[pos + 14] = o7;
+									for (auto o8 : optrs) {
+										expr[pos + 16] = o8;
+										stat.candidate++;
+										auto res = evaluate();
+										//printE(res); 
+										if (res == target) {
+											printE(res);
+											stat.solution++;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	printf("b_brute_force, target=%d, %d candidates, %d solutions\n", target, stat.candidate, stat.solution);
 }
