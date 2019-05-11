@@ -274,6 +274,70 @@ static void a_brute_force(int target)
 	printf("a_brute_force, target=%d, %d candidates, %d solutions\n", target, stat.candidate, stat.solution);
 }
 
+//! 字符串简单封装，以\0结尾
+struct string
+{
+	char* data = nullptr;
+	size_t size = 0;
+	size_t capacity = 0;
+
+	string(int n = 16) {
+		capacity = n << 1;
+		size = 0;
+		data = new char[capacity];
+	}
+
+	string(const char* s) {
+		size = strlen(s) + 1;
+		capacity = size << 1;
+		data = new char[capacity];
+		memcpy(data, s, size);
+	}
+
+	
+
+	~string() { delete[] data; }
+
+	void expand() {
+		if ((size << 1) < capacity ) { return; }
+		capacity <<= 1;
+		auto old = data;
+		data = new char[capacity];
+		memcpy(data, old, size);
+		delete[] old;
+	}
+
+	char& at(size_t i) const { return data[i]; }
+
+	void insert(size_t i, char c) {
+		expand();
+		for (size_t j = size + 1; j > i; j++) {
+			data[j] = data[j - 1];
+		}
+		data[i] = c;
+	}
+	
+	void remove(size_t i) {
+		while (i < size) {
+			data[i] = data[i + 1];
+		}
+		size--;
+	}
+};
+
+// a) 支持 + * 剪枝版
+static void a_pruning(int target)
+{
+	string expr("0123456789");
+	char optrs[3] = { ' ', '+', '*' };
+	Statistics stat = {};
+
+	
+
+	printf("a_pruning, target=%d, %d candidates, %d solutions\n", target, stat.candidate, stat.solution);
+}
+
+
 
 // b) 支持 + * ! 暴力版
 static void b_brute_force(int target)
