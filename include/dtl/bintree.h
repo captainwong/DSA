@@ -1,11 +1,17 @@
 ﻿#pragma once
 
+#include "config.h"
 #include "BinNode.h"
 #include "release.h"
+
+#if TEST_BUILD
+#include <stdlib.h> // rand
+#endif
 
 namespace dtl
 {
 
+//! 二叉树
 template <typename T>
 class BinTree
 {
@@ -16,7 +22,9 @@ public:
 	typedef BinTreeType* BinTreePtr;
 
 protected:
+	//! 规模
 	int size_;
+	//! 树根
 	NodePtr root_;
 
 	//! 更新节点 node 的高度
@@ -29,8 +37,9 @@ protected:
 
 	//! 更新节点 node 及其祖先的高度
 	void updateHeightAbove(NodePtr node) {
-		while (node) { 
-			updateHeight(node); 
+		while (node) {
+			int old_height = node->height_; // 习题[5-4] 一旦发现某一祖先的高度没有发生变化，算法可提前中止
+			if (old_height == updateHeight(node)) { break; }
 			node = node->parent_; 
 		}
 	}
@@ -90,6 +99,16 @@ public:
 		return x;
 	}
 
+	//! 删除二叉树中位置x处的节点及其后代，返回被删除节点的数值
+	template <typename T>
+	static int removeAt(NodePtr x)
+	{
+		if (!x) { return 0; }
+		int n = 1 + removeAt(x->lChild_) + removeAt(x->rChild_);
+		release(x->data_); release(x);
+		return n;
+	}
+
 	//! 删除以位置x处节点为根的子树，返回该子树原先的规模
 	int remove(NodePtr x) {
 		fromParentTo(x) = nullptr; // 切断来自父节点的指针
@@ -117,9 +136,16 @@ public:
 	template <typename VST>
 	void travPreOrder(VST& visit) {
 		if (root_) { 
+#if TEST_BUILD
+			switch (rand() % 3) {
+				case 0: root_->travPre_I1(visit); break;
+				case 1: root_->travPre_I2(visit); break;
+				default: root_->travPre_R(visit); break;
+			}
+#else
 			root_->travPre_I1(visit); // personal prefer
-			//root_->travPre_I2(visit);
-			//root_->travPre_R(visit);
+#endif
+			
 		}
 	}
 
@@ -127,11 +153,17 @@ public:
 	template <typename VST>
 	void travInOrder(VST& visit) {
 		if (root_) {
-			//root_->travIn_I1(visit);
-			//root_->travIn_I2(visit);
-			//root_->travIn_I3(visit);
+#if TEST_BUILD
+			switch (rand() % 5) {
+				case 0: root_->travIn_I1(visit); break;
+				case 1: root_->travIn_I2(visit); break;
+				case 2: root_->travIn_I3(visit); break;
+				case 3: root_->travIn_I4(visit); break;
+				default: root_->travIn_R(visit); break;
+			}
+#else
 			root_->travIn_I4(visit); // personal prefer
-			//root_->travIn_R(visit);
+#endif
 		}
 	}
 
@@ -139,8 +171,14 @@ public:
 	template <typename VST>
 	void travPostOrder(VST& visit) {
 		if (root_) {
+#if TEST_BUILD
+			switch (rand() % 2) {
+				case 0: root_->travPost_I(visit); break;
+				default: root_->travPost_R(visit); break;
+			}
+#else
 			root_->travPost_I(visit); // personal prefer
-			//root_->travPost_R(visit);
+#endif
 		}
 	}
 

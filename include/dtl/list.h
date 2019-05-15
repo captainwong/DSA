@@ -9,6 +9,10 @@
 #include <initializer_list>
 #endif
 
+#if TEST_BUILD
+#include <stdlib.h> // rand
+#endif
+
 namespace dtl 
 {
 

@@ -152,10 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\dictionary.h" />
+    <ClInclude Include="..\..\include\dtl\skiplist.h" />
     <ClInclude Include="..\..\include\entry.h" />
     <ClInclude Include="..\..\include\quadlist.h" />
     <ClInclude Include="..\..\include\quadlist_node.h" />
-    <ClInclude Include="..\..\include\skiplist.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

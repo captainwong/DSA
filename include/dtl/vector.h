@@ -1,15 +1,12 @@
 ﻿#pragma once
 
-#ifndef _CRT_SECURE_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
-#endif
-
+#include "config.h"
 #include <assert.h>
 #include <stdlib.h> // rand
-#include "config.h"
 #include "fibnacci.h"
 #include "swap.h"
 //#include "priority_queue.h" // heap sort
+
 #if ENABLE_INITIALIZER_LIST
 #include <initializer_list>
 #endif
@@ -84,8 +81,6 @@ public:
 		copy_from(V.elem_, 0, V.size_);
 		return *this;
 	}
-
-	
 
 	~Vector() { 
 		delete[] elem_;

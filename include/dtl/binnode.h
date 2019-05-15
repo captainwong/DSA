@@ -11,15 +11,21 @@ enum class RBColor {
 	RB_BLACK,
 };
 
+//! 二叉树节点
 template <typename T>
 struct BinNode
 {
 	typedef BinNode<T>* Ptr;
 
+	//! 数据
 	T data_;
+	//! 父节点
 	Ptr parent_;
+	//! 左孩子
 	Ptr lChild_;
+	//! 右孩子
 	Ptr rChild_;
+	//! 高度
 	int height_;
 
 	//! 红黑树使用
@@ -361,16 +367,6 @@ bool blackHeightUpdated(BinNode<T>* node)
 {
 	return (stature(node->lChild_) == stature(node->rChild_))
 		&& (node->height_ == (isRed(node) ? stature(node->lChild_) : stature(node->lChild_) + 1));
-}
-
-//! 删除二叉树中位置x处的节点及其后代，返回被删除节点的数值
-template <typename T>
-static int removeAt(BinNode<T>* x)
-{
-	if (!x) { return 0; }
-	int n = 1 + removeAt(x->lChild_) + removeAt(x->rChild_);
-	release(x->data_); release(x);
-	return n;
 }
 
 }
