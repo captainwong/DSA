@@ -319,6 +319,36 @@ public: /*****************traverse实现*******************/
 			if (x->rChild_) { q.enqueue(x->rChild_); }
 		}
 	}
+
+	//! 将每一个节点的左、右孩子（其中之一可能为空）互换（习题[5-23]）
+	void swap() {
+		auto _swap = [](Ptr x) {
+			if (!x->hasChild()) { return; }
+			auto t = x->lChild_;
+			x->lChild_ = x->rChild_;
+			x->rChild_ = t;
+		};
+
+		// 借助中序遍历
+		Stack<Ptr> s;
+		Queue<Ptr> q;
+		auto x = this;
+		while (true) {
+			if (x) {
+				s.push(x);
+				x = x->lChild_;
+			} else if (!s.empty()) {
+				x = s.pop();
+				q.enqueue(x);
+				x = x->rChild_;
+			} else { break; }
+		}
+
+		while (!q.empty()) {
+			auto x = q.dequeue();
+			_swap(x);
+		}
+	}
 };
 
 

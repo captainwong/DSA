@@ -103,7 +103,12 @@ void test_tree()
 	tree.travLevelOrder(visit);
 	assert(str == "idlchknafjmpbego");
 
-	
+	// test swap
+	tree.root()->swap();
+	print(tree);
+	str.clear();
+	tree.travInOrder(visit);
+	assert(str == "ponmlkjihgfedcba");
 }
 
 int main(int /*argc*/, char** /*argv*/)
