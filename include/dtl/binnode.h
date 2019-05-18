@@ -86,6 +86,23 @@ struct BinNode
 		return s;
 	}
 
+	//! 定位节点V的直接前驱（中序遍历意义下）（习题[5-14]）
+	Ptr pred() {
+		Ptr s = this;
+		if (lChild_) { // 若有左孩子，则直接前驱必在左子树中
+			s = lChild_; // 左子树中
+			while (s->rChild_) { // 最靠右（最大）的节点
+				s = s->rChild_;
+			}
+		} else { // 否则，直接前驱就是“将当前节点包含于其右子树的最低祖先”：
+			while (s->isLChild()) { // 逆向地沿右上方移动
+				s = s->parent_;
+			}
+			s = s->parent_; // 最后再朝上方移动一次，即抵达直接前驱（如果存在）
+		}
+		return s;
+	}
+
 	/*****************mutable********************/
 
 	Ptr insertAsLeftChild(const T& data) { return (lChild_ = new BinNode(data, this)); }

@@ -39,6 +39,24 @@ void test_tree()
 	assert(d->isLChild());
 	assert(l->isRChild());
 
+	// test pred
+	assert(a->pred() == nullptr);
+	assert(b->pred() == a);
+	assert(c->pred() == b);
+	assert(d->pred() == c);
+	assert(e->pred() == d);
+	assert(f->pred() == e);
+	assert(g->pred() == f);
+	assert(h->pred() == g);
+	assert(i->pred() == h);
+	assert(j->pred() == i);
+	assert(k->pred() == j);
+	assert(l->pred() == k);
+	assert(m->pred() == l);
+	assert(n->pred() == m);
+	assert(o->pred() == n);
+	assert(p->pred() == o);
+
 	// test succ
 	assert(a->succ() == b);
 	assert(b->succ() == c);
