@@ -87,6 +87,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\dtl\binnode.h" />
     <ClInclude Include="..\..\include\dtl\bintree.h" />
+    <ClInclude Include="..\..\include\test\test_bintree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

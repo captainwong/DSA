@@ -1,10 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
-//#include "../include/dtl/bintree.h"
-
-#include "../include/dtl/bintree.h"
+#include "../../include/test/test_bintree.h"
 #include <string>
 #include <assert.h>
 
@@ -98,5 +92,8 @@ int main(int /*argc*/, char** /*argv*/)
 {
 	test_tree();
 	system("pause");
+
+	dtl::test::testBinTree<int>(5, -1);
+
 	return 0;
 }

@@ -100,7 +100,6 @@ public:
 	}
 
 	//! 删除二叉树中位置x处的节点及其后代，返回被删除节点的数值
-	template <typename T>
 	static int removeAt(NodePtr x)
 	{
 		if (!x) { return 0; }
