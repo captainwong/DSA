@@ -33,7 +33,9 @@ void crc(Vector<T>& v)
 template <typename T> 
 void checkOrder(Vector<T> & V) { 
 	int unsorted = 0; //逆序计数器
-	V.traverse(CheckOrder<T>(unsorted, V[0])); //进行遍历
+	if (!V.empty()) {
+		V.traverse(CheckOrder<T>(unsorted, V[0])); //进行遍历
+	}
 	if (0 < unsorted)
 		printf("Unsorted with %d adjacent disordered pair(s)\n", unsorted);
 	else
@@ -248,6 +250,12 @@ static void testVector(int testSize, int wait_ms = dtl::WAIT_NO_WAIT)
 	printV(vi);
 	wait(wait_ms);
 #endif
+
+	printf("\n==== Test %2d. Clear\n", testId++);
+	printV(v);
+	v.clear();
+	printV(v);
+	wait(wait_ms);
 }
 
 }

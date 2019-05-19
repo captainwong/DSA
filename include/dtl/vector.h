@@ -136,6 +136,13 @@ public:
 
 	/************* Mutable *****************************/
 
+	//! 清除数据
+	void clear() {
+		delete[] elem_;
+		size_ = 0;
+		elem_ = new T[capacity_ = DEFAULT_CAPACITY];
+	}
+
 	//! 下标 O(1)
 	T& operator[] (Rank r) const { 
 		assert(0 <= r && r < size_); 
