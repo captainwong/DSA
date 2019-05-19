@@ -133,6 +133,15 @@ public:
 
 	/***************************** Mutable **********************************************/
 
+	//! destruct
+	int clear() {
+		int old_size = size_;
+		while (0 < size_) {
+			remove(header->succ);
+		}
+		return old_size;
+	}
+
 	/****4¸ö²åÈë O(1) **********/
 
 	NodePtr insert_as_first(T const& e) { size_++; return header->insert_as_succ(e); }
@@ -227,15 +236,6 @@ protected:
 		header->pred = nullptr; header->succ = trailer;
 		trailer->pred = header; trailer->succ = nullptr;
 		size_ = 0;
-	}
-
-	//! destruct
-	int clear() {
-		int old_size = size_;
-		while (0 < size_) {
-			remove(header->succ);
-		}
-		return old_size;
 	}
 
 	//! O(n)

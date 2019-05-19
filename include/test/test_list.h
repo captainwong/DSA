@@ -190,6 +190,12 @@ void testList(int testSize, int wait_ms = dtl::WAIT_NO_WAIT)
 	PRINT(li);
 	wait(wait_ms);
 #endif
+
+	printf("\n==== Test %2d. Clear\n", testID++);
+	PRINT(Le);
+	Le.clear();
+	PRINT(Le);
+	wait(wait_ms);
 }
 
 }

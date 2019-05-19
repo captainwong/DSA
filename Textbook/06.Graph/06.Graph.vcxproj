@@ -84,8 +84,8 @@
     <ClCompile Include="graph.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="graph\Graph.h" />
-    <ClInclude Include="graph\GraphMatrix.h" />
+    <ClInclude Include="..\..\include\dtl\graph.h" />
+    <ClInclude Include="..\..\include\dtl\graph_matrix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

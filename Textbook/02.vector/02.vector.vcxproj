@@ -78,6 +78,7 @@
     <ClInclude Include="..\..\include\test\test_vector.h" />
     <ClInclude Include="..\..\include\util\check.h" />
     <ClInclude Include="..\..\include\util\op.h" />
+    <ClInclude Include="..\..\include\util\print.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

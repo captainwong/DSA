@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "graph.h"
 #include "vector.h"
@@ -7,6 +7,7 @@
 namespace dtl 
 {
 
+//! 顶点
 template <typename T>
 struct Vertex
 {
@@ -33,6 +34,7 @@ struct Vertex
 	{}
 };
 
+//! 边
 template <typename T>
 struct Edge
 {
@@ -46,6 +48,7 @@ struct Edge
 		, status(EdgeStatus::undetermined)
 	{}
 };
+
 
 template <typename Tv, typename Te>
 class GraphMatrix : public Graph<Tv, Te>
