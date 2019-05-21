@@ -46,7 +46,7 @@ private:
 			priority(i) = INT_MAX;
 			for (int j = 0; j < n; j++) {
 				if (exists(i, j))
-					status(i, j) = EdgeStatus::undetermined;
+					type(i, j) = EdgeStatus::undetermined;
 			}
 		}
 	}
@@ -63,10 +63,10 @@ private:
 				if (status(u) == VertexStatus::undiscovered) {
 					status(u) = VertexStatus::discovered;
 					queue.enqueue(u);
-					status(v, u) = EdgeStatus::tree;
+					type(v, u) = EdgeStatus::tree;
 					parent(u) = v;
 				} else {
-					status(v, u) = EdgeStatus::cross;
+					type(v, u) = EdgeStatus::cross;
 				}
 			}
 			status(v) = VertexStatus::visited;
@@ -80,15 +80,15 @@ private:
 		for (int u = firstNbr(v); -1 < u; u = nextNbr(v, u)) {
 			switch (status(u)) {
 				case VertexStatus::undiscovered:
-					status(v, u) = EdgeStatus::tree;
+					type(v, u) = EdgeStatus::tree;
 					parent(u) = v;
 					DFS(u, clock);
 					break;
 				case VertexStatus::discovered:
-					status(v, u) = EdgeStatus::backward;
+					type(v, u) = EdgeStatus::backward;
 					break;
 				default: // VertexStatus::visited
-					status(v, u) = dTime(v) < dTime(u) ? EdgeStatus::forward : EdgeStatus::cross;
+					type(v, u) = dTime(v) < dTime(u) ? EdgeStatus::forward : EdgeStatus::cross;
 					break;
 			}
 		}
@@ -200,15 +200,16 @@ public:
 		assert(0 <= s && s < n);
 		reset();
 		int clock = 0, v = s;
+		auto S = new Stack<Tv>();
 		do {
 			if (status(v) == VertexStatus::undiscovered) {
-				if (!TSORT(v, clock, s)) {
-					s->clear();
+				if (!TSORT(v, clock, S)) {
+					S->clear();
 					break;
 				}
 			}
 		} while (s != (v = (++v % n)));
-		return s;
+		return S;
 	}
 };
 

@@ -1,5 +1,3 @@
-
-#include "../include/dtl/vector.h"
 #include "../include/test/test_vector.h"
 
 using namespace dtl;

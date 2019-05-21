@@ -86,6 +86,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\dtl\graph.h" />
     <ClInclude Include="..\..\include\dtl\graph_matrix.h" />
+    <ClInclude Include="..\..\include\test\test_graph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

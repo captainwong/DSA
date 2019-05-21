@@ -60,13 +60,15 @@ private:
 	Vector<Vector<Edge<Te>*>> E;
 
 public:
+	typedef Graph<Tv, Te> GraphType;
+
 	GraphMatrix() {
-		n = e = 0;
+		GraphType::n = GraphType::e = 0;
 	}
 
 	~GraphMatrix() {
-		for (int j = 0; j < n; j++) {
-			for (int k = 0; k < n; k++) {
+		for (int j = 0; j < GraphType::n; j++) {
+			for (int k = 0; k < GraphType::n; k++) {
 				delete E[j][k];
 			}
 		}
@@ -82,35 +84,35 @@ public:
 	virtual int& parent(int i) { return V[i].parent; }
 	virtual int& priority(int i) { return V[i].priority; }
 
-	virtual int firstNbr(int i) { return nextNbr(i, n); }
+	virtual int firstNbr(int i) { return nextNbr(i, GraphType::n); }
 	virtual int nextNbr(int i, int j) {
-		while ((-1 < j) && (exists(i, --j))) {}
+		while ((-1 < j) && (!exists(i, --j))) {}
 		return j;
 	}
 
 	// vertex dynamic operation
 	virtual int insert(Tv const& vertex) {
-		for (int j = 0; j < n; j++) {
+		for (int j = 0; j < GraphType::n; j++) {
 			E[j].insert(nullptr);
 		}
-		n++;
-		E.insert(Vector<Edge<Te>*>(n, n, (Edge<Te>*)nullptr));
+		GraphType::n++;
+		E.insert(Vector<Edge<Te>*>(GraphType::n, GraphType::n, (Edge<Te>*)nullptr));
 		return V.insert(Vertex<Tv>(vertex));
 	}
 
 	virtual Tv remove(int i) {
-		assert(0 <= i && i < n);
-		for (int j = 0; j < n; j++) {
+		assert(0 <= i && i < GraphType::n);
+		for (int j = 0; j < GraphType::n; j++) {
 			if (exists(i, j)) {
 				delete E[i][j];
 				V[j].inDegree--;
 			}
 		}
 		E.remove(i);
-		n--;
+		GraphType::n--;
 		Tv vBak = vertex(i);
 		V.remove(i);
-		for (int j = 0; j < n; j++) {
+		for (int j = 0; j < GraphType::n; j++) {
 			if (Edge<Te>* e = E[j].remove(i)) {
 				delete e;
 				V[j].outDegree--;
@@ -121,7 +123,7 @@ public:
 
 	// edge operation
 	virtual bool exists(int i, int j) {
-		return (0 <= i) && (i < n) && (0 <= j) && (j < n) && E[i][j] != nullptr;
+		return (0 <= i) && (i < GraphType::n) && (0 <= j) && (j < GraphType::n) && E[i][j] != nullptr;
 	}
 
 	virtual EdgeStatus& type(int i, int j) { assert(exists(i, j)); return E[i][j]->status; }
@@ -131,7 +133,7 @@ public:
 	virtual void insert(Te const& edge, int weight, int i, int j) {
 		if (exists(i, j)) { return; }
 		E[i][j] = new Edge<Te>(edge, weight);
-		e++;
+		GraphType::e++;
 		V[i].outDegree++;
 		V[j].inDegree++;
 	}
@@ -141,7 +143,7 @@ public:
 		Te eBak = edge(i, j);
 		delete E[i][j];
 		E[i][j] = nullptr;
-		e--;
+		GraphType::e--;
 		V[i].outDegree--;
 		V[j].inDegree--;
 		return eBak;

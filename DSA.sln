@@ -154,6 +154,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DFA2CDDC-8
 	ProjectSection(SolutionItems) = preProject
 		include\test\test_bintree.h = include\test\test_bintree.h
 		include\test\test_deque.h = include\test\test_deque.h
+		include\test\test_graph.h = include\test\test_graph.h
 		include\test\test_list.h = include\test\test_list.h
 		include\test\test_priority_quque.h = include\test\test_priority_quque.h
 		include\test\test_queue.h = include\test\test_queue.h
