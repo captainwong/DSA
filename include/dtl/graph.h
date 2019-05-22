@@ -53,13 +53,34 @@ private:
 
 	//! breadth first search
 	void BFS(int v, int& clock) {
+#if DSA_MODE
+		printf("BFS in with v=%d, clock=%d\n", v, clock); 
+#endif
+
 		Queue<int> queue;
 		status(v) = VertexStatus::discovered;
 		queue.enqueue(v);
+
+
+#if DSA_MODE
+		printf("vetex %d", v); print(vertex(v)); printf(" status changed to VertexStatus::discovered\n");
+		printf("current Q: "); print(queue);
+#endif
+
 		while (!queue.empty()) {
 			int v = queue.dequeue();
 			dTime(v) = ++clock;
+
+#if DSA_MODE
+			printf("visiting vertex v=%d", v); print(vertex(v)); printf("["); print(status(v)); printf("] dTime=%d\n", clock);
+#endif
+
 			for (int u = firstNbr(v); -1 < u; u = nextNbr(v, u)) {
+
+#if DSA_MODE
+				printf("visiting vertex u=%d", u); print(vertex(u)); printf("["); print(status(u)); printf("]\n");
+#endif
+
 				if (status(u) == VertexStatus::undiscovered) {
 					status(u) = VertexStatus::discovered;
 					queue.enqueue(u);
@@ -68,8 +89,18 @@ private:
 				} else {
 					type(v, u) = EdgeStatus::cross;
 				}
+
+#if DSA_MODE
+				printf("edge(%d, %d) ", v, u); print(vertex(v)); printf(" ->"); print(vertex(u)); printf(" now is "); print(type(v, u)); printf("\n");
+#endif
+
 			}
 			status(v) = VertexStatus::visited;
+
+#if DSA_MODE
+			printf("vetex v=%d", v); print(vertex(v)); printf(" status changed to VertexStatus::visited\n");
+			printf("current Q: "); print(queue);
+#endif
 		}
 	}
 
@@ -102,7 +133,7 @@ private:
 		assert(0 <= v && v < n);
 		
 		dTime(v) = ++clock;
-		status(v) = VertexStatus::undiscovered;
+		status(v) = VertexStatus::discovered;
 
 		for (int u = firstNbr(v); -1 < u; u = nextNbr(v, u)) {
 			switch (status(u)) {
