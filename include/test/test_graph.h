@@ -99,11 +99,11 @@ void _test(GraphMatrix<char, int>& g, int wait_ms)
 {
 	printf("\n"); print(g);
 
-	printf("=== BFS\n"); g.bfs(0); print(g); wait(wait_ms);
+	printf("\n====== BFS ======\n"); g.bfs(0); print(g); wait(wait_ms);
 	//printf("=== BFS (PFS)\n"); g.pfs(0, BfsPU<char, int>()); print(g);wait(wait_ms);
-	printf("=== DFS\n"); g.dfs(0); print(g); wait(wait_ms);
+	printf("\n====== DFS ======\n"); g.dfs(0); print(g); wait(wait_ms);
 	//printf("=== DFS (PFS)\n"); g.pfs(0, DfsPU<char, int>()); print(g);wait(wait_ms);
-	printf("=== TopoSort\n"); Stack<char>* ts = g.tsort(0);  print(ts); print(g); release(ts); wait(wait_ms);
+	printf("\n====== TopoSort ======\n"); Stack<char>* ts = g.tsort(0); print(ts); print(g); release(ts); wait(wait_ms);
 	//printf("=== BCC\n"); g.bcc(0); print(g); wait(wait_ms);
 	//printf("=== Prim\n"); g.prim(0); print(g); wait(wait_ms);
 	//printf("=== Prim (PFS)\n"); g.pfs(0, PrimPU<char, int>()); print(g); wait(wait_ms);

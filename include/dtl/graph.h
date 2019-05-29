@@ -152,31 +152,65 @@ private:
 	//! topological sort
 	bool TSORT(int v, int& clock, Stack<Tv>* s) {
 		assert(0 <= v && v < n);
+
+#if DSA_MODE
+		printf("TSORT in with v=%d, clock=%d\n", v, clock);
+		printf("statck="); print(s);
+#endif
 		
 		dTime(v) = ++clock;
 		status(v) = VertexStatus::discovered;
 
+#if DSA_MODE
+		printf("vetex v=%d", v); print(vertex(v)); printf(" status changed to VertexStatus::discovered dTime=%d\n", clock);
+#endif
+
 		for (int u = firstNbr(v); -1 < u; u = nextNbr(v, u)) {
+
+#if DSA_MODE
+			printf("visiting vertex u=%d", u); print(vertex(u)); printf("["); print(status(u)); printf("]\n");
+#endif
+
 			switch (status(u)) {
 				case VertexStatus::undiscovered:
 					parent(u) = v;
-					type(v, u) = EdgeStatus::tree;
+					type(v, u) = EdgeStatus::tree; 
+
+#if DSA_MODE
+					printf("edge(%d, %d) ", v, u); print(vertex(v)); printf(" ->"); print(vertex(u)); printf(" now is "); print(type(v, u)); printf("\n");
+#endif
+
 					if (!TSORT(u, clock, s)) {
 						return false;
 					}
 					break;
 				case VertexStatus::discovered:
 					type(v, u) = EdgeStatus::backward;
+#if DSA_MODE
+					printf("edge(%d, %d) ", v, u); print(vertex(v)); printf(" ->"); print(vertex(u)); printf(" now is "); print(type(v, u)); printf("\n");
+#endif
+
 					return false;
 					break;
 				default: // visited
 					type(v, u) = (dTime(v) < dTime(u)) ? EdgeStatus::forward : EdgeStatus::cross;
+#if DSA_MODE
+					printf("edge(%d, %d) ", v, u); print(vertex(v)); printf(" ->"); print(vertex(u)); printf(" now is "); print(type(v, u)); printf("\n");
+#endif
+
 					break;
 			}
+
+
 		}
 
 		status(v) = VertexStatus::visited;
 		s->push(vertex(v));
+
+#if DSA_MODE
+		printf("vetex v=%d", v); print(vertex(v)); printf(" status changed to VertexStatus::visited\n");
+#endif
+
 		return true;
 	}
 
