@@ -79,6 +79,9 @@
     <ClInclude Include="..\..\include\util\check.h" />
     <ClInclude Include="..\..\include\util\op.h" />
     <ClInclude Include="..\..\include\util\print.h" />
+    <ClInclude Include="..\..\include\util\rand.h" />
+    <ClInclude Include="..\..\include\util\util.h" />
+    <ClInclude Include="..\..\include\util\wait.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

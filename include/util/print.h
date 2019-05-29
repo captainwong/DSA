@@ -8,20 +8,8 @@
 #include <typeinfo.h>
 #include <limits>
 
-#include "../dtl/bitmap.h"
-#include "../dtl/vector.h"
-#include "../dtl/graph.h"
-#include "../dtl/bintree.h"
-#include "../dtl/huffman.h"
-#include "../dtl/graph_matrix.h"
-#include "../dtl/hashtable.h"
-#include "../dtl/quadlist.h"
-#include "../dtl/skiplist.h"
-#include "../dtl/complete_heap.h"
-#include "../dtl/left_heap.h"
 
-
-namespace dtl 
+namespace dtl
 {
 
 //! 萃取指针类型，转为引用
@@ -37,6 +25,27 @@ static void print(const T& x) { UniPrint::p(x); }
 static void print(char* x) { printf(" %s", x ? x : "<NULL>"); }
 static void print(const char* x) { printf(" %s", x ? x : "<NULL>"); }
 
+}
+
+
+#include "../dtl/bitmap.h"
+#include "../dtl/vector.h"
+#include "../dtl/list.h"
+#include "../dtl/queue.h"
+#include "../dtl/stack.h"
+#include "../dtl/graph_matrix.h"
+#include "../dtl/bintree.h"
+#include "../dtl/huffman.h"
+#include "../dtl/graph_matrix.h"
+#include "../dtl/hashtable.h"
+#include "../dtl/quadlist.h"
+#include "../dtl/skiplist.h"
+#include "../dtl/complete_heap.h"
+#include "../dtl/left_heap.h"
+
+
+namespace dtl
+{
 
 class UniPrint
 {
