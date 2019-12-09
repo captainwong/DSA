@@ -5,7 +5,6 @@
 #endif
 
 #include <stdio.h>
-#include <typeinfo.h>
 #include <limits>
 
 

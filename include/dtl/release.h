@@ -10,7 +10,7 @@
 
 #ifdef _DEBUG
 #include <stdio.h>
-#include <typeinfo.h>
+#include <typeinfo>
 #endif
 
 /******************************************************************************************
