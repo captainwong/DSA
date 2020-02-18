@@ -11,6 +11,9 @@
 namespace dtl
 {
 
+
+class UniPrint;
+
 //! 萃取指针类型，转为引用
 template <typename T>
 static void print(T* x) { if (x) { print(*x); } else { printf(" <NULL>"); } }
