@@ -311,7 +311,7 @@ struct string
 
 	void insert(size_t i, char c) {
 		expand();
-		for (size_t j = size + 1; j > i; j++) {
+		for (size_t j = size + 1; j > i; j--) {
 			data[j] = data[j - 1];
 		}
 		data[i] = c;
