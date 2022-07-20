@@ -11,26 +11,48 @@ using namespace dtl;
 #include <time.h>
 /*****************/
 
+#include "../testcase.h"
+
+#define N 32
+
+void gen_testcase(int n)
+{
+	for (int i = 1; i <= n; i++) {
+		gen_in_out(i,
+				   [i](FILE* f) {
+					   fprintf(f, "%d", i);
+				   },
+				   [i](FILE* f) {
+					   fprintf(f, "%lld", fibI(i));
+				   });
+	}
+
+}
 
 
 int main()
 {
+	gen_testcase(32);
+
+	
+
+	return 0;
 	printf("testing fib iteration...\n");
 	auto t = clock();
-	auto r = fibI(64);
+	auto r = fibI(N);
 	auto e = clock() - t;
 	printf("fib iteration result=%lld elapsed %lf ms\n\n", r, e * 1000.0 / CLOCKS_PER_SEC);
 
 	printf("testing fib linear recursion...\n");
 	t = clock();
 	__int64 prev;
-	r = fibL(64, prev);
+	r = fibL(N, prev);
 	e = clock() - t;
 	printf("fib linear recursion result=%lld elapsed %lf ms\n\n", r, e * 1000.0 / CLOCKS_PER_SEC);
 
 	printf("testing fib binary recursion...\n");
 	t = clock();
-	r = fibR(64);
+	r = fibR(N);
 	e = clock() - t;
 	printf("fib binary recursion result=%lld elapsed %lf ms\n\n", r, e * 1000.0 / CLOCKS_PER_SEC); // 我就不等了。。。
 

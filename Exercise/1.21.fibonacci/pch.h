@@ -10,5 +10,6 @@
 #define PCH_H
 
 // TODO: add headers that you want to pre-compile here
+#define _CRT_SECURE_NO_WARNINGS
 
 #endif //PCH_H
