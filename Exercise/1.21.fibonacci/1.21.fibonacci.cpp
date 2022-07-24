@@ -17,6 +17,8 @@ using namespace dtl;
 
 void gen_testcase(int n)
 {
+	system("mkdir testcase");
+	system("cd testcase && del *.in *.out testcase.zip && cd ..");
 	for (int i = 1; i <= n; i++) {
 		gen_in_out(i,
 				   [i](FILE* f) {
@@ -26,17 +28,48 @@ void gen_testcase(int n)
 					   fprintf(f, "%lld", fibI(i));
 				   });
 	}
+	system("cd testcase && zip testcase.zip *.in *.out");
+}
 
+void gen_testcase_pro()
+{
+	system("mkdir testcase");
+	system("cd testcase && del *.in *.out testcase.zip && cd ..");
+
+	int arr[10];
+	arr[0] = 1;
+	arr[9] = 64;
+
+	for (int i = 1; i < 9; i++) {
+		arr[i] = rand() % 64;
+	}
+
+	qsort(arr, 10, sizeof(int), [](const void* a, const void* b) {
+		int a1 = *(const int*)a;
+		int a2 = *(const int*)b;
+		return a1 - a2;
+	});
+
+	for (int i = 1; i < 10; i++) {
+		gen_in_out(i,
+				   [i, arr](FILE* f) {
+					   fprintf(f, "%d\n", arr[i]);
+				   },
+				   [i, arr](FILE* f) {
+					   fprintf(f, "%lld\n", fibI(arr[i]));
+				   });
+	}
+
+	system("cd testcase && zip testcase.zip *.in *.out");
 }
 
 
 int main()
 {
-	gen_testcase(32);
-
-	
-
+	//gen_testcase(32);
+	gen_testcase_pro();
 	return 0;
+
 	printf("testing fib iteration...\n");
 	auto t = clock();
 	auto r = fibI(N);
