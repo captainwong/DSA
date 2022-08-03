@@ -288,6 +288,52 @@ int read_cny(char* s, uint64_t* py, uint32_t* pf)
 	return 1;
 }
 
+int read_cny_from_stdin(uint64_t* py, uint32_t* pf)
+{
+	char c;
+	uint64_t y = 0;
+	uint32_t f = 0;
+	int dots = 0;
+
+	while ((c = getchar()) != EOF) {
+		if (c == '\r' || c == '\n') break;
+		if (!isdigit(c) && c != '.') {
+			return 0;
+		}
+		if (c == '.') {
+			if (dots == 0) {
+				dots = 1;
+				continue;
+			} else {
+				return 0;
+			}
+		}
+		if (dots == 0) { // y
+			if (y > UINT64_MAX / 10) {
+				return 0;
+			}
+			y *= 10;
+			if (y > UINT64_MAX - (c - '0')) {
+				return 0;
+			}
+			y += c - '0';
+		} else { // f
+			if (f > 9) {
+				return 0;
+			}
+			f *= 10;
+			if (f > 99u - (c - '0')) {
+				return 0;
+			}
+			f += c - '0';
+		}
+	}
+
+	*py = y;
+	*pf = f;
+	return 1;
+}
+
 void test(uint64_t y, int32_t f, const char* str)
 {
 	printf("testing %llu.%u...", y, f);
@@ -299,7 +345,7 @@ void test(uint64_t y, int32_t f, const char* str)
 
 void do_test()
 {
-	/*assert(strcmp(cny(0, 0), "ÁãÔªÕû") == 0);
+	/*assert(strcmp(cny(0, 0), "ÁãÔªÕû") == 0); 
 	assert(strcmp(cny(0, 3), "Èş·Ö") == 0);
 	assert(strcmp(cny(0, 53), "Îé½ÇÈş·Ö") == 0);
 	assert(strcmp(cny(1409, 50), "Ò¼ÇªËÁ°ÛÁã¾ÁÔªÎé½Ç") == 0);
@@ -339,17 +385,25 @@ int main(int argc, char** argv)
 
 	//do_test();
 
-	if (argc != 2) {
-		usage(argv[0]);
-		return 0;
-	}
 	uint64_t y = 0;
 	uint32_t f = 0;
-	if (!read_cny(argv[1], &y, &f)) {
+
+	if (argc == 1) {
+		if (!read_cny_from_stdin(&y, &f)) {
+			usage(argv[0]);
+			return 0;
+		}
+	} else if (argc == 2) {
+		if (!read_cny(argv[1], &y, &f)) {
+			usage(argv[0]);
+			return 0;
+		}
+	} else {
 		usage(argv[0]);
 		return 0;
 	}
 
 	printf("%s\n", cny(y, f));
+
 	return 0;	
 }
