@@ -66,6 +66,7 @@ void gen_testcase_pro()
 
 int main()
 {
+	fibI(8);
 	//gen_testcase(32);
 	gen_testcase_pro();
 	return 0;

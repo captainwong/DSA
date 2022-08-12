@@ -58,10 +58,11 @@ void qsort(int* A, int p, int r)
 }
 
 
-int _tmain(int argc, _TCHAR* argv[])
-{
-	int A[] = { 2, 8, 7, 1, 3, 5, 6, 4 };
-	qsort(A, 0, 7);
-	return 0;
-}
+//
+//int _tmain(int argc, _TCHAR* argv[])
+//{
+//	int A[] = { 2, 8, 7, 1, 3, 5, 6, 4 };
+//	qsort(A, 0, 7);
+//	return 0;
+//}
 
