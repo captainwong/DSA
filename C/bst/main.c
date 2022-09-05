@@ -7,65 +7,193 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include<stdio.h>
+#include<string.h>
+#include <math.h>
+//
+//int partition(int* a, int lo, int hi) 
+//{
+//    int pivot = a[lo];
+//    hi--;
+//    while (lo < hi) {
+//        while ((lo < hi) && (pivot <= a[hi])) {
+//            hi--;
+//        }
+//        a[lo] = a[hi];
+//        while ((lo < hi) && (a[lo] <= pivot)) {
+//            lo++;
+//        }
+//        a[hi] = a[lo];
+//    }
+//    a[lo] = pivot;
+//    return lo;
+//}
+//
+//void quick_sort(int* a, int lo, int hi)
+//{
+//    if (hi - lo < 2)return;
+//    int m = partition(a, lo, hi);
+//    quick_sort(a, 0, m);
+//    quick_sort(a, m + 1, hi);
+//}
+//
+//int main()
+//{
+//    int n, m;
+//    scanf("%d %d", &n, &m);
+//    int* a = malloc(n * sizeof(int));
+//    for (int i = 0; i < n; i++) {
+//        scanf("%d", &a[i]);
+//    }
+//    quick_sort(a, 0, n - 1);
+//    int* b = malloc(m * sizeof(int));
+//    for (int i = 0; i < m; i++) {
+//        scanf("%d", &b[i]);
+//    }
+//    quick_sort(b, 0, m - 1);
+//    int k = 0;
+//    for (int i = 0, j = 0; i < n && j < m; ) {
+//        if (a[i] < b[j]) {
+//            i++;
+//        } else if (a[i] > b[j]) {
+//            j++;
+//        } else {
+//            i++; j++; k++;
+//        }
+//    }
+//    printf("%d ", k);
+//    return 0;
+//}
 
+#include <stdlib.h>
 
-int D[101][101] = { 0 };
-int A[101] = { 0 };
-int B[101] = { 0 };
-
-int callatz(int n)
+char* readline()
 {
-    if (n % 2 == 0) {
-        return n / 2;
-    } else {
-        return (3 * n + 1) / 2;
+    int C = 16, n = 0, c;
+    char* s = malloc(C);
+    while ((c = getchar()) != EOF) {
+        if (c == '\n')break;
+        s[n++] = c;
+        if (n == C - 1) {
+            C <<= 2;
+            char* t = malloc(C);
+            memcpy(t, s, n);
+            free(s);
+            s = t;
+        }
     }
+    s[n] = '\0';
+    return s;
+}
+
+char* readtill(char e)
+{
+    int C = 16, n = 0, c;
+    char* s = malloc(C);
+    while ((c = getchar()) != EOF) {
+        if (c == e)break;
+        s[n++] = c;
+        if (n == C - 1) {
+            C <<= 2;
+            char* t = malloc(C);
+            memcpy(t, s, n);
+            free(s);
+            s = t;
+        }
+    }
+    s[n] = '\0';
+    return s;
+}
+
+char* readlinen(int*N)
+{
+    int C = 16, n = 0, c;
+    char* s = malloc(C);
+    while ((c = getchar()) != EOF) {
+        if (c == '\n')break;
+        s[n++] = c;
+        if (n == C - 1) {
+            C <<= 2;
+            char* t = malloc(C);
+            memcpy(t, s, n);
+            free(s);
+            s = t;
+        }
+    }
+    s[n] = '\0';
+    *N = n;
+    return s;
+}
+
+int readline_static(char* s, int len)
+{
+    int c,n=0;
+    while ((c = getchar()) != EOF && n < len - 1) {
+        if (c == '\n')break;
+        s[n++] = c;
+    }
+    s[n] = '\0';
+    return n;
+}
+#include<stdio.h>
+#include<string.h>
+#include <stdlib.h>
+
+
+typedef struct Student {
+    char* name;
+    int grade;
+}Student;
+
+Student students[10000];
+
+int cmp(Student a, Student b)
+{
+    if (a.grade > b.grade) {
+        return -1;
+    } else if (a.grade < b.grade) {
+        return 1;
+    } else {
+        return strcmp(b.name, a.name);
+    }
+}
+
+int partition(Student* a, int lo, int hi)
+{
+    hi--;
+    Student pivot = a[lo];
+    while (lo < hi) {
+        while ((lo < hi) && cmp(pivot, a[hi]) <= 0) {
+            hi--;
+        }
+        a[lo] = a[hi];
+        while ((lo < hi) && cmp(a[lo], pivot) <= 0) {
+            lo++;
+        }
+        a[hi] = a[lo];
+    }
+    a[lo] = pivot;
+    return lo;
+}
+
+void quick_sort(Student* a, int lo, int hi)
+{
+    if (hi - lo < 2) return;
+    int m = partition(a, lo, hi);
+    quick_sort(a, lo, m);
+    quick_sort(a, m + 1, hi);
 }
 
 int main()
 {
-    int K, a = 0, b = 0;
-    scanf("%d", &K);
-    for (int i = 0; i < K; i++) {
-        scanf("%d", &A[a++]);
+    int n; scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        students[i].name = readtill(' ');
+        scanf("%d", &students[i].grade);
     }
-
-    for (int i = 0; i < a; i++) {
-        int c = A[i];
-        while (c != 1) {
-            if (D[A[i]][c] == 0) {
-                D[A[i]][c] = 1;
-            }
-            c = callatz(c);
-        }
+    quick_sort(students, 0, n);
+    for (int i = 0; i < n; i++) {
+        puts(students[i].name);
     }
-
-    for (int i = 0; i < a; i++) {
-        int ok = 1;
-        int n = A[i];
-        for (int j = 0; j < a; j++) {
-            int m = A[j];
-            if (!D[n][m]) {
-                ok = 0;
-                break;
-            }
-        }
-        if (ok) {
-            B[b++] = A[i];
-        }
-    }
-
-    for (int i = b - 1; i >= 0; i--) {
-        for (int j = 0; j < i; j++) {
-            if (B[j] > B[j + 1]) {
-                int t = B[j];
-                B[j] = B[j + 1];
-                B[j + 1] = t;
-            }
-        }
-    }
-
-    for (int i = b - 1; i >= 0; i--) {
-        printf("%s%d", i == b - 1 ? "" : " ", B[i]);
-    }
+    return 0;
 }
