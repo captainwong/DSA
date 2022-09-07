@@ -84,7 +84,7 @@ int main(int argc, char** argv)
 				fprintf(stderr, "%d is out of bound, file only has %d numbers\n", n, bmp.N * 8);
 				exit(1);
 			}
-			printf("%d is %s a prime\n", n, bitmapTest(&bmp, n-1) ? "not" : "");			
+			printf("%d is %sa prime\n", n, bitmapTest(&bmp, n-1) ? "not " : "");			
 		} else {
 			for (int i = 1; i <= bmp.N * 8; i++) {
 				if (!bitmapTest(&bmp, i-1)) {
