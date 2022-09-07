@@ -9,7 +9,7 @@ void usage(char* exe)
 		   "  w n file: write eratosthenes of N numbers to file, n must be a multiple of 8\n"
 		   "  r file: read eratosthenes from file and print all primes\n"
 		   "  t n: test if n is a prime\n"
-		   "  tr n file: test if n is a prime by read eratosthenes from file, tr n file\n"
+		   "  tr n file: test if n is a prime by read eratosthenes from file\n"
 		   , exe);
 	exit(1);
 }
