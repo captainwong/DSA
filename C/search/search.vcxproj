@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7a0fcbef-7d03-49f7-afb7-11d0f5f4b57e}</ProjectGuid>
-    <RootNamespace>list</RootNamespace>
+    <ProjectGuid>{38ad682a-1dc1-4a60-b7ef-8fc89b24f9cf}</ProjectGuid>
+    <RootNamespace>search</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,10 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="list.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="list.h" />
+    <ClCompile Include="search.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

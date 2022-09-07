@@ -186,10 +186,10 @@ void quick_sort(Student* a, int lo, int hi)
 
 int main()
 {
-    int n; scanf("%d", &n);
+    int n; scanf("%d\n", &n);
     for (int i = 0; i < n; i++) {
         students[i].name = readtill(' ');
-        scanf("%d", &students[i].grade);
+        scanf("%d\n", &students[i].grade);
     }
     quick_sort(students, 0, n);
     for (int i = 0; i < n; i++) {
