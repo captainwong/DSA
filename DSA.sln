@@ -223,6 +223,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eratosthenes", "C\eratosthe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack", "C\stack\stack.vcxproj", "{68F42A10-EF78-440A-A322-2B95E4ED3E4A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4.1.stack_permutation", "Exercise\4.1.stack_permutation\4.1.stack_permutation.vcxproj", "{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -757,6 +759,14 @@ Global
 		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Release|Win32.Build.0 = Release|Win32
 		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Release|x64.ActiveCfg = Release|x64
 		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Release|x64.Build.0 = Release|x64
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Debug|Win32.Build.0 = Debug|Win32
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Debug|x64.ActiveCfg = Debug|x64
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Debug|x64.Build.0 = Debug|x64
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Release|Win32.ActiveCfg = Release|Win32
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Release|Win32.Build.0 = Release|Win32
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Release|x64.ActiveCfg = Release|x64
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -842,6 +852,7 @@ Global
 		{815299A5-AFC0-461C-AE8F-2B93456989D6} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{A4CDF84D-DBB9-41E8-84A1-48C3923D125D} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{68F42A10-EF78-440A-A322-2B95E4ED3E4A} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
+		{A3AD3B27-8BD8-4420-BA47-3CDECE63F669} = {8C325F6E-862C-44AA-9F05-7A1ECF6267DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}
