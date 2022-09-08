@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{7a0fcbef-7d03-49f7-afb7-11d0f5f4b57e}</ProjectGuid>
-    <RootNamespace>list</RootNamespace>
+    <ProjectGuid>{68f42a10-ef78-440a-a322-2b95e4ed3e4a}</ProjectGuid>
+    <RootNamespace>stack</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="list.c" />
-    <ClCompile Include="tst_list.c" />
+    <ClInclude Include="..\list\list.h" />
+    <ClInclude Include="stack.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="list.h" />
+    <ClCompile Include="..\list\list.c" />
+    <ClCompile Include="stack.c" />
+    <ClCompile Include="tst_stack.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

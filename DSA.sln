@@ -221,6 +221,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bitmap", "C\bitmap\bitmap.v
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "eratosthenes", "C\eratosthenes\eratosthenes.vcxproj", "{A4CDF84D-DBB9-41E8-84A1-48C3923D125D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack", "C\stack\stack.vcxproj", "{68F42A10-EF78-440A-A322-2B95E4ED3E4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -747,6 +749,14 @@ Global
 		{A4CDF84D-DBB9-41E8-84A1-48C3923D125D}.Release|Win32.Build.0 = Release|Win32
 		{A4CDF84D-DBB9-41E8-84A1-48C3923D125D}.Release|x64.ActiveCfg = Release|x64
 		{A4CDF84D-DBB9-41E8-84A1-48C3923D125D}.Release|x64.Build.0 = Release|x64
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Debug|Win32.Build.0 = Debug|Win32
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Debug|x64.ActiveCfg = Debug|x64
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Debug|x64.Build.0 = Debug|x64
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Release|Win32.ActiveCfg = Release|Win32
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Release|Win32.Build.0 = Release|Win32
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Release|x64.ActiveCfg = Release|x64
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -831,6 +841,7 @@ Global
 		{AEBA39D2-6498-4FEA-ABC9-265E8EF2C09E} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{815299A5-AFC0-461C-AE8F-2B93456989D6} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{A4CDF84D-DBB9-41E8-84A1-48C3923D125D} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
+		{68F42A10-EF78-440A-A322-2B95E4ED3E4A} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}
