@@ -11,7 +11,7 @@ int main()
 	auto test = [](const char* expr, int expect_vaule) {
 		dtl::Vector<char> rpn;
 		float value;
-		bool res = evaluate(expr, rpn, value, dtl::WAIT_NO_WAIT); //求值
+		bool res = evaluate(expr, rpn, value, dtl::WAIT_PAUSE); //求值
 		printf("EXPR\t: %s\n", expr); //输出原表达式
 		printf("RPN\t: \n"); print(rpn); //输出RPN
 		printf("Value\t= %.1f = %d\n", value, (int)value); //输出表达式的值
