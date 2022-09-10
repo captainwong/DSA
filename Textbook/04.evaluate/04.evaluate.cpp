@@ -19,7 +19,8 @@ int main()
 	};
 
 	//test("0+(1+23)/4*5*67-8+9", 2011);
-	test("(0!+1)*2^(3!+4)-(5!-67-(8+9))", 2012);
+	//test("(0!+1)*2^(3!+4)-(5!-67-(8+9))", 2012);
+	test("-2+3*(7-4)+8/4", 13);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

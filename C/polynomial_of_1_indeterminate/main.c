@@ -30,7 +30,6 @@ https://pintia.cn/problem-sets/15/problems/710
 */
 
 #define _CRT_SECURE_NO_WARNINGS
-#if 0
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -166,69 +165,4 @@ int main()
     Polynomial product = multiply(a, b);
     print(product);
     print(sum);
-}
-#endif
-
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Node {
-    char c;
-    struct Node* l, * r;
-}Node;
-
-Node* readTree()
-{
-    int n;
-    scanf("%d\n", &n);
-    Node** d = malloc(n * sizeof(Node*));
-    int check[10] = { 0 };
-    for (int i = 0; i < n; i++) {
-        d[i] = malloc(sizeof(Node));
-        d[i]->c = 0;
-        d[i]->l = d[i]->r = NULL;
-    }
-    for (int i = 0; i < n; i++) {
-        char c, l, r;
-        scanf("%c %c %c\n", &c, &l, &r);
-        d[i]->c = c;
-        if (l == '-') {
-            d[i]->l = NULL;
-        } else {
-            d[i]->l = d[l - '0'];
-            check[l - '0'] = 1;
-        }
-        if (r == '-') {
-            d[i]->r = NULL;
-        } else {
-            d[i]->r = d[r - '0'];
-            check[r - '0'] = 1;
-        }
-    }
-    Node* root = NULL;
-    for (int i = 0; i < n; i++) {
-        if (!check[i]) {
-            root = d[i];
-            break;
-        }
-    }
-    free(d);
-    return root;
-}
-
-int isIsomorphic(Node* a, Node* b)
-{
-    if (!a && !b) { return 1; }
-    if (!a || !b) return 0;
-    if (a->c != b->c) return 0;
-    return (isIsomorphic(a->l, b->l) && isIsomorphic(a->r, b->r)) ||
-        (isIsomorphic(a->l, b->r) && isIsomorphic(a->r, b->l));
-
-}
-
-int main()
-{
-    Node* t1 = readTree();
-    Node* t2 = readTree();
-    printf("%s\n", isIsomorphic(t1, t2) ? "Yes" : "No");
 }
