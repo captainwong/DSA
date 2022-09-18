@@ -22,6 +22,16 @@ struct Item {
         return *this;
     }
 
+    Item operator/(const Item& rhs) const {
+        return Item{ coefficient / rhs.coefficient, exponent - rhs.exponent };
+    }
+    
+    Item& operator/=(const Item& rhs) {
+        coefficient /= rhs.coefficient;
+        exponent -= rhs.exponent;
+        return *this;
+    }
+
     std::string toString() const {
         return std::to_string(coefficient) + " " + std::to_string(exponent);
     }
@@ -32,6 +42,9 @@ using ItemPtr = std::shared_ptr<Item>;
 struct Polynomial {
     std::list<ItemPtr> items{};
 
+    bool empty() const {
+        return items.empty() || (items.size() == 1 && items.front()->coefficient == 0);
+    }
 
     void append(Item item, bool force = false) {
         if (item.coefficient == 0 && !force) {
@@ -40,6 +53,10 @@ struct Polynomial {
 
         if (items.empty()) {
             items.push_back(std::make_shared<Item>(item));
+            return;
+        } else if (items.size() == 1 && items.front()->coefficient == 0) {
+            items.front()->coefficient = item.coefficient;
+            items.front()->exponent = item.exponent;
             return;
         }
 
@@ -118,7 +135,6 @@ struct Polynomial {
     // 化繁，使得从最高次幂到最低次幂，每项都有元素（以系数为0的元素填充）
     void complicate() {
         simplify();
-        if (items.size() < 2) { return; }
         auto front = items.front();
         auto back = items.back();
         for (int i = 0; i < front->exponent; i++) {
@@ -139,6 +155,18 @@ struct Polynomial {
         c.simplify();
         return c;
     }
+    
+    Polynomial operator-(const Polynomial& rhs) const {
+        Polynomial c;
+        for (const auto& item : items) {
+            c.append(*item);
+        }
+        for (const auto& item : rhs.items) {
+            c.append(Item{ -item->coefficient, item->exponent });
+        }
+        c.simplify();
+        return c;
+    }
 
     Polynomial operator*(const Polynomial& rhs) const {
         Polynomial c;
@@ -151,10 +179,33 @@ struct Polynomial {
         return c;
     }
 
-    Polynomial operator/(const Polynomial& rhs) const {
-        // TODO
+    Polynomial operator*(const Item& rhs) const {
+        Polynomial c;
+        for (const auto& i : items) {
+            c.append(*i * rhs);
+        }
+        c.simplify();
+        return c;
     }
 
+    Polynomial operator/(const Polynomial& rhs) const {
+        Polynomial dividend = *this, divisor = rhs, res;
+        dividend.complicate();
+        divisor.complicate();
+        res.justify();
+        if (divisor.empty() || divisor.items.front()->exponent > dividend.items.front()->exponent) {
+            return res;
+        }
+
+        while (!dividend.empty() && dividend.items.front()->exponent >= divisor.items.front()->exponent) {
+            Item t = dividend.items.front()->operator/(*(divisor.items.front()));
+            res.append(t);
+            auto sub = (divisor * t);
+            dividend = dividend - sub;
+        }
+
+        return res;
+    }
 
     std::string toString() {
         justify();
@@ -209,17 +260,44 @@ void test_pta_710()
 
 void test_整式除法()
 {
+    // (x^3 - 2x^2 - 4) / (x - 3) = (x^2 + x + 3) 余 5
+    {
+        Polynomial a; // x^3 - 2x^2 - 4
+        a.append(Item({ 1,3 }));
+        a.append(Item({ -2,2 }));
+        a.append(Item({ -4,0 }));
+        Polynomial b; // x - 3
+        b.append(Item({ 1,1 }));
+        b.append(Item({ -3,0 }));
 
+
+        auto res = a / b; // should be x^2 + x + 3
+        assert(res.toString() == "1 2 1 1 3 0");
+
+    }
+
+    // (x^4 - 2x^3 + 2x^2 - x - 6) / (x + 1) = (x^3 - 3x^2 + 5x - 6)
+    {
+        Polynomial a;
+        a.append(Item({ 1,4 }));
+        a.append(Item({ -2,3 }));
+        a.append(Item({ 2,2 }));
+        a.append(Item({ -1,1 }));
+        a.append(Item({ -6,0 }));
+        Polynomial b;
+        b.append(Item({ 1,1 }));
+        b.append(Item({ 1,0 }));
+
+
+        auto res = a / b;
+        assert(res.toString() == "1 3 -3 2 5 1 -6 0");
+    }
 }
 
 
 int main()
 {    
     test_pta_710();
+    test_整式除法();
 
-    Polynomial p;
-    p.append(Item{ 1, 4 });
-    p.append(Item{ 1, 3 });
-    p.append(Item{ 1, 2 });
-    p.append(Item{ 1, 1 });
 }
