@@ -10,12 +10,13 @@ void usage(char* exe)
 		   "  r file: read eratosthenes from file and print all primes\n"
 		   "  t n: test if n is a prime\n"
 		   "  tr n file: test if n is a prime by read eratosthenes from file\n"
+		   "  oj n: generate prime table for oj\n"
 		   , exe);
 	exit(1);
 }
 
 typedef enum Command {
-	W,R,T,TR
+	W,R,T,TR,OJ
 }Command;
 
 int main(int argc, char** argv)
@@ -43,6 +44,10 @@ int main(int argc, char** argv)
 		if (argc < 4) usage(argv[0]);
 		n = atoi(argv[2]);
 		file = argv[3];
+	} else if (strcmp("oj", argv[1]) == 0) {
+		cmd = OJ;
+		if (argc < 3) usage(argv[0]);
+		n = atoi(argv[2]);
 	} else {
 		usage(argv[0]);
 	}	
@@ -52,6 +57,7 @@ int main(int argc, char** argv)
 	switch (cmd) {
 	case W:
 	case T:
+	case OJ:
 	{
 		bitmapInit(&bmp, n);
 		bitmapSet(&bmp, 0);
@@ -67,7 +73,13 @@ int main(int argc, char** argv)
 				fprintf(stderr, "dump bitmap to file \"%s\" failed\n", file);
 				exit(1);
 			}
-		} else {
+		} else if (cmd == OJ) {
+			printf("static const int PRIME_%d[%d]={0", n,n);
+			for (int i = 0; i < n-1; i++) {
+				printf(", %d", !bitmapTest(&bmp, i));
+			}
+			printf("};\n");
+		} else { // T
 			printf("%d is %s a prime\n", n, bitmapTest(&bmp, n-1) ? "not" : "");
 		}
 		break;
