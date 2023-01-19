@@ -159,7 +159,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DFA2CDDC-8
 		include\test\test_priority_quque.h = include\test\test_priority_quque.h
 		include\test\test_queue.h = include\test\test_queue.h
 		include\test\test_stack.h = include\test\test_stack.h
-		include\test\test_statck.h = include\test\test_statck.h
 		include\test\test_vector.h = include\test\test_vector.h
 	EndProjectSection
 EndProject
@@ -234,6 +233,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prefix_expression", "C\prefix_expression\prefix_expression.vcxproj", "{CA6770D0-0444-4014-9D30-F3D88AEDB6B1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2stack_as_q", "C\2stack_as_q\2stack_as_q.vcxproj", "{8EC607DF-69D0-4862-B7C4-B71E7E832349}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pq_complete_bin_heap_as_vector", "C\pq_complete_bin_heap_as_vector\pq_complete_bin_heap_as_vector.vcxproj", "{E6350213-C665-4366-ADE1-72DF807A1C03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -817,6 +818,14 @@ Global
 		{8EC607DF-69D0-4862-B7C4-B71E7E832349}.Release|Win32.Build.0 = Release|Win32
 		{8EC607DF-69D0-4862-B7C4-B71E7E832349}.Release|x64.ActiveCfg = Release|x64
 		{8EC607DF-69D0-4862-B7C4-B71E7E832349}.Release|x64.Build.0 = Release|x64
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Debug|Win32.Build.0 = Debug|Win32
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Debug|x64.ActiveCfg = Debug|x64
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Debug|x64.Build.0 = Debug|x64
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Release|Win32.ActiveCfg = Release|Win32
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Release|Win32.Build.0 = Release|Win32
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Release|x64.ActiveCfg = Release|x64
+		{E6350213-C665-4366-ADE1-72DF807A1C03}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -908,6 +917,7 @@ Global
 		{2630EFF4-C01F-405F-BD6E-FD3913C98AEA} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{CA6770D0-0444-4014-9D30-F3D88AEDB6B1} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{8EC607DF-69D0-4862-B7C4-B71E7E832349} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
+		{E6350213-C665-4366-ADE1-72DF807A1C03} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}
