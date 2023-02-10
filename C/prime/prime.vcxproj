@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a4cdf84d-dbb9-41e8-84a1-48c3923d125d}</ProjectGuid>
-    <RootNamespace>eratosthenes</RootNamespace>
+    <ProjectGuid>{7060e8c3-55a1-47f8-9ffc-a4126b54103a}</ProjectGuid>
+    <RootNamespace>prime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,11 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\bitmap\bitmap.c" />
-    <ClCompile Include="eratosthenes.c" />
+    <ClInclude Include="prime.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\bitmap\bitmap.h" />
+    <ClCompile Include="tst_prime.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,15 +15,47 @@ void usage(char* exe)
 	exit(1);
 }
 
-typedef enum Command {
-	W,R,T,TR,OJ
-}Command;
+typedef enum {
+	W, R, T, TR, OJ
+}command;
+
+#define TEST_4KP3 0
+
+#if TEST_4KP3
+static void test_4k_plus3() {
+	const size_t N = 0x00FFFF;
+	bitmap_t* bmp = bitmap_create(N);
+	bitmap_set(bmp, 0);
+	for (size_t i = 2; i <= N; i++) {
+		if (!bitmap_test(bmp, i - 1)) {
+			for (size_t j = min(46340, i) * min(46340, i); j <= N; j += i) {
+				bitmap_set(bmp, j - 1);
+			}
+		}
+	}
+
+	for (size_t i = 3; i < N; i += 4) {
+		if (bitmap_test(bmp, i - 1) && i % 4 == 3) {
+			printf("%d ", i);
+		}
+	}
+	bitmap_free(bmp);
+}
+#endif
 
 int main(int argc, char** argv)
 {
-	Command cmd = T;
-	int n;
+#if TEST_4KP3
+	test_4k_plus3();
+	return 0;
+#endif
+
+	int n = 0;
+	size_t N = 0;
 	char* file = NULL;
+	bitmap_t* bmp = NULL;
+	command cmd = T;
+
 	if (argc < 2) usage(argv[0]);
 	if (strcmp("w", argv[1]) == 0) {
 		cmd = W;
@@ -50,56 +82,61 @@ int main(int argc, char** argv)
 		n = atoi(argv[2]);
 	} else {
 		usage(argv[0]);
-	}	
+	}
 
-	Bitmap bmp = { 0 };
+	if (n < 1) {
+		fprintf(stderr, "N must bigger than 0");
+		return -1;
+	}
+	N = n;
 
 	switch (cmd) {
 	case W:
 	case T:
 	case OJ:
 	{
-		bitmapInit(&bmp, n);
-		bitmapSet(&bmp, 0);
-		for (int i = 2; i <= n; i++) {
-			if (!bitmapTest(&bmp, i-1)) {
-				for (int j = min(46340, i) * min(46340, i); j <= n; j += i) {
-					bitmapSet(&bmp, j-1);
+		bmp = bitmap_create(N);
+		bitmap_set(bmp, 0);
+		for (size_t i = 2; i <= N; i++) {
+			if (!bitmap_test(bmp, i - 1)) {
+				for (size_t j = min(46340, i) * min(46340, i); j <= N; j += i) {
+					bitmap_set(bmp, j - 1);
 				}
 			}
 		}
 		if (cmd == W) {
-			if (0 != bitmapDump(&bmp, file)) {
+			if (0 != bitmap_dump(bmp, file)) {
 				fprintf(stderr, "dump bitmap to file \"%s\" failed\n", file);
 				exit(1);
 			}
 		} else if (cmd == OJ) {
-			printf("static const int PRIME_%d[%d]={0", n,n);
-			for (int i = 0; i < n-1; i++) {
-				printf(", %d", !bitmapTest(&bmp, i));
+			printf("static const int PRIME_%d[%d]={0", N, N);
+			for (size_t i = 0; i < N - 1; i++) {
+				printf(", %d", !bitmap_test(bmp, i));
 			}
 			printf("};\n");
 		} else { // T
-			printf("%d is %s a prime\n", n, bitmapTest(&bmp, n-1) ? "not" : "");
+			printf("%d is %s a prime\n", N, bitmap_test(bmp, N - 1) ? "not" : "");
 		}
 		break;
 	}
 	case R:
 	case TR:
 	{
-		if (0 != bitmapLoad(&bmp, file)) {
+		bmp = bitmap_load(file);
+		if (!bmp) {
 			fprintf(stderr, "load bitmap from file \"%s\" failed\n", file);
 			exit(1);
 		}
 		if (cmd == TR) {
-			if (n > bmp.N * 8) {
-				fprintf(stderr, "%d is out of bound, file only has %d numbers\n", n, bmp.N * 8);
+			if (N > bmp->N * 8) {
+				fprintf(stderr, "%d is out of bound, file only has %d numbers\n", N, bmp->N * 8);
 				exit(1);
 			}
-			printf("%d is %sa prime\n", n, bitmapTest(&bmp, n-1) ? "not " : "");			
+			printf("%d is %sa prime\n", N, bitmap_test(bmp, N - 1) ? "not " : "");
 		} else {
-			for (int i = 1; i <= bmp.N * 8; i++) {
-				if (!bitmapTest(&bmp, i-1)) {
+			for (size_t i = 1; i <= bmp->N * 8; i++) {
+				if (!bitmap_test(bmp, i - 1)) {
 					printf("%d ", i);
 				}
 			}
@@ -108,4 +145,6 @@ int main(int argc, char** argv)
 	}
 	}
 
+	bitmap_free(bmp);
+	return 0;
 }
