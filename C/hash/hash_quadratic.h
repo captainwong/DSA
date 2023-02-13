@@ -22,7 +22,7 @@
 
 #include <stdint.h>
 
-#define USE_HT 1
+#define USE_HT 0
 
 #define HASH_OK 0
 #define HASH_ERR 1
@@ -35,6 +35,11 @@
 #define HASH_TABLE_MAX_LOAD_FACTOR 0.75f
 #define HASH_TABLE_MIN_LOAD_FACTOR 0.2f
 
+enum entry_state {
+	ENTRY_STATE_LEGITIMATE,
+	ENTRY_STATE_DELETED,
+};
+
 typedef struct {
 	void* key;
 	union {
@@ -43,17 +48,18 @@ typedef struct {
 		int64_t s64;
 		double d;
 	}v;
+	enum entry_state state;
 }entry_t;
 
 typedef struct hash_s hash_t;
 
 typedef struct {
 	uint64_t(*hash)(const void* key);
-	void* (*key_dup)(hash_t* h, const void* key);
-	void* (*val_dup)(hash_t* h, const void* obj);
-	void (*key_free)(hash_t* h, void* key);
-	void (*val_free)(hash_t* h, void* obj);
 	int (*key_compare)(hash_t* h, const void* k1, const void* k2);
+	void* (*key_dup)(hash_t* h, const void* key);
+	void (*key_free)(hash_t* h, void* key);
+	void* (*val_dup)(hash_t* h, const void* obj);
+	void (*val_free)(hash_t* h, void* obj);
 }hash_type_t;
 
 struct hash_s {
@@ -68,7 +74,7 @@ struct hash_s {
 
 #define hash_free_val(h, entry) \
 	do { \
-		if ((h)->type->val_free) \
+		if ((entry)->v.val && (h)->type->val_free) \
 			(h)->type->val_free((h), (entry)->v.val); \
 	} while (0);
 
@@ -97,8 +103,8 @@ struct hash_s {
 
 #define hash_free_key(h, entry) \
 	do { \
-		if ((h)->type->key_free) \
-			(h)->type->key_free((h), (entry)->k); \
+		if ((entry)->key && (h)->type->key_free) \
+			(h)->type->key_free((h), (entry)->key); \
 	} while (0);
 
 #define hash_set_key(h, entry, _key_) \
@@ -127,13 +133,17 @@ struct hash_s {
 void hash_set_hash_function_seed(uint8_t* seed);
 uint64_t hash_gen_hash_function(const void* key, size_t len);
 hash_t* hash_create(hash_type_t* type);
+void hash_clear(hash_t* h);
 void hash_free(hash_t* h);
 float hash_load_factor(hash_t* h);
 void hash_rehash(hash_t* h);
 int hash_insert(hash_t* h, void* key, void* val);
 entry_t* hash_insert_raw(hash_t* h, void* key, void* val, entry_t** existing);
-void hash_remove(hash_t* h, const void* key);
+int hash_remove(hash_t* h, const void* key);
+entry_t* hash_take(hash_t* h, const void* key);
+void hash_free_taken_entry(hash_t* h, entry_t* he);
 entry_t* hash_find(hash_t* h, const void* key);
+entry_t* hash_get_random_key(hash_t* h);
 void* hash_retrieve_value(hash_t* h, const void* key);
 
 

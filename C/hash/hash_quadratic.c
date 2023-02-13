@@ -1,3 +1,13 @@
+#if defined(_MSC_VER) && defined(_DEBUG)
+#define AVP_DUMP_MEM_LEAK
+#endif
+
+// Necessary includes and defines for memory leak detection:
+#ifdef AVP_DUMP_MEM_LEAK
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+#endif
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -54,8 +64,8 @@ static int next_4kp3_prime(int n) {
  * and the optional output parameter may be filled.
  */
 static long _hash_find(hash_t* h, const void* key, uint64_t hash, entry_t** existing) {
-	long i = 0;
-	long pos, cur;
+	long long i = 0;
+	long long pos, cur;
 #if USE_HT
 	pos = cur = hash & (h->size - 1);
 #else
@@ -63,18 +73,30 @@ static long _hash_find(hash_t* h, const void* key, uint64_t hash, entry_t** exis
 #endif
 	if (existing) *existing = NULL;
 
-	while (h->entries[pos] && !hash_compare_keys(h, key, h->entries[pos]->key)) {
+	sizeof(int);
+	sizeof(long long);
+
+	while (h->entries[pos] &&
+		   h->entries[pos]->state == ENTRY_STATE_LEGITIMATE &&
+		   !hash_compare_keys(h, key, h->entries[pos]->key)) {
+		if (i == 46340) {
+			int j = 0;
+		}
 		if (++i % 2) {
 			pos = cur + (i + 1) * (i + 1) / 4;
-			if (pos >= h->size)
+			while (pos >= h->size)
 				pos %= h->size;
 		} else {
 			pos = cur - i * i / 4;
 			while (pos < 0)
 				pos += h->size;
 		}
+		if (pos >= h->size) {
+			int j = 0;
+		}
 	}
-	if (h->entries[pos]) {
+	if (h->entries[pos] &&
+		h->entries[pos]->state == ENTRY_STATE_LEGITIMATE) {
 		if (existing) *existing = h->entries[pos];
 		return -1;
 	}
@@ -107,8 +129,21 @@ hash_t* hash_create(hash_type_t* type)
 	return h;
 }
 
+void hash_clear(hash_t* h)
+{
+	for (unsigned int i = 0; i < h->size; i++) {
+		if (h->entries[i]) {
+			hash_free_taken_entry(h, h->entries[i]);
+			h->entries[i] = NULL;
+		}
+	}
+
+	h->used = 0;
+}
+
 void hash_free(hash_t* h)
 {
+	hash_clear(h);
 	free(h->entries);
 	free(h);
 }
@@ -152,15 +187,19 @@ void hash_rehash(hash_t* h)
 
 	for (unsigned long i = 0; i < h->size; i++) {
 		if (h->entries[i]) {
+			if (h->entries[i]->state == ENTRY_STATE_LEGITIMATE) {
 #if USE_HT
-			uint64_t hash = hash_hash_key(&tmph, h->entries[i]->key) & (size - 1);
+				uint64_t hash = hash_hash_key(&tmph, h->entries[i]->key) & (size - 1);
 #else
-			uint64_t hash = hash_hash_key(&tmph, h->entries[i]->key) % size;
+				uint64_t hash = hash_hash_key(&tmph, h->entries[i]->key) % size;
 #endif
-			long idx = _hash_find(&tmph, h->entries[i]->key, hash, NULL);
-			assert(idx != -1);
-			tmph.entries[idx] = h->entries[i];
-			tmph.used++;
+				long idx = _hash_find(&tmph, h->entries[i]->key, hash, NULL);
+				assert(idx != -1);
+				tmph.entries[idx] = h->entries[i];
+				tmph.used++;
+			} else {
+				hash_free_taken_entry(h, h->entries[i]);
+			}
 		}
 	}
 	assert(tmph.used == h->used);
@@ -211,15 +250,22 @@ entry_t* hash_insert_raw(hash_t* h, void* key, void* val, entry_t** existing)
 	long idx = _hash_find(h, key, hash, existing);
 	if (idx == -1) return NULL;
 
-	he = malloc(sizeof * he);
-	if (!he) {
-		WARN_NO_MEM;
-		return NULL;
+	if (h->entries[idx]) {
+		assert(h->entries[idx]->state == ENTRY_STATE_DELETED);
+		he = h->entries[idx];
+		hash_free_key(h, he);
+		hash_free_val(h, he);
+	} else {
+		he = malloc(sizeof * he);
+		if (!he) {
+			WARN_NO_MEM;
+			return NULL;
+		}
 	}
 
 	h->entries[idx] = he;
 	hash_set_key(h, he, key);
-
+	he->state = ENTRY_STATE_LEGITIMATE;
 	h->used++;
 	if (hash_load_factor(h) >= HASH_TABLE_MAX_LOAD_FACTOR)
 		hash_rehash(h);
@@ -227,27 +273,23 @@ entry_t* hash_insert_raw(hash_t* h, void* key, void* val, entry_t** existing)
 	return he;
 }
 
-void hash_remove(hash_t* h, const void* key)
-{
-	/*position_t pos = hash_find(h, key);
-	if (h->entries[pos].key == key && h->entries[pos].state == LEGITIMATE) {
-		h->entries[pos].state = DELETED;
-		--h->used;
-	}*/
-}
-
-entry_t* hash_find(hash_t* h, const void* key)
-{
-	int i = 0;
-	long pos, cur;
+/* Search and remove an element. This is a helper function for
+ * hash_remove() and hash_take(), please check the top comment
+ * of those functions. */
+static entry_t* hash_generic_remove(hash_t* h, const void* key, int nofree) {
+	long long i = 0;
+	long long pos, cur;
 
 	if (h->used == 0) return NULL;
+
 #if USE_HT
-	pos = cur = hash_hash_key(h, key) & (h->size-1);
+	pos = cur = hash_hash_key(h, key) & (h->size - 1);
 #else
 	pos = cur = hash_hash_key(h, key) % h->size;
 #endif
-	while (h->entries[pos] && !hash_compare_keys(h, key, h->entries[pos]->key)) {
+
+	while (h->entries[pos] &&
+		   !hash_compare_keys(h, key, h->entries[pos]->key)) {
 		if (++i % 2) {
 			pos = cur + (i + 1) * (i + 1) / 4;
 			if (pos >= h->size)
@@ -259,11 +301,111 @@ entry_t* hash_find(hash_t* h, const void* key)
 		}
 	}
 
+	if (h->entries[pos] && h->entries[pos]->state == ENTRY_STATE_LEGITIMATE) {
+		if (!nofree) {
+			entry_t* he = h->entries[pos];
+			h->entries[pos] = malloc(sizeof(entry_t));
+			if (!h->entries[pos]) {
+				WARN_NO_MEM;
+				abort();
+			}
+			hash_set_key(h, h->entries[pos], he->key);
+			hash_set_val(h, h->entries[pos], he->v.val);
+
+			hash_free_taken_entry(h, he);
+		}
+		h->entries[pos]->state = ENTRY_STATE_DELETED;
+		h->used--;
+		return h->entries[pos];
+	}
+
+	return NULL;
+}
+
+/* Remove an element, returning HASH_OK on success or HASH_ERR if the
+ * element was not found. */
+int hash_remove(hash_t* h, const void* key)
+{
+	return hash_generic_remove(h, key, 0) ? HASH_OK : HASH_ERR;
+}
+
+/* Remove an element from the table, but without actually releasing
+ * the key, value and dictionary entry. The dictionary entry is returned
+ * if the element was found (and removed from the table), and the user
+ * should later call `hash_free_taken_entry()` with it in order to release it.
+ * Otherwise if the key is not found, NULL is returned.
+ *
+ * This function is useful when we want to remove something from the hash
+ * table but want to use its value before actually deleting the entry.
+ * Without this function the pattern would require two lookups:
+ *
+ *  entry = hash_find(...);
+ *  // Do something with entry
+ *  hash_remove(dictionary,entry);
+ *
+ * Thanks to this function it is possible to avoid this, and use
+ * instead:
+ *
+ * entry = hash_take(dictionary,entry);
+ * // Do something with entry
+ * hash_free_taken_entry(entry); // <- This does not need to lookup again.
+ */
+entry_t* hash_take(hash_t* h, const void* key)
+{
+	return hash_generic_remove(h, key, 1);
+}
+
+void hash_free_taken_entry(hash_t* h, entry_t* he)
+{
+	if (he == NULL) return;
+	hash_free_key(h, he);
+	hash_free_val(h, he);
+	free(he);
+}
+
+entry_t* hash_find(hash_t* h, const void* key)
+{
+	long long i = 0;
+	long long pos, cur;
+
+	if (h->used == 0) return NULL;
+#if USE_HT
+	pos = cur = hash_hash_key(h, key) & (h->size-1);
+#else
+	pos = cur = hash_hash_key(h, key) % h->size;
+#endif
+	while (h->entries[pos] &&
+		   !hash_compare_keys(h, key, h->entries[pos]->key)) {
+		if (++i % 2) {
+			pos = cur + (i + 1) * (i + 1) / 4;
+			if (pos >= h->size)
+				pos %= h->size;
+		} else {
+			pos = cur - i * i / 4;
+			while (pos < 0)
+				pos += h->size;
+		}
+	}
+
+	if (h->entries[pos] && h->entries[pos]->state == ENTRY_STATE_DELETED) {
+		return NULL;
+	}
+
 	return h->entries[pos];
+}
+
+entry_t* hash_get_random_key(hash_t* h)
+{
+	entry_t* he = NULL;
+	if (h->used == 0) return NULL;
+	do {
+		he = h->entries[rand() % h->size];
+	} while (he == NULL || he->state != ENTRY_STATE_LEGITIMATE);
+	return he;
 }
 
 void* hash_retrieve_value(hash_t* h, const void* key)
 {
-	//return h->entries[p].key;
+	//return h->entries[p].key; 
 }
 
