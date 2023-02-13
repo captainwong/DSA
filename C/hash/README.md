@@ -1,6 +1,6 @@
-test result:
+## `Hash Set using open addressing with quadratic probing by alternating signs`  test result:
 
-with `USE_HT` off:
+### with `USE_HT` off:
 
 ```
 Inserting: 5000000 items in 3942 ms
@@ -13,7 +13,7 @@ Removing and adding: 5000000 items in 5538 ms
 Linear access of existing elements: 5000000 items in 3033 ms
 ```
 
-with `USE_HT` on:
+### with `USE_HT` on:
 
 ```
 Inserting: 5000000 items in 3474 ms
@@ -26,7 +26,7 @@ Removing and adding: 5000000 items in 4779 ms
 Linear access of existing elements: 5000000 items in 2510 ms
 ```
 
-compare to `redis`:
+### compare to `redis`:
 
 ```
 Inserting: 5000000 items in 3329 ms
