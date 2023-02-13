@@ -240,6 +240,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hash", "C\hash\hash.vcxproj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prime", "C\prime\prime.vcxproj", "{7060E8C3-55A1-47F8-9FFC-A4126B54103A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hash-from-redis", "C\hash-from-redis\hash-from-redis.vcxproj", "{CB6A3F12-4B21-40D3-B251-714AC190AE6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -846,6 +848,14 @@ Global
 		{7060E8C3-55A1-47F8-9FFC-A4126B54103A}.Release|Win32.Build.0 = Release|Win32
 		{7060E8C3-55A1-47F8-9FFC-A4126B54103A}.Release|x64.ActiveCfg = Release|x64
 		{7060E8C3-55A1-47F8-9FFC-A4126B54103A}.Release|x64.Build.0 = Release|x64
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Debug|Win32.Build.0 = Debug|Win32
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Debug|x64.ActiveCfg = Debug|x64
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Debug|x64.Build.0 = Debug|x64
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Release|Win32.ActiveCfg = Release|Win32
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Release|Win32.Build.0 = Release|Win32
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Release|x64.ActiveCfg = Release|x64
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -940,6 +950,7 @@ Global
 		{E6350213-C665-4366-ADE1-72DF807A1C03} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{50D50E87-A16B-4BCB-99E2-961703228520} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 		{7060E8C3-55A1-47F8-9FFC-A4126B54103A} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
+		{CB6A3F12-4B21-40D3-B251-714AC190AE6A} = {4783E72A-7C0F-45A8-83A9-8ED286389AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8250DDFB-05F2-4222-8537-ABA9B5B70445}
