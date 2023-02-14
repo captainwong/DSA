@@ -3,6 +3,8 @@ CFLAGS +=
 
 OUTDIR = ./bin
 
+all: mkdir cny eratosthenes hash hash-from-redis
+
 mkdir:
 	@mkdir -p ${OUTDIR}
 
@@ -10,6 +12,11 @@ cny: mkdir cny/cny.c
 	$(CC) cny/cny.c \
 	$(CFLAGS) \
 	-o ${OUTDIR}/cny
+
+eratosthenes: mkdir bitmap/bitmap.h bitmap/bitmap.c eratosthenes/eratosthenes.c
+	${CC} bitmap/bitmap.c eratosthenes/eratosthenes.c \
+	$(CFLAGS) \
+	-o ${OUTDIR}/eratosthenes
 
 hash: mkdir hash/hash_quadratic.h hash/hash_quadratic.c hash/hash_seperate_chaining.h hash/hash_seperate_chaining.c \
 	hash/hash_test.c hash/siphash.c
