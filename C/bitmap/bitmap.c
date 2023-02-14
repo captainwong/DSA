@@ -1,8 +1,8 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 #include "bitmap.h"
-
 
 static int expand(bitmap_t* bmp, size_t k) {
 	size_t n;

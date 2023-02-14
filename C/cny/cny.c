@@ -55,6 +55,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <assert.h>
+#include <inttypes.h>
 
 static const char* digits[] = {
 	"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖",
@@ -236,7 +237,7 @@ end:
 
 void usage(char* exe)
 {
-	fprintf(stderr, "usage: %s cny\ncny must in [0.00, %llu.99]\n", exe, UINT64_MAX);
+	fprintf(stderr, "usage: %s cny\ncny must in [0.00, %" PRIu64 ".99]\n", exe, UINT64_MAX);
 	exit(1);
 }
 
@@ -334,7 +335,7 @@ int read_cny_from_stdin(uint64_t* py, uint32_t* pf)
 
 void test(uint64_t y, int32_t f, const char* str)
 {
-	printf("testing %llu.%u...", y, f);
+	printf("testing %" PRIu64 ".%02" PRId32 "...", y, f);
 	char* s = cny(y, f);
 	if (strcmp(s, str) == 0) { printf("OK\n"); }
 	else { printf("\nERROR, should be %s\n", str); }

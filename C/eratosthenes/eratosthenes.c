@@ -43,6 +43,8 @@ static void test_4k_plus3() {
 }
 #endif
 
+#define minint(a, b) ((a) < (b) ? (a) : (b))
+
 int main(int argc, char** argv)
 {
 #if TEST_4KP3
@@ -99,7 +101,7 @@ int main(int argc, char** argv)
 		bitmap_set(bmp, 0);
 		for (size_t i = 2; i <= N; i++) {
 			if (!bitmap_test(bmp, i - 1)) {
-				for (size_t j = min(46340, i) * min(46340, i); j <= N; j += i) {
+				for (size_t j = minint(46340, i) * minint(46340, i); j <= N; j += i) {
 					bitmap_set(bmp, j - 1);
 				}
 			}
@@ -110,13 +112,13 @@ int main(int argc, char** argv)
 				exit(1);
 			}
 		} else if (cmd == OJ) {
-			printf("static const int PRIME_%d[%d]={0", N, N);
+			printf("static const int PRIME_%zu[%zu]={0", N, N);
 			for (size_t i = 0; i < N - 1; i++) {
 				printf(", %d", !bitmap_test(bmp, i));
 			}
 			printf("};\n");
 		} else { // T
-			printf("%d is %s a prime\n", N, bitmap_test(bmp, N - 1) ? "not" : "");
+			printf("%zu is %s a prime\n", N, bitmap_test(bmp, N - 1) ? "not" : "");
 		}
 		break;
 	}
@@ -130,14 +132,14 @@ int main(int argc, char** argv)
 		}
 		if (cmd == TR) {
 			if (N > bmp->N * 8) {
-				fprintf(stderr, "%d is out of bound, file only has %d numbers\n", N, bmp->N * 8);
+				fprintf(stderr, "%zu is out of bound, file only has %zu numbers\n", N, bmp->N * 8);
 				exit(1);
 			}
-			printf("%d is %sa prime\n", N, bitmap_test(bmp, N - 1) ? "not " : "");
+			printf("%zu is %sa prime\n", N, bitmap_test(bmp, N - 1) ? "not " : "");
 		} else {
 			for (size_t i = 1; i <= bmp->N * 8; i++) {
 				if (!bitmap_test(bmp, i - 1)) {
-					printf("%d ", i);
+					printf("%zu ", i);
 				}
 			}
 		}
