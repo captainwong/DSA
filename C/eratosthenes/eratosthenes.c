@@ -86,11 +86,13 @@ int main(int argc, char** argv)
 		usage(argv[0]);
 	}
 
-	if (n < 1) {
-		fprintf(stderr, "N must bigger than 0");
-		return -1;
+	if (cmd != R) {
+		if (n < 1) {
+			fprintf(stderr, "N must bigger than 0");
+			return -1;
+		}
+		N = n;
 	}
-	N = n;
 
 	switch (cmd) {
 	case W:
