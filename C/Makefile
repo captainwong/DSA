@@ -6,6 +6,11 @@ OUTDIR = ./bin
 mkdir:
 	@mkdir -p ${OUTDIR}
 
+cny: mkdir cny/cny.c
+	$(CC) cny/cny.c \
+	$(CFLAGS) \
+	-o ${OUTDIR}/cny
+
 hash: mkdir hash/hash_quadratic.h hash/hash_quadratic.c hash/hash_seperate_chaining.h hash/hash_seperate_chaining.c \
 	hash/hash_test.c hash/siphash.c
 	$(CC) hash/hash_quadratic.c hash/hash_seperate_chaining.c hash/hash_test.c hash/siphash.c \

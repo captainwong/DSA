@@ -1,56 +1,54 @@
-
+﻿
 /*
-�ο����ӣ�https://tool.gaodun.com/rmb.html
+参考链接：https://tool.gaodun.com/rmb.html
 
-����ҽ���õ������Ĵ�д�������£�
+人民币金额用到的中文大写汉字如下：
 
-�㡢Ҽ���������������顢½���⡢�ơ�����ʰ���ۡ�Ǫ�����ڡ�
+零、壹、贰、叁、肆、伍、陆、柒、捌、玖、拾、佰、仟、万、亿。
 
-����ҳ�ʶ
+人民币常识
 
-����ң���дΪRMB�����ҹ���½�����ķ������ң�����ÿ���˼������춼Ҫ�Ӵ�������һ���֧Ʊ����������Ҵ�д���д�����źܶ��˵����⡣
-���������п�����������Ϥ���ּ򵥵Ķ�������������ʵ������д��
-�������ISO 4217���ΪCNY��China Yuan�������ü�дΪRMB��Ren Min Bi��������һ��ҵķ����ǡ� ������'Y'+'='��������Ϊ��YUAN����
-����Ұ��ղ��ϵ���Ȼ���Ի��֣��н����ң����Ӳ�ң��� ֽ�ң���Ƴ�Ʊ����
-����ֽ�ҡ�Ӳ�Ҿ��ȼ���ͨ�������ѷ�������������ҡ�
+人民币（缩写为RMB）是我国大陆地区的法定货币，尽管每个人几乎天天都要接触到人民币或者支票，但是人民币大写如何写是困扰很多人的问题。
+尽管生活中看起来极其熟悉而又简单的东西，但发现其实并不会写。
+人民币在ISO 4217简称为CNY（China Yuan），常用简写为RMB（Ren Min Bi）；人民币货币的符号是“ ￥”（'Y'+'='），读音为“YUAN”。
+人民币按照材料的自然属性划分，有金属币（亦称硬币）、 纸币（亦称钞票）。
+无论纸币、硬币均等价流通，至今已发行了五套人民币。
 
-����Ҵ�д�淶��ϸ����
+人民币大写规范详细介绍
 
-���С���λ�͸�����д�ĸ���Ʊ�ݺͽ���ƾ֤�ǰ���֧��������ֽ��ո�����Ҫ���ݣ�ֱ�ӹ�ϵ��֧�������׼ȷ����ʱ�Ͱ�ȫ��
-Ʊ�ݺͽ���ƾ֤�����С���λ�͸���ƾ�Լ�������Ļ��ƾ֤���Ǽ��ؾ���ҵ�����ȷ�������ε�һ������֤����
-��ˣ���дƱ�ݺͽ���ƾ֤����������׼�����淶����Ҫ����ȫ��������ȷ���ּ�����������©�����ʲݡ���ֹͿ�ġ� 
-���Ĵ�д�������Ӧ��������������д����Ҽ���������������顢½���⡢�ơ�����ʰ���ۡ�Ǫ�����ڡ�Ԫ���ǡ��֡��㡢��(��)��������
-������һ����(��)�������ġ��塢�����ߡ��ˡ��š�ʮ��ë����(��0)��д������������֡�
-������������д��ʹ�÷����֣��緡��½���ڡ���Բ�ģ�ҲӦ������
+银行、单位和个人填写的各种票据和结算凭证是办理支付结算和现金收付的重要依据，直接关系到支付结算的准确、及时和安全。
+票据和结算凭证是银行、单位和个人凭以记载账务的会计凭证，是记载经济业务和明确经济责任的一种书面证明。
+因此，填写票据和结算凭证必须做到标准化、规范化、要素齐全、数字正确、字迹清晰、不错漏、不潦草、防止涂改。 
+中文大写金额数字应用正楷或行书填写，如壹、贰、叁、肆、伍、陆、柒、捌、玖、拾、佰、仟、万、亿、元、角、分、零、整(正)等字样，
+不得用一、二(两)、三、四、五、六、七、八、九、十、毛、另(或0)填写，不得自造简化字。
+如果金额数字书写中使用繁体字，如贰、陆、亿、万、圆的，也应受理。
 
-����Ҵ�д����ȷд����Ӧע�����¼��
+人民币大写的正确写法还应注意以下几项：
 
-һ�����Ĵ�д������ֵ���Ԫ��Ϊֹ�ģ��ڡ�Ԫ��֮��Ӧд������(������)�֣��ڡ��ǡ�֮�󣬿��Բ�д������(������)�֣���д��������С��֡��ģ����֡����治д������(������)�֡�
+一、中文大写金额数字到“元”为止的，在“元”之后、应写“整”(或“正”)字；在“角”之后，可以不写“整”(或“正”)字；大写金额数字有“分”的，“分”后面不写“整”(或“正”)字。
 
-�������Ĵ�д�������ǰӦ����������ҡ���������д�������Ӧ���ӡ�����ҡ�������д���������пհס�
-	��д�������ǰδӡ������ҡ������ģ�Ӧ�������ҡ����֣���Ʊ�ݺͽ���ƾ֤��д������ڲ���Ԥӡ�̶��ġ�Ǫ���ۡ�ʰ����Ǫ���ۡ�ʰ��Ԫ���ǡ��֡�������
+二、中文大写金额数字前应标明“人民币”字样，大写金额数字应紧接“人民币”字样填写，不得留有空白。
+	大写金额数字前未印“人民币”字样的，应加填“人民币”三字，在票据和结算凭证大写金额栏内不得预印固定的“仟、佰、拾、万、仟、佰、拾、元、角、分”字样。
 
-��������������Сд����������С�0��ʱ�����Ĵ�дӦ���պ������Թ��ɡ�������ֹ��ɺͷ�ֹͿ�ĵ�Ҫ�������д���������£� 
-	1�������������м��С�0��ʱ�����Ĵ�дҪд���㡱�֣��磤1409.50Ӧд�������ҼǪ�������Ԫ��ǣ� 
-	2�������������м������м�����0��ʱ�����Ĵ�д����м����ֻдһ�����㡱�֣��磤6007.14Ӧд�������½Ǫ����ԪҼ�����֡� 
-	3�����������������λ��Ԫλ�ǡ�0�������������м������м�����0������λ��ԪλҲ�ǡ�0����ǧλ����λ���ǡ�0��ʱ��
-		���Ĵ�д����п���ֻдһ�����֣�Ҳ���Բ�д���㡱�֣�
-		�磤1680.32Ӧд�������ҼǪ½�۰�ʰԪ�����Ƿ��֣�����д�������ҼǪ½�۰�ʰԪ���Ƿ��֡�
-		���磤107000.53Ӧд�������Ҽʰ����ǪԪ��������֣�����д�������Ҽʰ������ǪԪ������֡� 
-	4��������������ֽ�λ�ǡ�0������λ���ǡ�0��ʱ�����Ĵ�д��Ԫ������Ӧд���㡱�֣�
-		�磤16409.02Ӧд�������Ҽ��½Ǫ�������Ԫ�㷡�֣�
-		���磤325.04Ӧд����������۷�ʰ��Ԫ�����֡�
+三、阿拉伯数字小写金额数字中有“0”时，中文大写应按照汉语语言规律、金额数字构成和防止涂改的要求进行书写。举例如下： 
+	1、阿拉伯数字中间有“0”时，中文大写要写“零”字，如￥1409.50应写成人民币壹仟肆佰零玖元伍角； 
+	2、阿拉伯数字中间连续有几个“0”时、中文大写金额中间可以只写一个“零”字，如￥6007.14应写成人民币陆仟零柒元壹角肆分。 
+	3、阿拉伯金额数字万位和元位是“0”，或者数字中间连续有几个“0”，万位、元位也是“0”但千位、角位不是“0”时，
+		中文大写金额中可以只写一个零字，也可以不写“零”字，
+		如￥1680.32应写成人民币壹仟陆佰捌拾元零叁角贰分，或者写成人民币壹仟陆佰捌拾元叁角贰分。
+		又如￥107000.53应写成人民币壹拾万柒仟元零伍角叁分，或者写成人民币壹拾万零柒仟元伍角叁分。 
+	4、阿拉伯金额数字角位是“0”而分位不是“0”时，中文大写金额“元”后面应写“零”字，
+		如￥16409.02应写成人民币壹万陆仟肆佰零玖元零贰分，
+		又如￥325.04应写成人民币叁佰贰拾伍元零肆分。
 
-�ġ�������Сд�������ǰ���Ӧ��д����ҷ��š�������������Сд�������Ҫ������д��������д�ֱ治�塣
+四、阿拉伯小写金额数字前面均应填写人民币符号“￥”，阿拉伯小写金额数字要认真填写，不得连写分辨不清。
 
-�塢Ʊ�ݵĳ�Ʊ���ڱ���ʹ�����Ĵ�д��Ϊ��ֹ����Ʊ�ݵĳ�Ʊ���ڣ�����д�¡���ʱ����ΪҼ������Ҽʰ�ģ���ΪҼ������Ҽʰ����ʰ����ʰ�ģ�Ӧ����ǰ�ӡ��㡱��
-	��ΪʰҼ��ʰ����Ӧ����ǰ�ӡ�Ҽ������1��15��Ӧд����Ҽ��Ҽʰ���գ�����10��20��Ӧд����Ҽʰ���㷡ʰ�ա�
+五、票据的出票日期必须使用中文大写，为防止变造票据的出票日期，在填写月、日时、月为壹、贰和壹拾的，日为壹至玖和壹拾、贰拾和叁拾的，应在其前加“零”，
+	日为拾壹至拾玖的应在其前加“壹”，如1月15日应写成零壹月壹拾伍日，再如10月20日应写成零壹拾月零贰拾日。
 
-����Ʊ�ݳ�Ʊ����ʹ��Сд��д�ģ����в�����������д����δ��Ҫ��淶��д�ģ����п������������ɴ������ʧ���ɳ�Ʊ�����ге���
+六、票据出票日期使用小写填写的，银行不予受理；大写日期未按要求规范填写的，银行可予受理，但由此造成损失的由出票人自行承担。
 */
 
-
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -59,14 +57,14 @@
 #include <assert.h>
 
 static const char* digits[] = {
-	"��", "Ҽ", "��", "��", "��", "��", "½", "��", "��", "��",
+	"零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖",
 };
 
-// һ������
+// 一万以下
 char* cny_under_10k(uint64_t y)
 {	
 	static const char* units[] = {
-		NULL, "ʰ", "��", "Ǫ",
+		NULL, "拾", "佰", "仟",
 	};
 
 	char buf[1024] = { 0 };
@@ -86,11 +84,11 @@ char* cny_under_10k(uint64_t y)
 
 	strcat(buf, digits[y]);
 
-	// �Ƴ�ĩβ����
-	char* z = buf + strlen(buf) - strlen("��");
-	while (memcmp(z, "��", strlen("��")) == 0) {
+	// 移除末尾的零
+	char* z = buf + strlen(buf) - strlen("零");
+	while (memcmp(z, "零", strlen("零")) == 0) {
 		*z = '\0';
-		z -= strlen("��");
+		z -= strlen("零");
 	}
 
 	char* s = malloc(strlen(buf) + 1);
@@ -99,7 +97,7 @@ char* cny_under_10k(uint64_t y)
 	return s;
 }
 
-// һ������
+// 一亿以下
 char* cny_under_1yi(uint64_t y)
 {
 	char buf[1024] = { 0 };
@@ -107,7 +105,7 @@ char* cny_under_1yi(uint64_t y)
 		char* s = cny_under_10k(y / 10000ul);
 		strcat(buf, s);
 		free(s);
-		strcat(buf, "��");
+		strcat(buf, "万");
 		y %= 10000ul;
 	}
 
@@ -127,14 +125,14 @@ char* cny_f(uint32_t y, int keep_0_jiao)
 	char buf[1024] = { 0 };
 	if (y / 10) {
 		strcat(buf, digits[y / 10]);
-		strcat(buf, "��");
+		strcat(buf, "角");
 		y %= 10;
 	} else if (keep_0_jiao) {
-		strcat(buf, "��");
+		strcat(buf, "零");
 	}
 	if (y) {
 		strcat(buf, digits[y]);
-		strcat(buf, "��");
+		strcat(buf, "分");
 	}
 	char* s = malloc(strlen(buf) + 1);
 	if (s == NULL) return NULL;
@@ -142,9 +140,9 @@ char* cny_f(uint32_t y, int keep_0_jiao)
 	return s;
 }
 
-// ����Ҵ�дת��
-// y Ԫ
-// f ��
+// 人民币大写转换
+// y 元
+// f 分
 // max 1844 67440737 09551615
 // caller free
 char* cny(uint64_t y, uint32_t f)
@@ -155,35 +153,35 @@ char* cny(uint64_t y, uint32_t f)
 	char buf[4096] = { 0 };
 
 	if (y == 0 && f == 0) {
-		strcpy(buf, "��Ԫ��");
+		strcpy(buf, "零元整");
 		goto end;
 	} else if (y == 0) {
 		goto begin_f;
 	}
 
-	if (y > 10000000000000000ul) { // 1����
+	if (y > 10000000000000000ul) { // 1亿亿
 		char* yys = cny_under_1yi(y / 10000000000000000ul);
 		strcpy(buf, yys);
 		free(yys);
-		strcat(buf, "����");
+		strcat(buf, "亿亿");
 		y %= 10000000000000000ul;
 	}
 
-	if (y > 100000000ul) { // ������
+	if (y > 100000000ul) { // 多少亿
 		char* ys = cny_under_1yi(y / 100000000ul);
 		strncat(buf, ys, strlen(ys));
 		free(ys);
-		strcat(buf, "��");
+		strcat(buf, "亿");
 		y %= 100000000ul;
 	}
 
 	char* s = cny_under_1yi(y);
 	strcat(buf, s);
 	free(s);
-	strcat(buf, "Ԫ");
+	strcat(buf, "元");
 
 	if (f == 0) {
-		strcat(buf, "��");
+		strcat(buf, "整");
 	} else {
 begin_f:
 		s = cny_f(f, strlen(buf));
@@ -194,39 +192,39 @@ begin_f:
 		}
 	}
 
-	// �Ƴ���ͷ����
+	// 移除开头的零
 	char* next = buf;
-	while (memcmp(next, "��", strlen("��")) == 0) {
-		next += strlen("��");
+	while (memcmp(next, "零", strlen("零")) == 0) {
+		next += strlen("零");
 	}
 	if (next != buf) {
 		memmove(buf, next, strlen(next) + 1);
 	}
 
-	// �Ƴ��ظ�����
-	char* z = strstr(buf, "��");
+	// 移除重复的零
+	char* z = strstr(buf, "零");
 	while (z) {
-		char* next = z + strlen("��");
+		char* next = z + strlen("零");
 		char* pos = next;
-		while (memcmp(next, "��", strlen("��")) == 0) {
-			next += strlen("��");
+		while (memcmp(next, "零", strlen("零")) == 0) {
+			next += strlen("零");
 		}
 		if (next != pos) {
 			memmove(pos, next, strlen(next) + 1);
 		}
-		z = strstr(next, "��");
+		z = strstr(next, "零");
 	}
 
-	// �Ƴ�ʰ�����
-	char* shi = strstr(buf, "ʰ");
+	// 移除拾后的零
+	char* shi = strstr(buf, "拾");
 	while (shi) {
-		char* next = shi + strlen("��");
+		char* next = shi + strlen("零");
 		char* pos = next;
-		if (memcmp(next, "��", strlen("��")) == 0) {
-			next += strlen("��");
+		if (memcmp(next, "零", strlen("零")) == 0) {
+			next += strlen("零");
 			memmove(pos, next, strlen(next) + 1);
 		}
-		shi = strstr(next, "ʰ");
+		shi = strstr(next, "拾");
 	}
 
 end:
@@ -345,35 +343,35 @@ void test(uint64_t y, int32_t f, const char* str)
 
 void do_test()
 {
-	/*assert(strcmp(cny(0, 0), "��Ԫ��") == 0); 
-	assert(strcmp(cny(0, 3), "����") == 0);
-	assert(strcmp(cny(0, 53), "�������") == 0);
-	assert(strcmp(cny(1409, 50), "ҼǪ�������Ԫ���") == 0);
-	assert(strcmp(cny(6007, 14), "½Ǫ����ԪҼ������") == 0);
-	assert(strcmp(cny(1680, 32), "ҼǪ½�۰�ʰԪ���Ƿ���") == 0);
-	assert(strcmp(cny(107000, 53), "Ҽʰ����ǪԪ�������") == 0);
-	assert(strcmp(cny(16409, 2), "Ҽ��½Ǫ�������Ԫ�㷡��") == 0);
-	assert(strcmp(cny(325, 4), "���۷�ʰ��Ԫ������") == 0);
-	assert(strcmp(cny(3210, 0), "��Ǫ����ҼʰԪ��") == 0);
-	assert(strcmp(cny(3010, 0), "��Ǫ��ҼʰԪ��") == 0);
-	assert(strcmp(cny(10000001, 89), "ҼǪ����ҼԪ�ƽǾ���") == 0);
-	assert(strcmp(cny(1234567890, 89), "Ҽʰ������Ǫ������ʰ½����Ǫ�ư۾�ʰԪ�ƽǾ���") == 0);
-	assert(strcmp(cny(3709551615, 0), "��ʰ�����������ʰ����ҼǪ½��Ҽʰ��Ԫ��") == 0);*/
+	/*assert(strcmp(cny(0, 0), "零元整") == 0); 
+	assert(strcmp(cny(0, 3), "叁分") == 0);
+	assert(strcmp(cny(0, 53), "伍角叁分") == 0);
+	assert(strcmp(cny(1409, 50), "壹仟肆佰零玖元伍角") == 0);
+	assert(strcmp(cny(6007, 14), "陆仟零柒元壹角肆分") == 0);
+	assert(strcmp(cny(1680, 32), "壹仟陆佰捌拾元叁角贰分") == 0);
+	assert(strcmp(cny(107000, 53), "壹拾万柒仟元伍角叁分") == 0);
+	assert(strcmp(cny(16409, 2), "壹万陆仟肆佰零玖元零贰分") == 0);
+	assert(strcmp(cny(325, 4), "叁佰贰拾伍元零肆分") == 0);
+	assert(strcmp(cny(3210, 0), "叁仟贰佰壹拾元整") == 0);
+	assert(strcmp(cny(3010, 0), "叁仟零壹拾元整") == 0);
+	assert(strcmp(cny(10000001, 89), "壹仟万零壹元捌角玖分") == 0);
+	assert(strcmp(cny(1234567890, 89), "壹拾贰亿叁仟肆佰伍拾陆万柒仟捌佰玖拾元捌角玖分") == 0);
+	assert(strcmp(cny(3709551615, 0), "叁拾柒亿零玖佰伍拾伍万壹仟陆佰壹拾伍元整") == 0);*/
 
-	test(0, 0, "��Ԫ��");
-	test(0, 3, "����");
-	test(0, 53, "�������");
-	test(1409, 50, "ҼǪ�������Ԫ���");
-	test(6007, 14, "½Ǫ����ԪҼ������");
-	test(1680, 32, "ҼǪ½�۰�ʰԪ���Ƿ���");
-	test(107000, 53, "Ҽʰ����ǪԪ�������");
-	test(16409, 2, "Ҽ��½Ǫ�������Ԫ�㷡��");
-	test(325, 4, "���۷�ʰ��Ԫ������");
-	test(3210, 0, "��Ǫ����ҼʰԪ��");
-	test(3010, 0, "��Ǫ��ҼʰԪ��");
-	test(10000001, 89, "ҼǪ����ҼԪ�ƽǾ���");
-	test(1234567890, 89, "Ҽʰ������Ǫ������ʰ½����Ǫ�ư۾�ʰԪ�ƽǾ���");
-	test(3709551615, 0, "��ʰ�����������ʰ����ҼǪ½��Ҽʰ��Ԫ��");
+	test(0, 0, "零元整");
+	test(0, 3, "叁分");
+	test(0, 53, "伍角叁分");
+	test(1409, 50, "壹仟肆佰零玖元伍角");
+	test(6007, 14, "陆仟零柒元壹角肆分");
+	test(1680, 32, "壹仟陆佰捌拾元叁角贰分");
+	test(107000, 53, "壹拾万柒仟元伍角叁分");
+	test(16409, 2, "壹万陆仟肆佰零玖元零贰分");
+	test(325, 4, "叁佰贰拾伍元零肆分");
+	test(3210, 0, "叁仟贰佰壹拾元整");
+	test(3010, 0, "叁仟零壹拾元整");
+	test(10000001, 89, "壹仟万零壹元捌角玖分");
+	test(1234567890, 89, "壹拾贰亿叁仟肆佰伍拾陆万柒仟捌佰玖拾元捌角玖分");
+	test(3709551615, 0, "叁拾柒亿零玖佰伍拾伍万壹仟陆佰壹拾伍元整");
 }
 
 int main(int argc, char** argv)

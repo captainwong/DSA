@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 
 #include<stdio.h>
 #include<math.h>
@@ -18,7 +18,7 @@ typedef struct Line {
     Point s, e;
 }Line;
 
-// Ö±ÏßĞ±½ØÊ½·½³Ì y=ax+b
+// ç›´çº¿æ–œæˆªå¼æ–¹ç¨‹ y=ax+b
 typedef struct LineEquation {
     Line l;
     double a, b;
@@ -34,19 +34,19 @@ typedef struct Circle {
     double r;
 }Circle;
 
-// Á½µã¾àÀë
+// ä¸¤ç‚¹è·ç¦»
 double distance(Point p, Point q)
 {
     return sqrt((p.x - q.x) * (p.x - q.x) + (p.y - q.y) * (p.y - q.y));
 }
 
-// Èı½ÇĞÎÃæ»ı
+// ä¸‰è§’å½¢é¢ç§¯
 double squareOfTriangle(Point a, Point b, Point c)
 {
     return fabs(a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2;
 }
 
-// ¸ù¾İÁ½µã×ø±ê¼ÆËãÖ±ÏßĞ±½ØÊ½
+// æ ¹æ®ä¸¤ç‚¹åæ ‡è®¡ç®—ç›´çº¿æ–œæˆªå¼
 LineEquation lineEquation(Line l)
 {
     LineEquation equation = { l, 0.0, 0.0, 0 };
@@ -59,7 +59,7 @@ LineEquation lineEquation(Line l)
     return equation;
 }
 
-// µãµ½Ö±ÏßµÄ¾àÀë
+// ç‚¹åˆ°ç›´çº¿çš„è·ç¦»
 double distanceOfPointAndLine(Line line, Point p)
 {
     double s = squareOfTriangle(line.s, line.e, p);
@@ -68,7 +68,7 @@ double distanceOfPointAndLine(Line line, Point p)
     return h;
 }
 
-// ½«µã×ø±ê´øÈëÁ½µãÊ½Ö±Ïß·½³Ì¼ÆËãÖµ
+// å°†ç‚¹åæ ‡å¸¦å…¥ä¸¤ç‚¹å¼ç›´çº¿æ–¹ç¨‹è®¡ç®—å€¼
 int fPtByLine(Line line, Point p)
 {
     // (y2-y1)(x2-x1) - (x-x1)(y2-y1) = 0
@@ -76,25 +76,25 @@ int fPtByLine(Line line, Point p)
     return (p.y - A.y) * (B.x - A.x) - (p.x - A.x) * (B.y - A.y);
 }
 
-// µãÔÚÖ±ÏßÉÏ
+// ç‚¹åœ¨ç›´çº¿ä¸Š
 int ptOnLine(Line line, Point p)
 {
-    // A,B,PÈıµã¹²Ïß£ºAP ¡¤ AB == 0
+    // A,B,Pä¸‰ç‚¹å…±çº¿ï¼šAP Â· AB == 0
     // AP = (P.x - A.x, P.y - A.y)
     // AB = (B.x - A.x, B.y - A.y)
-    // V1 ¡¤ V2 = V1.x * V2.y - V1.y * V2.x ÏòÁ¿²æ³Ë
-    // AP ¡¤ AB = (P.x - A.x) * (B.y - A.y) - (P.y - A.y) * (B.x - A.x)
-    // ¼´ (P.x - A.x) * (B.y - A.y) == (P.y - A.y) * (B.x - A.x)
+    // V1 Â· V2 = V1.x * V2.y - V1.y * V2.x å‘é‡å‰ä¹˜
+    // AP Â· AB = (P.x - A.x) * (B.y - A.y) - (P.y - A.y) * (B.x - A.x)
+    // å³ (P.x - A.x) * (B.y - A.y) == (P.y - A.y) * (B.x - A.x)
     return (p.x - line.s.x) * (line.e.y - line.s.y) == (p.y - line.s.y) * (line.e.x - line.s.x);
 }
 
-// µãÔÚÖ±ÏßÉÏ
+// ç‚¹åœ¨ç›´çº¿ä¸Š
 int ptfOnLine(Line line, PointF p)
 {
     return (p.x - line.s.x) * (line.e.y - line.s.y) == (p.y - line.s.y) * (line.e.x - line.s.x);
 }
 
-// µãÔÚÏß¶ÎÉÏ
+// ç‚¹åœ¨çº¿æ®µä¸Š
 int ptOnSegment(Line seg, Point p)
 {
     return ptOnLine(seg, p) && 
@@ -102,7 +102,7 @@ int ptOnSegment(Line seg, Point p)
         ((p.y - seg.s.y) * (p.y - seg.e.y) <= 0);
 }
 
-// µãÔÚÏß¶ÎÉÏ
+// ç‚¹åœ¨çº¿æ®µä¸Š
 int ptfOnSegment(Line seg, PointF p)
 {
     return ptfOnLine(seg, p) &&
@@ -110,21 +110,21 @@ int ptfOnSegment(Line seg, PointF p)
         ((p.y - seg.s.y) * (p.y - seg.e.y) <= 0);
 }
 
-// µãÔÚÔ²ÉÏ
+// ç‚¹åœ¨åœ†ä¸Š
 int ptOnCircle(Circle c, Point p)
 {
     double d = distance(c.c, p);
     return d == c.r;
 }
 
-// µãÔÚÔ²ÄÚ
+// ç‚¹åœ¨åœ†å†…
 int ptInCircle(Circle c, Point p)
 {
     double d = distance(c.c, p);
     return d < c.r;
 }
 
-// µãÔÚ¾ØĞÎÉÏ
+// ç‚¹åœ¨çŸ©å½¢ä¸Š
 int ptOnRect(Rect r, Point p)
 {
     return (p.x == r.lt.x && (r.rb.y <= p.y && p.y <= r.lt.y)) ||
@@ -133,14 +133,14 @@ int ptOnRect(Rect r, Point p)
         (p.y == r.rb.y && (r.lt.x <= p.x && p.x <= r.rb.x));
 }
 
-// µãÔÚ¾ØĞÎÄÚ
+// ç‚¹åœ¨çŸ©å½¢å†…
 int ptInRect(Rect r, Point p)
 {
     return r.lt.x < p.x&& p.x < r.rb.x&&
         r.rb.y < p.y&& p.y < r.lt.y;
 }
 
-// Ö±ÏßABÓëÏß¶ÎCDÊÇ·ñÏà½»
+// ç›´çº¿ABä¸çº¿æ®µCDæ˜¯å¦ç›¸äº¤
 int lineSegmentIntersect(Line lineAB, Line segmentCD)
 {    
     Point C = segmentCD.s, D = segmentCD.e;
@@ -149,22 +149,22 @@ int lineSegmentIntersect(Line lineAB, Line segmentCD)
     return fc * fd <= 0;
 }
 
-// Ïß¶ÎÊÇ·ñÏà½»
+// çº¿æ®µæ˜¯å¦ç›¸äº¤
 int segmentIntersect(Line seg1, Line seg2)
 {
     return lineSegmentIntersect(seg1, seg2) && lineSegmentIntersect(seg2, seg1);
 }
 
-// Ïß¶ÎÆ½ĞĞ£¨°üº¬¹²Ïß£©
+// çº¿æ®µå¹³è¡Œï¼ˆåŒ…å«å…±çº¿ï¼‰
 int lineParallel(Line l1, Line l2)
 {
-    // ¶¼Æ½ĞĞÓÚyÖá
+    // éƒ½å¹³è¡Œäºyè½´
     if (l1.s.x == l1.e.x && l2.s.x == l2.e.x)
         return 1;
-    // ¶¼Æ½ĞĞÓÚxÖá
+    // éƒ½å¹³è¡Œäºxè½´
     if (l1.s.y == l1.e.y && l2.s.y == l2.e.y)
         return 1;
-    // Ğ±ÂÊÏàµÈ
+    // æ–œç‡ç›¸ç­‰
     // (l1.e.y - l1.s.y) / (l1.e.x - l1.s.x) == (l2.e.y - l2.s.y) / (l2.e.x - l2.s.x)
     if ((l1.e.y - l1.s.y) * (l2.e.x - l2.s.x) == (l2.e.y - l2.s.y) * (l1.e.x - l1.s.x)) {
         return 1;
@@ -172,33 +172,33 @@ int lineParallel(Line l1, Line l2)
     return 0;
 }
 
-// Ïß¶Î¹²Ïß
+// çº¿æ®µå…±çº¿
 int segmentColinear(Line l1, Line l2)
 {
     Line l3 = { l1.s, l2.s };
     return lineParallel(l1, l2) && lineParallel(l1, l3);
 }
 
-// Ö±Ïß½»µã
-// ÎŞ½»µã·µ»Ø0£¬½öÓĞÒ»¸ö½»µã·µ»Ø1²¢¸³ÖµP£¬¶àÓÚ1¸ö½»µã·µ»Ø2
+// ç›´çº¿äº¤ç‚¹
+// æ— äº¤ç‚¹è¿”å›0ï¼Œä»…æœ‰ä¸€ä¸ªäº¤ç‚¹è¿”å›1å¹¶èµ‹å€¼Pï¼Œå¤šäº1ä¸ªäº¤ç‚¹è¿”å›2
 int lineIntersectionPoint(Line ab, Line cd, PointF* P)
 {
     LineEquation eab = lineEquation(ab);
     LineEquation ecd = lineEquation(cd);
-    if (eab.vertical && ecd.vertical) { // Á½ÌõÖ±ÏßĞ±ÂÊ¶¼²»´æÔÚ
+    if (eab.vertical && ecd.vertical) { // ä¸¤æ¡ç›´çº¿æ–œç‡éƒ½ä¸å­˜åœ¨
         if (ab.s.x == cd.s.x) {
             return 2;
         } else {
             return 0;
         }
-    } else if (eab.vertical || ecd.vertical) { // ÓĞÒ»ÌõÖ±ÏßĞ±ÂÊ²»´æÔÚ
+    } else if (eab.vertical || ecd.vertical) { // æœ‰ä¸€æ¡ç›´çº¿æ–œç‡ä¸å­˜åœ¨
         LineEquation evert = eab.vertical ? eab : ecd;
         LineEquation enorm = eab.vertical ? ecd : eab;
         P->x = evert.l.s.x;
         P->y = enorm.a * P->x + enorm.b;
         return 1;
-    } else { // Á½ÌõÖ±ÏßĞ±ÂÊ¶¼´æÔÚ
-        if (eab.a == ecd.a) { // Æ½ĞĞ
+    } else { // ä¸¤æ¡ç›´çº¿æ–œç‡éƒ½å­˜åœ¨
+        if (eab.a == ecd.a) { // å¹³è¡Œ
             return 0;
         }
         // y = a1x + b1
@@ -213,20 +213,20 @@ int lineIntersectionPoint(Line ab, Line cd, PointF* P)
 
 
 
-// Ïß¶Î½»µã
-// ÎŞ½»µã·µ»Ø0£¬½öÓĞÒ»¸ö½»µã·µ»Ø1²¢¸³ÖµP£¬¶àÓÚ1¸ö½»µã·µ»Ø2
+// çº¿æ®µäº¤ç‚¹
+// æ— äº¤ç‚¹è¿”å›0ï¼Œä»…æœ‰ä¸€ä¸ªäº¤ç‚¹è¿”å›1å¹¶èµ‹å€¼Pï¼Œå¤šäº1ä¸ªäº¤ç‚¹è¿”å›2
 int segmentIntersectionPoint(Line ab, Line cd, PointF* P)
 {
     LineEquation eab = lineEquation(ab);
     LineEquation ecd = lineEquation(cd);
-    if (eab.vertical && ecd.vertical) { // Á½ÌõÖ±ÏßĞ±ÂÊ¶¼²»´æÔÚ
+    if (eab.vertical && ecd.vertical) { // ä¸¤æ¡ç›´çº¿æ–œç‡éƒ½ä¸å­˜åœ¨
         return 0;
         if (ab.s.x == cd.s.x) {
             return 2;
         } else {
             return 0;
         }
-    } else if (eab.vertical || ecd.vertical) { // ÓĞÒ»ÌõÖ±ÏßĞ±ÂÊ²»´æÔÚ
+    } else if (eab.vertical || ecd.vertical) { // æœ‰ä¸€æ¡ç›´çº¿æ–œç‡ä¸å­˜åœ¨
         LineEquation evert = eab.vertical ? eab : ecd;
         LineEquation enorm = eab.vertical ? ecd : eab;
         P->x = evert.l.s.x;
@@ -234,8 +234,8 @@ int segmentIntersectionPoint(Line ab, Line cd, PointF* P)
         if (ptfOnSegment(ab, *P) && ptfOnSegment(cd, *P)) {
             return 1;
         }
-    } else { // Á½ÌõÖ±ÏßĞ±ÂÊ¶¼´æÔÚ
-        if (eab.a == ecd.a) { // Æ½ĞĞ
+    } else { // ä¸¤æ¡ç›´çº¿æ–œç‡éƒ½å­˜åœ¨
+        if (eab.a == ecd.a) { // å¹³è¡Œ
             return 0;
         }
         // y = a1x + b1
@@ -251,7 +251,7 @@ int segmentIntersectionPoint(Line ab, Line cd, PointF* P)
     return 0;
 }
 
-// ¾ØĞÎÓëÏß¶ÎÊÇ·ñÏà½»£¨Ïß¶ÎÉÏÓĞÈÎÒâÒ»µãÔÚ¾ØĞÎÉÏ»ò¾ØĞÎÄÚ¼´ÈÏÎªÏà½»£©
+// çŸ©å½¢ä¸çº¿æ®µæ˜¯å¦ç›¸äº¤ï¼ˆçº¿æ®µä¸Šæœ‰ä»»æ„ä¸€ç‚¹åœ¨çŸ©å½¢ä¸Šæˆ–çŸ©å½¢å†…å³è®¤ä¸ºç›¸äº¤ï¼‰
 int lineRectIntersect(Rect r, Line l)
 {
     if (ptOnRect(r, l.s) || ptInRect(r, l.s) || ptOnRect(r, l.e) || ptInRect(r, l.e)) {
@@ -267,7 +267,7 @@ int lineRectIntersect(Rect r, Line l)
     return 0;
 }
 
-// µãµ½¾ØĞÎµÄ×î¶Ì¾àÀë
+// ç‚¹åˆ°çŸ©å½¢çš„æœ€çŸ­è·ç¦»
 double distanceOfPointAndRect(Rect r, Point p)
 {
     if (ptInRect(r, p) || ptOnRect(r, p)) {
