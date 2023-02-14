@@ -24,13 +24,15 @@
 #endif
 
 
-#define USE_QUADRATIC_HASH
+//#define USE_QUADRATIC_HASH
 
 
 #ifdef USE_QUADRATIC_HASH
 #include "hash_quadratic.h"
-#else
+#elif defined(USE_SEPERATE_CHAINING)
 #include "hash_seperate_chaining.h"
+#else
+#error "You must define either USE_QUADRATIC_HASH or USE_SEPERATE_CHAINING."
 #endif
 
 #define TEST_NUM 400

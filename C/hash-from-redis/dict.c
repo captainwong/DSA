@@ -1269,6 +1269,7 @@ int dictTest(int argc, char **argv, int flags) {
     dict *dict = dictCreate(&BenchmarkDictType);
     long count = 0;
     int accurate = (flags & REDIS_TEST_ACCURATE);
+    char buf[4096];
 
     if (argc == 4) {
         if (accurate) {
@@ -1358,6 +1359,16 @@ int dictTest(int argc, char **argv, int flags) {
         free(key);
     }
     end_benchmark("Linear access of existing elements");
+
+    dictGetStats(buf, sizeof buf, dict);
+    printf("\n%s\n", buf);
+
+    start_benchmark();
+    while (dictRehash(dict, 100));
+    end_benchmark("Rehash");
+
+    dictGetStats(buf, sizeof buf, dict);
+    printf("\n%s\n", buf);
 
     dictRelease(dict);
     return 0;

@@ -20,14 +20,16 @@
 
 #pragma once
 
+#ifdef USE_QUADRATIC_HASH
+
 #include <stdint.h>
 
-#define USE_HT 0
+#define USE_EXPONETIAL_EXPENDING 1
 
 #define HASH_OK 0
 #define HASH_ERR 1
 
-#if USE_HT
+#if USE_EXPONETIAL_EXPENDING
 #define HASH_TABLE_MIN_SIZE 8
 #else
 #define HASH_TABLE_MIN_SIZE 11
@@ -146,5 +148,6 @@ entry_t* hash_find(hash_t* h, const void* key);
 entry_t* hash_get_random_key(hash_t* h);
 void* hash_retrieve_value(hash_t* h, const void* key);
 
+#endif // USE_QUADRATIC_HASH
 
 #endif
