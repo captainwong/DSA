@@ -9,7 +9,14 @@
 *
 *
 * Hash Set using seperate chaining.
+* 
+* It uses 2 slots, when slot[0] is full enough (elements/buckets >= 1), slot[1] will be created
+* with double the size of slot[0] and rehash begins, the newly added elements are stored in slot[1] 
+* and with every add/remove operations, `_hash_rehash_step` is called to move elements
+* from slot[0] to slot[1]; when slot[0] is empty, slot[1] is moved to slot[0] and will be set to NULL, 
+* then slot[1] is ready to perform the next expand (when needed).
 */
+
 
 #ifndef __HASH_SEPERATE_CHAINING_H__
 #define __HASH_SEPERATE_CHAINING_H__
@@ -117,6 +124,7 @@ struct hash_s {
 		(h)->type->key_compare((h), k1, k2) : \
 		(k1) == (k2))
 
+#define hash_key_equals(h, k1, k2) ((k1) == (k2) || hash_compare_keys(h, k1, k2))
 #define hash_hash_key(h, key) (h)->type->hash((key))
 #define hash_get_key(e) ((e)->key)
 #define hash_get_val(e) ((e)->v.val)
@@ -140,16 +148,19 @@ int hash_expand(hash_t* h, unsigned long size);
 int hash_try_expand(hash_t* h, unsigned long size);
 int hash_resize(hash_t* h);
 int hash_rehash(hash_t* h, int n);
+int hash_rehash_ms(hash_t* h, int ms);
 int hash_insert(hash_t* h, void* key, void* val);
-entry_t* hash_insert_raw(hash_t* h, void* key, void* val, entry_t** existing);
+entry_t* hash_insert_raw(hash_t* h, void* key, entry_t** existing);
+entry_t* hash_insert_or_find(hash_t* h, void* key);
+int hash_replace(hash_t* h, void* key, void* val);
 int hash_remove(hash_t* h, const void* key);
 entry_t* hash_take(hash_t* h, const void* key);
 void hash_free_taken_entry(hash_t* h, entry_t* he);
-entry_t* hash_find(hash_t* h, const void* key);
-entry_t* hash_get_random_key(hash_t* h);
-void* hash_retrieve_value(hash_t* h, const void* key);
 void hash_clear(hash_t* h);
 void hash_free(hash_t* h);
+entry_t* hash_find(hash_t* h, const void* key);
+void* hash_retrieve_value(hash_t* h, const void* key);
+entry_t* hash_get_random_key(hash_t* h);
 
 
 #endif // USE_SEPERATE_CHAINING

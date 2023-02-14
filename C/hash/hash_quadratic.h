@@ -140,7 +140,7 @@ void hash_free(hash_t* h);
 float hash_load_factor(hash_t* h);
 void hash_rehash(hash_t* h);
 int hash_insert(hash_t* h, void* key, void* val);
-entry_t* hash_insert_raw(hash_t* h, void* key, void* val, entry_t** existing);
+entry_t* hash_insert_raw(hash_t* h, void* key, entry_t** existing);
 int hash_remove(hash_t* h, const void* key);
 entry_t* hash_take(hash_t* h, const void* key);
 void hash_free_taken_entry(hash_t* h, entry_t* he);

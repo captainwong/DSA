@@ -11,12 +11,29 @@
 #endif
 #include "hash_seperate_chaining.h"
 
-// when used/buckets > 5, table size will double grow
-static unsigned int hash_force_resize_ratio = 5;
-
 
 /* -------------------------- helper functions ---------------------------- */
 
+static long long time_ms() {
+#ifdef _WIN32
+	// Based on https://doxygen.postgresql.org/gettimeofday_8c_source.html
+	// Link is broken, use this https://github.com/microsoft/vcpkg/blob/master/ports/gettimeofday/gettimeofday.h
+	static const uint64_t epoch = 116444736000000000Ui64;
+	FILETIME file_time;
+	ULARGE_INTEGER ularge;
+
+	GetSystemTimeAsFileTime(&file_time);
+	ularge.LowPart = file_time.dwLowDateTime;
+	ularge.HighPart = file_time.dwHighDateTime;
+	int64_t tv_sec = (int64_t)((ularge.QuadPart - epoch) / 10000000L);
+	int32_t tv_usec = (int32_t)(((ularge.QuadPart - epoch) % 10000000L) / 10);
+	return (((long long)tv_sec) * 1000) + (tv_usec / 1000);
+#else
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+	return (((long long)tv.tv_sec) * 1000) + (tv.tv_usec / 1000);
+#endif
+}
 
 /* -------------------------- private prototypes ---------------------------- */
 
@@ -162,18 +179,6 @@ int hash_try_expand(hash_t* h, unsigned long size) {
 	return malloc_failed ? HASH_ERR : HASH_OK;
 }
 
-void hash_clear(hash_t* h) {
-
-}
-
-void hash_free(hash_t* h) {
-
-}
-
-float hash_load_factor(hash_t* h) {
-	return 0;
-}
-
 /* Perform N stpes of incremental rehashing.
  * Returns 1 if there are still keys to move from the old to the new hash table,
  *   otherwise 0 is returned.
@@ -235,37 +240,258 @@ int hash_rehash(hash_t* h, int n) {
 	return 1;
 }
 
+// Rehash in ms+`delta` milliseconds. The value of `delta` is larger
+// than 0, and is smaller than 1 in most cases. The exact upper bound
+// depends on the running time of hash_rehash(d, 100).
+int hash_rehash_ms(hash_t* h, int ms) {
+	if (h->pause_rehash > 0) return 0;
+	long long start = time_ms();
+	int rehashes = 0;
+
+	while (hash_rehash(h, 100)) {
+		rehashes += 100;
+		if (time_ms() - start > ms) break;
+	}
+	return rehashes;
+}
+
+// Add an element to the target hash table
 int hash_insert(hash_t* h, void* key, void* val) {
+	entry_t* entry = hash_insert_raw(h, key, NULL);
+	if (!entry) return HASH_ERR;
+	hash_set_val(h, entry, val);
+	return HASH_OK;
+}
+
+/* This function performs just a step of rehashing, and only if hashing has
+ * not been paused for our hash table. When we have iterators in the
+ * middle of a rehashing we can't mess with the two hash tables otherwise
+ * some elements can be missed or duplicated.
+ * 
+ * This function is called by common lookup or update operations in the
+ * dictionary so that the hash table automatically migrates from H1 to H2
+ * while it is actively used.
+ */
+static void _hash_rehash_step(hash_t* h) {
+	if (h->pause_rehash == 0) hash_rehash(h, 1);
+}
+
+/* Low level add or find:
+ * This function adds the entry but instead of setting a value and 
+ * returns the `entry_t` to the user, that will make sure to fill the
+ * value field as they wish.
+ * 
+ * This function is also directly exposed to the user API to be called
+ * mainly in order to store non-pointers inside the hash value, example:
+ * 
+ * entry = hash_add_raw(h, key, NULL);
+ * if (entry) hash_set_s64_val(h, entry, 1000);
+ * 
+ * Return values:
+ * 
+ * If key already exists NULL is returned, and `*existing` is populated
+ * with the existing entry if `existing` is not NULL.
+ * 
+ * If key was added, the hash entry is returned to be manipulated by the caller.
+ */
+entry_t* hash_insert_raw(hash_t* h, void* key, entry_t** existing) {
+	long idx;
+	entry_t* he;
+	int htidx;
+
+	if (hash_is_rehashing(h)) _hash_rehash_step(h);
+
+	// Get the index of the new element, or -1 if the element already exists.
+	if ((idx = _hash_key_index(h, key, hash_hash_key(h, key), existing)) == -1)
+		return NULL;
+
+	// Allocates the memory and store the new entry.
+	// Insert the element in top, with the assumption that in a database
+	// system it is more likely that recently added entries are accessed
+	// more frequently.
+	htidx = hash_is_rehashing(h) ? 1 : 0;
+	he = malloc(sizeof * he);
+	he->next = h->entries[htidx][idx];
+	h->entries[htidx][idx] = he;
+	h->used[htidx]++;
+
+	// set the hash entry fields
+	hash_set_key(h, he, key);
+	return he;
+}
+
+/* Add or Find:
+ * `hash_insert_or_find` is simply a version of `hash_add_raw` that always
+ * returns the hash entry of the specified key, even if the key already
+ * exists and can't be added (in that case the entry of the already
+ * existing key is returned)
+ */
+entry_t* hash_insert_or_find(hash_t* h, void* key) {
+	entry_t* entry, * existing;
+	entry = hash_insert_raw(h, key, &existing);
+	return entry ? entry : existing;
+}
+
+/* Add or Overwirte:
+ * Add an element, discarding the old value if the key already exists.
+ * Return 1 if the key was added from scratch, 0 if there was already
+ * an element with such key and `hash_replace` just performed a value update
+ * operation.
+ */
+int hash_replace(hash_t* h, void* key, void* val) {
+	entry_t* entry, * existing, auxentry;
+	// try to add the element. If the key does not exists `hash_add` will succeed.
+	entry = hash_insert_raw(h, key, &existing);
+	if (entry) {
+		hash_set_val(h, entry, val);
+		return 1;
+	}
+
+	/* Set the new value and free the old one. Note that it is important
+	 * to do that in this order, as the value may just be exatly the same
+	 * as the previous one. In this context, think to reference counting,
+	 * you want to increment (set), and then decrement (free), and not the
+	 * reverse.
+	 */
+	auxentry = *existing;
+	hash_set_val(h, existing, val);
+	hash_free_val(h, &auxentry);
 	return 0;
 }
 
-entry_t* hash_insert_raw(hash_t* h, void* key, void* val, entry_t** existing) {
-	return NULL;
+// Search and remove an element. This is a helper function for
+// `hash_remove` and `hash_take`, please check the top comment of those functions.
+static entry_t* _hash_generic_remove(hash_t* h, const void* key, int nofree) {
+	uint64_t hash, idx;
+	entry_t* he, * prev;
+	int htidx;
+
+	// dict is empty
+	if (hash_size(h) == 0) return NULL;
+
+	if (hash_is_rehashing(h)) _hash_rehash_step(h);
+	hash = hash_hash_key(h, key);
+
+	for (htidx = 0; htidx <= 1; htidx++) {
+		idx = hash & HASH_SIZE_MASK(h->size_exp[htidx]);
+		he = h->entries[htidx][idx];
+		prev = NULL;
+		while (he) {
+			if (hash_key_equals(h, key, he->key)) {
+				if (prev)
+					prev->next = he->next;
+				else
+					h->entries[htidx][idx] = he->next;
+				if (!nofree)
+					hash_free_taken_entry(h, he);
+				h->used[htidx]--;
+				return he; // if nofree==0, `he` is already `free`ed, 
+				           // its a `dangling pointer` pointing to nothing valid.
+				           // and should only be used to check with NULL.
+						   // and should not be used other ways.
+			}
+
+			// search continue, save the prev entry to `prev`
+			prev = he;
+			he = he->next;
+		}
+		if (!hash_is_rehashing(h)) break; // if not rehashing, entries[1] is NULL
+	}
+	return NULL; // Not found
 }
 
+// Remove an element, returning HASH_OK on success or HASH_ERR if
+// the element was not found.
 int hash_remove(hash_t* h, const void* key) {
-	return 0;
+	return _hash_generic_remove(h, key, 0) ? HASH_OK : HASH_ERR;
 }
 
+/* Remove an element from the table, but without actually releasing
+ * the key, value and entry. The dictionary entry is returned
+ * if the element was found (and unlinked from the table), and the user
+ * should later call `hash_free_taken_entry` with it in order to release it.
+ * Otherwise if the key is not found, NULL is returned.
+ * 
+ * This function is useful when we want to remove something from the hash table
+ * but want to use its value before actually deleting the entry.
+ * Without this function the pattern would require two lookups:
+ * 
+ *   entry = hash_find(...);
+ *   // do something with entry
+ *   hash_remove(h, entry);
+ * 
+ * Thanks to this function it is possible to avoid this, and use instead:
+ *   entry = hash_take(...);
+ *   // do something with entry
+ *   hash_free_taken_entry(h, entry); // <- this does not need to lookup again.
+ */
 entry_t* hash_take(hash_t* h, const void* key) {
-	return NULL;
+	return _hash_generic_remove(h, key, 1);
 }
 
+// You need to call this function to really free the entry after a call
+// to `hash_take`. It's safe to call this function with `he` is NULL.
 void hash_free_taken_entry(hash_t* h, entry_t* he) {
+	if (he == NULL) return;
+	hash_free_key(h, he);
+	hash_free_val(h, he);
+	free(he);
+}
 
+// Destroy an entire slot
+static int _hash_clear(hash_t* h, int htidx, void(callback)(hash_t*)) {
+	// free all the elements
+	for (unsigned long i = 0; i < HASH_SIZE(h->size_exp[htidx]) && h->used[htidx] > 0; i++) {
+		entry_t* he, * next;
+		if (callback && (i & 0xFFFF) == 0) callback(h);
+		if ((he = h->entries[htidx][i]) == NULL) continue;
+		while (he) {
+			next = he->next;
+			hash_free_taken_entry(h, he);
+			h->used[htidx]--;
+			he = next;
+		}
+	}
+	// free the table and the allocated cache structure
+	free(h->entries[htidx]);
+	// re-initialize the table
+	_hash_reset(h, htidx);
+	return HASH_OK; // never fails
+}
+
+// Clear & Release the hash table
+void hash_free(hash_t* h) {
+	_hash_clear(h, 0, NULL);
+	_hash_clear(h, 0, NULL);
+	free(h);
 }
 
 entry_t* hash_find(hash_t* h, const void* key) {
-	return NULL;
-}
-
-entry_t* hash_get_random_key(hash_t* h) {
+	entry_t* he;
+	uint64_t hash, idx, htidx;
+	if (hash_size(h) == 0) return NULL;
+	if (hash_is_rehashing(h)) _hash_rehash_step(h);
+	hash = hash_hash_key(h, key);
+	for (htidx = 0; htidx <= 1; htidx++) {
+		idx = hash & HASH_SIZE_MASK(h->size_exp[htidx]);
+		he = h->entries[htidx][idx];
+		while (he) {
+			if (hash_key_equals(h, key, he->key))
+				return he;
+			he = he->next;
+		}
+		if (!hash_is_rehashing(h)) return NULL; // if not rehashing, entries[1] is NULL
+	}
 	return NULL;
 }
 
 void* hash_retrieve_value(hash_t* h, const void* key) {
 	entry_t* he = hash_find(h, key);
 	return he ? hash_get_val(he) : NULL;
+}
+
+entry_t* hash_get_random_key(hash_t* h) {
+	return NULL;
 }
 
 
@@ -282,6 +508,51 @@ static signed char _hash_next_exp(unsigned long size) {
 	}
 }
 
+/* Returns the index of a free slot that can be populated with
+ * a hash entry for the given `key`.
+ * If the key already exists, -1 is returned, and the optional output
+ * parameter may be filled.
+ * 
+ * Note that if we are in the process of rehashing the hash table, the
+ * index is always returned in the context of the second (new) hash table.
+ */
+static long _hash_key_index(hash_t* h, const void* key, uint64_t hash, entry_t** existing) {
+	unsigned long idx, htidx;
+	entry_t* he;
+	if (existing) *existing = NULL;
+
+	// expand the hash table if needed
+	if (_hash_expand_if_needed(h) == HASH_ERR) return -1;
+	for (htidx = 0; htidx <= 1; htidx++) {
+		idx = hash & HASH_SIZE_MASK(h->size_exp[htidx]);
+		// search if this slot does not already contain the given key
+		he = h->entries[htidx][idx];
+		while (he) {
+			if (hash_key_equals(h, key, he->key)) {
+				if (existing) *existing = he;
+				return -1;
+			}
+			he = he->next;
+		}
+		if (!hash_is_rehashing(h)) break; // if not rehashing, slot[1] is empty.
+	}
+	return idx;
+}
+
+// Expand the hash table if needed
+static int _hash_expand_if_needed(hash_t* h) {
+	// Incremental rehashing already in progress. Return.
+	if (hash_is_rehashing(h)) return HASH_OK;
+
+	// If the hash table is empty expand it to the initial size
+	if (HASH_SIZE(h->size_exp[0] == 0)) return hash_expand(h, HASH_INITIAL_SIZE);
+
+	// If we reached the 1:1 ratio, we resize doubling the number of buckets.
+	if (h->used[0] >= HASH_SIZE(h->size_exp[0])) {
+		return hash_expand(h, h->used[0] + 1);
+	}
+	return HASH_OK;
+}
 
 
 #endif // USE_SEPERATE_CHAINING

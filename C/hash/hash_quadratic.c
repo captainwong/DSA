@@ -238,7 +238,7 @@ int hash_insert(hash_t* h, void* key, void* val)
  *
  * If key was added, the hash entry is returned to be manipulated by the caller.
  */
-entry_t* hash_insert_raw(hash_t* h, void* key, void* val, entry_t** existing)
+entry_t* hash_insert_raw(hash_t* h, void* key, entry_t** existing)
 {
 	entry_t* he = NULL; 
 #if USE_EXPONETIAL_EXPENDING
