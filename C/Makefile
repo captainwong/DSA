@@ -33,5 +33,5 @@ hash-from-redis: mkdir hash-from-redis/dict.h hash-from-redis/dict.c \
 	-o ${OUTDIR}/hash-from-redis
 
 clean:
-	@rm hash hash-from-redis 
+	@rm -rf ./bin
 
