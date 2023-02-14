@@ -214,7 +214,7 @@ void hash_rehash(hash_t* h)
 /* Add an element to the target hash table */
 int hash_insert(hash_t* h, void* key, void* val)
 {
-	entry_t* he = hash_insert_raw(h, key, val, NULL);
+	entry_t* he = hash_insert_raw(h, key, NULL);
 	if (!he) return HASH_ERR;
 	hash_set_val(h, he, val);
 	return HASH_OK;
