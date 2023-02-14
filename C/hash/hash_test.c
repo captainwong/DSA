@@ -36,10 +36,6 @@
 #error "You must define either USE_QUADRATIC_HASH or USE_SEPERATE_CHAINING."
 #endif
 
-#define TEST_NUM 400
-
-
-
 #ifdef AVP_DUMP_MEM_LEAK
 // Code to display the memory leak report 
 // We use a custom report hook to filter out Qt's own memory leaks
