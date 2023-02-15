@@ -26,6 +26,7 @@
 #ifdef USE_SEPERATE_CHAINING
 
 #include <stdint.h>
+#include "mt19937-64.h"
 
 #define HASH_OK 0
 #define HASH_ERR 1
@@ -131,11 +132,17 @@ struct hash_s {
 #define hash_get_s64_val(e) ((e)->v.s64)
 #define hash_get_u64_val(e) ((e)->v.u64)
 #define hash_get_double_val(e) ((e)->v.d)
-#define hash_slots(h) (HASH_SIZE((d)->size_exp[0]) + HASH_SIZE((d)->size_exp[1]))
+#define hash_slots(h) (HASH_SIZE((h)->size_exp[0]) + HASH_SIZE((h)->size_exp[1]))
 #define hash_size(h) ((h)->used[0] + (h)->used[1])
 #define hash_is_rehashing(h) ((h)->rehash_idx != -1)
 #define hash_pause_rehash(h) ((h)->pause_rehash++)
 #define hash_resume_rehash(h) ((h)->pause_rehash--)
+
+#if ULONG_MAX >= 0xfffffffffffffffful
+#define random_ulong() ((unsigned long)genrand64_int64())
+#else
+#define random_ulong() ((unsigned long)rand())
+#endif
 
 
 /* API */

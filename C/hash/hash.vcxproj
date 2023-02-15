@@ -142,11 +142,13 @@
     <ClCompile Include="hash_quadratic.c" />
     <ClCompile Include="hash_seperate_chaining.c" />
     <ClCompile Include="hash_test.c" />
+    <ClCompile Include="mt19937-64.c" />
     <ClCompile Include="siphash.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="hash_quadratic.h" />
     <ClInclude Include="hash_seperate_chaining.h" />
+    <ClInclude Include="mt19937-64.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -491,7 +491,41 @@ void* hash_retrieve_value(hash_t* h, const void* key) {
 }
 
 entry_t* hash_get_random_key(hash_t* h) {
-	return NULL;
+	entry_t* he, * head;
+	unsigned long idx;
+	int listlen, listele;
+
+	if (hash_size(h) == 0) return NULL;
+	if (hash_is_rehashing(h)) _hash_rehash_step(h);
+	if (hash_is_rehashing(h)) {
+		unsigned long s0 = HASH_SIZE(h->size_exp[0]);
+		do {
+			// we are sure there are no elements in indexes from 0 to rehash_idx-1
+			idx = h->rehash_idx + (random_ulong() % (hash_slots(h) - h->rehash_idx));
+			he = (idx >= s0) ? h->entries[1][idx - s0] : h->entries[0][idx];
+		} while (he == NULL);
+	} else {
+		unsigned long m = HASH_SIZE_MASK(h->size_exp[0]);
+		do {
+			idx = random_ulong() & m;
+			he = h->entries[0][idx];
+		} while (he == NULL);
+	}
+
+	// Now we found a non empty bucket, but is is a linked list and we need to 
+	// get a random element from the list.
+	// The only sane way to do so is counting the elements and select a random index.
+	listlen = 0;
+	head = he;
+	while (he) {
+		he = he->next;
+		listlen++;
+	}
+	listele = rand() % listlen;
+	he = head;
+	while (listele--)
+		he = he->next;
+	return he;
 }
 
 
