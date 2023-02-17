@@ -68,7 +68,7 @@ static int next_4kp3_prime(int n) {
 static long _hash_find(hash_t* h, const void* key, uint64_t hash, entry_t** existing) {
 	long long i = 0;
 	long long pos, cur;
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 	pos = cur = hash & (h->size - 1);
 #else
 	pos = cur = hash % h->size;
@@ -115,7 +115,7 @@ hash_t* hash_create(hash_type_t* type)
 	}
 
 	h->type = type;
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 	h->size = 8;
 #else
 	h->size = next_4kp3_prime(HASH_TABLE_MIN_SIZE);
@@ -159,7 +159,7 @@ void hash_rehash(hash_t* h)
 {
 	unsigned long size;
 	if (hash_load_factor(h) <= HASH_TABLE_MIN_LOAD_FACTOR) {
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 		size = h->size / 2;
 #else
 		size = (unsigned int)(h->size * HASH_TABLE_MIN_LOAD_FACTOR * 2);
@@ -169,7 +169,7 @@ void hash_rehash(hash_t* h)
 		if (size == h->size)
 			return;
 	} else if (hash_load_factor(h) >= HASH_TABLE_MAX_LOAD_FACTOR) {
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 		size = h->size * 2;
 #else
 		size = next_4kp3_prime(h->size * 2);
@@ -190,7 +190,7 @@ void hash_rehash(hash_t* h)
 	for (unsigned long i = 0; i < h->size; i++) {
 		if (h->entries[i]) {
 			if (h->entries[i]->state == ENTRY_STATE_LEGITIMATE) {
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 				uint64_t hash = hash_hash_key(&tmph, h->entries[i]->key) & (size - 1);
 #else
 				uint64_t hash = hash_hash_key(&tmph, h->entries[i]->key) % size;
@@ -241,7 +241,7 @@ int hash_insert(hash_t* h, void* key, void* val)
 entry_t* hash_insert_raw(hash_t* h, void* key, entry_t** existing)
 {
 	entry_t* he = NULL; 
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 	uint64_t hash = hash_hash_key(h, key) & (h->size - 1);
 #else
 	uint64_t hash = hash_hash_key(h, key) % h->size;
@@ -284,7 +284,7 @@ static entry_t* hash_generic_remove(hash_t* h, const void* key, int nofree) {
 
 	if (h->used == 0) return NULL;
 
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 	pos = cur = hash_hash_key(h, key) & (h->size - 1);
 #else
 	pos = cur = hash_hash_key(h, key) % h->size;
@@ -371,7 +371,7 @@ entry_t* hash_find(hash_t* h, const void* key)
 	long long pos, cur;
 
 	if (h->used == 0) return NULL;
-#if USE_EXPONETIAL_EXPENDING
+#if USE_EXPONETIAL_EXPANDING
 	pos = cur = hash_hash_key(h, key) & (h->size-1);
 #else
 	pos = cur = hash_hash_key(h, key) % h->size;

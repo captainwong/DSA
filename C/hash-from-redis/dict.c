@@ -1363,13 +1363,6 @@ int dictTest(int argc, char **argv, int flags) {
     dictGetStats(buf, sizeof buf, dict);
     printf("\n%s\n", buf);
 
-    start_benchmark();
-    while (dictRehash(dict, 100));
-    end_benchmark("Rehash");
-
-    dictGetStats(buf, sizeof buf, dict);
-    printf("\n%s\n", buf);
-
     dictRelease(dict);
     return 0;
 }

@@ -1,4 +1,3 @@
-
 #if defined(_MSC_VER) && defined(_DEBUG)
 #define AVP_DUMP_MEM_LEAK
 #endif
@@ -179,7 +178,7 @@ int main()
         assert(r == HASH_OK);
     }
     end_benchmark("Inserting");
-    assert(h->used == count);
+    assert(hash_used(h) == count);
 
     start_benchmark();
     for (j = 0; j < count; j++) {
@@ -241,6 +240,12 @@ int main()
         assert(he != NULL && he->v.val == (void*)j);
     }
     end_benchmark("Linear access of existing elements");
+
+#ifdef USE_SEPERATE_CHAINING
+    char buf[4096];
+    hash_get_stats(buf, sizeof buf, h);
+    printf("\n%s\n", buf);
+#endif
 
 	hash_free(h);
 

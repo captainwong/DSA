@@ -1,5 +1,10 @@
 #ifdef USE_SEPERATE_CHAINING
 
+#if defined(_MSC_VER) && defined(_DEBUG)
+#define AVP_DUMP_MEM_LEAK
+#endif
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
@@ -10,7 +15,6 @@
 #include <sys/time.h>
 #endif
 #include "hash_seperate_chaining.h"
-
 
 /* -------------------------- helper functions ---------------------------- */
 
@@ -98,8 +102,8 @@ int hash_resize(hash_t* h) {
 	unsigned long minimal;
 	if (hash_is_rehashing(h)) return HASH_ERR;
 	minimal = h->used[0];
-	if (minimal < HASH_INITIAL_SIZE)
-		minimal = HASH_INITIAL_SIZE;
+	if (minimal < HASH_TABLE_INITIAL_SIZE)
+		minimal = HASH_TABLE_INITIAL_SIZE;
 	return hash_expand(h, minimal);
 }
 
@@ -198,7 +202,7 @@ int hash_rehash(hash_t* h, int n) {
 
 		// Note that rehash_idx can't overflow as we are sure there are more
 		// elements because used[0] != 0
-		assert(HASH_SIZE(h->size_exp[0]) > (unsigned long)h->rehash_idx);
+		assert(HASH_TABLE_SIZE(h->size_exp[0]) > (unsigned long)h->rehash_idx);
 
 		while (h->entries[0][h->rehash_idx] == NULL) {
 			h->rehash_idx++;
@@ -212,7 +216,7 @@ int hash_rehash(hash_t* h, int n) {
 			uint64_t hash;
 			nexthe = he->next;
 			// get the index in the new hash table
-			hash = hash_hash_key(h, he->key) & HASH_SIZE_MASK(h->size_exp[1]);
+			hash = hash_hash_key(h, he->key) & HASH_TABLE_SIZE_MASK(h->size_exp[1]);
 			he->next = h->entries[1][hash];
 			h->entries[1][hash] = he;
 			h->used[0]--;
@@ -367,13 +371,13 @@ static entry_t* _hash_generic_remove(hash_t* h, const void* key, int nofree) {
 	int htidx;
 
 	// dict is empty
-	if (hash_size(h) == 0) return NULL;
+	if (hash_used(h) == 0) return NULL;
 
 	if (hash_is_rehashing(h)) _hash_rehash_step(h);
 	hash = hash_hash_key(h, key);
 
 	for (htidx = 0; htidx <= 1; htidx++) {
-		idx = hash & HASH_SIZE_MASK(h->size_exp[htidx]);
+		idx = hash & HASH_TABLE_SIZE_MASK(h->size_exp[htidx]);
 		he = h->entries[htidx][idx];
 		prev = NULL;
 		while (he) {
@@ -441,7 +445,7 @@ void hash_free_taken_entry(hash_t* h, entry_t* he) {
 // Destroy an entire slot
 static int _hash_clear(hash_t* h, int htidx, void(callback)(hash_t*)) {
 	// free all the elements
-	for (unsigned long i = 0; i < HASH_SIZE(h->size_exp[htidx]) && h->used[htidx] > 0; i++) {
+	for (unsigned long i = 0; i < HASH_TABLE_SIZE(h->size_exp[htidx]) && h->used[htidx] > 0; i++) {
 		entry_t* he, * next;
 		if (callback && (i & 0xFFFF) == 0) callback(h);
 		if ((he = h->entries[htidx][i]) == NULL) continue;
@@ -466,14 +470,15 @@ void hash_free(hash_t* h) {
 	free(h);
 }
 
+// Find a entry with key
 entry_t* hash_find(hash_t* h, const void* key) {
 	entry_t* he;
 	uint64_t hash, idx, htidx;
-	if (hash_size(h) == 0) return NULL;
+	if (hash_used(h) == 0) return NULL;
 	if (hash_is_rehashing(h)) _hash_rehash_step(h);
 	hash = hash_hash_key(h, key);
 	for (htidx = 0; htidx <= 1; htidx++) {
-		idx = hash & HASH_SIZE_MASK(h->size_exp[htidx]);
+		idx = hash & HASH_TABLE_SIZE_MASK(h->size_exp[htidx]);
 		he = h->entries[htidx][idx];
 		while (he) {
 			if (hash_key_equals(h, key, he->key))
@@ -485,27 +490,29 @@ entry_t* hash_find(hash_t* h, const void* key) {
 	return NULL;
 }
 
+// Get a entry's value if key exists
 void* hash_retrieve_value(hash_t* h, const void* key) {
 	entry_t* he = hash_find(h, key);
 	return he ? hash_get_val(he) : NULL;
 }
 
+// Return a random entry from the hash table. Useful to implement randomized algorithms.
 entry_t* hash_get_random_key(hash_t* h) {
 	entry_t* he, * head;
 	unsigned long idx;
 	int listlen, listele;
 
-	if (hash_size(h) == 0) return NULL;
+	if (hash_used(h) == 0) return NULL;
 	if (hash_is_rehashing(h)) _hash_rehash_step(h);
 	if (hash_is_rehashing(h)) {
-		unsigned long s0 = HASH_SIZE(h->size_exp[0]);
+		unsigned long s0 = HASH_TABLE_SIZE(h->size_exp[0]);
 		do {
 			// we are sure there are no elements in indexes from 0 to rehash_idx-1
 			idx = h->rehash_idx + (random_ulong() % (hash_slots(h) - h->rehash_idx));
 			he = (idx >= s0) ? h->entries[1][idx - s0] : h->entries[0][idx];
 		} while (he == NULL);
 	} else {
-		unsigned long m = HASH_SIZE_MASK(h->size_exp[0]);
+		unsigned long m = HASH_TABLE_SIZE_MASK(h->size_exp[0]);
 		do {
 			idx = random_ulong() & m;
 			he = h->entries[0][idx];
@@ -528,12 +535,77 @@ entry_t* hash_get_random_key(hash_t* h) {
 	return he;
 }
 
+#define HASH_STATS_VECTLEN 50
+static size_t _hash_get_stats_ht(char* buf, size_t bufsize, hash_t* h, int htidx) {
+	unsigned long slots = 0, chainlen, maxchainlen = 0, totchainlen = 0;
+	unsigned long clvector[HASH_STATS_VECTLEN] = { 0 };
+	size_t r = 0;
+	if (h->used[htidx] == 0) {
+		return snprintf(buf, bufsize, "No stats available for empty hash table\n");
+	}
+
+	for (unsigned long i = 0; i < HASH_TABLE_SIZE(h->size_exp[htidx]); i++) {
+		entry_t* he;
+		if (h->entries[htidx][i] == NULL) {
+			clvector[0]++;
+			continue;
+		}
+		slots++;
+		chainlen = 0;
+		he = h->entries[htidx][i];
+		while (he) {
+			chainlen++;
+			he = he->next;
+		}
+		clvector[(chainlen < HASH_STATS_VECTLEN) ? chainlen : (HASH_STATS_VECTLEN - 1)]++;
+		if (chainlen > maxchainlen)
+			maxchainlen = chainlen;
+		totchainlen += chainlen;
+	}
+
+	r += snprintf(buf + r, bufsize - r,
+				  "Hash table %d stats (%s):\n"
+				  " table size: %lu\n"
+				  " number of elements: %lu\n"
+				  " different slots: %lu\n"
+				  " max chain length: %lu\n"
+				  " avg chain length(counted): %.02f\n"
+				  " avg chain length(computed): %.02f\n"
+				  " Chain length distribution:\n",
+				  htidx, (htidx == 0) ? "main hash table" : "rehashing target",
+				  HASH_TABLE_SIZE(h->size_exp[htidx]), h->used[htidx], slots, maxchainlen,
+				  (float)totchainlen / slots, (float)h->used[htidx] / slots);
+
+	for (int i = 0; i < HASH_STATS_VECTLEN - 1; i++) {
+		if (clvector[i] == 0) continue;
+		if (r >= bufsize) break;
+		r += snprintf(buf + r, bufsize - r,
+					  "   %ld: %ld (%.02f%%)\n",
+					  i, clvector[i], clvector[i] * 100.f / HASH_TABLE_SIZE(h->size_exp[htidx]));
+	}
+	// make sure there is a NULL term at the end
+	if (bufsize) buf[bufsize - 1] = '\0';
+	return strlen(buf);
+}
+
+void hash_get_stats(char* buf, size_t bufsize, hash_t* h) {
+	char* origin = buf;
+	size_t origin_size = bufsize;
+	size_t l = _hash_get_stats_ht(buf, bufsize, h, 0);
+	buf += l;
+	bufsize -= l;
+	if (hash_is_rehashing(h) && bufsize > 0)
+		_hash_get_stats_ht(buf, bufsize, h, 1);
+	if (origin_size) // make sure there is a NULL term at the end
+		origin[origin_size - 1] = '\0';
+}
+
 
 /* ------------------------- private functions ------------------------------ */
 
 // Our hash table capacity is a power of 2.
 static signed char _hash_next_exp(unsigned long size) {
-	unsigned char exp = HASH_INITIAL_EXP;
+	unsigned char exp = HASH_TABLE_INITIAL_EXP;
 	if (size >= LONG_MAX) return 8 * sizeof(long) - 1;
 	while (1) {
 		if (((unsigned long)1 << exp) >= size)
@@ -558,7 +630,7 @@ static long _hash_key_index(hash_t* h, const void* key, uint64_t hash, entry_t**
 	// expand the hash table if needed
 	if (_hash_expand_if_needed(h) == HASH_ERR) return -1;
 	for (htidx = 0; htidx <= 1; htidx++) {
-		idx = hash & HASH_SIZE_MASK(h->size_exp[htidx]);
+		idx = hash & HASH_TABLE_SIZE_MASK(h->size_exp[htidx]);
 		// search if this slot does not already contain the given key
 		he = h->entries[htidx][idx];
 		while (he) {
@@ -579,10 +651,11 @@ static int _hash_expand_if_needed(hash_t* h) {
 	if (hash_is_rehashing(h)) return HASH_OK;
 
 	// If the hash table is empty expand it to the initial size
-	if (HASH_SIZE(h->size_exp[0] == 0)) return hash_expand(h, HASH_INITIAL_SIZE);
+	if (HASH_TABLE_SIZE(h->size_exp[0]) == 0)
+		return hash_expand(h, HASH_TABLE_INITIAL_SIZE);
 
 	// If we reached the 1:1 ratio, we resize doubling the number of buckets.
-	if (h->used[0] >= HASH_SIZE(h->size_exp[0])) {
+	if (h->used[0] >= HASH_TABLE_SIZE(h->size_exp[0])) {
 		return hash_expand(h, h->used[0] + 1);
 	}
 	return HASH_OK;

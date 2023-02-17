@@ -31,14 +31,14 @@
 #define HASH_OK 0
 #define HASH_ERR 1
 
-#define HASH_SIZE(exp) ((exp == -1) ? 0 : (unsigned long)1 << (exp))
-#define HASH_SIZE_MASK(exp) ((exp == -1) ? 0 : HASH_SIZE(exp) - 1)
+#define HASH_TABLE_SIZE(exp) ((exp == -1) ? 0 : (unsigned long)1 << (exp))
+#define HASH_TABLE_SIZE_MASK(exp) ((exp == -1) ? 0 : HASH_TABLE_SIZE(exp) - 1)
 
 // This is the initial size of every hash table
-#ifndef HASH_INITIAL_EXP
-#define HASH_INITIAL_EXP 2
+#ifndef HASH_TABLE_INITIAL_EXP
+#define HASH_TABLE_INITIAL_EXP 2
 #endif
-#define HASH_INITIAL_SIZE (1 << (HASH_INITIAL_EXP))
+#define HASH_TABLE_INITIAL_SIZE (1 << (HASH_TABLE_INITIAL_EXP))
 
 typedef struct entry_t {
 	void* key;
@@ -132,8 +132,8 @@ struct hash_s {
 #define hash_get_s64_val(e) ((e)->v.s64)
 #define hash_get_u64_val(e) ((e)->v.u64)
 #define hash_get_double_val(e) ((e)->v.d)
-#define hash_slots(h) (HASH_SIZE((h)->size_exp[0]) + HASH_SIZE((h)->size_exp[1]))
-#define hash_size(h) ((h)->used[0] + (h)->used[1])
+#define hash_slots(h) (HASH_TABLE_SIZE((h)->size_exp[0]) + HASH_TABLE_SIZE((h)->size_exp[1]))
+#define hash_used(h) ((h)->used[0] + (h)->used[1])
 #define hash_is_rehashing(h) ((h)->rehash_idx != -1)
 #define hash_pause_rehash(h) ((h)->pause_rehash++)
 #define hash_resume_rehash(h) ((h)->pause_rehash--)
@@ -167,7 +167,8 @@ void hash_clear(hash_t* h);
 void hash_free(hash_t* h);
 entry_t* hash_find(hash_t* h, const void* key);
 void* hash_retrieve_value(hash_t* h, const void* key);
-entry_t* hash_get_random_key(hash_t* h);
+entry_t* hash_get_random_key(hash_t* h); 
+void hash_get_stats(char* buf, size_t bufsize, hash_t* h);
 
 
 #endif // USE_SEPERATE_CHAINING
