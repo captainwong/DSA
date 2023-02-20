@@ -463,6 +463,13 @@ static int _hash_clear(hash_t* h, int htidx, void(callback)(hash_t*)) {
 	return HASH_OK; // never fails
 }
 
+void hash_clear(hash_t* h) {
+	_hash_clear(h, 0, NULL);
+	_hash_clear(h, 0, NULL);
+	h->rehash_idx = -1;
+	h->pause_rehash = 0;
+}
+
 // Clear & Release the hash table
 void hash_free(hash_t* h) {
 	_hash_clear(h, 0, NULL);
